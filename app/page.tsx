@@ -2,6 +2,7 @@ import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import Core from "../components/sections/Core";
 import DetToDetaiBridge from "../components/sections/DetToDetaiBridge";
+import DetDetaiSplit from "../components/sections/DetDetaiSplit";
 import Hero from "../components/sections/Hero";
 import Mission from "../components/sections/Mission";
 import Projects from "../components/sections/Projects";
@@ -13,6 +14,7 @@ export default function Page() {
       <main className="flex flex-1 flex-col gap-0">
         <Hero />
         <DetToDetaiBridge />
+        <DetDetaiSplit />
         <Projects />
         <Core />
         <Mission />
