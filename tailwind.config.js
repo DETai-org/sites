@@ -3,6 +3,13 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    { pattern: /before:/ },
+    { pattern: /after:/ },
+    { pattern: /animate-/ },
+    { pattern: /bg-\[/ },
+    { pattern: /translate-x/ },
+  ],
   darkMode: "class",
   theme: {
     extend: {

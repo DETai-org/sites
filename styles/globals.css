@@ -10,3 +10,9 @@
     transform: translateX(100%);
   }
 }
+
+.btn-shimmer::before,
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+}
