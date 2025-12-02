@@ -27,21 +27,27 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: `
-    relative
-    bg-gradient-to-br from-[#C9A86A] to-[#E6D3A3]
-    text-basic-dark
-    shadow-[0_0_15px_rgba(201,168,106,0.25)]
-    transition-all duration-300
-    hover:brightness-110 active:brightness-90
-    before:absolute before:inset-0 before:rounded-lg
-    before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
-    before:opacity-0 before:transition-opacity before:duration-500
-    before:translate-x-[-100%] before:animate-none
-    group-hover:before:opacity-80
-    group-hover:before:animate-[shine_1s_linear]
-    after:absolute after:inset-0 after:rounded-lg
-    after:shadow-[inset_0_0_12px_rgba(255,255,255,0.25)]
-  `,
+  relative
+  overflow-hidden
+  bg-gradient-to-br from-[#C9A86A] to-[#E6D3A3]
+  text-basic-dark
+  shadow-[0_0_15px_rgba(201,168,106,0.25)]
+  transition-all duration-300
+  hover:brightness-105 active:brightness-90
+
+  before:absolute before:inset-0 before:rounded-lg
+  before:bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.45),transparent)]
+  before:w-[200%] before:h-full
+  before:opacity-0
+  before:translate-x-[-150%]
+  before:transition-all before:duration-700
+
+  group-hover:before:opacity-100
+  group-hover:before:translate-x-[150%]
+
+  after:absolute after:inset-0 after:rounded-lg
+  after:shadow-[inset_0_0_15px_rgba(255,255,255,0.22)]
+`,
   secondary:
     "border-2 border-accent-primary text-accent-primary hover:bg-accent-soft/20 hover:text-accent-hover active:bg-accent-soft/10 transition-all duration-300",
 };
