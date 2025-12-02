@@ -40,7 +40,7 @@ export default function AudienceSection() {
         {audienceCards.map((card) => (
           <div
             key={card.title}
-            className="flex h-full flex-col gap-3 p-6 text-basic-dark rounded-xl border border-gold-primary/30 bg-gold-soft shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-gold-primary hover:shadow-lg"
+            className="flex h-full flex-col gap-3 p-6 text-basic-dark rounded-xl border border-accent-primary/30 bg-accent-soft shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accent-primary hover:shadow-lg"
           >
             <h3 className="text-xl font-serif font-semibold leading-snug text-basic-dark md:text-2xl">{card.title}</h3>
             <p className="text-sm leading-relaxed text-basic-dark md:text-base">{card.description}</p>
