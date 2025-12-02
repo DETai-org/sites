@@ -47,7 +47,7 @@ export default function Projects() {
         {projects.map((project) => (
           <a
             key={project.name}
-            className="group flex h-full flex-col gap-2 p-5 text-basic-dark rounded-lg border border-basic-gold-primary/30 bg-basic-gold-soft shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-basic-gold-primary hover:shadow-lg"
+            className="group flex h-full flex-col gap-2 p-5 text-basic-dark rounded-lg border border-gold-primary/30 bg-gold-soft shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-gold-primary hover:shadow-lg"
             href={project.href}
           >
             <div className="flex items-center gap-3 text-lg font-serif font-semibold leading-tight text-basic-dark">

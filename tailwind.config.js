@@ -8,13 +8,13 @@ module.exports = {
     extend: {
       colors: {
         basic: {
-          dark: "#050509",
+          dark: "#0B0B10",
           light: "#F6F1E9",
-          gold: {
-            primary: "#E2B768",
-            dark: "#CBA95C",
-            soft: "#FFF6E0",
-          },
+        },
+        gold: {
+          primary: "#D4AF6A",
+          dark: "#C69C5A",
+          soft: "#F2E5C2",
         },
       },
       fontFamily: {

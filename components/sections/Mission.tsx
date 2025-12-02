@@ -8,7 +8,7 @@ export default function Mission() {
         <Heading level={2} color="soft">
           Наша миссия
         </Heading>
-        <p className="max-w-4xl text-base leading-relaxed text-basic-gold-soft md:text-lg">
+        <p className="max-w-4xl text-base leading-relaxed text-gold-soft md:text-lg">
           Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
           интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям
           понимать себя и развиваться.
