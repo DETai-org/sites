@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import type { ReactNode } from "react";
 
+import ShimmerAutoTrigger from "@/components/layout/ShimmerAutoTrigger";
+
 export const metadata = {
   title: "DETai Site",
   description: "Dialectical Existential Therapy and DETai ecosystem"
@@ -9,7 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <ShimmerAutoTrigger />
+        {children}
+      </body>
     </html>
   );
 }
