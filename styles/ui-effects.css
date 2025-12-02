@@ -1,3 +1,6 @@
+/* ===========================
+   ACTIVE EFFECT FOR BUTTONS - Стили shimmer-кнопок ✨
+   =========================== */
 @keyframes shine {
   from {
     transform: translateX(-100%);
@@ -51,10 +54,6 @@
   box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.25);
   z-index: 0;
 }
-
-/* ===========================
-   ACTIVE EFFECT FOR BUTTONS
-   =========================== */
 
 .btn-shimmer:active {
   transform: scale(0.95);
