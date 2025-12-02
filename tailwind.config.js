@@ -12,7 +12,7 @@ module.exports = {
           light: "#F6F1E9",
         },
         accent: {
-          primary: "#D4AF6A",
+          primary: "#C9A86A",
           hover: "#C69C5A",
           soft: "#F2E5C2",
           active: "#B8924F",
