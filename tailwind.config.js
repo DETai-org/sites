@@ -11,10 +11,11 @@ module.exports = {
           dark: "#1E1B19",
           light: "#F6F1E9",
         },
-        gold: {
+        accent: {
           primary: "#D4AF6A",
-          dark: "#C69C5A",
+          hover: "#C69C5A",
           soft: "#F2E5C2",
+          active: "#B8924F",
         },
       },
       fontFamily: {

@@ -28,8 +28,8 @@ export default function Heading({
 
   const colorClasses: Record<HeadingColor, string> = {
     basic: "text-basic-dark",
-    gold: "text-gold-primary",
-    soft: "text-gold-soft",
+    gold: "text-accent-primary",
+    soft: "text-accent-soft",
   };
 
   return <Tag className={cn(levelClasses[level], colorClasses[color], className)}>{children}</Tag>;

@@ -8,7 +8,7 @@ export default function DetToDetaiBridge() {
         <Heading level={2} color="soft">
           DET ↔ DETai
         </Heading>
-        <p className="max-w-5xl text-lg leading-relaxed text-gold-soft md:text-xl">
+        <p className="max-w-5xl text-lg leading-relaxed text-accent-soft md:text-xl">
           Диалектически-экзистенциальная терапия (DET) — это культура понимания человека, выросшая из экзистенциально-гуманистической
           традиции и опирающаяся на диалектическое видение внутренней динамики личности. DET не конкурирует с существующими школами,
           а создаёт ценностную и диалоговую рамку, в которой могут работать разные подходы и методы.

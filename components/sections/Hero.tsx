@@ -12,7 +12,7 @@ export default function Hero() {
             <br />
             Новый формат психотерапии
           </Heading>
-          <p className="max-w-2xl text-lg leading-relaxed text-gold-soft md:text-xl">
+          <p className="max-w-2xl text-lg leading-relaxed text-accent-soft md:text-xl">
             Диалектически-экзистенциальная терапия — это культура понимания человека. DETai — это технологическая экосистема,
             включающая продукты, интерфейсы и AI-инструменты, которые воплощают культуру DET в прикладных и ежедневных формах —
             доступных как клиентам, так и психотерапевтам.
