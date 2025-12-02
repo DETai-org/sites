@@ -29,7 +29,7 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: `
-  bg-gradient-to-br from-[#C9A86A] to-[#E6D3A3]
+  bg-gradient-to-br from-[#B68E3C] to-[#F2D389]
   text-basic-dark
   shadow-[0_0_15px_rgba(201,168,106,0.25)]
   transition-all duration-300
