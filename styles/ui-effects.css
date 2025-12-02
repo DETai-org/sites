@@ -10,6 +10,20 @@
   }
 }
 
+@keyframes auto-shine {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(18deg);
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%) rotate(18deg);
+  }
+}
+
 .btn-shimmer::before,
 .btn-shimmer::after {
   content: "";
@@ -67,4 +81,10 @@
 
 .btn-shimmer:active::after {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+@media (hover: none) {
+  .btn-shimmer.auto-shimmer::before {
+    animation: auto-shine 1.2s ease-out forwards;
+  }
 }
