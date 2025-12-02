@@ -26,8 +26,22 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 // ===============================================================
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "bg-gradient-to-br from-[#C9A86A] to-[#E6D3A3] text-basic-dark shadow-[0_0_15px_rgba(201,168,106,0.25)] hover:brightness-110 hover:shadow-[0_0_25px_rgba(201,168,106,0.35)] active:brightness-90 transition-all duration-300",
+  primary: `
+    relative
+    bg-gradient-to-br from-[#C9A86A] to-[#E6D3A3]
+    text-basic-dark
+    shadow-[0_0_15px_rgba(201,168,106,0.25)]
+    transition-all duration-300
+    hover:brightness-110 active:brightness-90
+    before:absolute before:inset-0 before:rounded-lg
+    before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
+    before:opacity-0 before:transition-opacity before:duration-500
+    before:translate-x-[-100%] before:animate-none
+    group-hover:before:opacity-80
+    group-hover:before:animate-[shine_1s_linear]
+    after:absolute after:inset-0 after:rounded-lg
+    after:shadow-[inset_0_0_12px_rgba(255,255,255,0.25)]
+  `,
   secondary:
     "border-2 border-accent-primary text-accent-primary hover:bg-accent-soft/20 hover:text-accent-hover active:bg-accent-soft/10 transition-all duration-300",
 };
@@ -40,7 +54,7 @@ export default function Button(props: ButtonProps) {
     return (
       <a
         className={cn(
-          "inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-sans font-medium leading-tight rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary",
+          "group inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-sans font-medium leading-tight rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary",
           variantClasses[variant],
           className,
         )}
@@ -56,7 +70,7 @@ export default function Button(props: ButtonProps) {
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-sans font-medium leading-tight rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary",
+        "group inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-sans font-medium leading-tight rounded-lg transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary",
         variantClasses[variant],
         className,
       )}
