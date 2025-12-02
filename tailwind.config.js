@@ -13,7 +13,7 @@ module.exports = {
         },
         gold: {
           primary: "#D4AF6A",
-          dark: "#121417",
+          dark: "#C69C5A",
           soft: "#F2E5C2",
         },
       },
