@@ -46,6 +46,7 @@ module.exports = {
         "mobile-8": "2.5rem",
       },
       fontSize: {
+        "mobile-4xl": ["2.75rem", { lineHeight: "3.15rem" }],
         "mobile-3xl": ["2.125rem", { lineHeight: "2.6rem" }],
         "mobile-2xl": ["1.75rem", { lineHeight: "2.25rem" }],
         "mobile-xl": ["1.375rem", { lineHeight: "1.9rem" }],

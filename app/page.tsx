@@ -5,6 +5,7 @@ import DetToDetaiBridge from "../components/sections/DetToDetaiBridge";
 import DetDetaiSplit from "../components/sections/DetDetaiSplit";
 import FundamentDetSection from "../components/sections/FundamentDetSection";
 import Hero from "../components/sections/Hero";
+import Intro from "../components/sections/Intro";
 import Mission from "../components/sections/Mission";
 
 export default function Page() {
@@ -13,6 +14,7 @@ export default function Page() {
       <Header />
       <main className="flex flex-1 flex-col gap-0">
         <Hero />
+        <Intro />
         <DetToDetaiBridge />
         <DetDetaiSplit />
         <AudienceSection />
