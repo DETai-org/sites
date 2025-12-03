@@ -5,7 +5,7 @@ import Section from "../ui/Section";
 export default function Hero() {
   return (
     <Section id="hero" variant="dark" className="relative overflow-hidden" containerClassName="relative">
-      <div className="relative flex min-h-screen flex-col items-start justify-start gap-mobile-4 pt-mobile-4 md:hidden">
+      <div className="relative flex min-h-screen flex-col items-start justify-start gap-mobile-4 pt-mobile-2 md:hidden">
         <div className="absolute inset-0 h-full bg-basic-dark" />
         <div className="absolute inset-0 h-full bg-basic-dark/50" />
 
