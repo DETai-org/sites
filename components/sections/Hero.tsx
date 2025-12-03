@@ -8,12 +8,12 @@ export default function Hero() {
       id="hero"
       variant="dark"
       className="relative overflow-hidden"
-      containerClassName="relative flex min-h-screen flex-col items-start justify-center gap-mobile-6 md:min-h-[500px] md:flex-row md:items-center md:justify-between md:gap-10"
+      containerClassName="relative flex min-h-screen w-full max-w-none flex-col items-start justify-start gap-mobile-4 pt-mobile-4 md:min-h-screen md:flex-row md:items-center md:justify-between md:gap-10"
     >
-      <div className="absolute inset-0 h-[100vh] bg-basic-dark md:hidden" />
-      <div className="absolute inset-0 h-[100vh] bg-basic-dark/50 md:hidden" />
+      <div className="absolute inset-0 h-full bg-basic-dark md:hidden" />
+      <div className="absolute inset-0 h-full bg-basic-dark/50 md:hidden" />
 
-      <div className="relative flex w-full max-w-mobile flex-col items-start gap-mobile-3 text-left md:max-w-none md:w-1/2 md:gap-6">
+      <div className="relative flex w-full flex-col items-start gap-mobile-3 text-left md:w-1/2 md:gap-6">
         <Heading
           level={1}
           color="soft"
@@ -24,7 +24,7 @@ export default function Hero() {
         <Heading
           level={1}
           color="soft"
-          className="text-mobile-3xl leading-mobile-tight md:text-4xl md:leading-tight"
+          className="text-[1.4rem] leading-[1.9rem] md:text-4xl md:leading-tight"
         >
           Новый формат психотерапии
         </Heading>
