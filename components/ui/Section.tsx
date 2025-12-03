@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { type ReactNode, type TouchEventHandler } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -9,6 +9,8 @@ type SectionProps = {
   variant?: SectionVariant;
   className?: string;
   containerClassName?: string;
+  onTouchStart?: TouchEventHandler<HTMLDivElement>;
+  onTouchEnd?: TouchEventHandler<HTMLDivElement>;
   children: ReactNode;
 };
 
@@ -17,6 +19,8 @@ export default function Section({
   variant = "light",
   className,
   containerClassName,
+  onTouchEnd,
+  onTouchStart,
   children,
 }: SectionProps) {
   const variantClasses: Record<SectionVariant, string> = {
@@ -31,6 +35,8 @@ export default function Section({
           "mx-auto w-full max-w-mobile px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20",
           containerClassName,
         )}
+        onTouchEnd={onTouchEnd}
+        onTouchStart={onTouchStart}
       >
         {children}
       </div>
