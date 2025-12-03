@@ -28,7 +28,7 @@ export default function Section({
     <section id={id} className={cn("w-full", variantClasses[variant], className)}>
       <div
         className={cn(
-          "mx-auto w-full max-w-mobile px-mobile-4 py-mobile-6 md:max-w-3xl md:px-10 md:py-20",
+          "mx-auto w-full max-w-mobile px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20",
           containerClassName,
         )}
       >
