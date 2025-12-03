@@ -60,8 +60,7 @@ module.exports = {
         "mobile-loose": "1.8",
       },
       maxWidth: {
-        mobile: "90vw",
-        "mobile-tight": "85vw",
+        mobile: "95vw",
       },
     },
   },
