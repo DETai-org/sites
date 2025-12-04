@@ -1,3 +1,4 @@
+import AnimatedLogo from "../visual/AnimatedLogo";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
@@ -15,6 +16,7 @@ export default function Hero() {
         <div className="absolute inset-0 h-full bg-basic-dark/50" />
 
         <div className="relative flex w-full flex-col items-start gap-mobile-3 text-left">
+          <AnimatedLogo className="h-28 w-28" />
           <Heading level={1} color="soft" className="text-mobile-4xl leading-mobile-tight md:text-5xl">
             DET — Dialectical Existential Therapy.
           </Heading>
@@ -42,24 +44,27 @@ export default function Hero() {
       </div>
 
       <div className="hidden flex-col gap-6 py-16 md:flex md:gap-10 md:py-24">
-        <div className="flex-1 space-y-6">
-          <Heading level={1} color="soft">
-            DET — Dialectical Existential Therapy.
-            <br />
-            Новый формат психотерапии
-          </Heading>
-          <p className="max-w-2xl text-lg leading-relaxed text-accent-soft md:text-xl">
-            Диалектически-экзистенциальная терапия — это культура понимания человека. DETai — это технологическая экосистема,
-            включая продукты, интерфейсы и AI-инструменты, которые воплощают культуру DET в прикладных и ежедневных формах —
-            доступных как клиентам, так и психотерапевтам.
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <Button as="a" href="#fundament-det" variant="primary">
-              Фундамент DET
-            </Button>
-            <Button as="a" href="#mission" variant="secondary">
-              Миссия и ценности
-            </Button>
+        <div className="flex items-start gap-6">
+          <AnimatedLogo className="flex-shrink-0 h-32 w-32" />
+          <div className="flex-1 space-y-6">
+            <Heading level={1} color="soft">
+              DET — Dialectical Existential Therapy.
+              <br />
+              Новый формат психотерапии
+            </Heading>
+            <p className="max-w-2xl text-lg leading-relaxed text-accent-soft md:text-xl">
+              Диалектически-экзистенциальная терапия — это культура понимания человека. DETai — это технологическая экосистема,
+              включая продукты, интерфейсы и AI-инструменты, которые воплощают культуру DET в прикладных и ежедневных формах —
+              доступных как клиентам, так и психотерапевтам.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button as="a" href="#fundament-det" variant="primary">
+                Фундамент DET
+              </Button>
+              <Button as="a" href="#mission" variant="secondary">
+                Миссия и ценности
+              </Button>
+            </div>
           </div>
         </div>
       </div>
