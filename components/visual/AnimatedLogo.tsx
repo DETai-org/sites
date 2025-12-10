@@ -11,13 +11,13 @@ type AnimatedLogoProps = {
 
 export default function AnimatedLogo({ className }: AnimatedLogoProps) {
   return (
-    <div className={clsx(className)}>
+    <div className={clsx("relative", className)}>
       <Lottie
         animationData={animationData}
         loop={false}
         autoplay
-        className="h-full w-full"
-        rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
+        style={{ width: "100%", height: "100%" }}
+        rendererSettings={{ preserveAspectRatio: "none" }}
       />
     </div>
   );
