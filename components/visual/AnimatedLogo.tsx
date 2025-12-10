@@ -3,7 +3,7 @@
 import Lottie from "lottie-react";
 import clsx from "clsx";
 
-import animationData from "@/public/assets/animations/logo-detai-static.json";
+import animationData from "@/public/assets/animations/logo.json";
 
 type AnimatedLogoProps = {
   className?: string;
