@@ -6,7 +6,7 @@ import Section from "../ui/Section";
 export default function Hero() {
   return (
     <Section id="hero" variant="dark" className="relative overflow-hidden" containerClassName="relative" fullWidth>
-      <div className="grid grid-cols-1 items-start md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-stretch min-h-screen gap-10 md:gap-12">
+      <div className="grid grid-cols-1 items-start md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center min-h-screen gap-10 md:gap-12">
         <div className="relative z-10 flex max-w-xl flex-col gap-mobile-3 md:gap-6">
           <Heading level={1} color="soft" className="text-mobile-4xl leading-mobile-tight md:text-5xl">
             DET — Dialectical Existential Therapy.
