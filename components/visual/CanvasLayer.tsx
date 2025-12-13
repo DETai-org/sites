@@ -16,6 +16,7 @@ type Particle = {
   tx: number;
   ty: number;
   life: number;
+  initialLife: number;
   opacity: number;
   length: number;
   thickness: number;
@@ -162,6 +163,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
       const length = randomBetween(5, 9);
       const thickness = randomBetween(1.6, 2.2);
       const opacity = randomBetween(opacityRange[0], opacityRange[1]);
+      const particleLife = randomBetween(life[0], life[1]);
       const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
 
       particlesRef.current.push({
@@ -171,7 +173,8 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
         vy: Math.sin(angle) * velocity,
         tx,
         ty,
-        life: randomBetween(life[0], life[1]),
+        life: particleLife,
+        initialLife: particleLife,
         opacity,
         length,
         thickness,
@@ -196,7 +199,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     const centerX = width / 2;
     const centerY = height / 2;
     const logoRadius = Math.min(width, height) * 0.14;
-    const spawnRadius = logoRadius * 1.6;
+    const spawnRadius = logoRadius * 2.2;
 
     const targets = [
       { angle: -Math.PI / 2 }, // сверху
@@ -225,6 +228,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
       const length = randomBetween(5, 9);
       const thickness = randomBetween(1.6, 2.2);
       const opacity = randomBetween(opacityRange[0], opacityRange[1]);
+      const particleLife = randomBetween(life[0], life[1]);
       const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
 
       particlesRef.current.push({
@@ -234,7 +238,8 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
         vy: Math.sin(angleWithSwirl) * velocity,
         tx,
         ty,
-        life: randomBetween(life[0], life[1]),
+        life: particleLife,
+        initialLife: particleLife,
         opacity,
         length,
         thickness,
@@ -260,7 +265,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     const pull = isStream ? 52 : 54;
     const swirlForce = isStream ? 24 : 0;
     const logoRadius = Math.min(width, height) * (isStream ? 0.14 : 0.16);
-    const killRadius = isStream ? logoRadius * 0.6 : Math.min(width, height) * 0.025;
+    const killRadius = isStream ? logoRadius * 0.35 : Math.min(width, height) * 0.025;
     const nextLife = particle.life - delta;
     if (nextLife <= 0) return null;
 
@@ -293,13 +298,16 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
 
     if (distance < killRadius) {
       if (isStream) {
-        opacity *= 0.84;
-        length *= 0.9;
-        thickness *= 0.92;
+        opacity *= 0.85;
+        length *= 0.92;
       } else {
         return null; // базовый слой растворяется мгновенно у логотипа
       }
     }
+
+    const lifeProgress = 1 - nextLife / particle.initialLife;
+    const fadeIn = Math.min(lifeProgress * 3, 1);
+    opacity *= fadeIn;
 
     return {
       ...particle,
