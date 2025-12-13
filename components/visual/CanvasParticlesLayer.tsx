@@ -32,7 +32,7 @@ const TIMINGS = {
   fade: 1400,
 };
 
-const TIME_SCALE = 2.0; 
+const TIME_SCALE = 2.0;
 
 const PHASE_SETTINGS: Record<
   Phase,
@@ -52,16 +52,54 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
   const frameRef = useRef<number>();
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const phaseRef = useRef<Phase>("idle");
-  const particlesRef = useRef<Particle[]>([]);
-  const spawnAccumulatorRef = useRef<number>(0);
+
+  // =========================
+  // СЛОЙ A (BASE) — твой исходный эффект 1-в-1, привязан к hero-rect
+  // =========================
+  const baseParticlesRef = useRef<Particle[]>([]);
+  const baseSpawnAccumulatorRef = useRef<number>(0);
+
+  // =========================
+  // СЛОЙ B (OVERLAY) — доп. поток слева + дальние спавны, «пыль поверх всего»
+  // =========================
+  const overlayParticlesRef = useRef<Particle[]>([]);
+  const overlaySpawnAccumulatorRef = useRef<number>(0);
+
   const lastTimestampRef = useRef<number>(performance.now());
-  const sizeRef = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
+
+  // Метрики viewport + якорь (hero-rect)
+  const metricsRef = useRef<{
+    width: number;
+    height: number;
+    // центр логотипа/якоря в КООРДИНАТАХ VIEWPORT (canvas fixed)
+    centerX: number;
+    centerY: number;
+    // размер якоря = min(w,h) hero-rect
+    anchorSize: number;
+    // hero-rect в координатах viewport
+    rectLeft: number;
+    rectTop: number;
+    rectWidth: number;
+    rectHeight: number;
+  }>({
+    width: 0,
+    height: 0,
+    centerX: 0,
+    centerY: 0,
+    anchorSize: 0,
+    rectLeft: 0,
+    rectTop: 0,
+    rectWidth: 0,
+    rectHeight: 0,
+  });
 
   const switchPhase = (phase: Phase) => {
     phaseRef.current = phase;
     if (phase === "idle") {
-      particlesRef.current = [];
-      spawnAccumulatorRef.current = 0;
+      baseParticlesRef.current = [];
+      overlayParticlesRef.current = [];
+      baseSpawnAccumulatorRef.current = 0;
+      overlaySpawnAccumulatorRef.current = 0;
     }
   };
 
@@ -86,26 +124,53 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
     timeoutsRef.current.push(start, toPeak, toFade, toIdle);
   };
 
-  const renderFrame = (
-    context: CanvasRenderingContext2D,
-    delta: number,
-    width: number,
-    height: number,
-  ) => {
-    context.clearRect(0, 0, width, height);
+  const renderFrame = (context: CanvasRenderingContext2D, delta: number) => {
+    const m = metricsRef.current;
     const phase = phaseRef.current;
     const { spawnRate, speed, life, opacity } = PHASE_SETTINGS[phase];
 
-    if (spawnRate > 0 && width > 0 && height > 0) {
-      spawnAccumulatorRef.current += spawnRate * delta;
-      while (spawnAccumulatorRef.current >= 1) {
-        spawnParticles(width, height, speed, life, opacity);
-        spawnAccumulatorRef.current -= 1;
+    // очищаем ВЕСЬ viewport-canvas
+    context.clearRect(0, 0, m.width, m.height);
+
+    // ---------- СЛОЙ A (BASE): спавн/обновление в координатах hero-rect ----------
+    if (spawnRate > 0 && m.rectWidth > 0 && m.rectHeight > 0) {
+      baseSpawnAccumulatorRef.current += spawnRate * delta;
+      while (baseSpawnAccumulatorRef.current >= 1) {
+        spawnParticlesBaseLayer(
+          m.rectLeft,
+          m.rectTop,
+          m.rectWidth,
+          m.rectHeight,
+          speed,
+          life,
+          opacity,
+        );
+        baseSpawnAccumulatorRef.current -= 1;
       }
     }
 
-    particlesRef.current = particlesRef.current.reduce<Particle[]>((next, particle) => {
-      const updated = updateParticle(particle, delta, width, height);
+    baseParticlesRef.current = baseParticlesRef.current.reduce<Particle[]>((next, particle) => {
+      const updated = updateParticle(particle, delta, m.width, m.height);
+      if (updated) {
+        drawParticle(context, updated);
+        next.push(updated);
+      }
+      return next;
+    }, []);
+
+    // ---------- СЛОЙ B (OVERLAY): доп. поток слева + дальние спавны по viewport ----------
+    if (spawnRate > 0 && m.width > 0 && m.height > 0) {
+      // Можно слегка усилить второй слой относительно базового
+      const overlayRateScale = 1.0; // хочешь плотнее — поставь 1.2–1.6
+      overlaySpawnAccumulatorRef.current += spawnRate * overlayRateScale * delta;
+      while (overlaySpawnAccumulatorRef.current >= 1) {
+        spawnParticlesOverlayLayer(m.width, m.height, speed, life, opacity);
+        overlaySpawnAccumulatorRef.current -= 1;
+      }
+    }
+
+    overlayParticlesRef.current = overlayParticlesRef.current.reduce<Particle[]>((next, particle) => {
+      const updated = updateParticle(particle, delta, m.width, m.height);
       if (updated) {
         drawParticle(context, updated);
         next.push(updated);
@@ -114,15 +179,25 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
     }, []);
   };
 
-  const spawnParticles = (
-    width: number,
-    height: number,
+  // =========================
+  // СЛОЙ A (BASE) — исходный spawnParticles, но привязан к hero-rect
+  // Логика полностью та же, только координаты смещены на rectLeft/rectTop.
+  // =========================
+  const spawnParticlesBaseLayer = (
+    rectLeft: number,
+    rectTop: number,
+    rectWidth: number,
+    rectHeight: number,
     speed: [number, number],
     life: [number, number],
     opacityRange: [number, number],
   ) => {
-    const centerX = width / 2;
-    const centerY = height / 2;
+    // ВНИМАНИЕ: тут именно локальные размеры hero, как в исходнике
+    const width = rectWidth;
+    const height = rectHeight;
+
+    const centerXLocal = width / 2;
+    const centerYLocal = height / 2;
     const margin = Math.min(width, height) * 0.03;
 
     const radius = Math.min(width, height) * 0.16;
@@ -132,10 +207,112 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
       tx: number;
       ty: number;
     }> = [
-      { spawn: () => [Math.random() * width, -margin], tx: centerX, ty: centerY - radius },
-      { spawn: () => [Math.random() * width, height + margin], tx: centerX, ty: centerY + radius },
-      { spawn: () => [-margin, Math.random() * height], tx: centerX - radius, ty: centerY },
-      { spawn: () => [width + margin, Math.random() * height], tx: centerX + radius, ty: centerY },
+      { spawn: () => [Math.random() * width, -margin], tx: centerXLocal, ty: centerYLocal - radius },
+      {
+        spawn: () => [Math.random() * width, height + margin],
+        tx: centerXLocal,
+        ty: centerYLocal + radius,
+      },
+      { spawn: () => [-margin, Math.random() * height], tx: centerXLocal - radius, ty: centerYLocal },
+      { spawn: () => [width + margin, Math.random() * height], tx: centerXLocal + radius, ty: centerYLocal },
+    ];
+
+    targets.forEach(({ spawn, tx, ty }) => {
+      const [xLocal, yLocal] = spawn();
+
+      // Переносим всё в КООРДИНАТЫ VIEWPORT (потому что canvas fixed)
+      const x = rectLeft + xLocal;
+      const y = rectTop + yLocal;
+      const txAbs = rectLeft + tx;
+      const tyAbs = rectTop + ty;
+
+      const dx = txAbs - x;
+      const dy = tyAbs - y;
+      const baseAngle = Math.atan2(dy, dx);
+      const jitter = (Math.random() - 0.5) * 0.01; // почти прямые струи
+      const swirl = (Math.random() - 0.5) * 0.04; // лёгкое втягивание воронки
+      const angle = baseAngle + jitter + swirl;
+
+      const velocity = randomBetween(speed[0], speed[1]);
+      const length = randomBetween(5, 9);
+      const thickness = randomBetween(1.6, 2.2);
+      const opacity = randomBetween(opacityRange[0], opacityRange[1]);
+      const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
+
+      baseParticlesRef.current.push({
+        x,
+        y,
+        vx: Math.cos(angle) * velocity,
+        vy: Math.sin(angle) * velocity,
+        tx: txAbs,
+        ty: tyAbs,
+        life: randomBetween(life[0], life[1]),
+        opacity,
+        length,
+        thickness,
+        color,
+      });
+    });
+
+    // Контроль числа частиц — как в оригинале
+    if (baseParticlesRef.current.length > 260) {
+      baseParticlesRef.current.splice(0, baseParticlesRef.current.length - 260);
+    }
+  };
+
+  // =========================
+  // СЛОЙ B (OVERLAY) — твой diff (левый поток + дальние спавны),
+  // но корректно привязан к якорю (hero-rect) в координатах viewport.
+  // =========================
+  const spawnParticlesOverlayLayer = (
+    width: number,
+    height: number,
+    speed: [number, number],
+    life: [number, number],
+    opacityRange: [number, number],
+  ) => {
+    const { centerX, centerY, anchorSize } = metricsRef.current;
+
+    const nearMargin = Math.min(width, height) * 0.03;
+    const farMargin = Math.max(width, height) * 0.22;
+
+    const radius = Math.min(anchorSize || Math.min(width, height), Math.min(width, height)) * 0.16;
+    const leftStreamBand = (anchorSize || Math.min(width, height)) * 0.7;
+
+    const targets: Array<{
+      spawn: () => [number, number];
+      tx: number;
+      ty: number;
+    }> = [
+      // Близкие к герою точки — сохраняют струйность вокруг логотипа
+      { spawn: () => [Math.random() * width, -nearMargin], tx: centerX, ty: centerY - radius },
+      { spawn: () => [Math.random() * width, height + nearMargin], tx: centerX, ty: centerY + radius },
+      { spawn: () => [-nearMargin, Math.random() * height], tx: centerX - radius, ty: centerY },
+      { spawn: () => [width + nearMargin, Math.random() * height], tx: centerX + radius, ty: centerY },
+
+      // Дополнительный левый поток из области текста — усиливает струйность в сторону логотипа
+      {
+        spawn: () => [
+          -farMargin * randomBetween(1.1, 1.6),
+          centerY + (Math.random() - 0.5) * leftStreamBand,
+        ],
+        tx: centerX - radius * 0.3,
+        ty: centerY,
+      },
+      {
+        spawn: () => [
+          -nearMargin * 2.4,
+          centerY + (Math.random() - 0.5) * leftStreamBand * 0.85,
+        ],
+        tx: centerX - radius * 0.18,
+        ty: centerY,
+      },
+
+      // Дальние спавны — ощущение «приходит извне коробки»
+      { spawn: () => [Math.random() * width, -farMargin], tx: centerX, ty: centerY },
+      { spawn: () => [Math.random() * width, height + farMargin], tx: centerX, ty: centerY },
+      { spawn: () => [-farMargin, Math.random() * height], tx: centerX, ty: centerY },
+      { spawn: () => [width + farMargin, Math.random() * height], tx: centerX, ty: centerY },
     ];
 
     targets.forEach(({ spawn, tx, ty }) => {
@@ -143,16 +320,17 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
       const dx = tx - x;
       const dy = ty - y;
       const baseAngle = Math.atan2(dy, dx);
-      const jitter = (Math.random() - 0.5) * 0.01; // почти прямые струи
-      const swirl = (Math.random() - 0.5) * 0.04; // лёгкое втягивание воронки
+      const jitter = (Math.random() - 0.5) * 0.01;
+      const swirl = (Math.random() - 0.5) * 0.04;
       const angle = baseAngle + jitter + swirl;
+
       const velocity = randomBetween(speed[0], speed[1]);
       const length = randomBetween(5, 9);
       const thickness = randomBetween(1.6, 2.2);
       const opacity = randomBetween(opacityRange[0], opacityRange[1]);
       const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
 
-      particlesRef.current.push({
+      overlayParticlesRef.current.push({
         x,
         y,
         vx: Math.cos(angle) * velocity,
@@ -167,36 +345,30 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
       });
     });
 
-    // Контроль числа частиц, чтобы эффект оставался лёгким
-    if (particlesRef.current.length > 260) {
-      particlesRef.current.splice(0, particlesRef.current.length - 260);
+    // Контроль числа частиц — как в diff
+    if (overlayParticlesRef.current.length > 320) {
+      overlayParticlesRef.current.splice(0, overlayParticlesRef.current.length - 320);
     }
   };
 
-  const updateParticle = (
-    particle: Particle,
-    delta: number,
-    width: number,
-    height: number,
-  ): Particle | null => {
+  // Общий update — оставляем твою физику как есть
+  const updateParticle = (particle: Particle, delta: number, width: number, height: number): Particle | null => {
     const damping = 0.993;
-    const pull = 54;
+    const pull = 84;
+
     const nextLife = particle.life - delta;
     if (nextLife <= 0) return null;
 
     const dx = particle.tx - particle.x;
     const dy = particle.ty - particle.y;
     const distance = Math.hypot(dx, dy);
-    
+
     // нормализация дистанции относительно сцены
-    const distNorm = Math.min(
-      distance / (Math.min(width, height) * 0.5),
-      1,
-    );
-    
+    const distNorm = Math.min(distance / (Math.min(width, height) * 0.5), 1);
+
     // чем дальше — тем слабее, но НЕ в ноль
-    const pullFactor = 0.4 + (1 - distNorm) * 0.6;
-    
+    const pullFactor = 0.7 + (1 - distNorm) * 0.6;
+
     const ax = (dx / Math.max(distance, 1)) * pull * pullFactor * delta;
     const ay = (dy / Math.max(distance, 1)) * pull * pullFactor * delta;
 
@@ -207,15 +379,8 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
     const nvx = (particle.vx + ax) * damping;
     const nvy = (particle.vy + ay) * damping;
 
-
-    // if (nx < -width * 0.5 || nx > width * 1.5 || ny < -height * 0.5 || ny > height * 1.5) {
-    //   return null;
-    // }
-
-
-    // if (nx < -width * 0.1 || nx > width * 1.1 || ny < -height * 0.1 || ny > height * 1.1) {
-    //   return null;
-    // }
+    // ВАЖНО: kill-зону не используем, чтобы не было ощущения "коробки"
+    // смерть — по life и растворению у логотипа
 
     if (distance < Math.min(width, height) * 0.025) {
       particle.opacity *= 0.9; // РАСТВОРЕНИЕ В ЛОГО ❗❗❗
@@ -253,32 +418,53 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
 
-    const canvasElement = canvas;
-
     const context = canvas.getContext("2d");
     if (!context) return undefined;
 
     contextRef.current = context;
 
-    // Подгоняем размер под контейнер сцены с учётом DPR, чтобы частицы не терялись
     const resize = () => {
-      const parent = canvasElement.parentElement;
-      const rect = parent?.getBoundingClientRect();
+      // canvas = viewport
       const dpr = Math.max(window.devicePixelRatio || 1, 1);
-      const width = rect?.width ?? 0;
-      const height = rect?.height ?? 0;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
 
-      canvasElement.style.width = `${width}px`;
-      canvasElement.style.height = `${height}px`;
-      canvasElement.width = Math.round(width * dpr);
-      canvasElement.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
 
       contextRef.current?.setTransform(dpr, 0, 0, dpr, 0, 0);
-      sizeRef.current = { width, height };
+
+      // hero-rect (родитель), чтобы якорь (логотип) оставался там же, где был
+      const parent = canvas.parentElement;
+      const rect = parent?.getBoundingClientRect();
+
+      const rectLeft = rect?.left ?? 0;
+      const rectTop = rect?.top ?? 0;
+      const rectWidth = rect?.width ?? 0;
+      const rectHeight = rect?.height ?? 0;
+
+      const centerX = rectLeft + rectWidth / 2;
+      const centerY = rectTop + rectHeight / 2;
+      const anchorSize = Math.min(rectWidth || width, rectHeight || height);
+
+      metricsRef.current = {
+        width,
+        height,
+        centerX,
+        centerY,
+        anchorSize,
+        rectLeft,
+        rectTop,
+        rectWidth,
+        rectHeight,
+      };
     };
 
     resize();
     window.addEventListener("resize", resize);
+    window.addEventListener("scroll", resize, { passive: true });
 
     schedulePhases();
     lastTimestampRef.current = performance.now();
@@ -287,10 +473,10 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
     function loop(timestamp: number) {
       const delta = Math.min((timestamp - lastTimestampRef.current) / 1000, 0.05) * TIME_SCALE;
       lastTimestampRef.current = timestamp;
+
       const ctx = contextRef.current;
-      if (ctx) {
-        renderFrame(ctx, delta, sizeRef.current.width, sizeRef.current.height);
-      }
+      if (ctx) renderFrame(ctx, delta);
+
       frameRef.current = requestAnimationFrame(loop);
     }
 
@@ -298,9 +484,17 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
       timeoutsRef.current.forEach((id) => clearTimeout(id));
       cancelAnimationFrame(frameRef.current ?? 0);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", resize);
       contextRef.current = null;
     };
   }, []);
 
-  return <canvas ref={canvasRef} className={cn("absolute inset-0 pointer-events-none", className)} aria-hidden />;
+  // canvas теперь fixed и поверх всего
+  return (
+    <canvas
+      ref={canvasRef}
+      className={cn("fixed inset-0 pointer-events-none z-20", className)}
+      aria-hidden
+    />
+  );
 }
