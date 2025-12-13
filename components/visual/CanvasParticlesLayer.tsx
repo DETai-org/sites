@@ -354,7 +354,7 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
   // Общий update — оставляем твою физику как есть
   const updateParticle = (particle: Particle, delta: number, width: number, height: number): Particle | null => {
     const damping = 0.993;
-    const pull = 54;
+    const pull = 84;
 
     const nextLife = particle.life - delta;
     if (nextLife <= 0) return null;
@@ -367,7 +367,7 @@ export default function CanvasParticlesLayer({ className }: CanvasParticlesLayer
     const distNorm = Math.min(distance / (Math.min(width, height) * 0.5), 1);
 
     // чем дальше — тем слабее, но НЕ в ноль
-    const pullFactor = 0.4 + (1 - distNorm) * 0.6;
+    const pullFactor = 0.7 + (1 - distNorm) * 0.6;
 
     const ax = (dx / Math.max(distance, 1)) * pull * pullFactor * delta;
     const ay = (dy / Math.max(distance, 1)) * pull * pullFactor * delta;
