@@ -9,6 +9,7 @@ type SectionProps = {
   variant?: SectionVariant;
   className?: string;
   containerClassName?: string;
+  fullWidth?: boolean;
   children: ReactNode;
 };
 
@@ -17,6 +18,7 @@ export default function Section({
   variant = "light",
   className,
   containerClassName,
+  fullWidth = false,
   children,
 }: SectionProps) {
   const variantClasses: Record<SectionVariant, string> = {
@@ -24,16 +26,13 @@ export default function Section({
     light: "bg-basic-light text-basic-dark",
   };
 
+  const baseContainerClasses = fullWidth
+    ? "mx-auto w-full px-mobile-4 py-mobile-6 md:px-10 md:py-20"
+    : "mx-auto w-full max-w-mobile px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20";
+
   return (
     <section id={id} className={cn("w-full", variantClasses[variant], className)}>
-      <div
-        className={cn(
-          "mx-auto w-full max-w-mobile px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20",
-          containerClassName,
-        )}
-      >
-        {children}
-      </div>
+      <div className={cn(baseContainerClasses, containerClassName)}>{children}</div>
     </section>
   );
 }
