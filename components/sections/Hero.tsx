@@ -22,7 +22,7 @@ export default function Hero() {
       </div>
 
       <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[auto_1fr] md:items-center md:gap-12">
-        <div className="order-2 flex max-w-xl flex-col gap-mobile-3 md:order-1 md:-ml-4 md:gap-6 lg:-ml-8">
+        <div className="order-2 flex max-w-xl flex-col gap-mobile-3 md:order-1 md:-ml-2 md:gap-6 lg:ml-4">
           <p className="text-lg leading-relaxed text-accent-soft md:text-xl">
             Диалектически-экзистенциальная терапия — это культура понимания человека. DETai — это технологическая экосистема,
             включая продукты, интерфейсы и AI-инструменты, которые воплощают культуру DET в прикладных и ежедневных формах —
