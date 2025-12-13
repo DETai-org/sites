@@ -177,7 +177,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     height: number,
   ): Particle | null => {
     const damping = 0.993;
-    const pull = 32;
+    const pull = 54;
     const nextLife = particle.life - delta;
     if (nextLife <= 0) return null;
 
