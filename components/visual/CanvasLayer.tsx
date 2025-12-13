@@ -104,7 +104,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     const { spawnRate, speed, life, opacity } = PHASE_SETTINGS[phase];
 
     if (spawnRate > 0 && width > 0 && height > 0) {
-      const streamFactor = 0.8; // доля новых частиц, уходящих в направленные потоки
+      const streamFactor = 0.65; // доля новых частиц, уходящих в направленные потоки
 
       spawnAccumulatorAmbientRef.current += spawnRate * delta;
       while (spawnAccumulatorAmbientRef.current >= 1) {
@@ -265,8 +265,8 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
   ): Particle | null => {
     const damping = 0.993;
     const isStream = particle.layer === "stream";
-    const pull = isStream ? 58 : 54;
-    const swirlForce = isStream ? 26 : 0;
+    const pull = isStream ? 54 : 54;
+    const swirlForce = isStream ? 22 : 0;
     const logoRadius = Math.min(width, height) * (isStream ? 0.14 : 0.16);
     const killRadius = isStream ? logoRadius * 0.35 : Math.min(width, height) * 0.025;
     const nextLife = particle.life - delta;
@@ -296,15 +296,17 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     }
 
     const lifeProgress = 1 - nextLife / particle.initialLife;
-    const fadeIn = Math.min(lifeProgress * 2.4, 1);
+    const fadeIn = Math.min(lifeProgress * 3, 1);
 
-    let opacity = Math.min(particle.opacity * 0.992, particle.initialOpacity * fadeIn);
+    let opacity = Math.min(particle.opacity * 0.992, particle.initialOpacity);
     let length = particle.length;
     let thickness = particle.thickness;
 
+    opacity *= fadeIn;
+
     if (distance < killRadius) {
       if (isStream) {
-        opacity *= 0.9;
+        opacity *= 0.85;
         length *= 0.92;
       } else {
         return null; // базовый слой растворяется мгновенно у логотипа
