@@ -4,30 +4,48 @@ import { useEffect } from "react";
 
 export default function ShimmerAutoTrigger() {
   useEffect(() => {
-    const button = document.querySelector<HTMLElement>(".btn-shimmer");
+    const buttons = Array.from(document.querySelectorAll<HTMLElement>(".btn-shimmer"));
 
-    if (!button) {
+    if (!buttons.length) {
       return undefined;
     }
 
-    let hideTimer: number | undefined;
+    const timers = new Map<Element, number>();
 
-    const showTimer = window.setTimeout(() => {
-      button.classList.add("auto-shimmer");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
 
-      hideTimer = window.setTimeout(() => {
-        button.classList.remove("auto-shimmer");
-      }, 1600);
-    }, 1500);
+          if (entry.isIntersecting) {
+            const timer = window.setTimeout(() => {
+              target.classList.add("auto-shimmer");
+            }, 3000);
+
+            timers.set(target, timer);
+            return;
+          }
+
+          const timer = timers.get(target);
+
+          if (timer) {
+            window.clearTimeout(timer);
+            timers.delete(target);
+          }
+
+          target.classList.remove("auto-shimmer");
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    buttons.forEach((button) => observer.observe(button));
 
     return () => {
-      window.clearTimeout(showTimer);
+      observer.disconnect();
 
-      if (hideTimer) {
-        window.clearTimeout(hideTimer);
-      }
-
-      button.classList.remove("auto-shimmer");
+      timers.forEach((timer) => window.clearTimeout(timer));
+      buttons.forEach((button) => button.classList.remove("auto-shimmer"));
     };
   }, []);
 

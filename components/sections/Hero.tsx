@@ -5,15 +5,25 @@ import Section from "../ui/Section";
 
 export default function Hero() {
   return (
-    <Section id="hero" variant="dark" className="relative overflow-hidden" containerClassName="relative" fullWidth>
-      <div className="grid grid-cols-1 items-start md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center min-h-screen gap-10 md:gap-12">
-        <div className="relative z-10 flex max-w-xl flex-col gap-mobile-3 md:gap-6">
-          <Heading level={1} color="soft" className="text-mobile-4xl leading-mobile-tight md:text-5xl">
-            DET — Dialectical Existential Therapy.
-            <br />
-            Новый формат психотерапии
-          </Heading>
-          <p className="max-w-2xl text-lg leading-relaxed text-accent-soft md:text-xl">
+    <Section
+      id="hero"
+      variant="dark"
+      className="relative overflow-hidden"
+      containerClassName="relative flex flex-col gap-8 md:gap-12"
+      fullWidth
+    >
+      <div className="relative z-20 w-full max-w-screen-md">
+        <Heading level={1} color="soft" className="text-mobile-4xl leading-mobile-tight md:text-5xl">
+          DET — Dialectical Existential Therapy.
+        </Heading>
+        <p className="mt-3 text-base leading-tight text-accent-soft md:mt-4 md:text-lg lg:text-xl">
+          Новый формат психотерапии
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[auto_1fr] md:items-center md:gap-12">
+        <div className="order-2 flex max-w-xl flex-col gap-mobile-3 md:order-1 md:-ml-4 md:gap-6 lg:-ml-8">
+          <p className="text-lg leading-relaxed text-accent-soft md:text-xl">
             Диалектически-экзистенциальная терапия — это культура понимания человека. DETai — это технологическая экосистема,
             включая продукты, интерфейсы и AI-инструменты, которые воплощают культуру DET в прикладных и ежедневных формах —
             доступных как клиентам, так и психотерапевтам.
@@ -28,7 +38,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroScene className="md:min-h-[28rem]" logoSize="28rem" />
+        <HeroScene className="order-1 min-h-[22rem] flex-shrink-0 md:order-2 md:min-h-[30rem]" logoSize="32rem" />
       </div>
     </Section>
   );
