@@ -186,15 +186,19 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
 
+    const canvasElement = canvas;
+
     const context = canvas.getContext("2d");
     if (!context) return undefined;
 
+    const ctx = context;
+
     // Подгоняем размер под контейнер сцены
     const resize = () => {
-      const parent = canvas.parentElement;
+      const parent = canvasElement.parentElement;
       const rect = parent?.getBoundingClientRect();
-      canvas.width = rect?.width ?? 0;
-      canvas.height = rect?.height ?? 0;
+      canvasElement.width = rect?.width ?? 0;
+      canvasElement.height = rect?.height ?? 0;
     };
 
     resize();
@@ -207,7 +211,7 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     function loop(timestamp: number) {
       const delta = Math.min((timestamp - lastTimestampRef.current) / 1000, 0.05);
       lastTimestampRef.current = timestamp;
-      renderFrame(context, delta, canvas.width, canvas.height);
+      renderFrame(ctx, delta, canvasElement.width, canvasElement.height);
       frameRef.current = requestAnimationFrame(loop);
     }
 
