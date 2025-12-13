@@ -11,6 +11,8 @@ type Particle = {
   y: number;
   vx: number;
   vy: number;
+  tx: number;
+  ty: number;
   life: number;
   opacity: number;
   length: number;
@@ -35,9 +37,9 @@ const PHASE_SETTINGS: Record<
   { spawnRate: number; speed: [number, number]; life: [number, number]; opacity: [number, number] }
 > = {
   idle: { spawnRate: 0, speed: [0, 0], life: [0, 0], opacity: [0, 0] },
-  inhale_start: { spawnRate: 26, speed: [60, 82], life: [1.4, 1.9], opacity: [0.28, 0.36] },
-  inhale_peak: { spawnRate: 48, speed: [95, 122], life: [1.6, 2.2], opacity: [0.32, 0.45] },
-  inhale_fade: { spawnRate: 8, speed: [34, 55], life: [1.1, 1.6], opacity: [0.22, 0.32] },
+  inhale_start: { spawnRate: 32, speed: [72, 98], life: [1.6, 2.2], opacity: [0.32, 0.44] },
+  inhale_peak: { spawnRate: 58, speed: [108, 138], life: [1.8, 2.4], opacity: [0.36, 0.5] },
+  inhale_fade: { spawnRate: 10, speed: [46, 66], life: [1.2, 1.8], opacity: [0.24, 0.34] },
 };
 
 const GOLD_PALETTE = ["215, 186, 120", "226, 201, 146"]; // мягкие золотые оттенки бренда
@@ -119,23 +121,31 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
   ) => {
     const centerX = width / 2;
     const centerY = height / 2;
-    const margin = Math.max(Math.min(width, height) * 0.02, 8);
-    const directions: Array<[number, number]> = [
-      [Math.random() * width, -margin],
-      [Math.random() * width, height + margin],
-      [-margin, Math.random() * height],
-      [width + margin, Math.random() * height],
+    const margin = Math.max(Math.min(width, height) * 0.025, 10);
+    const radius = Math.min(width, height) * 0.16;
+
+    const targets: Array<{
+      spawn: () => [number, number];
+      tx: number;
+      ty: number;
+    }> = [
+      { spawn: () => [Math.random() * width, -margin], tx: centerX, ty: centerY - radius },
+      { spawn: () => [Math.random() * width, height + margin], tx: centerX, ty: centerY + radius },
+      { spawn: () => [-margin, Math.random() * height], tx: centerX - radius, ty: centerY },
+      { spawn: () => [width + margin, Math.random() * height], tx: centerX + radius, ty: centerY },
     ];
 
-    directions.forEach(([x, y]) => {
-      const dx = centerX - x;
-      const dy = centerY - y;
+    targets.forEach(({ spawn, tx, ty }) => {
+      const [x, y] = spawn();
+      const dx = tx - x;
+      const dy = ty - y;
       const baseAngle = Math.atan2(dy, dx);
-      const jitter = (Math.random() - 0.5) * 0.02; // лёгкое дыхание траектории, оставляет поток собранным
-      const angle = baseAngle + jitter;
+      const jitter = (Math.random() - 0.5) * 0.01; // почти прямые струи
+      const swirl = (Math.random() - 0.5) * 0.04; // лёгкое втягивание воронки
+      const angle = baseAngle + jitter + swirl;
       const velocity = randomBetween(speed[0], speed[1]);
-      const length = randomBetween(4, 8);
-      const thickness = randomBetween(1.5, 2);
+      const length = randomBetween(5, 9);
+      const thickness = randomBetween(1.6, 2.2);
       const opacity = randomBetween(opacityRange[0], opacityRange[1]);
       const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
 
@@ -144,6 +154,8 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
         y,
         vx: Math.cos(angle) * velocity,
         vy: Math.sin(angle) * velocity,
+        tx,
+        ty,
         life: randomBetween(life[0], life[1]),
         opacity,
         length,
@@ -164,19 +176,31 @@ export default function CanvasLayer({ className }: CanvasLayerProps) {
     width: number,
     height: number,
   ): Particle | null => {
-    const damping = 0.985;
+    const damping = 0.987;
+    const pull = 18;
     const nextLife = particle.life - delta;
     if (nextLife <= 0) return null;
 
-    const nx = particle.x + particle.vx * delta;
-    const ny = particle.y + particle.vy * delta;
+    const dx = particle.tx - particle.x;
+    const dy = particle.ty - particle.y;
+    const distance = Math.hypot(dx, dy);
+
+    const ax = (dx / Math.max(distance, 1)) * pull * delta;
+    const ay = (dy / Math.max(distance, 1)) * pull * delta;
+
+    const nx = particle.x + (particle.vx + ax) * delta;
+    const ny = particle.y + (particle.vy + ay) * delta;
 
     // Лёгкое замедление для эффекта затухания
-    const nvx = particle.vx * damping;
-    const nvy = particle.vy * damping;
+    const nvx = (particle.vx + ax) * damping;
+    const nvy = (particle.vy + ay) * damping;
 
     if (nx < -width * 0.1 || nx > width * 1.1 || ny < -height * 0.1 || ny > height * 1.1) {
       return null;
+    }
+
+    if (distance < Math.min(width, height) * 0.05) {
+      return null; // растворяются в логотипе
     }
 
     return {
