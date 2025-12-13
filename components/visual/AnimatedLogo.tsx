@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import clsx from "clsx";
 import { useState } from "react";
 
-import introAnimationData from "@/public/assets/animations/logo.json";
+import introAnimationData from "@/public/assets/animations/logo_intro.json";
 import pulseAnimationData from "@/public/assets/animations/logo_pulse.json";
 
 type AnimatedLogoProps = {

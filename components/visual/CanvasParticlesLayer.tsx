@@ -20,7 +20,7 @@ type Particle = {
   color: string;
 };
 
-type CanvasLayerProps = {
+type CanvasParticlesLayerProps = {
   className?: string;
 };
 
@@ -46,7 +46,7 @@ const PHASE_SETTINGS: Record<
 
 const GOLD_PALETTE = ["215, 186, 120", "226, 201, 146"]; // мягкие золотые оттенки бренда
 
-export default function CanvasLayer({ className }: CanvasLayerProps) {
+export default function CanvasParticlesLayer({ className }: CanvasParticlesLayerProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const frameRef = useRef<number>();

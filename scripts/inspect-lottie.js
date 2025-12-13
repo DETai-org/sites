@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const DEFAULT_PATH = path.join(process.cwd(), "public", "assets", "animations", "logo.json");
+const DEFAULT_PATH = path.join(process.cwd(), "public", "assets", "animations", "logo_intro.json");
 
 const targetPath = path.resolve(process.argv[2] || DEFAULT_PATH);
 

@@ -27,7 +27,7 @@
 detai-site/
 │
 ├── scripts/                      # Служебные скрипты и утилиты
-│   └── inspect-lottie.js         # Анализатор Lottie-анимации logo.json
+│   └── inspect-lottie.js         # Анализатор Lottie-анимации logo_intro.json
 │
 ├── app/                           # Страницы и маршруты (App Router)
 │   ├── layout.tsx                 # Главный layout
@@ -202,7 +202,7 @@ Next.js отдаёт любые файлы из `public/` без обработ�
 
 ### `scripts/inspect-lottie.js`
 
-CLI-утилита для быстрой диагностики Lottie-файла `public/assets/animations/logo.json`.
+CLI-утилита для быстрой диагностики Lottie-файла `public/assets/animations/logo_intro.json`.
 
 - **Запуск по умолчанию**: `node scripts/inspect-lottie.js`
 - **Произвольный файл**: `node scripts/inspect-lottie.js path/to/animation.json`
