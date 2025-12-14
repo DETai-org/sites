@@ -16,19 +16,29 @@ type HeroSceneProps = {
 
 export default function HeroScene({ children, className, logoSize = "24rem" }: HeroSceneProps) {
   const sceneRef = useRef<HTMLDivElement | null>(null);
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(null);
+  const [isCoarsePointer, setIsCoarsePointer] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-    const handleChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    const mobileMediaQuery = window.matchMedia("(max-width: 767px)");
+    const coarsePointerMediaQuery = window.matchMedia("(pointer: coarse)");
 
-    setIsMobile(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleChange);
+    const handleMobileChange = (event: MediaQueryListEvent) => setIsMobileViewport(event.matches);
+    const handlePointerChange = (event: MediaQueryListEvent) => setIsCoarsePointer(event.matches);
 
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    setIsMobileViewport(mobileMediaQuery.matches);
+    setIsCoarsePointer(coarsePointerMediaQuery.matches);
+
+    mobileMediaQuery.addEventListener("change", handleMobileChange);
+    coarsePointerMediaQuery.addEventListener("change", handlePointerChange);
+
+    return () => {
+      mobileMediaQuery.removeEventListener("change", handleMobileChange);
+      coarsePointerMediaQuery.removeEventListener("change", handlePointerChange);
+    };
   }, []);
 
-  const shouldRenderGlobalLayer = isMobile === false;
+  const shouldRenderGlobalLayer = isMobileViewport === false && isCoarsePointer === false;
 
   return (
     <div
