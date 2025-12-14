@@ -76,6 +76,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
   const frameRef = useRef<number>();
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const phaseRef = useRef<Phase>("idle");
+  const hasCompletedRef = useRef<boolean>(false);
 
   const particlesRef = useRef<Particle[]>([]);
   const spawnAccumulatorRef = useRef<number>(0);
@@ -92,8 +93,12 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
   const metricsRef = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
 
   const switchPhase = (phase: Phase) => {
+    const previousPhase = phaseRef.current;
     phaseRef.current = phase;
     if (phase === "idle") {
+      if (previousPhase !== "idle") {
+        hasCompletedRef.current = true;
+      }
       particlesRef.current = [];
       spawnAccumulatorRef.current = 0;
     }
@@ -457,7 +462,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     };
 
     const startAnimation = () => {
-      if (isRunningRef.current) return;
+      if (isRunningRef.current || hasCompletedRef.current) return;
       isRunningRef.current = true;
       schedulePhases();
       lastTimestampRef.current = performance.now();
@@ -473,6 +478,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     };
 
     const evaluateActivity = () => {
+      if (hasCompletedRef.current) return;
       if (document.visibilityState === "hidden" || !isVisibleRef.current) {
         stopAnimation();
       } else {
@@ -500,6 +506,11 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
 
       const avgDelta = deltaSumRef.current / deltaSamplesRef.current.length;
       updateDpr(avgDelta);
+
+      if (hasCompletedRef.current && phaseRef.current === "idle") {
+        isRunningRef.current = false;
+        return;
+      }
 
       const ctx = contextRef.current;
       if (ctx) renderFrame(ctx, delta);
