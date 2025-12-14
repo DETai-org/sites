@@ -25,18 +25,15 @@ export default function Hero() {
         <div className="order-2 flex w-full max-w-[48rem] flex-col gap-mobile-3 md:order-1 md:max-w-none md:gap-6">
 
           <p className="text-lg leading-relaxed text-accent-soft md:text-xl">
-            Диалектически-экзистенциальная терапия — это культура понимания человека.
-          </p>
-          
-          <p className="mt-4 text-lg leading-relaxed text-accent-soft md:text-xl">
+            DET — диалектически-экзистенциальная терапия — это культура понимания человека.
             DETai — это технологическая экосистема, включающая продукты, интерфейсы и AI-инструменты,
             которые воплощают культуру DET в прикладных и повседневных формах — доступных как клиентам,
             так и психотерапевтам.
           </p>
           
           <p className="mt-4 text-lg leading-relaxed text-accent-soft md:text-xl">
-            Вместе DET и DETai формируют новый формат психотерапии — где культура понимания,
-            методологическая глубина и технологии соединяются в единую систему практики и поддержки.
+            Вместе DET и DETai формируют новый формат психотерапии — где диалектика, гуманизм,
+            и современные технологии соединяются в единую систему терапевтической практики.
           </p>
           
           <div className="flex flex-wrap items-center gap-4 md:gap-6">
