@@ -16,6 +16,9 @@ export default function Header() {
           <a className="hover:text-accent-primary" href="#mission">
             Миссия
           </a>
+          <a className="hover:text-accent-primary" href="/colors">
+            Палитра
+          </a>
         </nav>
       </div>
     </header>
