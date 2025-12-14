@@ -19,7 +19,7 @@
 | `font-sans`     | **Primary**     | самая важная, главная | ✅ Да                      | Open Sans | ✅          |
 | `font-sans`     | **Secondary**   | вспомогательная       | ❌ Нет                     | Open Sans | ✅          |
 | `font-sans`     | Tertiary        | текстовая             | ❌ Нет                     | —         | ❌          |
-| `font-serif`    | Ghost / Premium | (в будущем)           | может иметь другой эффект | —         | ❌          |
+| `font-serif` или font-accent    | Ghost / Premium | (в будущем)           | может иметь другой эффект | —         | ❌          |
 | `font-sans`     | Destructive     | красная / опасная     | ❌ точно нет               | —         | ❌          |
 
 Примечание:
