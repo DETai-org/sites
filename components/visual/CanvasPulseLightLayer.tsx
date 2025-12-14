@@ -9,6 +9,15 @@ type CanvasPulseLightLayerProps = {
 };
 
 const CYCLE_DURATION_MS = 1000;
+const SECONDARY_ALPHA_FACTOR = 0.25;
+const ACCENT_PRIMARY_RGB = "201, 168, 106";
+const ACCENT_SOFT_RGB = "242, 229, 194";
+const ACCENT_ACTIVE_RGB = "184, 146, 79";
+
+type Heartbeat = {
+  primary: number;
+  secondary: number;
+};
 
 function pulse(t: number, center: number, width: number, power: number) {
   const distance = Math.abs(t - center);
@@ -16,11 +25,14 @@ function pulse(t: number, center: number, width: number, power: number) {
   return Math.pow(1 - distance / width, power);
 }
 
-function getHeartbeat(t: number) {
+function getHeartbeat(t: number): Heartbeat {
   const beat1 = pulse(t, 0.1, 0.08, 2.5);
   const beat2 = pulse(t, 0.38, 0.06, 2.0);
 
-  return Math.max(beat1, beat2);
+  return {
+    primary: beat1,
+    secondary: beat2,
+  };
 }
 
 export default function CanvasPulseLightLayer({ className }: CanvasPulseLightLayerProps) {
@@ -63,24 +75,25 @@ export default function CanvasPulseLightLayer({ className }: CanvasPulseLightLay
 
       const elapsed = (timestamp - startTimeRef.current) % CYCLE_DURATION_MS;
       const t = elapsed / CYCLE_DURATION_MS;
-      const heartbeat = getHeartbeat(t);
+      const { primary, secondary } = getHeartbeat(t);
 
       const centerX = width / 2;
       const centerY = height / 2;
       const baseRadius = Math.min(width, height) * 0.34;
-      const radius = baseRadius * (1 + heartbeat * 0.32);
+      const radius = baseRadius * (1 + primary * 0.32);
 
       const baseAlpha = 0.08;
       const pulseAlpha = 0.18;
-      const alpha = baseAlpha + heartbeat * pulseAlpha;
-      const midStop = 0.4 + heartbeat * 0.1;
+      const secondaryContribution = pulseAlpha * SECONDARY_ALPHA_FACTOR;
+      const alpha = baseAlpha + primary * pulseAlpha + secondary * secondaryContribution;
+      const midStop = 0.4 + primary * 0.1;
 
       context.clearRect(0, 0, width, height);
 
       const gradient = context.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-      gradient.addColorStop(0, `rgba(255, 220, 160, ${alpha})`);
-      gradient.addColorStop(midStop, `rgba(255, 200, 120, ${alpha * 0.6})`);
-      gradient.addColorStop(1, "rgba(255, 200, 120, 0)");
+      gradient.addColorStop(0, `rgba(${ACCENT_PRIMARY_RGB}, ${alpha})`);
+      gradient.addColorStop(midStop, `rgba(${ACCENT_SOFT_RGB}, ${alpha * 0.6})`);
+      gradient.addColorStop(1, `rgba(${ACCENT_ACTIVE_RGB}, 0)`);
 
       context.fillStyle = gradient;
       context.fillRect(0, 0, width, height);
