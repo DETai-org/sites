@@ -36,8 +36,13 @@ export default function HeroScene({ children, className, logoSize = "24rem" }: H
     const handleMobileChange = (event: MediaQueryListEvent) => setIsMobileViewport(event.matches);
     const handlePointerChange = (event: MediaQueryListEvent) => setIsCoarsePointer(event.matches);
 
+    const navigatorUAData =
+      typeof navigator !== "undefined"
+        ? (navigator as Navigator & { userAgentData?: { mobile?: boolean } }).userAgentData
+        : undefined;
+
     setHasTouchSupport(typeof navigator !== "undefined" && navigator.maxTouchPoints > 0);
-    setIsMobileUserAgent(typeof navigator !== "undefined" ? navigator.userAgentData?.mobile === true : null);
+    setIsMobileUserAgent(navigatorUAData ? navigatorUAData.mobile === true : null);
     setIsMobileViewport(
       mobileMediaQuery?.matches ?? (typeof window.innerWidth === "number" ? window.innerWidth <= 767 : null),
     );
