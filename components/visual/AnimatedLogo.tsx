@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import introAnimationData from "@/public/assets/animations/logo_intro.json";
 import pulseAnimationData from "@/public/assets/animations/logo_pulse.json";
+import CanvasPulseLightLayer from "./CanvasPulseLightLayer";
 
 type AnimatedLogoProps = {
   className?: string;
@@ -30,12 +31,15 @@ export default function AnimatedLogo({ className, size }: AnimatedLogoProps) {
       )}
 
       {isPulseVisible && (
-        <Lottie
-          animationData={pulseAnimationData}
-          loop
-          autoplay
-          className="absolute inset-0 h-full w-full"
-        />
+        <>
+          <CanvasPulseLightLayer />
+          <Lottie
+            animationData={pulseAnimationData}
+            loop
+            autoplay
+            className="absolute inset-0 h-full w-full"
+          />
+        </>
       )}
     </div>
   );
