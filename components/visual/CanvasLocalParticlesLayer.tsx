@@ -145,6 +145,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     const centerX = width / 2;
     const centerY = height / 2;
     const margin = Math.min(width, height) * 0.03;
+    const spawnSpread = Math.min(width, height) * 0.18;
 
     const radius = Math.min(width, height) * 0.16;
 
@@ -153,10 +154,26 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
       tx: number;
       ty: number;
     }> = [
-      { spawn: () => [Math.random() * width, -margin], tx: centerX, ty: centerY - radius },
-      { spawn: () => [Math.random() * width, height + margin], tx: centerX, ty: centerY + radius },
-      { spawn: () => [-margin, Math.random() * height], tx: centerX - radius, ty: centerY },
-      { spawn: () => [width + margin, Math.random() * height], tx: centerX + radius, ty: centerY },
+      {
+        spawn: () => [Math.random() * width, -margin + randomBetween(-spawnSpread, spawnSpread)],
+        tx: centerX,
+        ty: centerY - radius,
+      },
+      {
+        spawn: () => [Math.random() * width, height + margin + randomBetween(-spawnSpread, spawnSpread)],
+        tx: centerX,
+        ty: centerY + radius,
+      },
+      {
+        spawn: () => [-margin + randomBetween(-spawnSpread, spawnSpread), Math.random() * height],
+        tx: centerX - radius,
+        ty: centerY,
+      },
+      {
+        spawn: () => [width + margin + randomBetween(-spawnSpread, spawnSpread), Math.random() * height],
+        tx: centerX + radius,
+        ty: centerY,
+      },
     ];
 
     targets.forEach(({ spawn, tx, ty }) => {
