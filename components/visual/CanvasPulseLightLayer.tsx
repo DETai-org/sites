@@ -19,15 +19,25 @@ type Heartbeat = {
   secondary: number;
 };
 
-function pulse(t: number, center: number, width: number, power: number) {
+function pulse(
+  t: number,
+  center: number,
+  width: number,
+  power: number,
+  releasePower: number = power,
+) {
   const distance = Math.abs(t - center);
   if (distance > width) return 0;
-  return Math.pow(1 - distance / width, power);
+
+  const isAttack = t <= center;
+  const phasePower = isAttack ? power : releasePower;
+
+  return Math.pow(1 - distance / width, phasePower);
 }
 
 function getHeartbeat(t: number): Heartbeat {
-  const beat1 = pulse(t, 0.1, 0.11, 2.1);
-  const beat2 = pulse(t, 0.38, 0.06, 2.0);
+  const beat1 = pulse(t, 0.1, 0.11, 2.1, 1.3);
+  const beat2 = pulse(t, 0.38, 0.06, 2.0, 1.2);
 
   return {
     primary: beat1,
