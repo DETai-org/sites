@@ -1,7 +1,8 @@
 "use client";
 
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useRef } from "react";
 
+import { useDeviceSignals } from "@/lib/hooks/useDeviceSignals";
 import AnimatedLogo from "../visual/AnimatedLogo";
 import CanvasGlobalParticlesLayer from "../visual/CanvasGlobalParticlesLayer";
 import CanvasLocalParticlesLayer from "../visual/CanvasLocalParticlesLayer";
@@ -16,58 +17,7 @@ type HeroSceneProps = {
 
 export default function HeroScene({ children, className, logoSize = "24rem" }: HeroSceneProps) {
   const sceneRef = useRef<HTMLDivElement | null>(null);
-  const [isMobileViewport, setIsMobileViewport] = useState<boolean | null>(null);
-  const [isCoarsePointer, setIsCoarsePointer] = useState<boolean | null>(null);
-  const [hasTouchSupport, setHasTouchSupport] = useState<boolean | null>(null);
-  const [isMobileUserAgent, setIsMobileUserAgent] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const mobileMediaQuery = typeof window.matchMedia === "function"
-      ? window.matchMedia("(max-width: 767px)")
-      : null;
-    const coarsePointerMediaQuery = typeof window.matchMedia === "function"
-      ? window.matchMedia("(pointer: coarse)")
-      : null;
-
-    const handleMobileChange = (event: MediaQueryListEvent) => setIsMobileViewport(event.matches);
-    const handlePointerChange = (event: MediaQueryListEvent) => setIsCoarsePointer(event.matches);
-
-    const navigatorUAData =
-      typeof navigator !== "undefined"
-        ? (navigator as Navigator & { userAgentData?: { mobile?: boolean } }).userAgentData
-        : undefined;
-
-    setHasTouchSupport(typeof navigator !== "undefined" && navigator.maxTouchPoints > 0);
-    setIsMobileUserAgent(navigatorUAData ? navigatorUAData.mobile === true : null);
-    setIsMobileViewport(
-      mobileMediaQuery?.matches ?? (typeof window.innerWidth === "number" ? window.innerWidth <= 767 : null),
-    );
-    setIsCoarsePointer(coarsePointerMediaQuery?.matches ?? null);
-
-    mobileMediaQuery?.addEventListener("change", handleMobileChange);
-    coarsePointerMediaQuery?.addEventListener("change", handlePointerChange);
-
-    return () => {
-      mobileMediaQuery?.removeEventListener("change", handleMobileChange);
-      coarsePointerMediaQuery?.removeEventListener("change", handlePointerChange);
-    };
-  }, []);
-
-  const isMobileDevice =
-    hasTouchSupport === true ||
-    isMobileUserAgent === true ||
-    isCoarsePointer === true ||
-    isMobileViewport === true;
-
-  const hasNonMobileSignals =
-    hasTouchSupport === false ||
-    isMobileUserAgent === false ||
-    isCoarsePointer === false ||
-    isMobileViewport === false;
+  const { isMobileDevice, hasNonMobileSignals } = useDeviceSignals();
 
   const shouldRenderGlobalLayer = hasNonMobileSignals && !isMobileDevice;
 
