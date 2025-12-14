@@ -81,6 +81,12 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
   const spawnAccumulatorRef = useRef<number>(0);
 
   const lastTimestampRef = useRef<number>(performance.now());
+  const dprRef = useRef<number>(1);
+  const deltaSamplesRef = useRef<number[]>([]);
+  const deltaSumRef = useRef<number>(0);
+  const coarsePointerRef = useRef<boolean>(false);
+  const isRunningRef = useRef<boolean>(false);
+  const isVisibleRef = useRef<boolean>(true);
 
   const metricsRef = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
 
@@ -405,7 +411,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     contextRef.current = context;
 
     const resize = () => {
-      const dpr = Math.max(window.devicePixelRatio || 1, 1);
+      const dpr = dprRef.current;
       const parent = canvas.parentElement;
       const rect = parent?.getBoundingClientRect();
 
@@ -422,6 +428,41 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
       metricsRef.current = { width, height };
     };
 
+    const updateDpr = (avgDelta: number) => {
+      const deviceDpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const lowFps = avgDelta > 0.03;
+      const nextDpr = coarsePointerRef.current || lowFps ? 1 : deviceDpr;
+
+      if (nextDpr !== dprRef.current) {
+        dprRef.current = nextDpr;
+        resize();
+      }
+    };
+
+    const startAnimation = () => {
+      if (isRunningRef.current) return;
+      isRunningRef.current = true;
+      schedulePhases();
+      lastTimestampRef.current = performance.now();
+      frameRef.current = requestAnimationFrame(loop);
+    };
+
+    const stopAnimation = () => {
+      if (!isRunningRef.current) return;
+      isRunningRef.current = false;
+      timeoutsRef.current.forEach((id) => clearTimeout(id));
+      timeoutsRef.current = [];
+      cancelAnimationFrame(frameRef.current ?? 0);
+    };
+
+    const evaluateActivity = () => {
+      if (document.visibilityState === "hidden" || !isVisibleRef.current) {
+        stopAnimation();
+      } else {
+        startAnimation();
+      }
+    };
+
     const resizeObserver = new ResizeObserver(() => resize());
 
     resize();
@@ -430,25 +471,61 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     }
     window.addEventListener("resize", resize);
 
-    schedulePhases();
-    lastTimestampRef.current = performance.now();
-    frameRef.current = requestAnimationFrame(loop);
-
     function loop(timestamp: number) {
       const delta = Math.min((timestamp - lastTimestampRef.current) / 1000, 0.05) * TIME_SCALE;
       lastTimestampRef.current = timestamp;
 
+      deltaSamplesRef.current.push(delta);
+      deltaSumRef.current += delta;
+      if (deltaSamplesRef.current.length > 30) {
+        deltaSumRef.current -= deltaSamplesRef.current.shift() ?? 0;
+      }
+
+      const avgDelta = deltaSumRef.current / deltaSamplesRef.current.length;
+      updateDpr(avgDelta);
+
       const ctx = contextRef.current;
       if (ctx) renderFrame(ctx, delta);
 
-      frameRef.current = requestAnimationFrame(loop);
+      if (isRunningRef.current) {
+        frameRef.current = requestAnimationFrame(loop);
+      }
     }
 
+    const target = canvas.parentElement ?? document.documentElement;
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === target) {
+          isVisibleRef.current = entry.isIntersecting;
+          evaluateActivity();
+        }
+      });
+    });
+
+    const pointerQuery = window.matchMedia("(pointer: coarse)");
+    coarsePointerRef.current = pointerQuery.matches;
+    const pointerListener = (event: MediaQueryListEvent) => {
+      coarsePointerRef.current = event.matches;
+      updateDpr(deltaSumRef.current / Math.max(deltaSamplesRef.current.length, 1));
+    };
+
+    pointerQuery.addEventListener("change", pointerListener);
+
+    if (target) {
+      intersectionObserver.observe(target);
+    }
+
+    const visibilityHandler = () => evaluateActivity();
+    document.addEventListener("visibilitychange", visibilityHandler);
+    evaluateActivity();
+
     return () => {
-      timeoutsRef.current.forEach((id) => clearTimeout(id));
-      cancelAnimationFrame(frameRef.current ?? 0);
+      stopAnimation();
       window.removeEventListener("resize", resize);
       resizeObserver.disconnect();
+      pointerQuery.removeEventListener("change", pointerListener);
+      intersectionObserver.disconnect();
+      document.removeEventListener("visibilitychange", visibilityHandler);
       contextRef.current = null;
     };
   }, []);
