@@ -23,7 +23,8 @@
 | Компонент | Файл | Назначение |
 |---------|------|-----------|
 | Animated logo wrapper | [`AnimatedLogo.tsx`](./visual/AnimatedLogo.tsx) | Переключение Lottie: intro → loop |
-| Canvas · Intro FX | [`CanvasParticlesLayer.tsx`](./visual/CanvasParticlesLayer.tsx) | Частицы, втягивание при интро |
+| Canvas · Local FX | [`CanvasLocalParticlesLayer.tsx`](./visual/CanvasLocalParticlesLayer.tsx) | Локальный слой частиц, привязанный к контейнеру |
+| Canvas · Global FX | [`CanvasGlobalParticlesLayer.tsx`](./visual/CanvasGlobalParticlesLayer.tsx) | Глобальный слой частиц относительно viewport |
 | Canvas · Pulse FX | [`Canvas_pulse_light_Layer.tsx`](./visual/Canvas_pulse_light_Layer.tsx) | Подсветка, дыхание пульса |
 
 ### Связанные ресурсы
