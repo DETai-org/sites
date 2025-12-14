@@ -87,6 +87,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
   const coarsePointerRef = useRef<boolean>(false);
   const isRunningRef = useRef<boolean>(false);
   const isVisibleRef = useRef<boolean>(true);
+  const resizeScheduledRef = useRef<boolean>(false);
 
   const metricsRef = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
 
@@ -410,7 +411,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
 
     contextRef.current = context;
 
-    const resize = () => {
+    const performResize = () => {
       const dpr = dprRef.current;
       const parent = canvas.parentElement;
       const rect = parent?.getBoundingClientRect();
@@ -426,16 +427,32 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
       contextRef.current?.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       metricsRef.current = { width, height };
+
+      resizeScheduledRef.current = false;
+    };
+
+    const scheduleResize = () => {
+      if (resizeScheduledRef.current) return;
+      resizeScheduledRef.current = true;
+      requestAnimationFrame(performResize);
     };
 
     const updateDpr = (avgDelta: number) => {
       const deviceDpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const lowFps = avgDelta > 0.03;
-      const nextDpr = coarsePointerRef.current || lowFps ? 1 : deviceDpr;
+      const highFps = avgDelta < 0.022;
+      const currentDpr = dprRef.current;
+      let nextDpr = currentDpr;
 
-      if (nextDpr !== dprRef.current) {
+      if (coarsePointerRef.current || lowFps) {
+        nextDpr = 1;
+      } else if (highFps) {
+        nextDpr = deviceDpr;
+      }
+
+      if (nextDpr !== currentDpr) {
         dprRef.current = nextDpr;
-        resize();
+        scheduleResize();
       }
     };
 
@@ -463,13 +480,13 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
       }
     };
 
-    const resizeObserver = new ResizeObserver(() => resize());
+    const resizeObserver = new ResizeObserver(() => scheduleResize());
 
-    resize();
+    performResize();
     if (canvas.parentElement) {
       resizeObserver.observe(canvas.parentElement);
     }
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", scheduleResize);
 
     function loop(timestamp: number) {
       const delta = Math.min((timestamp - lastTimestampRef.current) / 1000, 0.05) * TIME_SCALE;
@@ -521,7 +538,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
 
     return () => {
       stopAnimation();
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", scheduleResize);
       resizeObserver.disconnect();
       pointerQuery.removeEventListener("change", pointerListener);
       intersectionObserver.disconnect();

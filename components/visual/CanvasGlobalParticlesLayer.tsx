@@ -63,6 +63,7 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
   const isRunningRef = useRef<boolean>(false);
   const isVisibleRef = useRef<boolean>(true);
   const coarsePointerRef = useRef<boolean>(false);
+  const resizeScheduledRef = useRef<boolean>(false);
 
   const metricsRef = useRef<{ width: number; height: number; centerX: number; centerY: number; anchorSize: number }>(
     {
@@ -256,7 +257,7 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
 
     contextRef.current = context;
 
-    const resize = () => {
+    const performResize = () => {
       const dpr = dprRef.current;
       const width = window.innerWidth;
       const height = window.innerHeight;
@@ -280,16 +281,32 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
         centerY,
         anchorSize,
       };
+
+      resizeScheduledRef.current = false;
+    };
+
+    const scheduleResize = () => {
+      if (resizeScheduledRef.current) return;
+      resizeScheduledRef.current = true;
+      requestAnimationFrame(performResize);
     };
 
     const updateDpr = (avgDelta: number) => {
       const deviceDpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const lowFps = avgDelta > 0.03;
-      const nextDpr = coarsePointerRef.current || lowFps ? 1 : deviceDpr;
+      const highFps = avgDelta < 0.022;
+      const currentDpr = dprRef.current;
+      let nextDpr = currentDpr;
 
-      if (nextDpr !== dprRef.current) {
+      if (coarsePointerRef.current || lowFps) {
+        nextDpr = 1;
+      } else if (highFps) {
+        nextDpr = deviceDpr;
+      }
+
+      if (nextDpr !== currentDpr) {
         dprRef.current = nextDpr;
-        resize();
+        scheduleResize();
       }
     };
 
@@ -317,11 +334,11 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
       }
     };
 
-    const resizeObserver = anchorRef?.current ? new ResizeObserver(() => resize()) : null;
+    const resizeObserver = anchorRef?.current ? new ResizeObserver(() => scheduleResize()) : null;
 
-    resize();
-    window.addEventListener("resize", resize);
-    window.addEventListener("scroll", resize, { passive: true });
+    performResize();
+    window.addEventListener("resize", scheduleResize);
+    window.addEventListener("scroll", scheduleResize, { passive: true });
     if (anchorRef?.current && resizeObserver) {
       resizeObserver.observe(anchorRef.current);
     }
@@ -377,8 +394,8 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
 
     return () => {
       stopAnimation();
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("scroll", resize);
+      window.removeEventListener("resize", scheduleResize);
+      window.removeEventListener("scroll", scheduleResize);
       resizeObserver?.disconnect();
       pointerQuery.removeEventListener("change", pointerListener);
       intersectionObserver.disconnect();
