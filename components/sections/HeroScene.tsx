@@ -16,7 +16,7 @@ type HeroSceneProps = {
 
 export default function HeroScene({ children, className, logoSize = "24rem" }: HeroSceneProps) {
   const sceneRef = useRef<HTMLDivElement | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -28,12 +28,14 @@ export default function HeroScene({ children, className, logoSize = "24rem" }: H
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
+  const shouldRenderGlobalLayer = isMobile === false;
+
   return (
     <div
       ref={sceneRef}
       className={cn("relative flex items-center justify-center w-full h-full min-h-[18rem]", className)}
     >
-      {!isMobile && <CanvasGlobalParticlesLayer anchorRef={sceneRef} />}
+      {shouldRenderGlobalLayer && <CanvasGlobalParticlesLayer anchorRef={sceneRef} />}
       <CanvasLocalParticlesLayer />
       {children ?? <AnimatedLogo size={logoSize} className="max-h-[28rem] max-w-[28rem]" />}
     </div>
