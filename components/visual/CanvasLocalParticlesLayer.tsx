@@ -77,6 +77,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const phaseRef = useRef<Phase>("idle");
   const hasCompletedRef = useRef<boolean>(false);
+  const hasStartedCycleRef = useRef<boolean>(false);
 
   const particlesRef = useRef<Particle[]>([]);
   const spawnAccumulatorRef = useRef<number>(0);
@@ -93,14 +94,11 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
   const metricsRef = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
 
   const switchPhase = (phase: Phase) => {
-    const previousPhase = phaseRef.current;
     phaseRef.current = phase;
     if (phase === "idle") {
-      if (previousPhase !== "idle") {
-        hasCompletedRef.current = true;
-      }
-      particlesRef.current = [];
       spawnAccumulatorRef.current = 0;
+    } else {
+      hasStartedCycleRef.current = true;
     }
   };
 
@@ -507,13 +505,22 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
       const avgDelta = deltaSumRef.current / deltaSamplesRef.current.length;
       updateDpr(avgDelta);
 
-      if (hasCompletedRef.current && phaseRef.current === "idle") {
-        isRunningRef.current = false;
-        return;
-      }
-
       const ctx = contextRef.current;
-      if (ctx) renderFrame(ctx, delta);
+      if (ctx) {
+        const reachedIdle = phaseRef.current === "idle";
+        const finishedParticles = particlesRef.current.length === 0;
+        const completedCycle = hasStartedCycleRef.current && reachedIdle && finishedParticles;
+
+        if (!hasCompletedRef.current && completedCycle) {
+          const { width, height } = metricsRef.current;
+          ctx.clearRect(0, 0, width, height);
+          hasCompletedRef.current = true;
+          isRunningRef.current = false;
+          return;
+        }
+
+        renderFrame(ctx, delta);
+      }
 
       if (isRunningRef.current) {
         frameRef.current = requestAnimationFrame(loop);

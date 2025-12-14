@@ -53,6 +53,7 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const phaseRef = useRef<Phase>("idle");
   const hasPlayedRef = useRef<boolean>(false);
+  const hasCompletedRef = useRef<boolean>(false);
 
   const particlesRef = useRef<Particle[]>([]);
   const spawnAccumulatorRef = useRef<number>(0);
@@ -83,7 +84,6 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
       if (previousPhase !== "idle") {
         hasPlayedRef.current = true;
       }
-      particlesRef.current = [];
       spawnAccumulatorRef.current = 0;
     }
   };
@@ -362,13 +362,21 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
       const avgDelta = deltaSumRef.current / deltaSamplesRef.current.length;
       updateDpr(avgDelta);
 
-      if (hasPlayedRef.current && phaseRef.current === "idle") {
-        isRunningRef.current = false;
-        return;
-      }
-
       const ctx = contextRef.current;
-      if (ctx) renderFrame(ctx, delta);
+      if (ctx) {
+        const reachedIdle = phaseRef.current === "idle";
+        const finishedParticles = particlesRef.current.length === 0;
+
+        if (!hasCompletedRef.current && reachedIdle && finishedParticles) {
+          const { width, height } = metricsRef.current;
+          ctx.clearRect(0, 0, width, height);
+          hasCompletedRef.current = true;
+          isRunningRef.current = false;
+          return;
+        }
+
+        renderFrame(ctx, delta);
+      }
 
       if (isRunningRef.current) {
         frameRef.current = requestAnimationFrame(loop);
