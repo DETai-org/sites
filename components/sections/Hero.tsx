@@ -9,7 +9,7 @@ export default function Hero() {
       id="hero"
       variant="dark"
       className="relative overflow-hidden"
-      containerClassName="relative flex flex-col gap-8 md:gap-12"
+      containerClassName="relative flex flex-col gap-8 font-serif md:gap-12"
       fullWidth
     >
       <div className="relative z-20 w-full max-w-[48rem] md:max-w-[52rem]">
