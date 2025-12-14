@@ -41,7 +41,7 @@ const TIMINGS = {
   startDelay: 2200,
   initiation: 900,
   peak: 1100,
-  fade: 1400,
+  fade: 2400,
 };
 
 const TIME_SCALE = 1.2;
