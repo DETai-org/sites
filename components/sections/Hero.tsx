@@ -37,22 +37,13 @@ export default function Hero() {
             Вместе DET и DETai формируют новый формат психотерапии — где диалектика, гуманизм,
             и современные технологии соединяются в единую систему терапевтической практики.
           </BodyText>
-          
-          <div className="mt-mobile-2 flex w-full flex-nowrap items-center gap-mobile-2 md:mt-0 md:w-auto md:gap-6">
-            <Button
-              as="a"
-              href="#fundament-det"
-              variant="primary"
-              className="flex-1 whitespace-nowrap px-4 py-2 text-sm md:flex-initial md:min-w-fit md:px-6 md:py-3 md:text-base"
-            >
+
+          <div className="mt-mobile-2 flex w-full flex-col items-center gap-4 md:mt-0 md:gap-6">
+            <Button as="a" href="#fundament-det" variant="primary">
               DETai проекты
             </Button>
-            <Button
-              as="a"
-              href="#mission"
-              variant="secondary"
-              className="flex-1 whitespace-nowrap px-4 py-2 text-sm md:flex-initial md:min-w-fit md:px-6 md:py-3 md:text-base"
-            >
+            
+            <Button as="a" href="#mission" variant="secondary">
               DET концепция
             </Button>
           </div>
