@@ -43,7 +43,7 @@ export default function Hero() {
               as="a"
               href="#fundament-det"
               variant="primary"
-              className="flex-1 min-w-0 md:flex-initial md:min-w-fit"
+              className="flex-1 whitespace-nowrap px-4 py-2 text-sm md:flex-initial md:min-w-fit md:px-6 md:py-3 md:text-base"
             >
               DETai проекты
             </Button>
@@ -51,7 +51,7 @@ export default function Hero() {
               as="a"
               href="#mission"
               variant="secondary"
-              className="flex-1 min-w-0 md:flex-initial md:min-w-fit"
+              className="flex-1 whitespace-nowrap px-4 py-2 text-sm md:flex-initial md:min-w-fit md:px-6 md:py-3 md:text-base"
             >
               DET концепция
             </Button>
