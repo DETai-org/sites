@@ -11,10 +11,10 @@ export default function Page() {
       <main className="flex flex-1 flex-col">
         <Section>
           <div className="flex flex-col gap-mobile-4 md:gap-6">
-            <Heading level={1}>DETai</Heading>
+            <Heading level={1}>Проекты DETai</Heading>
             <BodyText className="text-basic-dark md:text-xl md:leading-relaxed">
-              Страница технологической экосистемы DETai сейчас находится в разработке. Скоро здесь появится подробное
-              описание продуктов, интерфейсов и инструментов, объединённых общей методологией DET.
+              Здесь появится навигация по проектам DETai: от аналитических инструментов до интерфейсов сопровождения. Мы готовим
+              информацию, чтобы можно было быстро перейти к нужному продукту и узнать о нём больше.
             </BodyText>
           </div>
         </Section>

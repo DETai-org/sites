@@ -19,9 +19,14 @@ export default function FundamentDetSection() {
             развития и диалектики — здесь начинается вход в глубинную часть DET.
           </p>
         </div>
-        <Button as="a" href="/det" className="w-fit" variant="primary">
-          Перейти к фундаменту DET →
-        </Button>
+        <div className="flex flex-col gap-mobile-3 md:flex-row md:items-center md:gap-4">
+          <Button as="a" href="/det" className="w-fit" variant="primary">
+            DET концепция
+          </Button>
+          <Button as="a" href="/det/logo" className="w-fit" variant="secondary">
+            Смысл логотипа DET
+          </Button>
+        </div>
       </div>
     </Section>
   );

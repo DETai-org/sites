@@ -9,8 +9,8 @@ export default function Hero() {
     <Section
       id="hero"
       variant="dark"
-      className="relative overflow-hidden"
-      containerClassName="relative flex flex-col gap-8 md:gap-12"
+      className="relative min-h-screen overflow-hidden"
+      containerClassName="relative flex min-h-screen flex-col justify-center gap-8 md:gap-12"
       fullWidth
     >
       <div className="relative z-20 w-full max-w-[48rem] md:max-w-[52rem]">
@@ -38,12 +38,12 @@ export default function Hero() {
             и современные технологии соединяются в единую систему терапевтической практики.
           </BodyText>
 
-          <div className="flex flex-col items-center w-full gap-4 mt-mobile-2 md:flex-row md:items-center md:justify-start md:w-auto md:gap-4 md:mt-0 lg:gap-6">
-            <Button as="a" href="#fundament-det" variant="primary">
-              DETai проекты
+          <div className="mt-mobile-2 flex w-full flex-col items-center gap-4 md:mt-0 md:w-auto md:flex-row md:items-center md:justify-start md:gap-4 lg:gap-6">
+            <Button as="a" href="/projects" variant="primary">
+              Проекты DETai
             </Button>
-            
-            <Button as="a" href="#mission" variant="secondary">
+
+            <Button as="a" href="#fundament-det" variant="secondary">
               DET концепция
             </Button>
           </div>
