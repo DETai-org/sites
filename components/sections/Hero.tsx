@@ -38,22 +38,12 @@ export default function Hero() {
             и современные технологии соединяются в единую систему терапевтической практики.
           </BodyText>
           
-          <div className="mt-mobile-2 flex w-full flex-nowrap items-center gap-mobile-2 md:mt-0 md:w-auto md:gap-6">
-            <Button
-              as="a"
-              href="#fundament-det"
-              variant="primary"
-              className="flex-1 min-w-0 md:flex-initial md:min-w-fit"
-            >
-              DETai проекты
+          <div className="mt-mobile-2 flex w-full flex-col items-center gap-4 md:mt-0 md:gap-6">
+            <Button as="a" href="#fundament-det" variant="primary">
+              DATA ROJECT
             </Button>
-            <Button
-              as="a"
-              href="#mission"
-              variant="secondary"
-              className="flex-1 min-w-0 md:flex-initial md:min-w-fit"
-            >
-              DET концепция
+            <Button as="a" href="#mission" variant="secondary">
+              DATACONCEPTION
             </Button>
           </div>
         </div>
