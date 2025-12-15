@@ -23,7 +23,7 @@ export default function BodyText({
   return (
     <p
       className={cn(
-        "font-sans text-lg leading-relaxed md:text-xl",
+        "font-sans text-mobile-lg leading-mobile-normal md:text-xl md:leading-relaxed",
         variantClasses[variant],
         className,
       )}

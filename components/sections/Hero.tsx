@@ -38,11 +38,21 @@ export default function Hero() {
             и современные технологии соединяются в единую систему терапевтической практики.
           </BodyText>
           
-          <div className="flex flex-wrap items-center gap-4 md:gap-6">
-            <Button as="a" href="#fundament-det" variant="primary">
+          <div className="mt-mobile-2 flex w-full flex-nowrap items-center gap-mobile-2 md:mt-0 md:w-auto md:gap-6">
+            <Button
+              as="a"
+              href="#fundament-det"
+              variant="primary"
+              className="flex-1 min-w-0 md:flex-initial md:min-w-fit"
+            >
               DETai проекты
             </Button>
-            <Button as="a" href="#mission" variant="secondary">
+            <Button
+              as="a"
+              href="#mission"
+              variant="secondary"
+              className="flex-1 min-w-0 md:flex-initial md:min-w-fit"
+            >
               DET концепция
             </Button>
           </div>
