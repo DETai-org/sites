@@ -38,7 +38,7 @@ export default function Hero() {
             и современные технологии соединяются в единую систему терапевтической практики.
           </BodyText>
 
-          <div className="mt-mobile-2 flex w-full flex-col items-center gap-4 md:mt-0 md:gap-6">
+          <div className="flex flex-col items-center w-full gap-4 mt-mobile-2 md:flex-row md:items-center md:justify-start md:w-auto md:gap-4 md:mt-0 lg:gap-6">
             <Button as="a" href="#fundament-det" variant="primary">
               DETai проекты
             </Button>
