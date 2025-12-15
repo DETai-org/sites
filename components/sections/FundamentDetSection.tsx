@@ -1,4 +1,5 @@
 import Button from "../ui/Button";
+import BodyText from "../ui/BodyText";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 
@@ -7,17 +8,17 @@ export default function FundamentDetSection() {
     <Section id="fundament-det">
       <div className="flex flex-col gap-mobile-6 md:gap-8">
         <Heading level={2}>Фундамент DET</Heading>
-        <div className="space-y-mobile-4 text-mobile-lg leading-mobile-normal text-basic-dark md:space-y-6 md:text-base md:leading-relaxed">
-          <p>
+        <div className="space-y-mobile-4 md:space-y-6">
+          <BodyText className="text-basic-dark md:text-base md:leading-relaxed">
             ✨ DET — это культурная и методологическая рамка, которая помогает видеть человека в его глубине, движении и внутренней
             диалектике. Это надшкольный способ мышления, соединяющий экзистенциальную психологию, исследовательскую позицию и
             культуру присутствия.
-          </p>
-          <p>
+          </BodyText>
+          <BodyText className="text-basic-dark md:text-base md:leading-relaxed">
             Фундамент DET опирается на четыре уровня: концепцию, метод, платформу и проектную архитектуру. Вместе они образуют
             целостную систему, где смысл и практика поддерживают друг друга. Если тебе откликается идея внутренней честности,
             развития и диалектики — здесь начинается вход в глубинную часть DET.
-          </p>
+          </BodyText>
         </div>
         <div className="flex flex-col gap-mobile-3 md:flex-row md:items-center md:gap-4">
           <Button as="a" href="/det" className="w-fit" variant="primary">
