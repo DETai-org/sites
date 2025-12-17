@@ -264,20 +264,21 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
 
     const performResize = () => {
       const dpr = dprRef.current;
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const viewportWidth = document.documentElement?.clientWidth ?? 0;
+      const viewportHeight = document.documentElement?.clientHeight ?? 0;
 
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-
-      contextRef.current?.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const width = Math.max(viewportWidth, 0);
+      const height = Math.max(viewportHeight, 0);
 
       const rect = anchorRef?.current?.getBoundingClientRect();
       const centerX = rect ? rect.left + rect.width / 2 : width / 2;
       const centerY = rect ? rect.top + rect.height / 2 : height / 2;
       const anchorSize = Math.min(rect?.width ?? width, rect?.height ?? height);
+
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+
+      contextRef.current?.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       metricsRef.current = {
         width,
@@ -423,5 +424,11 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
     };
   }, [anchorRef]);
 
-  return <canvas ref={canvasRef} className={cn("fixed inset-0 pointer-events-none z-20", className)} aria-hidden />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={cn("fixed inset-0 w-full h-full pointer-events-none z-20", className)}
+      aria-hidden
+    />
+  );
 }
