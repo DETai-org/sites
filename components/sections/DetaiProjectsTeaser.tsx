@@ -6,7 +6,16 @@ import DetaiProjectCard from "./DetaiProjectCard";
 
 const AVATAR = "/images/avatars_projects/Мед.png";
 
-const placeholderProjects = [
+type PlaceholderProject = {
+  title: string;
+  description: string;
+  status: string;
+  avatarSrc: string;
+  echelon: 1 | 2 | 3;
+  tags: string[];
+};
+
+const placeholderProjects: PlaceholderProject[] = [
   {
     title: "Агенты сопровождения",
     description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
