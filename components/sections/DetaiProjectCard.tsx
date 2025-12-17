@@ -7,7 +7,6 @@ import { useEffect, useRef, type MouseEvent } from "react";
 type DetaiProjectCardProps = {
   title: string;
   description: string;
-  label: string;
   avatarSrc: string;
   echelon: 1 | 2 | 3;
   tags?: string[];
@@ -22,7 +21,7 @@ function getEchelonLabel(echelon: 1 | 2 | 3) {
   return "Эшелон III · Инфра/R&D";
 }
 
-export default function DetaiProjectCard({ title, description, label, avatarSrc, echelon, tags, href }: DetaiProjectCardProps) {
+export default function DetaiProjectCard({ title, description, avatarSrc, echelon, tags, href }: DetaiProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const tiltRef = useRef({ x: 0, y: 0 });
@@ -130,21 +129,15 @@ export default function DetaiProjectCard({ title, description, label, avatarSrc,
             <p className="text-mobile-lg leading-mobile-normal text-accent-soft/80 md:text-base md:leading-relaxed">{description}</p>
           </div>
 
-          <div className="flex items-center justify-between gap-3">
-            <span className="inline-flex w-fit items-center gap-1 rounded-full bg-accent-soft/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-accent-soft md:text-xs">
-              {label}
-            </span>
-
-            <div className="flex flex-wrap justify-end gap-1">
-              {(tags ?? []).slice(0, 2).map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center rounded-full border border-accent-primary/15 bg-basic-dark/25 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-accent-soft/80"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+          <div className="flex items-center justify-end gap-1">
+            {(tags ?? []).slice(0, 2).map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full border border-accent-primary/15 bg-basic-dark/25 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-accent-soft/80"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </article>
       </Link>

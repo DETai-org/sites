@@ -9,7 +9,6 @@ const AVATAR = "/images/avatars_projects/Мед.png";
 type PlaceholderProject = {
   title: string;
   description: string;
-  status: string;
   avatarSrc: string;
   echelon: 1 | 2 | 3;
   tags: string[];
@@ -20,7 +19,6 @@ const placeholderProjects: PlaceholderProject[] = [
   {
     title: "Francis Galton",
     description: "Ваш цифровой психометрист. Измеряем личность с научной строгостью и человеческим пониманием.",
-    status: "В разработке",
     avatarSrc: AVATAR,
     echelon: 1,
     tags: ["Диагностика", "Методология"],
@@ -29,7 +27,6 @@ const placeholderProjects: PlaceholderProject[] = [
   {
     title: "Агенты сопровождения",
     description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
-    status: "В разработке",
     avatarSrc: AVATAR,
     echelon: 2,
     tags: ["Без специализации"],
@@ -38,7 +35,6 @@ const placeholderProjects: PlaceholderProject[] = [
   {
     title: "Исследовательские модули",
     description: "Скоро: инструменты для наблюдений, аналитики и картирования состояний внутри единой методологической рамки.",
-    status: "Скоро",
     avatarSrc: AVATAR,
     echelon: 3,
     tags: ["Без специализации"],
@@ -63,7 +59,6 @@ export default function DetaiProjectsTeaser() {
               key={project.title}
               title={project.title}
               description={project.description}
-              label={project.status}
               avatarSrc={project.avatarSrc}
               echelon={project.echelon}
               tags={project.tags}
