@@ -68,9 +68,9 @@ export default function DetaiProjectsTeaser() {
         </div>
 
         <div className="flex flex-col gap-mobile-2 md:flex-row md:items-center md:justify-between md:gap-3">
-          <p className="text-mobile-lg leading-mobile-normal text-accent-soft/90 md:text-base md:leading-relaxed">
+          <BodyText className="text-accent-soft/90" variant="sectionDefaultDark">
             Экосистема растёт: новые агенты и сервисы будут появляться по мере публикации.
-          </p>
+          </BodyText>
           <a
             className="inline-flex items-center gap-mobile-2 text-mobile-lg font-semibold text-accent-soft underline-offset-4 hover:underline md:text-base"
             href="/detai/projects"
