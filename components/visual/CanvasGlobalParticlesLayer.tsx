@@ -264,11 +264,12 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
 
     const performResize = () => {
       const dpr = dprRef.current;
+      const canvasRect = canvas.getBoundingClientRect();
       const viewportWidth = document.documentElement?.clientWidth ?? 0;
       const viewportHeight = document.documentElement?.clientHeight ?? 0;
 
-      const width = Math.max(viewportWidth, 0);
-      const height = Math.max(viewportHeight, 0);
+      const width = Math.max(Math.floor(canvasRect.width || viewportWidth), 0);
+      const height = Math.max(Math.floor(canvasRect.height || viewportHeight), 0);
 
       const rect = anchorRef?.current?.getBoundingClientRect();
       const centerX = rect ? rect.left + rect.width / 2 : width / 2;
