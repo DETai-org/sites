@@ -48,7 +48,7 @@ export default function DetaiProjectsTeaser() {
       <div className="flex flex-col gap-mobile-6 md:gap-10">
         <div className="flex flex-col gap-mobile-2 md:gap-3">
           <HeadingLevel2 color="soft">Проекты DETai</HeadingLevel2>
-          <BodyText className="max-w-3xl" variant="sectionDefaultDark">
+          <BodyText variant="sectionDefaultDark" className="max-w-3xl">
             Практические формы применения диалектически-экзистенциальной терапии в технологической экосистеме DETai.
           </BodyText>
         </div>
@@ -68,7 +68,7 @@ export default function DetaiProjectsTeaser() {
         </div>
 
         <div className="flex flex-col gap-mobile-2 md:flex-row md:items-center md:justify-between md:gap-3">
-          <BodyText className="text-accent-soft/90" variant="sectionDefaultDark">
+          <BodyText variant="sectionDefaultDark" className="text-accent-soft/90">
             Экосистема растёт: новые агенты и сервисы будут появляться по мере публикации.
           </BodyText>
           <a
