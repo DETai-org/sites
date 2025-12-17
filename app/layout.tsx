@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
-      <body>
+      <body className="overflow-x-hidden bg-basic-light text-basic-dark antialiased">
         <ShimmerAutoTrigger />
         {children}
       </body>
