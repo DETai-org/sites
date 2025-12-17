@@ -1,7 +1,7 @@
 import HeroScene from "./HeroScene";
 import Button from "../ui/Button";
 import BodyText from "../ui/BodyText";
-import Heading from "../ui/Heading";
+import HeroHeadingTitle from "../ui/HeroHeadingTitle";
 import Section from "../ui/Section";
 
 export default function Hero() {
@@ -14,9 +14,9 @@ export default function Hero() {
       fullWidth
     >
       <div className="relative z-20 w-full max-w-[48rem] md:max-w-[52rem]">
-        <Heading level={1} color="soft" className="text-mobile-4xl leading-mobile-tight md:text-5xl">
+        <HeroHeadingTitle>
           DET — Dialectical Existential Therapy.
-        </Heading>
+        </HeroHeadingTitle>
         <p className="mt-4 text-lg leading-snug text-accent-soft md:text-xl lg:text-2xl">
           Новый формат психотерапии
         </p>

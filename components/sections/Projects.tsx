@@ -1,4 +1,4 @@
-import Heading from "../ui/Heading";
+import HeadingLevel2 from "../ui/HeadingLevel2";
 import Section from "../ui/Section";
 
 const projects = [
@@ -38,7 +38,7 @@ export default function Projects() {
   return (
     <Section id="projects">
       <div className="mb-mobile-6 flex flex-col gap-mobile-3 md:mb-12 md:gap-4">
-        <Heading level={2}>Проекты DETai</Heading>
+        <HeadingLevel2>Проекты DETai</HeadingLevel2>
         <p className="max-w-mobile text-mobile-lg leading-mobile-normal text-basic-dark md:max-w-2xl md:text-base md:leading-relaxed">
           Практические инструменты, создаваемые на основе метода DET и работающие в технологической экосистеме DETai.
         </p>

@@ -1,5 +1,5 @@
 import BodyText from "../ui/BodyText";
-import Heading from "../ui/Heading";
+import HeadingLevel2 from "../ui/HeadingLevel2";
 import Section from "../ui/Section";
 
 const placeholderProjects = [
@@ -25,7 +25,7 @@ export default function DetaiProjectsTeaser() {
     <Section id="detai-projects" className="border-y border-accent-primary/20 bg-basic-light">
       <div className="flex flex-col gap-mobile-6 md:gap-10">
         <div className="flex flex-col gap-mobile-2 md:gap-3">
-          <Heading level={2}>Проекты DETai</Heading>
+          <HeadingLevel2>Проекты DETai</HeadingLevel2>
           <BodyText className="max-w-3xl text-basic-dark md:text-lg md:leading-relaxed">
             Практические формы применения диалектически-экзистенциальной терапии в технологической экосистеме DETai.
           </BodyText>

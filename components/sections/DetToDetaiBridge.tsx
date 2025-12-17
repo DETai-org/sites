@@ -1,6 +1,6 @@
 import BodyText from "../ui/BodyText";
 import DetDetaiMobileCard from "../ui/DetDetaiMobileCard";
-import Heading from "../ui/Heading";
+import HeadingLevel2 from "../ui/HeadingLevel2";
 import Section from "../ui/Section";
 
 export default function DetToDetaiBridge() {
@@ -13,9 +13,9 @@ export default function DetToDetaiBridge() {
   return (
     <Section variant="light">
       <div className="flex flex-col gap-mobile-6 md:gap-8">
-        <Heading level={2}>
+        <HeadingLevel2>
           DET ↔ DETai
-        </Heading>
+        </HeadingLevel2>
         <div className="hidden flex-col gap-6 md:flex md:max-w-4xl">
           {paragraphs.map((paragraph) => (
             <BodyText key={paragraph} className="text-basic-dark md:text-lg md:leading-relaxed">

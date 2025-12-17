@@ -1,4 +1,4 @@
-import Heading from "../ui/Heading";
+import HeadingLevel2 from "../ui/HeadingLevel2";
 import Section from "../ui/Section";
 
 const audienceCards = [
@@ -28,7 +28,7 @@ export default function AudienceSection() {
   return (
     <Section>
       <div className="flex flex-col gap-mobile-4 md:gap-6">
-        <Heading level={2}>Для кого DET и DETai</Heading>
+        <HeadingLevel2>Для кого DET и DETai</HeadingLevel2>
         <p className="max-w-mobile text-mobile-lg leading-mobile-normal text-basic-dark md:max-w-2xl md:text-base md:leading-relaxed">
           DET — это культурная рамка понимания человека и тип внутренней позиции. DETai — её технологическое продолжение. Вместе
           они создают смыслы и инструменты для тех, кто развивается сам и помогает развиваться другим: психологам,
