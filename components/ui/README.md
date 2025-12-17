@@ -58,7 +58,8 @@ shimmer — это фирменная фича primary.
 
 * Базовый абзацный текстовый компонент с шрифтом Open Sans.
 * Варианты:
-  * `sectionDefault` — базовый текст для секций (по умолчанию).
+  * `sectionDefaultDark` — базовый текст для секций на тёмном фоне (по умолчанию).
+  * `sectionDefaultOnLight` — базовый текст для секций на светлом фоне.
   * `sectionBrand` — акцентный текст в секциях.
   * `projectCard` — компактный текст для карточек проектов (витрина): `text-mobile-base` + `leading-mobile-tight`, на десктопе `md:text-base`.
   * `infoCard` — текст для описательных карточек / блоков "для кого": `text-mobile-base` + `leading-mobile-normal`, на десктопе `md:text-base md:leading-relaxed`.

@@ -18,7 +18,7 @@ export default function DetToDetaiBridge() {
         </HeadingLevel2>
         <div className="hidden flex-col gap-6 md:flex md:max-w-4xl">
           {paragraphs.map((paragraph) => (
-            <BodyText key={paragraph} className="text-basic-dark md:text-lg md:leading-relaxed">
+            <BodyText key={paragraph} variant="sectionDefaultOnLight">
               {paragraph}
             </BodyText>
           ))}

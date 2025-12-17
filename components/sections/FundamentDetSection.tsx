@@ -9,12 +9,12 @@ export default function FundamentDetSection() {
       <div className="flex flex-col gap-mobile-6 md:gap-8">
         <HeadingLevel2>Фундамент DET</HeadingLevel2>
         <div className="space-y-mobile-4 md:space-y-6">
-          <BodyText className="text-basic-dark md:text-base md:leading-relaxed">
+          <BodyText variant="sectionDefaultOnLight">
             ✨ DET — это культурная и методологическая рамка, которая помогает видеть человека в его глубине, движении и внутренней
             диалектике. Это надшкольный способ мышления, соединяющий экзистенциальную психологию, исследовательскую позицию и
             культуру присутствия.
           </BodyText>
-          <BodyText className="text-basic-dark md:text-base md:leading-relaxed">
+          <BodyText variant="sectionDefaultOnLight">
             Фундамент DET опирается на четыре уровня: концепцию, метод, платформу и проектную архитектуру. Вместе они образуют
             целостную систему, где смысл и практика поддерживают друг друга. Если тебе откликается идея внутренней честности,
             развития и диалектики — здесь начинается вход в глубинную часть DET.
