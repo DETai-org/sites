@@ -417,10 +417,10 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     const performResize = () => {
       const dpr = dprRef.current;
       const parent = canvas.parentElement;
-      const rect = parent?.getBoundingClientRect();
+      const html = document.documentElement;
 
-      const width = rect?.width ?? 0;
-      const height = rect?.height ?? 0;
+      const width = Math.max(parent?.clientWidth ?? html.clientWidth ?? 0, 0);
+      const height = Math.max(parent?.clientHeight ?? html.clientHeight ?? 0, 0);
 
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;

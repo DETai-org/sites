@@ -264,17 +264,17 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
 
     const performResize = () => {
       const dpr = dprRef.current;
-      const canvasRect = canvas.getBoundingClientRect();
-      const viewportWidth = document.documentElement?.clientWidth ?? 0;
-      const viewportHeight = document.documentElement?.clientHeight ?? 0;
-
-      const width = Math.max(Math.floor(canvasRect.width || viewportWidth), 0);
-      const height = Math.max(Math.floor(canvasRect.height || viewportHeight), 0);
+      const html = document.documentElement;
+      const width = Math.max(html?.clientWidth ?? 0, 0);
+      const height = Math.max(html?.clientHeight ?? 0, 0);
 
       const rect = anchorRef?.current?.getBoundingClientRect();
       const centerX = rect ? rect.left + rect.width / 2 : width / 2;
       const centerY = rect ? rect.top + rect.height / 2 : height / 2;
       const anchorSize = Math.min(rect?.width ?? width, rect?.height ?? height);
+
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
 
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
@@ -428,7 +428,7 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
   return (
     <canvas
       ref={canvasRef}
-      className={cn("fixed inset-0 w-full h-full pointer-events-none z-20", className)}
+      className={cn("fixed inset-0 pointer-events-none z-20 w-[100dvw] h-[100dvh] overflow-clip", className)}
       aria-hidden
     />
   );
