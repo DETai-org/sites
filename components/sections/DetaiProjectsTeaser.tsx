@@ -9,7 +9,6 @@ const AVATAR = "/images/avatars_projects/Мед.png";
 type PlaceholderProject = {
   title: string;
   description: string;
-  status: string;
   avatarSrc: string;
   echelon: 1 | 2 | 3;
   tags: string[];
@@ -18,31 +17,28 @@ type PlaceholderProject = {
 
 const placeholderProjects: PlaceholderProject[] = [
   {
-    title: "Агенты сопровождения",
-    description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
-    status: "В разработке",
+    title: "Francis Galton",
+    description: "Ваш цифровой психометрист. Измеряем личность с научной строгостью и человеческим пониманием.",
     avatarSrc: AVATAR,
     echelon: 1,
-    tags: ["Диагностика", "Сопровождение"],
+    tags: ["Диагностика", "Методология"],
     href: "/projects/galton",
+  },
+  {
+    title: "Агенты сопровождения",
+    description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
+    avatarSrc: AVATAR,
+    echelon: 2,
+    tags: ["Без специализации"],
+    href: "/projects/assistants",
   },
   {
     title: "Исследовательские модули",
     description: "Скоро: инструменты для наблюдений, аналитики и картирования состояний внутри единой методологической рамки.",
-    status: "Скоро",
-    avatarSrc: AVATAR,
-    echelon: 2,
-    tags: ["Исследования", "Методология"],
-    href: "/projects/matrix",
-  },
-  {
-    title: "Инфраструктура DETai",
-    description: "Скоро: сервисы и интерфейсы, которые соединяют данные, протоколы и взаимодействие людей с AI-агентами.",
-    status: "В разработке",
     avatarSrc: AVATAR,
     echelon: 3,
-    tags: ["Инфраструктура", "Интеграции"],
-    href: "/projects/infra",
+    tags: ["Без специализации"],
+    href: "/projects/matrix",
   },
 ];
 
@@ -63,7 +59,6 @@ export default function DetaiProjectsTeaser() {
               key={project.title}
               title={project.title}
               description={project.description}
-              label={project.status}
               avatarSrc={project.avatarSrc}
               echelon={project.echelon}
               tags={project.tags}
