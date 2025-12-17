@@ -59,12 +59,12 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
       aria-label={isExpanded ? "Свернуть текст" : "Развернуть текст"}
     >
       <div className="relative flex flex-col gap-mobile-4">
-        <BodyText className="text-basic-dark">{firstSentence}</BodyText>
+        <BodyText variant="infoCard" className="text-basic-dark">{firstSentence}</BodyText>
 
         {isExpanded ? (
           <div className="flex flex-col gap-mobile-3">
             {remainingParagraphs.map((paragraph, index) => (
-              <BodyText key={index} className="text-basic-dark">
+              <BodyText key={index} variant="infoCard" className="text-basic-dark">
                 {paragraph}
               </BodyText>
             ))}
@@ -72,7 +72,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
         ) : previewParagraphs.length ? (
           <div className="flex flex-col gap-mobile-3">
             {previewParagraphs.map((paragraph, index) => (
-              <BodyText key={index} className="text-basic-dark">
+              <BodyText key={index} variant="infoCard" className="text-basic-dark">
                 {paragraph}
               </BodyText>
             ))}

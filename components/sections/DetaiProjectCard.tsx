@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, type MouseEvent } from "react";
 
+import BodyText from "../ui/BodyText";
+
 type DetaiProjectCardProps = {
   title: string;
   description: string;
@@ -126,7 +128,9 @@ export default function DetaiProjectCard({ title, description, avatarSrc, echelo
 
             <h3 className="font-serif text-mobile-xl font-semibold leading-mobile-tight text-accent-soft md:text-xl md:leading-tight">{title}</h3>
 
-            <p className="text-mobile-lg leading-mobile-normal text-accent-soft/80 md:text-base md:leading-relaxed">{description}</p>
+            <BodyText variant="projectCard" className="text-accent-soft/80">
+              {description}
+            </BodyText>
           </div>
 
           <div className="flex items-center justify-end gap-1">

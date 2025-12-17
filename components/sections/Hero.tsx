@@ -33,7 +33,7 @@ export default function Hero() {
             так и психотерапевтам.
           </BodyText>
 
-          <BodyText className="mt-4" variant="default">
+          <BodyText className="mt-4" variant="sectionDefault">
             Вместе DET и DETai формируют новый формат психотерапии — где диалектика, гуманизм,
             и современные технологии соединяются в единую систему терапевтической практики.
           </BodyText>
