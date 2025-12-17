@@ -4,24 +4,32 @@ import Section from "../ui/Section";
 
 import DetaiProjectCard from "./DetaiProjectCard";
 
+const AVATAR = "/images/avatars_projects/Мед.png";
+
 const placeholderProjects = [
   {
     title: "Агенты сопровождения",
     description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
-    icon: "🧭",
     status: "В разработке",
+    avatarSrc: AVATAR,
+    echelon: 1,
+    tags: ["Диагностика", "Сопровождение"],
   },
   {
     title: "Исследовательские модули",
     description: "Скоро: инструменты для наблюдений, аналитики и картирования состояний внутри единой методологической рамки.",
-    icon: "🧪",
     status: "Скоро",
+    avatarSrc: AVATAR,
+    echelon: 2,
+    tags: ["Исследования", "Методология"],
   },
   {
     title: "Инфраструктура DETai",
     description: "Скоро: сервисы и интерфейсы, которые соединяют данные, протоколы и взаимодействие людей с AI-агентами.",
-    icon: "🛠️",
     status: "В разработке",
+    avatarSrc: AVATAR,
+    echelon: 3,
+    tags: ["Инфраструктура", "Интеграции"],
   },
 ];
 
@@ -38,13 +46,15 @@ export default function DetaiProjectsTeaser() {
 
         <div className="grid grid-cols-1 gap-mobile-4 md:grid-cols-3 md:gap-6">
           {placeholderProjects.map((project) => (
-              <DetaiProjectCard
-                key={project.title}
-                title={project.title}
-                description={project.description}
-                label={project.status}
-                icon={project.icon}
-              />
+            <DetaiProjectCard
+              key={project.title}
+              title={project.title}
+              description={project.description}
+              label={project.status}
+              avatarSrc={project.avatarSrc}
+              echelon={project.echelon}
+              tags={project.tags}
+            />
           ))}
         </div>
 
