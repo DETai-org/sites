@@ -6,21 +6,41 @@
 
 @layer components {
   .detai-card-border {
+    --a: 0deg;
+
     position: relative;
-    border-radius: 14px;
     padding: 1px;
+    border-radius: 16px;
     background: conic-gradient(
-      from 0deg,
-      theme("colors.accent.hover"),
-      theme("colors.basic.dark"),
-      theme("colors.basic.dark"),
-      theme("colors.accent.hover"),
-      theme("colors.basic.dark"),
-      theme("colors.basic.dark"),
-      theme("colors.basic.dark"),
-      theme("colors.accent.hover")
+      from var(--a),
+      rgba(214, 178, 94, 0) 0deg,
+      rgba(214, 178, 94, 0.55) 35deg,
+      rgba(214, 178, 94, 0) 80deg,
+      rgba(214, 178, 94, 0) 180deg,
+      rgba(242, 230, 201, 0.35) 215deg,
+      rgba(214, 178, 94, 0) 260deg,
+      rgba(214, 178, 94, 0) 360deg
     );
-    background-size: 280% 280%;
-    animation: detai-card-shine 7s ease-out infinite;
+    animation: detai-border-shine 8s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(214, 178, 94, 0.1) inset,
+      0 12px 40px rgba(0, 0, 0, 0.35);
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    transition: filter 200ms ease-out, transform 200ms ease-out;
+  }
+
+  .detai-card-border:hover {
+    filter: saturate(1.05) brightness(1.03);
+  }
+
+  .detai-card-surface {
+    border-radius: 15px;
+    border: 1px solid rgba(214, 178, 94, 0.1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .detai-card-border {
+      animation: none;
+    }
   }
 }

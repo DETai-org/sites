@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type MouseEvent } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 
 type DetaiProjectCardProps = {
   title: string;
@@ -12,25 +12,59 @@ type DetaiProjectCardProps = {
 const TILT_THRESHOLD = 12;
 
 export default function DetaiProjectCard({ title, description, label, icon }: DetaiProjectCardProps) {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
+  const tiltRef = useRef({ x: 0, y: 0 });
+  const pendingRef = useRef(false);
 
   const handleMove = (event: MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - left) / width - 0.5;
     const y = (event.clientY - top) / height - 0.5;
 
-    setTilt({ x: y * -TILT_THRESHOLD, y: x * TILT_THRESHOLD });
+    tiltRef.current = { x: y * -TILT_THRESHOLD, y: x * TILT_THRESHOLD };
+
+    if (!pendingRef.current) {
+      pendingRef.current = true;
+      animationFrameRef.current = requestAnimationFrame(() => {
+        pendingRef.current = false;
+
+        if (cardRef.current) {
+          const { x: tiltX, y: tiltY } = tiltRef.current;
+          cardRef.current.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        }
+      });
+    }
   };
+
+  const resetTilt = () => {
+    tiltRef.current = { x: 0, y: 0 };
+    if (!pendingRef.current) {
+      cardRef.current?.style.setProperty("transform", "perspective(1000px) rotateX(0deg) rotateY(0deg)");
+    } else {
+      animationFrameRef.current = requestAnimationFrame(() => {
+        cardRef.current?.style.setProperty("transform", "perspective(1000px) rotateX(0deg) rotateY(0deg)");
+      });
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div
+      ref={cardRef}
       className="detai-card-border group transition-transform duration-200 ease-out"
       onMouseMove={handleMove}
-      onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      style={{ transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
+      onMouseLeave={resetTilt}
     >
       <article
-        className="flex h-full flex-col justify-between gap-mobile-3 rounded-[10px] bg-accent-hover p-mobile-4 text-basic-dark shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:gap-4 md:p-5"
+        className="detai-card-surface flex h-full flex-col justify-between gap-mobile-3 bg-accent-hover p-mobile-4 text-basic-dark shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:gap-4 md:p-5"
         aria-label={`ProjectCard заглушка: ${title}`}
       >
         <div className="flex flex-col gap-mobile-3 md:gap-4">
