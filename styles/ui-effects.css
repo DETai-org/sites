@@ -24,6 +24,24 @@
   }
 }
 
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes detai-border-shine {
+  to {
+    --a: 360deg;
+  }
+}
+
+@keyframes detai-scan {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .btn-shimmer::before,
 .btn-shimmer::after {
   content: "";
