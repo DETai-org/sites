@@ -11,7 +11,6 @@ type DetaiProjectCardProps = {
   description: string;
   avatarSrc: string;
   echelon: 1 | 2 | 3;
-  tags?: string[];
   href: string;
 };
 
@@ -23,7 +22,7 @@ function getEchelonLabel(echelon: 1 | 2 | 3) {
   return "Эшелон III · Инфра/R&D";
 }
 
-export default function DetaiProjectCard({ title, description, avatarSrc, echelon, tags, href }: DetaiProjectCardProps) {
+export default function DetaiProjectCard({ title, description, avatarSrc, echelon, href }: DetaiProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const tiltRef = useRef({ x: 0, y: 0 });
@@ -106,8 +105,7 @@ export default function DetaiProjectCard({ title, description, avatarSrc, echelo
       >
         <article className="detai-card-surface relative flex h-full flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
           <div className="flex flex-col gap-mobile-3 md:gap-4">
-            <div className="flex items-center justify-between gap-3">
-              {/* Левая колонка: аватар */}
+            <div className="flex items-start gap-mobile-3 md:gap-4">
               <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-full border border-accent-primary/20 bg-basic-dark/30">
                 <Image
                   src={avatarSrc}
@@ -119,29 +117,20 @@ export default function DetaiProjectCard({ title, description, avatarSrc, echelo
                 />
               </div>
 
-              {/* Правая колонка: эшелон */}
-              <span className="inline-flex items-center self-center rounded-full border border-accent-primary/20 bg-basic-dark/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-accent-soft/90 md:text-xs">
-                {/** Текст эшелона (см. функцию ниже) */}
-                {echelonLabel}
-              </span>
+              <div className="flex flex-col gap-mobile-2 md:gap-2">
+                <h3 className="font-serif text-mobile-xl font-semibold leading-mobile-tight text-accent-soft md:text-xl md:leading-tight">{title}</h3>
+
+                <BodyText variant="projectCard" className="text-accent-soft/80">
+                  {description}
+                </BodyText>
+              </div>
             </div>
-
-            <h3 className="font-serif text-mobile-xl font-semibold leading-mobile-tight text-accent-soft md:text-xl md:leading-tight">{title}</h3>
-
-            <BodyText variant="projectCard" className="text-accent-soft/80">
-              {description}
-            </BodyText>
           </div>
 
-          <div className="flex items-center justify-end gap-1">
-            {(tags ?? []).slice(0, 2).map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full border border-accent-primary/15 bg-basic-dark/25 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-accent-soft/80"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="flex justify-end">
+            <span className="inline-flex items-center rounded-full border border-accent-primary/20 bg-basic-dark/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-accent-soft/90 md:text-xs">
+              {echelonLabel}
+            </span>
           </div>
         </article>
       </Link>
