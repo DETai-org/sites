@@ -12,7 +12,7 @@ export default function Mission() {
 
         <div className="group w-full max-w-[900px] px-mobile-3 md:px-0">
           <div className="detai-card-border detai-scan-border relative aspect-[2/1] w-full overflow-hidden rounded-[15px]">
-            <div className="detai-card-surface absolute inset-0 z-20 flex items-center justify-center rounded-[15px] transition-opacity duration-500 ease-out group-hover:pointer-events-none group-hover:opacity-0">
+            <div className="detai-card-surface detai-card-surface--solid absolute inset-0 z-20 flex items-center justify-center rounded-[15px] transition-opacity duration-500 ease-out group-hover:pointer-events-none group-hover:opacity-0">
               <Image
                 src="/assets/animations/logo.svg"
                 alt="Логотип DETai"
