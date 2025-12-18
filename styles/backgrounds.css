@@ -1,43 +1,55 @@
-.background-paper {
-  background-image: url("/images/backgrounds/Paper_background.webp");
+.paper--ambient {
+  position: relative;
+  isolation: isolate;
+  background-color: rgba(255, 255, 255, 0.9);
+  background-image: radial-gradient(120% 120% at 16% 18%, rgba(255, 255, 255, 0.1), transparent 45%),
+    radial-gradient(110% 110% at 82% 10%, rgba(255, 255, 255, 0.08), transparent 46%),
+    url("/images/backgrounds/paper.webp");
   background-repeat: repeat;
-  background-size: auto;
-  background-position: top left;
-}
-
-.background-paper--soft {
-  opacity: 0.9;
-}
-
-.background-paper--cover {
-  background-size: cover;
+  background-size: 640px 640px, 640px 640px, 640px 640px;
   background-position: center;
 }
 
-.background-paper--dense {
-  background-size: 600px 600px;
-}
-
-.section--paper {
-  position: relative;
-  overflow: hidden;
-}
-
-.section--paper::before {
+.paper--ambient::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/images/backgrounds/paper-parchment-light.webp");
-  background-repeat: repeat;
-  background-size: 600px 600px;
-  opacity: 1;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 24% 32%, rgba(0, 0, 0, 0.08), transparent 32%),
+    radial-gradient(circle at 78% 22%, rgba(0, 0, 0, 0.06), transparent 34%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 6px);
+  mix-blend-mode: soft-light;
+  opacity: 0.03;
   z-index: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: inherit;
 }
 
-.section--paper > * {
+.paper--ambient > * {
+  position: relative;
+  z-index: 1;
+}
+
+.paper--object {
+  position: relative;
+  isolation: isolate;
+  background-image: url("/images/backgrounds/paper.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.paper--object::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -32px 0;
+  height: 136px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.78) 72%, rgba(255, 255, 255, 0.94) 100%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.paper--object > * {
   position: relative;
   z-index: 1;
 }
