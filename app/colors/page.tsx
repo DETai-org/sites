@@ -54,7 +54,7 @@ const detDetaiMobileParagraphs = [
 
 const mobileCardVariants = [
   { title: "DET ↔ DETai — текущий фон", variant: "default" as const, label: "база" },
-  { title: "DET ↔ DETai — вдохновение Immersive Garden", variant: "immersive" as const, label: "эксперимент" },
+  { title: "DET ↔ DETai — бумажный фон (backgrounds.css)", variant: "paper" as const, label: "обновление" },
 ];
 
 export default function Page() {
@@ -87,8 +87,8 @@ export default function Page() {
         <section className="flex flex-col gap-4">
           <h2 className="text-2xl font-semibold leading-tight">Экспериментальные мобильные карточки DETai</h2>
           <p className="text-basic-light/80">
-            Фоны ниже показывают один и тот же мобильный блок DET ↔ DETai в двух вариантах, чтобы сравнить привычную подложку и световую
-            атмосферу в духе Immersive Garden.
+            Фоны ниже показывают один и тот же мобильный блок DET ↔ DETai в двух вариантах: привычный градиент и обновлённый бумажный
+            фон из `styles/backgrounds.css` для точного сравнения текстур.
           </p>
           <div className="grid gap-4 md:grid-cols-2">
             {mobileCardVariants.map((card) => (
@@ -101,12 +101,9 @@ export default function Page() {
                   <span className="text-xs font-semibold uppercase tracking-wide text-basic-light/60">{card.label}</span>
                 </div>
                 <DetDetaiMobileCard
+                  variant={card.variant}
                   paragraphs={detDetaiMobileParagraphs}
-                  className={
-                    card.variant === "immersive"
-                      ? "md:!block md:!max-w-none bg-parchment"
-                      : "md:!block md:!max-w-none"
-                  }
+                  className="md:!block md:!max-w-none"
                 />
               </div>
             ))}
