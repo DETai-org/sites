@@ -47,6 +47,14 @@
   opacity: 0.4;
 }
 
+.detai-card-surface--plain {
+  background: transparent;
+}
+
+.detai-card-surface--plain::before {
+  display: none;
+}
+
 .detai-scan-border {
   position: relative;
   isolation: isolate;
