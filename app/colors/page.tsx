@@ -104,7 +104,22 @@ export default function Page() {
                   paragraphs={detDetaiMobileParagraphs}
                   className={
                     card.variant === "immersive"
-                      ? "md:!block md:!max-w-none bg-gradient-to-br from-basic-light via-basic-light/90 to-basic-light/70 before:bg-[radial-gradient(circle_at_18%_20%,rgba(30,27,25,0.12),transparent_45%),radial-gradient(circle_at_82%_16%,rgba(246,241,233,0.6),transparent_42%),radial-gradient(circle_at_48%_80%,rgba(30,27,25,0.08),transparent_50%)] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_14%_86%,rgba(30,27,25,0.06),transparent_55%)] after:pointer-events-none after:content-[''] shadow-[0_26px_60px_-28px_rgba(30,27,25,0.45)]"
+                      ? `
+                        md:!block md:!max-w-none
+                        relative overflow-hidden
+                        bg-[#e8e8e8]
+
+                        before:pointer-events-none before:content-['']
+                        before:absolute before:inset-0
+                        before:bg-[linear-gradient(180deg,rgba(255,255,255,0.55),rgba(0,0,0,0.04)),radial-gradient(circle_at_18%_22%,rgba(255,255,255,0.70),transparent_52%),radial-gradient(circle_at_78%_18%,rgba(255,255,255,0.35),transparent_55%),radial-gradient(circle_at_30%_88%,rgba(0,0,0,0.07),transparent_58%),radial-gradient(circle_at_85%_85%,rgba(0,0,0,0.05),transparent_60%)]
+                        before:opacity-100
+
+                        after:pointer-events-none after:content-['']
+                        after:absolute after:inset-0
+                        after:bg-[url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27160%27%20height%3D%27160%27%3E%0A%3Cfilter%20id%3D%27n%27%3E%0A%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.85%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%0A%3C%2Ffilter%3E%0A%3Crect%20width%3D%27160%27%20height%3D%27160%27%20filter%3D%27url%28%23n%29%27%20opacity%3D%27.55%27%2F%3E%0A%3C%2Fsvg%3E")]
+                        after:opacity-[0.10]
+                        after:mix-blend-multiply
+                      `
                       : "md:!block md:!max-w-none"
                   }
                 />
