@@ -88,6 +88,15 @@ export default function Page() {
             ))}
           </div>
         </section>
+
+        <section className="palette-paper-preview background-paper flex min-h-[240px] items-center rounded-2xl border border-basic-dark/10 p-8 text-basic-dark shadow-[0_20px_60px_rgba(0,0,0,0.35)] md:min-h-[300px]">
+          <div className="flex max-w-4xl flex-col gap-4">
+            <h2 className="text-2xl font-semibold leading-tight">Бумажный фон (эксперимент)</h2>
+            <p className="text-lg leading-relaxed text-basic-dark/80">
+              Экспериментальный блок для проверки фирменной бумажной текстуры в интерфейсе.
+            </p>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
