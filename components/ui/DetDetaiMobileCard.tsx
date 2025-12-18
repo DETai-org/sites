@@ -40,9 +40,8 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
   return (
     <div
       className={cn(
-        "md:hidden relative isolate overflow-hidden w-full max-w-none rounded-none border-y border-accent-primary/20",
-        "bg-gradient-to-br from-basic-light via-white to-accent-soft/80 px-mobile-4 py-mobile-5 shadow-[0_18px_48px_-18px_rgba(185,146,79,0.35)]",
-        "before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_16%_22%,rgba(201,168,106,0.22),transparent_44%),radial-gradient(circle_at_92%_18%,rgba(242,229,194,0.5),transparent_48%)]",
+        "paper--object md:hidden relative isolate overflow-hidden w-full max-w-none rounded-none border-y border-accent-primary/20",
+        "px-mobile-4 py-mobile-5 shadow-[0_18px_48px_-18px_rgba(185,146,79,0.35)]",
         className,
       )}
       role="button"
