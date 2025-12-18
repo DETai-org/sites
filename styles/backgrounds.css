@@ -60,16 +60,22 @@
 .paper--object-mobile::before {
   content: "";
   position: absolute;
-  inset: -14px;
+  inset: -18px;
   background: radial-gradient(
-      140% 160% at 50% 16%,
-      rgba(246, 241, 233, 0.8) 18%,
-      rgba(246, 241, 233, 0.52) 40%,
-      rgba(246, 241, 233, 0.2) 54%,
-      rgba(246, 241, 233, 0) 70%
+      150% 160% at 50% 14%,
+      rgba(246, 241, 233, 0) 32%,
+      rgba(246, 241, 233, 0.42) 54%,
+      rgba(246, 241, 233, 0.18) 68%,
+      rgba(246, 241, 233, 0) 84%
     ),
-    radial-gradient(150% 120% at 50% 88%, rgba(246, 241, 233, 0.48) 28%, rgba(246, 241, 233, 0) 60%);
-  filter: blur(10px);
+    radial-gradient(
+      170% 130% at 50% 90%,
+      rgba(246, 241, 233, 0) 34%,
+      rgba(246, 241, 233, 0.36) 58%,
+      rgba(246, 241, 233, 0.12) 72%,
+      rgba(246, 241, 233, 0) 88%
+    );
+  filter: blur(14px);
   pointer-events: none;
   z-index: 0;
 }
