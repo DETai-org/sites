@@ -11,7 +11,6 @@ type PlaceholderProject = {
   description: string;
   avatarSrc: string;
   echelon: 1 | 2 | 3;
-  tags: string[];
   href: string;
 };
 
@@ -21,7 +20,6 @@ const placeholderProjects: PlaceholderProject[] = [
     description: "Ваш цифровой психометрист. Измеряем личность с научной строгостью и человеческим пониманием.",
     avatarSrc: AVATAR,
     echelon: 1,
-    tags: ["Диагностика", "Методология"],
     href: "/projects/galton",
   },
   {
@@ -29,7 +27,6 @@ const placeholderProjects: PlaceholderProject[] = [
     description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
     avatarSrc: AVATAR,
     echelon: 2,
-    tags: ["Без специализации"],
     href: "/projects/assistants",
   },
   {
@@ -37,7 +34,6 @@ const placeholderProjects: PlaceholderProject[] = [
     description: "Скоро: инструменты для наблюдений, аналитики и картирования состояний внутри единой методологической рамки.",
     avatarSrc: AVATAR,
     echelon: 3,
-    tags: ["Без специализации"],
     href: "/projects/matrix",
   },
 ];
@@ -61,7 +57,6 @@ export default function DetaiProjectsTeaser() {
               description={project.description}
               avatarSrc={project.avatarSrc}
               echelon={project.echelon}
-              tags={project.tags}
               href={project.href}
             />
           ))}
