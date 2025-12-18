@@ -104,7 +104,7 @@ export default function Page() {
                   paragraphs={detDetaiMobileParagraphs}
                   className={
                     card.variant === "immersive"
-                      ? "md:!block md:!max-w-none bg-parchment bg-parchment-reset"
+                      ? "md:!block md:!max-w-none bg-parchment"
                       : "md:!block md:!max-w-none"
                   }
                 />

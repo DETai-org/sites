@@ -2,13 +2,13 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background-color: #e8e8e8;
+  background-color: #e8e8e8 !important;
   background-image:
     radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.7), transparent 56%),
     radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.35), transparent 58%),
     radial-gradient(circle at 30% 88%, rgba(0, 0, 0, 0.055), transparent 60%),
     radial-gradient(circle at 85% 85%, rgba(0, 0, 0, 0.045), transparent 62%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.03));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(0, 0, 0, 0.03)) !important;
 }
 
 .bg-parchment::before {
