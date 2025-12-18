@@ -16,8 +16,8 @@ export default function Mission() {
           Наша миссия
         </Heading>
 
-        <div className="group w-full max-w-[900px] px-mobile-3 md:px-0">
-          <div className="detai-card-border detai-scan-border relative w-full min-h-[28rem] overflow-hidden rounded-[15px] md:aspect-[2/1] md:min-h-0">
+        <div className="group w-full max-w-[900px] px-mobile-1 md:px-0">
+          <div className="detai-card-border detai-scan-border relative w-full min-h-[24rem] overflow-hidden rounded-[15px] md:aspect-[2/1] md:min-h-0">
             <div className="detai-card-surface detai-card-surface--solid absolute inset-0 z-20 flex h-full items-center justify-center rounded-[15px] transition-opacity duration-500 ease-out group-hover:pointer-events-none group-hover:opacity-0">
               <Image
                 src="/assets/animations/logo.svg"
@@ -30,7 +30,7 @@ export default function Mission() {
             </div>
 
             <div className="absolute inset-0 z-10">
-              <div className="paper--object-mobile md:paper--ambient flex h-full w-full items-center justify-center overflow-hidden rounded-[15px] px-mobile-4 py-mobile-6 text-center md:px-10 md:py-8">
+              <div className="paper--object-mobile paper--mobile-torn md:paper--ambient flex h-full w-full items-center justify-center overflow-hidden rounded-[15px] px-mobile-3 py-mobile-6 text-center md:px-10 md:py-8">
                 <BodyText variant="sectionDefaultOnLight">
                   Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
                   интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям

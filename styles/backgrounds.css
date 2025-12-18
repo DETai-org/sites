@@ -58,10 +58,46 @@
   z-index: 1;
 }
 
+.paper--mobile-torn {
+  background-color: #f6f0e6;
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.08)),
+    radial-gradient(160% 120% at 14% 14%, rgba(255, 255, 255, 0.12), transparent 44%),
+    url("/images/backgrounds/Paper_background.webp");
+  background-repeat: repeat;
+  background-size: 240px 240px, 480px 420px, 520px 520px;
+  background-position: center top, center, center;
+  background-blend-mode: soft-light, multiply, normal;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+}
+
+.paper--mobile-torn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(18px 14px at 18px 18px, rgba(0, 0, 0, 0.18), transparent 60%) repeat-x,
+    radial-gradient(18px 14px at 22px calc(100% - 18px), rgba(0, 0, 0, 0.16), transparent 60%) repeat-x,
+    radial-gradient(14px 18px at 16px 18px, rgba(0, 0, 0, 0.15), transparent 62%) repeat-y,
+    radial-gradient(14px 18px at calc(100% - 18px) 18px, rgba(0, 0, 0, 0.15), transparent 62%) repeat-y;
+  background-size: 88px 42px, 92px 42px, 42px 92px, 42px 92px;
+  background-position: 0 0, 0 100%, 0 0, 100% 0;
+  mask-image: linear-gradient(#000, #000);
+  mix-blend-mode: multiply;
+  opacity: 0.42;
+  z-index: 0;
+}
+
 @media (max-width: 767px) {
   .paper--object-mobile {
     background-repeat: repeat;
     background-size: 560px 560px;
     background-position: center top;
+  }
+
+  .paper--mobile-torn {
+    background-size: 260px 260px, 420px 360px, 480px 480px;
+    background-position: center 8px, center, center;
   }
 }
