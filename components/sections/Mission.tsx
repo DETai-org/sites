@@ -23,12 +23,14 @@ export default function Mission() {
               />
             </div>
 
-            <div className="section--paper absolute inset-0 z-10 flex items-center justify-center rounded-[15px] bg-basic-light px-mobile-4 py-mobile-5 text-center md:px-10 md:py-6">
-              <BodyText variant="sectionDefaultOnLight">
-                Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
-                интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям
-                понимать себя и развиваться.
-              </BodyText>
+            <div className="absolute inset-0 z-10">
+              <div className="paper--ambient flex h-full w-full items-center justify-center overflow-hidden rounded-[15px] px-mobile-4 py-mobile-5 text-center md:px-10 md:py-6">
+                <BodyText variant="sectionDefaultOnLight">
+                  Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
+                  интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям
+                  понимать себя и развиваться.
+                </BodyText>
+              </div>
             </div>
           </div>
         </div>
