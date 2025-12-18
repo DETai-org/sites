@@ -40,7 +40,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
   return (
     <div
       className={cn(
-        "paper--object-mobile md:hidden relative isolate overflow-hidden w-full max-w-none rounded-none border-y border-accent-primary/20",
+        "md:hidden relative isolate overflow-hidden w-full max-w-none rounded-none border-y border-accent-primary/20",
         "px-mobile-4 py-mobile-5 shadow-[0_18px_48px_-18px_rgba(185,146,79,0.35)]",
         className,
       )}
@@ -56,7 +56,9 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
       aria-expanded={isExpanded}
       aria-label={isExpanded ? "Свернуть текст" : "Развернуть текст"}
     >
-      <div className="relative flex flex-col gap-mobile-4">
+      <div className="pointer-events-none absolute inset-0 -z-10 paper--object-mobile" aria-hidden />
+
+      <div className="relative z-10 flex flex-col gap-mobile-4">
         <BodyText variant="infoCard" className="text-basic-dark">{firstSentence}</BodyText>
 
         {isExpanded ? (
@@ -80,8 +82,8 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
 
       {!isExpanded && remainingText ? (
         <>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-basic-light/70 to-transparent" />
-          <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 text-mobile-sm font-semibold uppercase tracking-wide text-accent-primary">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-white via-basic-light/70 to-transparent" />
+          <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 z-10 text-mobile-sm font-semibold uppercase tracking-wide text-accent-primary">
             Читать дальше
           </span>
         </>
