@@ -37,6 +37,10 @@
   z-index: 1;
 }
 
+.detai-card-surface--solid {
+  background: linear-gradient(180deg, rgba(36, 32, 29, 1), rgba(22, 19, 17, 1));
+}
+
 .detai-card-surface::before {
   content: "";
   position: absolute;
