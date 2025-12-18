@@ -5,7 +5,7 @@
   background-color: #f6f3ec;
   background-image: radial-gradient(120% 120% at 16% 18%, rgba(255, 255, 255, 0.1), transparent 45%),
     radial-gradient(110% 110% at 82% 10%, rgba(255, 255, 255, 0.08), transparent 46%),
-    url("/images/backgrounds/paper.webp");
+    url("/images/backgrounds/Paper_background.webp");
   background-repeat: repeat;
   background-size: 720px 680px, 860px 740px, 640px 640px;
   background-position: center;
@@ -29,17 +29,19 @@
   z-index: 1;
 }
 
-.paper--object {
+.paper--object,
+.paper--object-mobile {
   position: relative;
   isolation: isolate;
-  background-image: url("/images/backgrounds/paper.webp");
+  background-image: url("/images/backgrounds/Paper_background.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   overflow: hidden;
 }
 
-.paper--object::after {
+.paper--object::after,
+.paper--object-mobile::after {
   content: "";
   position: absolute;
   inset: auto 0 -32px 0;
@@ -50,7 +52,16 @@
   z-index: 0;
 }
 
-.paper--object > * {
+.paper--object > *,
+.paper--object-mobile > * {
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .paper--object-mobile {
+    background-repeat: repeat;
+    background-size: 560px 560px;
+    background-position: center top;
+  }
 }

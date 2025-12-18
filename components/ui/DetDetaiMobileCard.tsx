@@ -40,7 +40,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
   return (
     <div
       className={cn(
-        "paper--object md:hidden relative isolate overflow-hidden w-full max-w-none rounded-none border-y border-accent-primary/20",
+        "paper--object-mobile md:hidden relative isolate overflow-hidden w-full max-w-none rounded-none border-y border-accent-primary/20",
         "px-mobile-4 py-mobile-5 shadow-[0_18px_48px_-18px_rgba(185,146,79,0.35)]",
         className,
       )}
