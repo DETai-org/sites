@@ -16,21 +16,24 @@ export default function Mission() {
           Наша миссия
         </Heading>
 
-        <div className="group w-full max-w-[900px] px-mobile-3 md:px-0">
-          <div className="detai-card-border detai-scan-border relative w-full min-h-[28rem] overflow-hidden rounded-[15px] md:aspect-[2/1] md:min-h-0">
-            <div className="detai-card-surface detai-card-surface--solid absolute inset-0 z-20 flex h-full items-center justify-center rounded-[15px] transition-opacity duration-500 ease-out group-hover:pointer-events-none group-hover:opacity-0">
+        <div className="group relative w-full max-w-[900px] px-mobile-3 md:px-0">
+          <div className="relative flex min-h-[26rem] w-full items-center justify-center md:aspect-[2/1] md:min-h-0">
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-2 bg-basic-dark transition-opacity duration-500 ease-out group-hover:pointer-events-none group-hover:opacity-0">
               <Image
                 src="/assets/animations/logo.svg"
                 alt="Логотип DETai"
                 width={320}
                 height={320}
-                className="logo logo--accent-soft h-[68%] w-[68%] object-contain"
+                className="logo logo--accent-soft h-[64%] w-[64%] object-contain md:h-[70%] md:w-[70%]"
                 priority={false}
               />
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft md:text-sm">
+                CLICK ME
+              </span>
             </div>
 
-            <div className="absolute inset-0 z-10 flex h-full w-full items-center justify-center p-mobile-1 md:p-3">
-              <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-mobile-2 py-mobile-4 text-center md:h-[96%] md:w-[96%] md:px-8 md:py-10 paper--object-mobile paper-shape--scroll paper-edges--scroll md:paper--ambient">
+            <div className="relative flex h-full w-full items-center justify-center px-mobile-1 py-mobile-3 text-center md:px-6 md:py-8">
+              <div className="paper--object-mobile paper-shape--scroll paper-edges--scroll md:paper-ambient relative flex h-full w-full max-w-[840px] flex-col items-center justify-center px-mobile-3 py-mobile-5 md:px-10 md:py-12">
                 <BodyText variant="sectionDefaultOnLight">
                   Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
                   интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям
