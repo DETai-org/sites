@@ -55,7 +55,7 @@ export default function Mission() {
             >
               <div
                 className={cn(
-                  "absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-basic-dark px-6 text-center transition-opacity duration-500 ease-out",
+                  "absolute inset-0 z-20 flex flex-col items-start justify-center gap-4 bg-basic-dark text-left transition-opacity duration-500 ease-out",
                   "group-hover/mission:pointer-events-none group-hover/mission:opacity-0 group-active/mission:pointer-events-none group-active/mission:opacity-0",
                   isRevealed && shouldToggleOnClick && "pointer-events-none opacity-0"
                 )}
@@ -68,7 +68,7 @@ export default function Mission() {
                   className="logo logo--accent-soft h-[9rem] w-[9rem] object-contain md:h-[12rem] md:w-[12rem]"
                   priority={false}
                 />
-                <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">click me</p>
+                <p className="text-left text-sm uppercase tracking-[0.18em] text-accent-soft/70">click me</p>
               </div>
 
               <div
