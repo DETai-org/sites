@@ -39,7 +39,7 @@ export default function Mission() {
         <div className="relative w-full max-w-[960px] overflow-hidden rounded-[18px] bg-basic-dark/80 px-0 py-mobile-2 md:px-0 md:py-8">
           <div className="flex w-full flex-col gap-mobile-4 md:flex-row md:items-start md:gap-10">
             <div
-              className="group/mission relative flex w-full flex-col gap-mobile-3 md:max-w-[36rem] md:gap-4"
+              className="group/mission relative flex w-full flex-col gap-mobile-3 md:w-[36rem] md:shrink-0 md:gap-4"
               role={shouldToggleOnClick ? "button" : undefined}
               tabIndex={shouldToggleOnClick ? 0 : undefined}
               aria-pressed={shouldToggleOnClick ? isRevealed : undefined}
@@ -91,7 +91,7 @@ export default function Mission() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-4 md:ml-auto md:max-w-[22rem]">
+            <div className="flex w-full flex-col gap-4 md:ml-auto md:max-w-[28rem]">
               <BodyText className="whitespace-pre-line w-full max-w-none" variant="sectionDefaultDark">
 
                 {"Миссия отвечает на вопрос «зачем».\nКоманда — «с кем», а видение — «куда»."}
