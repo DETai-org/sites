@@ -30,7 +30,7 @@ export default function Mission() {
             </div>
 
             <div className="absolute inset-0 z-10 flex items-center justify-center p-mobile-1 md:p-3">
-              <div className="relative flex h-full w-[98%] min-h-[18rem] max-w-none flex-col items-center justify-center overflow-hidden px-mobile-4 py-mobile-6 text-center md:w-[96%] md:min-h-[22rem] md:px-10 md:py-8 paper--object-mobile paper-shape--scroll paper-edges--scroll md:paper--ambient">
+              <div className="relative flex h-[92%] w-full max-w-none flex-col items-center justify-center overflow-hidden px-mobile-4 py-mobile-6 text-center md:h-[94%] md:px-10 md:py-8 paper--object-mobile paper-shape--scroll paper-edges--scroll md:paper--ambient">
                 <BodyText variant="sectionDefaultOnLight">
                   Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
                   интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям
