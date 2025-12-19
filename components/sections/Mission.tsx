@@ -69,7 +69,7 @@ export default function Mission() {
                   className="logo logo--accent-soft h-[9rem] w-[9rem] object-contain md:h-[12rem] md:w-[12rem]"
                   priority={false}
                 />
-                <p className="text-sm uppercase tracking-[0.18em] text-accent-soft/70">click me</p>
+                <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">click me</p>
               </div>
 
               <div
@@ -92,15 +92,15 @@ export default function Mission() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-4 rounded-xl border border-basic-light/10 bg-basic-dark/70 p-5 md:max-w-[18rem]">
-              <BodyText className="text-base text-accent-soft" variant="sectionDefaultDark">
-                Здесь будет текст.
+            <div className="flex w-full flex-col gap-4 md:max-w-[18rem]">
+              <BodyText className="whitespace-pre-line" variant="sectionDefaultDark">
+                {"Миссия отвечает на вопрос «зачем».\nКоманда — «с кем», а видение — «куда»."}
               </BodyText>
 
               <div className="flex flex-col gap-3">
-                <Button className="w-full">Кнопка 1</Button>
+                <Button className="w-full">Присоединиться к команде</Button>
                 <Button className="w-full" variant="secondary">
-                  Кнопка 2
+                  Наше видение
                 </Button>
               </div>
             </div>
