@@ -72,7 +72,7 @@ export default function Mission() {
                 </div>
 
                 <div className="flex w-[9rem] items-center justify-center md:w-[12rem]">
-                  <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">click me</p>
+                  <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">Click me</p>
                 </div>
               </div>
 
