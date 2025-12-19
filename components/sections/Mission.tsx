@@ -55,20 +55,25 @@ export default function Mission() {
             >
               <div
                 className={cn(
-                  "absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-basic-dark px-6 text-center transition-opacity duration-500 ease-out",
+                  "absolute inset-0 z-20 flex flex-col items-start justify-center gap-3 bg-basic-dark px-6 transition-opacity duration-500 ease-out",
                   "group-hover/mission:pointer-events-none group-hover/mission:opacity-0 group-active/mission:pointer-events-none group-active/mission:opacity-0",
                   isRevealed && shouldToggleOnClick && "pointer-events-none opacity-0"
                 )}
               >
-                <Image
-                  src="/assets/animations/logo.svg"
-                  alt="Логотип DETai"
-                  width={320}
-                  height={320}
-                  className="logo logo--accent-soft h-[9rem] w-[9rem] object-contain md:h-[12rem] md:w-[12rem]"
-                  priority={false}
-                />
-                <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">click me</p>
+                <div className="flex w-[9rem] items-center justify-start md:w-[12rem]">
+                  <Image
+                    src="/assets/animations/logo.svg"
+                    alt="Логотип DETai"
+                    width={320}
+                    height={320}
+                    className="logo logo--accent-soft h-[9rem] w-[9rem] object-contain md:h-[12rem] md:w-[12rem]"
+                    priority={false}
+                  />
+                </div>
+
+                <div className="flex w-[9rem] items-center justify-center md:w-[12rem]">
+                  <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">Click me</p>
+                </div>
               </div>
 
               <div
