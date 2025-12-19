@@ -34,8 +34,10 @@ export default function Mission() {
         </Heading>
 
         <div
-          className="group relative w-full max-w-[960px] overflow-hidden rounded-[18px] bg-basic-dark/80 px-mobile-3 py-8 md:px-0 md:py-12"
-          onClick={shouldToggleOnClick ? handleToggle : undefined}
+          className="group relative w-full max-w-[960px] overflow-hidden rounded-[18px] bg-basic-dark/80 px-mobile-2 py-mobile-6 md:px-0 md:py-12"
+          role={shouldToggleOnClick ? "button" : undefined}
+          aria-pressed={shouldToggleOnClick ? isRevealed : undefined}
+          onClick={handleToggle}
         >
           <div
             className={cn(
@@ -57,13 +59,13 @@ export default function Mission() {
 
           <div
             className={cn(
-              "relative z-10 flex items-center justify-center px-mobile-4 py-mobile-5 text-center opacity-0 transition-opacity duration-500 ease-out md:px-10 md:py-12",
+              "relative z-10 flex items-center justify-center px-mobile-3 py-mobile-4 text-left opacity-0 transition-opacity duration-500 ease-out md:px-10 md:py-12 md:text-center",
               "group-active:opacity-100 group-hover:opacity-100",
               isRevealed && shouldToggleOnClick && "opacity-100"
             )}
           >
-            <div className="flex w-full max-w-[52rem] flex-col gap-mobile-3 md:gap-4">
-              <BodyText>
+            <div className="flex w-full flex-col gap-mobile-3 md:mx-auto md:max-w-[52rem] md:gap-4">
+              <BodyText className="md:text-xl md:leading-relaxed">
                 Создать новую терапевтическую логику, которая объединяет глубину экзистенциальной психологии и возможности современного
                 интеллекта — человеческого и искусственного. DET и DETai — это путь к осмысленным инструментам, которые помогают людям
                 понимать себя и развиваться.
