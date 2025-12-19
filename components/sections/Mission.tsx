@@ -57,6 +57,7 @@ export default function Mission() {
                 className={cn(
                   "absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-basic-dark px-6 text-center transition-opacity duration-500 ease-out",
                   "group-hover/mission:pointer-events-none group-hover/mission:opacity-0 group-active/mission:pointer-events-none group-active/mission:opacity-0",
+                  "md:items-start md:text-left",
                   isRevealed && shouldToggleOnClick && "pointer-events-none opacity-0"
                 )}
               >
