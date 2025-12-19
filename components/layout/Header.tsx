@@ -4,10 +4,15 @@ export default function Header() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
         <div className="text-lg font-serif font-semibold tracking-tight">DETai</div>
         <nav className="flex flex-wrap items-center max-w-full gap-3 text-xs font-sans font-medium sm:gap-4 sm:text-sm">
-          <a className="hover:text-accent-primary" href="#hero">
+          <a className="hover:text-accent-primary" href="/">
             Главная
           </a>
-          <a className="hover:text-accent-primary" href="#projects">
+          <a
+            className="hover:text-accent-primary"
+            href="https://data.ai/"
+            rel="noreferrer"
+            target="_blank"
+          >
             Проекты
           </a>
           <a className="hover:text-accent-primary" href="#fundament-det">
