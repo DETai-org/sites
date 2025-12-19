@@ -14,7 +14,9 @@ export default function Mission() {
   const { isMobileDevice } = useDeviceSignals();
   const [isRevealed, setIsRevealed] = useState(false);
 
-  const shouldToggleOnClick = isMobileDevice;
+  const prefersTouch =
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+  const shouldToggleOnClick = isMobileDevice || prefersTouch;
 
   const handleToggle = () => {
     if (shouldToggleOnClick) {
@@ -24,7 +26,7 @@ export default function Mission() {
 
   return (
     <Section id="mission" variant="dark">
-      <div className="flex w-full max-w-[960px] flex-col items-center gap-mobile-6 md:gap-8">
+      <div className="flex w-full max-w-[960px] flex-col items-start gap-mobile-3 md:gap-8">
         <Heading
           level={2}
           color="soft"
@@ -34,7 +36,7 @@ export default function Mission() {
         </Heading>
 
         <div
-          className="group relative w-full max-w-[960px] overflow-hidden rounded-[18px] bg-basic-dark/80 px-mobile-2 py-mobile-6 md:px-0 md:py-12"
+          className="group relative w-full max-w-[960px] overflow-hidden rounded-[18px] bg-basic-dark/80 px-mobile-3 py-mobile-3 md:px-0 md:py-12"
           role={shouldToggleOnClick ? "button" : undefined}
           aria-pressed={shouldToggleOnClick ? isRevealed : undefined}
           onClick={handleToggle}
@@ -59,7 +61,7 @@ export default function Mission() {
 
           <div
             className={cn(
-              "relative z-10 flex items-center justify-center px-mobile-3 py-mobile-4 text-left opacity-0 transition-opacity duration-500 ease-out md:px-10 md:py-12 md:text-center",
+              "relative z-10 flex items-start justify-start px-mobile-3 py-mobile-4 text-left opacity-0 transition-opacity duration-500 ease-out md:px-10 md:py-12 md:text-left",
               "group-active:opacity-100 group-hover:opacity-100",
               isRevealed && shouldToggleOnClick && "opacity-100"
             )}
