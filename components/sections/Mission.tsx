@@ -58,7 +58,7 @@ export default function Mission() {
                   "absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-basic-dark px-6 text-center transition-opacity duration-500 ease-out",
                   "group-hover/mission:pointer-events-none group-hover/mission:opacity-0 group-active/mission:pointer-events-none group-active/mission:opacity-0",
                   isRevealed && shouldToggleOnClick && "pointer-events-none opacity-0",
-                  "md:items-start md:px-10 md:text-left"
+                  "md:px-10"
                 )}
               >
                 <Image
@@ -92,8 +92,8 @@ export default function Mission() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-4 md:max-w-[18rem]">
-              <BodyText className="whitespace-pre-line" variant="sectionDefaultDark">
+            <div className="flex w-full flex-col gap-4 md:ml-auto md:max-w-[20rem]">
+              <BodyText className="whitespace-pre-line md:text-lg" variant="sectionDefaultDark">
                 {"Миссия отвечает на вопрос «зачем».\nКоманда — «с кем», а видение — «куда»."}
               </BodyText>
 
