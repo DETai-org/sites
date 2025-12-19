@@ -58,6 +58,47 @@
   z-index: 1;
 }
 
+.paper-shape--scroll {
+  mask-image: url("/images/backgrounds/paper-scroll-shape-mask.webp");
+  -webkit-mask-image: url("/images/backgrounds/paper-scroll-shape-mask.webp");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+}
+
+.paper-edges--scroll {
+  position: relative;
+}
+
+.paper-edges--scroll::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/images/backgrounds/Paper_background.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  mask-image: url("/images/backgrounds/paper-scroll-edges-mask.webp");
+  -webkit-mask-image: url("/images/backgrounds/paper-scroll-edges-mask.webp");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.paper-edges--scroll > * {
+  position: relative;
+  z-index: 1;
+}
+
 @media (max-width: 767px) {
   .paper--object-mobile {
     background-repeat: repeat;
