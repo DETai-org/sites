@@ -54,12 +54,14 @@
 .detai-scan-border {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
 }
 
 .detai-scan-border::before {
   content: "";
   position: absolute;
   inset: 0;
+  box-sizing: border-box;
   padding: 2px;
   border-radius: inherit;
   background: conic-gradient(
