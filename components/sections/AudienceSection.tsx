@@ -1,6 +1,6 @@
 import BodyText from "../ui/BodyText";
 import DefaultCard from "../ui/DefaultCard";
-import HeadingLevel2 from "../ui/HeadingLevel2";
+import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 
 const audienceCards = [
@@ -30,11 +30,8 @@ export default function AudienceSection() {
   return (
     <Section>
       <div className="flex flex-col gap-mobile-4 md:gap-6">
-        <HeadingLevel2>Для кого DET и DETai</HeadingLevel2>
-        <BodyText
-          variant="sectionDefaultOnLight"
-          className="max-w-mobile text-mobile-lg leading-mobile-normal md:max-w-2xl md:text-base md:leading-relaxed"
-        >
+        <Heading level={2}>Для кого DET и DETai</Heading>
+        <BodyText variant="sectionDefaultOnLight" className="max-w-mobile md:max-w-2xl">
           DET — это культурная рамка понимания человека и тип внутренней позиции. DETai — её технологическое продолжение. Вместе
           они создают смыслы и инструменты для тех, кто развивается сам и помогает развиваться другим: психологам,
           исследователям, создателям сервисов и людям, которые чувствуют себя частью семьи с общим внутренним принципом.
@@ -44,10 +41,7 @@ export default function AudienceSection() {
       <div className="mt-mobile-6 grid grid-cols-1 gap-mobile-4 md:mt-12 md:grid-cols-2 md:gap-8">
         {audienceCards.map((card) => (
           <DefaultCard key={card.title} title={card.title}>
-            <BodyText
-              variant="infoCard"
-              className="text-mobile-lg leading-mobile-normal text-basic-dark md:text-base md:leading-relaxed"
-            >
+            <BodyText variant="infoCard">
               {card.description}
             </BodyText>
           </DefaultCard>
