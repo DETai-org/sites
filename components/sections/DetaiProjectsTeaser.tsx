@@ -1,44 +1,16 @@
+import { projects, projectsTeaserConfig, type Project } from "@/lib/projects";
+import { cn } from "@/lib/utils";
+
 import BodyText from "../ui/BodyText";
 import HeadingLevel2 from "../ui/HeadingLevel2";
+import ProjectCard from "../ui/ProjectCard";
 import Section from "../ui/Section";
 
-import DetaiProjectCard from "./DetaiProjectCard";
-
-const AVATAR = "/images/avatars_projects/Мед.png";
-
-type PlaceholderProject = {
-  title: string;
-  description: string;
-  avatarSrc: string;
-  echelon: 1 | 2 | 3;
-  href: string;
-};
-
-const placeholderProjects: PlaceholderProject[] = [
-  {
-    title: "Francis Galton",
-    description: "Ваш цифровой психометрист. Измеряем личность с научной строгостью и человеческим пониманием.",
-    avatarSrc: AVATAR,
-    echelon: 1,
-    href: "/projects/galton",
-  },
-  {
-    title: "Агенты сопровождения",
-    description: "Скоро: персональные помощники DETai, удерживающие дневники, динамику и обратную связь между сессиями.",
-    avatarSrc: AVATAR,
-    echelon: 2,
-    href: "/projects/assistants",
-  },
-  {
-    title: "Исследовательские модули",
-    description: "Скоро: инструменты для наблюдений, аналитики и картирования состояний внутри единой методологической рамки.",
-    avatarSrc: AVATAR,
-    echelon: 3,
-    href: "/projects/matrix",
-  },
-];
-
 export default function DetaiProjectsTeaser() {
+  const teaserProjects = projectsTeaserConfig
+    .map(({ echelon, index }) => projects.filter((project) => project.echelon === echelon)[index])
+    .filter((project): project is Project => Boolean(project));
+
   return (
     <Section id="detai-projects" variant="dark" className="border-y border-accent-primary/25">
       <div className="flex flex-col gap-mobile-6 md:gap-10">
@@ -50,15 +22,10 @@ export default function DetaiProjectsTeaser() {
         </div>
 
         <div className="grid grid-cols-1 gap-mobile-4 md:grid-cols-3 md:gap-6">
-          {placeholderProjects.map((project) => (
-            <DetaiProjectCard
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              avatarSrc={project.avatarSrc}
-              echelon={project.echelon}
-              href={project.href}
-            />
+          {teaserProjects.map((project, index) => (
+            <div key={project?.id ?? index} className={cn("h-full", index === 2 ? "hidden md:block" : undefined)}>
+              {project ? <ProjectCard {...project} /> : null}
+            </div>
           ))}
         </div>
 
