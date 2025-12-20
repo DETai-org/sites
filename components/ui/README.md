@@ -64,3 +64,9 @@ shimmer — это фирменная фича primary.
   * `projectCard` — компактный текст для карточек проектов (витрина): `text-mobile-base` + `leading-mobile-tight`, на десктопе `md:text-base`.
   * `infoCard` — текст для описательных карточек / блоков "для кого": `text-mobile-base` + `leading-mobile-normal`, на десктопе `md:text-base md:leading-relaxed`.
 * Используй в секциях вместо локальных `<p>`, а в карточках — нужный карточный вариант, чтобы сохранять единый стиль body-текста.
+
+## DefaultCard.tsx
+
+* Базовая карточка с рамкой, мягким фоном и hover-подъёмом.
+* Принимает `title`, `children`, опционально `className` и `titleAs` (`h3` | `h4`).
+* Сохраняет вертикальный ритм: gap мобильный/desktop, отступы `p-mobile-4` → `md:p-6`, рамку `border-accent-primary/30` и тень `shadow-sm` → `hover:shadow-lg` с лёгким сдвигом вверх.
