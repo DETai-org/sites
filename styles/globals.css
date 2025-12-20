@@ -4,5 +4,6 @@
 
 @import "./ui-effects.css";
 @import "./project-cards.css";
+@import "./project-card.states.css";
 @import "./backgrounds.css";
 @import "./logos.css";

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, type MouseEvent } from "react";
 
 import type { Project } from "@/lib/projects";
+import { cn } from "@/lib/utils";
 
 import BodyText from "./BodyText";
 
@@ -18,13 +19,14 @@ function getEchelonLabel(echelon: 1 | 2 | 3) {
   return "Эшелон III · Инфра/R&D";
 }
 
-export default function ProjectCard({ title, description, avatarSrc, echelon, href }: ProjectCardProps) {
+export default function ProjectCard({ title, description, avatarSrc, echelon, href, status }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const tiltRef = useRef({ x: 0, y: 0 });
   const pendingRef = useRef(false);
   const rectRef = useRef<DOMRect | null>(null);
   const echelonLabel = getEchelonLabel(echelon);
+  const isInProgress = status === "in-progress";
 
   const updateRect = () => {
     if (!cardRef.current) return;
@@ -89,7 +91,11 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
   return (
     <div
       ref={cardRef}
-      className="detai-card-border detai-scan-border group transition-transform duration-200 ease-out"
+      className={cn(
+        "project-card",
+        isInProgress ? "project-card--in-progress" : "project-card--active",
+        "detai-card-border detai-scan-border group transition-transform duration-200 ease-out",
+      )}
       onMouseMove={handleMove}
       onMouseEnter={handleEnter}
       onMouseLeave={resetTilt}
@@ -100,7 +106,8 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
         className="block h-full transition-transform duration-200 ease-out focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-primary/60"
         aria-label={`Проект: ${title}`}
       >
-        <article className="detai-card-surface relative flex h-full min-h-[360px] flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:min-h-[380px] md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
+        <article className="project-card__surface detai-card-surface relative flex h-full min-h-[360px] flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:min-h-[380px] md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
+          <span className="project-card__status">В разработке</span>
           <div className="flex flex-col gap-mobile-3 md:gap-4">
             <div className="flex items-start justify-between gap-mobile-3 md:gap-4">
               <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-full border border-accent-primary/20 bg-basic-dark/30">
