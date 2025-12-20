@@ -28,7 +28,7 @@ module.exports = {
       },
       fontFamily: {
         serif: ["var(--font-lora)", "serif"],
-        sans: ["Open Sans", "sans-serif"],
+        sans: ["var(--font-open-sans)", "system-ui", "sans-serif"],
         accent: ["Great Vibes", "cursive"],
       },
       borderRadius: {
