@@ -1,18 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, type MouseEvent } from "react";
 
-import BodyText from "../ui/BodyText";
+import type { Project } from "@/lib/projects";
 
-type DetaiProjectCardProps = {
-  title: string;
-  description: string;
-  avatarSrc: string;
-  echelon: 1 | 2 | 3;
-  href: string;
-};
+import BodyText from "./BodyText";
+
+type ProjectCardProps = Project;
 
 const TILT_THRESHOLD = 12;
 
@@ -22,7 +18,7 @@ function getEchelonLabel(echelon: 1 | 2 | 3) {
   return "Эшелон III · Инфра/R&D";
 }
 
-export default function DetaiProjectCard({ title, description, avatarSrc, echelon, href }: DetaiProjectCardProps) {
+export default function ProjectCard({ title, description, avatarSrc, echelon, href }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const tiltRef = useRef({ x: 0, y: 0 });
@@ -97,13 +93,14 @@ export default function DetaiProjectCard({ title, description, avatarSrc, echelo
       onMouseMove={handleMove}
       onMouseEnter={handleEnter}
       onMouseLeave={resetTilt}
+      data-project-card
     >
       <Link
         href={href}
         className="block h-full transition-transform duration-200 ease-out focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-primary/60"
         aria-label={`Проект: ${title}`}
       >
-        <article className="detai-card-surface relative flex h-full flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
+        <article className="detai-card-surface relative flex h-full min-h-[360px] flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:min-h-[380px] md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
           <div className="flex flex-col gap-mobile-3 md:gap-4">
             <div className="flex items-start justify-between gap-mobile-3 md:gap-4">
               <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-full border border-accent-primary/20 bg-basic-dark/30">
@@ -112,7 +109,7 @@ export default function DetaiProjectCard({ title, description, avatarSrc, echelo
                   alt={`Аватар проекта: ${title}`}
                   fill
                   sizes="64px"
-                  className="object-cover scale-[1.12]"
+                  className="scale-[1.12] object-cover"
                   priority={false}
                 />
               </div>
@@ -120,9 +117,7 @@ export default function DetaiProjectCard({ title, description, avatarSrc, echelo
               <div className="h-18 w-18 shrink-0 rounded-lg border border-accent-primary/10 bg-basic-dark/15" aria-hidden />
             </div>
 
-            <h3
-              className="font-serif text-[1.25rem] leading-[1.65rem] font-semibold text-accent-soft md:text-xl md:leading-tight"
-            >
+            <h3 className="font-serif text-[1.25rem] font-semibold leading-[1.65rem] text-accent-soft md:text-xl md:leading-tight">
               {title}
             </h3>
 

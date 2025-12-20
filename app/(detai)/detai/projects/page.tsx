@@ -1,8 +1,9 @@
 import BodyText from "@/components/ui/BodyText";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import ProjectsListSection from "@/components/sections/ProjectsListSection";
 
 export default function Page() {
   return (
@@ -18,6 +19,8 @@ export default function Page() {
             </BodyText>
           </div>
         </Section>
+
+        <ProjectsListSection />
       </main>
       <Footer />
     </div>
