@@ -21,6 +21,7 @@ export const projects: Project[] = [
     avatarSrc: DEFAULT_AVATAR,
     echelon: 1,
     href: "/projects/galton",
+    status: "ready",
   },
   {
     id: "assistants",
