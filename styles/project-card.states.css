@@ -1,5 +1,29 @@
 .project-card {
   position: relative;
+
+  --project-stamp-image: none;
+  --project-stamp-opacity: 0;
+  --project-stamp-size: clamp(118px, 16vw, 168px);
+  --project-stamp-rotation: -18deg;
+  --project-stamp-offset: 12px;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: var(--project-stamp-offset);
+  right: var(--project-stamp-offset);
+  width: var(--project-stamp-size);
+  aspect-ratio: 1;
+  background-image: var(--project-stamp-image);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transform: translate(10px, -6px) rotate(var(--project-stamp-rotation));
+  transform-origin: center;
+  opacity: var(--project-stamp-opacity);
+  z-index: 6;
+  pointer-events: none;
 }
 
 .project-card__surface {
@@ -9,8 +33,8 @@
 
 .project-card__status {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  bottom: 12px;
+  left: 12px;
   z-index: 3;
   display: none;
   padding: 6px 10px;
@@ -45,9 +69,21 @@
   --veil-shadow-strong: 0;
   --veil-after-blur: 0px;
 
-  --veil-stamp-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
-  --veil-stamp-size: 42%;
-  --veil-stamp-position: 18% 18%;
+  --veil-before-background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, var(--veil-film-strong)) 0%,
+    rgba(255, 255, 255, var(--veil-film-soft)) 22%,
+    rgba(255, 255, 255, var(--veil-film-mid)) 58%,
+    rgba(255, 255, 255, var(--veil-film-weak)) 100%
+  );
+
+  --veil-after-background: radial-gradient(
+    130% 120% at 70% 80%,
+    rgba(16, 13, 11, var(--veil-shadow-strong)),
+    rgba(16, 13, 11, 0) 60%
+  );
+  --veil-after-filter: blur(var(--veil-after-blur));
+  --veil-after-backdrop: none;
 }
 
 .project-card--inactive .project-card__surface {
@@ -78,14 +114,7 @@
   pointer-events: none;
   border-radius: inherit;
 
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255, 255, 255, var(--veil-film-strong)) 0%,
-      rgba(255, 255, 255, var(--veil-film-soft)) 22%,
-      rgba(255, 255, 255, var(--veil-film-mid)) 58%,
-      rgba(255, 255, 255, var(--veil-film-weak)) 100%
-    );
+  background: var(--veil-before-background);
 
   mix-blend-mode: overlay;
 }
@@ -98,19 +127,14 @@
   pointer-events: none;
   border-radius: inherit;
 
-  background-image:
-    radial-gradient(
-      130% 120% at 70% 80%,
-      rgba(16, 13, 11, var(--veil-shadow-strong)),
-      rgba(16, 13, 11, 0) 60%
-    ),
-    var(--veil-stamp-image);
+  background: var(--veil-after-background);
   background-repeat: no-repeat;
-  background-position: center, var(--veil-stamp-position);
-  background-size: cover, var(--veil-stamp-size);
+  background-position: center;
+  background-size: cover;
 
   mix-blend-mode: soft-light;
-  filter: blur(var(--veil-after-blur));
+  filter: var(--veil-after-filter);
+  backdrop-filter: var(--veil-after-backdrop);
 }
 
 .project-card--inactive .project-card__status {
@@ -146,26 +170,77 @@
   --veil-shadow-strong: 0.22;
   --veil-after-blur: 0.8px;
 
-  --veil-stamp-image: url("/images/avatars_projects/status_in-progress.webp");
+  --project-stamp-image: url("/images/avatars_projects/status_in-progress.webp");
+  --project-stamp-opacity: 1;
 }
 
 .project-card--planned {
-  --veil-contrast: 0.58;
-  --veil-saturate: 0.62;
+  --veil-contrast: 0.6;
+  --veil-saturate: 0.68;
   --veil-brightness: 1.04;
-  --veil-blur: 0.6px;
+  --veil-blur: 0.45px;
 
-  --veil-backdrop-blur: 2.2px;
-  --veil-backdrop-saturate: 0.7;
-  --veil-backdrop-brightness: 0.92;
+  --veil-backdrop-blur: 1.6px;
+  --veil-backdrop-saturate: 0.82;
+  --veil-backdrop-brightness: 0.96;
 
-  --veil-film-strong: 0.28;
-  --veil-film-mid: 0.2;
-  --veil-film-soft: 0.12;
-  --veil-film-weak: 0.06;
+  --veil-film-strong: 0.26;
+  --veil-film-mid: 0.18;
+  --veil-film-soft: 0.1;
+  --veil-film-weak: 0.08;
 
-  --veil-shadow-strong: 0.36;
-  --veil-after-blur: 1.4px;
+  --veil-shadow-strong: 0.34;
+  --veil-after-blur: 1px;
 
-  --veil-stamp-image: url("/images/avatars_projects/status_planned.webp");
+  --veil-before-background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.26) 0%,
+      rgba(255, 255, 255, 0.1) 22%,
+      rgba(255, 255, 255, 0.18) 58%,
+      rgba(255, 255, 255, 0.08) 100%
+    ),
+    radial-gradient(
+      120% 80% at 18% 12%,
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(14, 12, 10, 0.44) 0%,
+      rgba(24, 20, 16, 0.62) 44%,
+      rgba(18, 15, 13, 0.42) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.08) 38%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.12) 78%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+  --veil-after-background:
+    radial-gradient(
+      130% 120% at 70% 80%,
+      rgba(16, 13, 11, 0.34),
+      rgba(16, 13, 11, 0) 60%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(12, 10, 9, 0.32) 0%,
+      rgba(16, 13, 11, 0.12) 42%,
+      rgba(10, 8, 7, 0.28) 100%
+    ),
+    radial-gradient(
+      140% 110% at 26% 18%,
+      rgba(18, 15, 13, 0.2),
+      rgba(18, 15, 13, 0) 58%
+    );
+  --veil-after-filter: blur(1px);
+  --veil-after-backdrop: blur(1.8px) saturate(0.7) brightness(0.92);
+
+  --project-stamp-image: url("/images/avatars_projects/status_planned.webp");
+  --project-stamp-opacity: 1;
 }
