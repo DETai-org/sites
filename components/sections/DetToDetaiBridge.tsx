@@ -1,5 +1,5 @@
 import BodyText from "../ui/BodyText";
-import DetDetaiMobileCard from "../ui/DetDetaiMobileCard";
+import MobileExpandableText from "../ui/MobileExpandableText";
 import HeadingLevel2 from "../ui/HeadingLevel2";
 import Section from "../ui/Section";
 
@@ -24,7 +24,7 @@ export default function DetToDetaiBridge() {
           ))}
         </div>
 
-        <DetDetaiMobileCard className="md:hidden" paragraphs={paragraphs} />
+        <MobileExpandableText className="md:hidden" paragraphs={paragraphs} />
       </div>
     </Section>
   );
