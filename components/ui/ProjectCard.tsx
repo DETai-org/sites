@@ -119,13 +119,13 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
           <span className="project-card__status">{statusLabel}</span>
           <div className="flex flex-col gap-mobile-3 md:gap-4">
             <div className="flex items-start justify-between gap-mobile-3 md:gap-4">
-              <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-full border border-accent-primary/20 bg-basic-dark/30">
+              <div className="relative h-22 w-22 shrink-0 overflow-hidden rounded-full border border-accent-primary/20 bg-basic-dark/30">
                 <Image
                   src={avatarSrc}
                   alt={`Аватар проекта: ${title}`}
                   fill
-                  sizes="64px"
-                  className="scale-[1.12] object-cover"
+                  sizes="88px"
+                  className="scale-[1.08] object-cover"
                   priority={false}
                 />
               </div>
