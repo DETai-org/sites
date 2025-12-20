@@ -5,7 +5,7 @@ export type Project = {
   avatarSrc: string;
   href: string;
   echelon: 1 | 2 | 3;
-  status?: "ready" | "in-progress";
+  status?: "ready" | "in-progress" | "planned";
   featured?: boolean;
   order?: number;
 };
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     avatarSrc: DEFAULT_AVATAR,
     echelon: 3,
     href: "/projects/matrix",
-    status: "in-progress",
+    status: "planned",
   },
 ];
 

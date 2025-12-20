@@ -26,7 +26,15 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
   const pendingRef = useRef(false);
   const rectRef = useRef<DOMRect | null>(null);
   const echelonLabel = getEchelonLabel(echelon);
-  const isInProgress = status === "in-progress";
+  const projectStatus = status ?? "ready";
+  const isInactive = projectStatus !== "ready";
+
+  const statusLabel =
+    projectStatus === "planned"
+      ? "В дорожной карте"
+      : projectStatus === "in-progress"
+        ? "В разработке"
+        : "Готово";
 
   const updateRect = () => {
     if (!cardRef.current) return;
@@ -93,7 +101,8 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
       ref={cardRef}
       className={cn(
         "project-card",
-        isInProgress ? "project-card--in-progress" : "project-card--active",
+        `project-card--${projectStatus}`,
+        isInactive && "project-card--inactive",
         "detai-card-border detai-scan-border group transition-transform duration-200 ease-out",
       )}
       onMouseMove={handleMove}
@@ -107,7 +116,7 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
         aria-label={`Проект: ${title}`}
       >
         <article className="project-card__surface detai-card-surface relative flex h-full min-h-[360px] flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:min-h-[380px] md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
-          <span className="project-card__status">В разработке</span>
+          <span className="project-card__status">{statusLabel}</span>
           <div className="flex flex-col gap-mobile-3 md:gap-4">
             <div className="flex items-start justify-between gap-mobile-3 md:gap-4">
               <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-full border border-accent-primary/20 bg-basic-dark/30">

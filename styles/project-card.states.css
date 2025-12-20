@@ -1,5 +1,29 @@
 .project-card {
   position: relative;
+
+  --project-stamp-image: none;
+  --project-stamp-opacity: 0;
+  --project-stamp-size: clamp(118px, 16vw, 168px);
+  --project-stamp-rotation: -18deg;
+  --project-stamp-offset: 12px;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: var(--project-stamp-offset);
+  right: var(--project-stamp-offset);
+  width: var(--project-stamp-size);
+  aspect-ratio: 1;
+  background-image: var(--project-stamp-image);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transform: translate(10px, -6px) rotate(var(--project-stamp-rotation));
+  transform-origin: center;
+  opacity: var(--project-stamp-opacity);
+  z-index: 6;
+  pointer-events: none;
 }
 
 .project-card__surface {
@@ -9,8 +33,8 @@
 
 .project-card__status {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  bottom: 12px;
+  left: 12px;
   z-index: 3;
   display: none;
   padding: 6px 10px;
@@ -27,7 +51,42 @@
   pointer-events: none;
 }
 
-.project-card--in-progress .project-card__surface {
+.project-card--inactive {
+  --veil-contrast: 1;
+  --veil-saturate: 1;
+  --veil-brightness: 1;
+  --veil-blur: 0px;
+
+  --veil-backdrop-blur: 0px;
+  --veil-backdrop-saturate: 1;
+  --veil-backdrop-brightness: 1;
+
+  --veil-film-strong: 0;
+  --veil-film-mid: 0;
+  --veil-film-soft: 0;
+  --veil-film-weak: 0;
+
+  --veil-shadow-strong: 0;
+  --veil-after-blur: 0px;
+
+  --veil-before-background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, var(--veil-film-strong)) 0%,
+    rgba(255, 255, 255, var(--veil-film-soft)) 22%,
+    rgba(255, 255, 255, var(--veil-film-mid)) 58%,
+    rgba(255, 255, 255, var(--veil-film-weak)) 100%
+  );
+
+  --veil-after-background: radial-gradient(
+    130% 120% at 70% 80%,
+    rgba(16, 13, 11, var(--veil-shadow-strong)),
+    rgba(16, 13, 11, 0) 60%
+  );
+  --veil-after-filter: blur(var(--veil-after-blur));
+  --veil-after-backdrop: none;
+}
+
+.project-card--inactive .project-card__surface {
   background-color: rgba(255, 255, 255, 0.12);
 
   box-shadow:
@@ -36,11 +95,18 @@
     inset 0 18px 72px rgba(10, 8, 6, 0.42),
     inset 0 -18px 46px rgba(8, 6, 5, 0.34);
 
-  filter: contrast(0.6) saturate(0.68) brightness(1.04) blur(0.45px);
-  backdrop-filter: blur(1.6px) saturate(0.82) brightness(0.96);
+  filter: contrast(var(--veil-contrast))
+    saturate(var(--veil-saturate))
+    brightness(var(--veil-brightness))
+    blur(var(--veil-blur));
+
+  backdrop-filter:
+    blur(var(--veil-backdrop-blur))
+    saturate(var(--veil-backdrop-saturate))
+    brightness(var(--veil-backdrop-brightness));
 }
 
-.project-card--in-progress .project-card__surface::before {
+.project-card--inactive .project-card__surface::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -48,8 +114,85 @@
   pointer-events: none;
   border-radius: inherit;
 
-  /* Тонкая защитная плёнка */
-  background:
+  background: var(--veil-before-background);
+
+  mix-blend-mode: overlay;
+}
+
+.project-card--inactive .project-card__surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background: var(--veil-after-background);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  mix-blend-mode: soft-light;
+  filter: var(--veil-after-filter);
+  backdrop-filter: var(--veil-after-backdrop);
+}
+
+.project-card--inactive .project-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-card--inactive.detai-card-border {
+  animation: none;
+}
+
+.project-card--inactive.detai-scan-border::before {
+  animation: none;
+  opacity: 0;
+}
+
+.project-card--in-progress {
+  --veil-contrast: 0.72;
+  --veil-saturate: 0.78;
+  --veil-brightness: 1.02;
+  --veil-blur: 0.3px;
+
+  --veil-backdrop-blur: 1.2px;
+  --veil-backdrop-saturate: 0.85;
+  --veil-backdrop-brightness: 0.96;
+
+  --veil-film-strong: 0.18;
+  --veil-film-mid: 0.12;
+  --veil-film-soft: 0.06;
+  --veil-film-weak: 0.03;
+
+  --veil-shadow-strong: 0.22;
+  --veil-after-blur: 0.8px;
+
+  --project-stamp-image: url("/images/avatars_projects/status_in-progress.webp");
+  --project-stamp-opacity: 1;
+}
+
+.project-card--planned {
+  --veil-contrast: 0.6;
+  --veil-saturate: 0.68;
+  --veil-brightness: 1.04;
+  --veil-blur: 0.45px;
+
+  --veil-backdrop-blur: 1.6px;
+  --veil-backdrop-saturate: 0.82;
+  --veil-backdrop-brightness: 0.96;
+
+  --veil-film-strong: 0.26;
+  --veil-film-mid: 0.18;
+  --veil-film-soft: 0.1;
+  --veil-film-weak: 0.08;
+
+  --veil-shadow-strong: 0.34;
+  --veil-after-blur: 1px;
+
+  --veil-before-background:
     linear-gradient(
       120deg,
       rgba(255, 255, 255, 0.26) 0%,
@@ -78,19 +221,8 @@
       rgba(255, 255, 255, 0) 100%
     );
 
-  mix-blend-mode: overlay;
-}
-
-.project-card--in-progress .project-card__surface::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  border-radius: inherit;
-
-  /* Ещё один слой лёгкой вуали с размытым затемнением */
-  background: radial-gradient(
+  --veil-after-background:
+    radial-gradient(
       130% 120% at 70% 80%,
       rgba(16, 13, 11, 0.34),
       rgba(16, 13, 11, 0) 60%
@@ -106,23 +238,9 @@
       rgba(18, 15, 13, 0.2),
       rgba(18, 15, 13, 0) 58%
     );
+  --veil-after-filter: blur(1px);
+  --veil-after-backdrop: blur(1.8px) saturate(0.7) brightness(0.92);
 
-  mix-blend-mode: soft-light;
-  filter: blur(1px);
-  backdrop-filter: blur(1.8px) saturate(0.7) brightness(0.92);
-}
-
-.project-card--in-progress .project-card__status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.project-card--in-progress.detai-card-border {
-  animation: none;
-}
-
-.project-card--in-progress.detai-scan-border::before {
-  animation: none;
-  opacity: 0;
+  --project-stamp-image: url("/images/avatars_projects/status_planned.webp");
+  --project-stamp-opacity: 1;
 }
