@@ -1,6 +1,5 @@
 import { type ReactNode } from "react";
 
-import { cn } from "@/lib/utils";
 import Heading from "./Heading";
 
 type HeroHeadingTitleProps = {
@@ -10,7 +9,7 @@ type HeroHeadingTitleProps = {
 
 export default function HeroHeadingTitle({ children, className }: HeroHeadingTitleProps) {
   return (
-    <Heading level={1} color="soft" className={cn("text-mobile-4xl leading-mobile-tight md:text-5xl", className)}>
+    <Heading level={1} variant="hero" color="soft" className={className}>
       {children}
     </Heading>
   );
