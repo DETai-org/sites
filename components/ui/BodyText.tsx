@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-type BodyTextVariant =
+export type BodyTextVariant =
   | "sectionDefaultDark" // обычный текст в тёмных секциях
   | "sectionDefaultOnLight" // обычный текст в светлых секциях
   | "sectionBrand" // акцентный текст в секциях
@@ -15,12 +15,14 @@ type BodyTextProps = {
   children: ReactNode;
 };
 
+const projectCardClasses = "text-mobile-small text-basic-dark md:text-base";
+
 const variantClasses: Record<BodyTextVariant, string> = {
   sectionDefaultDark: "text-mobile-body text-accent-soft md:text-xl md:leading-relaxed",
   sectionDefaultOnLight: "text-mobile-body text-basic-dark md:text-xl md:leading-relaxed",
   sectionBrand: "text-mobile-body text-accent-primary md:text-xl md:leading-relaxed",
-  projectCard: "text-mobile-small text-basic-dark md:text-base",
-  infoCard: "text-mobile-small text-basic-dark md:text-base md:leading-relaxed",
+  projectCard: projectCardClasses,
+  infoCard: projectCardClasses,
 };
 
 export default function BodyText({

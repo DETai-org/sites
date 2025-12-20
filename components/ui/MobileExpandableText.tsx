@@ -3,14 +3,26 @@
 import { useMemo, useState } from "react";
 
 import { cn } from "@/lib/utils";
-import BodyText from "./BodyText";
 
-type DetDetaiMobileCardProps = {
+import BodyText, { type BodyTextVariant } from "./BodyText";
+
+type MobileExpandableTextProps = {
   paragraphs: string[];
+  textVariant?: BodyTextVariant;
   className?: string;
+  textClassName?: string;
+  previewCharLimit?: number;
+  moreLabel?: string;
 };
 
-export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMobileCardProps) {
+export default function MobileExpandableText({
+  paragraphs,
+  textVariant = "infoCard",
+  className,
+  textClassName,
+  previewCharLimit = 320,
+  moreLabel = "Читать далее",
+}: MobileExpandableTextProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const { firstSentence, remainingParagraphs, remainingText } = useMemo(() => {
@@ -31,7 +43,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
     };
   }, [paragraphs]);
 
-  const previewText = useMemo(() => remainingText.slice(0, 320), [remainingText]);
+  const previewText = useMemo(() => remainingText.slice(0, previewCharLimit), [remainingText, previewCharLimit]);
   const previewParagraphs = useMemo(
     () => previewText.split(/\n\n+/).map((paragraph) => paragraph.trim()).filter(Boolean),
     [previewText],
@@ -40,7 +52,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
   return (
     <div
       className={cn(
-        "md:hidden relative isolate w-full max-w-none overflow-hidden bg-basic-light",
+        "md:hidden relative isolate w-full max-w-none overflow-hidden bg-basic-light", // mobile only
         className,
       )}
       role="button"
@@ -56,12 +68,14 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
       aria-label={isExpanded ? "Свернуть текст" : "Развернуть текст"}
     >
       <div className="relative z-10 flex flex-col gap-mobile-4 px-0 py-mobile-1">
-        <BodyText variant="infoCard" className="text-basic-dark">{firstSentence}</BodyText>
+        <BodyText variant={textVariant} className={textClassName}>
+          {firstSentence}
+        </BodyText>
 
         {isExpanded ? (
           <div className="flex flex-col gap-mobile-3">
             {remainingParagraphs.map((paragraph, index) => (
-              <BodyText key={index} variant="infoCard" className="text-basic-dark">
+              <BodyText key={index} variant={textVariant} className={textClassName}>
                 {paragraph}
               </BodyText>
             ))}
@@ -69,7 +83,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
         ) : previewParagraphs.length ? (
           <div className="flex flex-col gap-mobile-3">
             {previewParagraphs.map((paragraph, index) => (
-              <BodyText key={index} variant="infoCard" className="text-basic-dark">
+              <BodyText key={index} variant={textVariant} className={textClassName}>
                 {paragraph}
               </BodyText>
             ))}
@@ -81,7 +95,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
         <>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-basic-light via-basic-light/90 to-transparent" />
           <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 z-10 text-mobile-small font-semibold uppercase tracking-wide text-accent-primary">
-            Читать дальше
+            {moreLabel}
           </span>
         </>
       ) : null}
