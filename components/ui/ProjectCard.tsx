@@ -14,9 +14,9 @@ type ProjectCardProps = Project;
 const TILT_THRESHOLD = 12;
 
 function getEchelonLabel(echelon: 1 | 2 | 3) {
-  if (echelon === 1) return "Эшелон I · Ядро";
-  if (echelon === 2) return "Эшелон II · Пиар";
-  return "Эшелон III · Инфра/R&D";
+  if (echelon === 1) return "Эшелон I";
+  if (echelon === 2) return "Эшелон II";
+  return "Эшелон III";
 }
 
 export default function ProjectCard({ title, description, avatarSrc, echelon, href, status }: ProjectCardProps) {
