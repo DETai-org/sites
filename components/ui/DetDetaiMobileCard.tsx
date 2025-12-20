@@ -80,7 +80,7 @@ export default function DetDetaiMobileCard({ paragraphs, className }: DetDetaiMo
       {!isExpanded && remainingText ? (
         <>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-basic-light via-basic-light/90 to-transparent" />
-          <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 z-10 text-mobile-sm font-semibold uppercase tracking-wide text-accent-primary">
+          <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 z-10 text-mobile-small font-semibold uppercase tracking-wide text-accent-primary">
             Читать дальше
           </span>
         </>

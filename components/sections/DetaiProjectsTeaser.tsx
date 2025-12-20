@@ -67,7 +67,7 @@ export default function DetaiProjectsTeaser() {
             Экосистема растёт: новые агенты и сервисы будут появляться по мере публикации.
           </BodyText>
           <a
-            className="inline-flex items-center gap-mobile-2 text-mobile-lg font-semibold text-accent-soft underline-offset-4 hover:underline md:text-base"
+            className="inline-flex items-center gap-mobile-2 text-mobile-body font-semibold text-accent-soft underline-offset-4 hover:underline md:text-base"
             href="/detai/projects"
           >
             Смотреть все проекты →

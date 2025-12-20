@@ -16,11 +16,11 @@ type BodyTextProps = {
 };
 
 const variantClasses: Record<BodyTextVariant, string> = {
-  sectionDefaultDark: "text-mobile-lg leading-mobile-normal text-accent-soft md:text-xl md:leading-relaxed",
-  sectionDefaultOnLight: "text-mobile-lg leading-mobile-normal text-basic-dark md:text-xl md:leading-relaxed",
-  sectionBrand: "text-mobile-lg leading-mobile-normal text-accent-primary md:text-xl md:leading-relaxed",
-  projectCard: "text-mobile-base leading-mobile-tight text-basic-dark md:text-base",
-  infoCard: "text-mobile-base leading-mobile-normal text-basic-dark md:text-base md:leading-relaxed",
+  sectionDefaultDark: "text-mobile-body text-accent-soft md:text-xl md:leading-relaxed",
+  sectionDefaultOnLight: "text-mobile-body text-basic-dark md:text-xl md:leading-relaxed",
+  sectionBrand: "text-mobile-body text-accent-primary md:text-xl md:leading-relaxed",
+  projectCard: "text-mobile-small text-basic-dark md:text-base",
+  infoCard: "text-mobile-small text-basic-dark md:text-base md:leading-relaxed",
 };
 
 export default function BodyText({

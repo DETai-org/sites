@@ -10,7 +10,7 @@ type HeroHeadingTitleProps = {
 
 export default function HeroHeadingTitle({ children, className }: HeroHeadingTitleProps) {
   return (
-    <Heading level={1} color="soft" className={cn("text-mobile-4xl leading-mobile-tight md:text-5xl", className)}>
+    <Heading level={1} color="soft" className={cn("text-mobile-hero md:text-5xl", className)}>
       {children}
     </Heading>
   );
