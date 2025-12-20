@@ -118,7 +118,7 @@ export default function ProjectsListSection({ containerClassName }: ProjectsList
           containerClassName,
         )}
       >
-        <div className="flex flex-col gap-mobile-5 md:gap-10">
+        <div className="flex flex-col gap-mobile-6 md:gap-10">
           <div className="flex flex-col gap-mobile-2 md:gap-3">
             <HeadingLevel2 color="soft">Каталог проектов DETai</HeadingLevel2>
             <BodyText variant="sectionDefaultDark" className="max-w-3xl text-accent-soft/80">
