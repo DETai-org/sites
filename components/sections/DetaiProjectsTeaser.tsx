@@ -43,7 +43,7 @@ export default function DetaiProjectsTeaser() {
     <Section id="detai-projects" variant="dark" className="border-y border-accent-primary/25">
       <div className="flex flex-col gap-mobile-6 md:gap-10">
         <div className="flex flex-col gap-mobile-2 md:gap-3">
-          <HeadingLevel2 color="soft" className="text-mobile-5xl">
+          <HeadingLevel2 color="soft" className="text-mobile-4xl">
             Проекты DETai
           </HeadingLevel2>
           <BodyText variant="sectionDefaultDark" className="max-w-3xl">

@@ -21,7 +21,7 @@ export default function Heading({
   const Tag = `h${level}` as const;
 
   const levelClasses: Record<HeadingLevel, string> = {
-    1: "text-mobile-5xl md:text-5xl font-serif font-semibold leading-mobile-tight tracking-tight md:leading-tight",
+    1: "text-mobile-4xl md:text-5xl font-serif font-semibold leading-mobile-tight tracking-tight md:leading-tight",
     2: "text-mobile-4xl md:text-4xl font-serif font-semibold leading-mobile-tight tracking-tight md:leading-snug",
     3: "text-mobile-2xl md:text-3xl font-serif font-semibold leading-mobile-tight tracking-tight md:leading-snug",
   };

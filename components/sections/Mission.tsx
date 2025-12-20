@@ -31,7 +31,7 @@ export default function Mission() {
         <Heading
           level={2}
           color="soft"
-          className="text-mobile-5xl text-center md:text-left"
+          className="text-mobile-4xl text-center md:text-left"
         >
           Наша миссия
         </Heading>

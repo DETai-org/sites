@@ -30,7 +30,7 @@ export default function AudienceSection() {
   return (
     <Section>
       <div className="flex flex-col gap-mobile-4 md:gap-6">
-        <Heading level={2} className="text-mobile-5xl">
+        <Heading level={2} className="text-mobile-4xl">
           Для кого DET и DETai
         </Heading>
         <BodyText variant="sectionDefaultOnLight" className="max-w-mobile md:max-w-2xl">

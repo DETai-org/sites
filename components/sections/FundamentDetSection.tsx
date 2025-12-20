@@ -7,7 +7,7 @@ export default function FundamentDetSection() {
   return (
     <Section id="fundament-det">
       <div className="flex flex-col gap-mobile-6 md:gap-8">
-        <HeadingLevel2 className="text-mobile-5xl">Фундамент DET</HeadingLevel2>
+        <HeadingLevel2 className="text-mobile-4xl">Фундамент DET</HeadingLevel2>
         <div className="space-y-mobile-4 md:space-y-6">
           <BodyText variant="sectionDefaultOnLight">
             ✨ DET — это культурная и методологическая рамка, которая помогает видеть человека в его глубине, движении и внутренней

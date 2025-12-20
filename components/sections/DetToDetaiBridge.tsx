@@ -13,7 +13,7 @@ export default function DetToDetaiBridge() {
   return (
     <Section variant="light">
       <div className="flex flex-col gap-mobile-6 md:gap-8">
-        <HeadingLevel2 className="text-mobile-5xl">
+        <HeadingLevel2 className="text-mobile-4xl">
           DET ↔ DETai
         </HeadingLevel2>
         <div className="hidden flex-col gap-6 md:flex md:max-w-4xl">
