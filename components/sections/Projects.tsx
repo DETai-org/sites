@@ -1,3 +1,4 @@
+import Heading from "../ui/Heading";
 import HeadingLevel2 from "../ui/HeadingLevel2";
 import Section from "../ui/Section";
 
@@ -50,10 +51,13 @@ export default function Projects() {
             className="group flex h-full flex-col gap-mobile-3 rounded-lg border border-accent-primary/30 bg-accent-soft p-mobile-4 text-basic-dark shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accent-primary hover:shadow-lg md:gap-4 md:p-5"
             href={project.href}
           >
-            <div className="flex items-center gap-mobile-3 text-mobile-h3 font-serif font-semibold text-basic-dark md:gap-3 md:text-lg md:leading-tight">
+            <Heading
+              level={3}
+              className="flex items-center gap-mobile-3 leading-tight md:gap-3 md:text-lg md:leading-tight"
+            >
               <span aria-hidden>{project.icon}</span>
               <span>{project.name}</span>
-            </div>
+            </Heading>
             <p className="mt-mobile-2 text-mobile-body text-basic-dark md:mt-1 md:text-base md:leading-relaxed">
               {project.description}
             </p>
