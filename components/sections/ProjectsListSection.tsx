@@ -55,11 +55,11 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           {ECHELON_TITLES[echelon]}
         </BodyText>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => scrollByCardWidth("left")}
-            className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
+            className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-2 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90 md:px-3"
             aria-label="Прокрутить влево"
           >
             ←
@@ -67,7 +67,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           <button
             type="button"
             onClick={() => scrollByCardWidth("right")}
-            className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
+            className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-2 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90 md:px-3"
             aria-label="Прокрутить вправо"
           >
             →
@@ -76,7 +76,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
       </div>
 
       <div className="relative">
-        <div className="overflow-hidden px-mobile-1 pr-mobile-3 pt-1 md:pl-6 md:pr-16 md:pt-4">
+        <div className="overflow-hidden rounded-xl bg-basic-dark px-0 pt-2 md:rounded-2xl md:pr-16 md:pt-5">
           <div
             ref={scrollRef}
             className="flex gap-mobile-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-3 md:gap-5"
@@ -89,7 +89,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           </div>
         </div>
 
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-basic-dark via-basic-dark/90 to-transparent pointer-events-none md:w-24" />
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-basic-dark via-basic-dark/95 to-transparent pointer-events-none md:w-28" />
       </div>
     </div>
   );
@@ -118,7 +118,7 @@ export default function ProjectsListSection({ containerClassName }: ProjectsList
           containerClassName,
         )}
       >
-        <div className="flex flex-col gap-mobile-5 md:gap-10">
+        <div className="flex flex-col gap-mobile-8 md:gap-10">
           <div className="flex flex-col gap-mobile-2 md:gap-3">
             <HeadingLevel2 color="soft">Каталог проектов DETai</HeadingLevel2>
             <BodyText variant="sectionDefaultDark" className="max-w-3xl text-accent-soft/80">
