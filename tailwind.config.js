@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        serif: ["Lora", "serif"],
+        serif: ["var(--font-lora)", "serif"],
         sans: ["Open Sans", "sans-serif"],
         accent: ["Great Vibes", "cursive"],
       },
