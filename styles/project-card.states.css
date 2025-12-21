@@ -31,6 +31,21 @@
   isolation: isolate;
 }
 
+.project-card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .project-card__description {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+  }
+}
+
 .project-card__status {
   position: absolute;
   bottom: 12px;

@@ -137,7 +137,10 @@ export default function ProjectCard({ title, description, avatarSrc, echelon, hr
               {title}
             </h3>
 
-            <BodyText variant="projectCard" className="text-accent-soft/80">
+            <BodyText
+              variant="projectCard"
+              className="project-card__description text-accent-soft/80"
+            >
               {description}
             </BodyText>
           </div>
