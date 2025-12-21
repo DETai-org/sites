@@ -59,7 +59,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           <button
             type="button"
             onClick={() => scrollByCardWidth("left")}
-            className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
+            className="rounded-full border border-accent-primary/30 bg-basic-dark px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
             aria-label="Прокрутить влево"
           >
             ←
@@ -67,7 +67,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           <button
             type="button"
             onClick={() => scrollByCardWidth("right")}
-            className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
+            className="rounded-full border border-accent-primary/30 bg-basic-dark px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
             aria-label="Прокрутить вправо"
           >
             →
@@ -75,21 +75,24 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
         </div>
       </div>
 
-      <div className="relative">
-        <div className="overflow-hidden pr-8 md:pr-12">
+      <div className="relative -mx-mobile-4 md:-mx-10">
+        <div className="bg-basic-dark px-mobile-4 pr-8 md:px-10 md:pr-16">
           <div
             ref={scrollRef}
-            className="flex gap-mobile-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-3 md:gap-5"
+            className="flex gap-mobile-4 overflow-x-auto overflow-y-visible scroll-smooth pb-4 md:gap-6"
           >
             {items.map((project) => (
-              <div key={project.id} className="w-[85%] min-w-[260px] max-w-[320px] flex-shrink-0 md:w-[320px] md:max-w-[320px]">
+              <div
+                key={project.id}
+                className="flex-shrink-0 px-1.5 md:px-2 min-w-[300px] md:min-w-[380px] md:w-[400px]"
+              >
                 <ProjectCard {...project} />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-basic-dark via-basic-dark/70 to-transparent md:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-basic-dark via-basic-dark to-transparent md:w-24" />
       </div>
     </div>
   );
