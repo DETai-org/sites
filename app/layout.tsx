@@ -20,7 +20,7 @@ const lora = Lora({
 });
 
 const greatVibes = Great_Vibes({
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin", "latin-ext", "vietnamese"],
   weight: ["400"],
   variable: "--font-great-vibes",
   display: "swap",
