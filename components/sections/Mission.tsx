@@ -27,7 +27,7 @@ export default function Mission() {
 
   return (
     <Section id="mission" variant="dark">
-      <div className="flex w-full max-w-[960px] flex-col items-start gap-mobile-3 md:gap-8">
+      <div className="flex w-full flex-col items-start gap-mobile-3 md:gap-8">
         <Heading
           level={2}
           color="soft"
@@ -36,7 +36,7 @@ export default function Mission() {
           Наша миссия
         </Heading>
 
-        <div className="relative w-full max-w-[960px] overflow-hidden rounded-[18px] bg-basic-dark/80 px-0 py-mobile-2 md:px-0 md:py-8">
+        <div className="relative w-full overflow-hidden rounded-[18px] bg-basic-dark/80 px-0 py-mobile-2 md:px-0 md:py-8">
           <div className="flex w-full flex-col items-center gap-mobile-4 md:flex-row md:items-start md:gap-10">
             <div
               className="group/mission relative flex w-full flex-col gap-mobile-3 md:w-[36rem] md:shrink-0 md:gap-4"
@@ -97,7 +97,7 @@ export default function Mission() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-4 md:ml-auto md:max-w-[28rem]">
+            <div className="flex w-full flex-col gap-4 md:ml-auto md:flex-1">
               <BodyText className="whitespace-pre-line w-full max-w-none" variant="sectionDefaultDark">
 
                 {"Миссия отвечает на вопрос «зачем».\nКоманда — «с кем», а видение — «куда»."}
