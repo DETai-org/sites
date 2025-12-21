@@ -14,9 +14,9 @@ type ProjectsListSectionProps = {
 };
 
 const ECHELON_TITLES: Record<Project["echelon"], string> = {
-  1: "Эшелон I · Ядро",
-  2: "Эшелон II · Пиар",
-  3: "Эшелон III · Инфра/R&D",
+  1: "Эшелон 1",
+  2: "Эшелон 2",
+  3: "Эшелон 3",
 };
 
 function getPlaceholderProjects(echelon: Project["echelon"], count: number) {
@@ -49,8 +49,8 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
   };
 
   return (
-    <div className="flex flex-col gap-mobile-3 md:gap-4">
-      <div className="flex items-center justify-between gap-mobile-2 md:gap-3">
+    <div className="relative flex flex-col gap-mobile-3 md:gap-4">
+      <div className="flex items-start justify-between gap-mobile-2 pr-14 md:items-center md:gap-3 md:pr-0">
         <BodyText variant="sectionDefaultDark" className="text-accent-soft/80">
           {ECHELON_TITLES[echelon]}
         </BodyText>
@@ -75,8 +75,27 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
         </div>
       </div>
 
+      <div className="absolute right-0 top-0 flex items-center gap-2 md:hidden">
+        <button
+          type="button"
+          onClick={() => scrollByCardWidth("left")}
+          className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
+          aria-label="Прокрутить влево"
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollByCardWidth("right")}
+          className="rounded-full border border-accent-primary/30 bg-basic-dark/40 px-3 py-2 text-accent-soft transition-colors duration-150 hover:border-accent-primary/50 hover:text-accent-soft/90"
+          aria-label="Прокрутить вправо"
+        >
+          →
+        </button>
+      </div>
+
       <div className="relative">
-        <div className="overflow-hidden pr-8 md:pr-12">
+        <div className="overflow-hidden pr-4 md:pr-12">
           <div
             ref={scrollRef}
             className="flex gap-mobile-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-3 md:gap-5"
@@ -84,7 +103,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
             {items.map((project) => (
               <div
                 key={project.id}
-                className="w-[85%] min-w-[260px] max-w-[320px] flex-shrink-0 h-[400px] md:h-auto md:w-[320px] md:max-w-[320px]"
+                className="w-[82%] min-w-[260px] max-w-[320px] flex-shrink-0 h-[400px] md:h-auto md:w-[320px] md:max-w-[320px]"
               >
                 <ProjectCard {...project} />
               </div>
@@ -117,7 +136,7 @@ export default function ProjectsListSection({ containerClassName }: ProjectsList
     <section className="w-full bg-basic-dark text-accent-soft">
       <div
         className={cn(
-          "mx-auto w-full max-w-mobile px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20",
+          "mx-auto w-full px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20",
           containerClassName,
         )}
       >
