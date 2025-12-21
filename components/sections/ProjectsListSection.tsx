@@ -75,16 +75,16 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
         </div>
       </div>
 
-      <div className="relative">
-        <div className="pr-6 md:pr-10">
+      <div className="relative -mx-mobile-4 md:-mx-10">
+        <div className="bg-basic-dark px-mobile-4 pr-8 md:px-10 md:pr-16">
           <div
             ref={scrollRef}
-            className="flex gap-mobile-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-3 md:gap-5"
+            className="flex gap-mobile-4 overflow-x-auto overflow-y-visible scroll-smooth pb-4 md:gap-6"
           >
             {items.map((project) => (
               <div
                 key={project.id}
-                className="flex-shrink-0 min-w-[280px] md:min-w-[340px] md:w-[360px]"
+                className="flex-shrink-0 px-1.5 md:px-2 min-w-[300px] md:min-w-[380px] md:w-[400px]"
               >
                 <ProjectCard {...project} />
               </div>
@@ -92,7 +92,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-basic-dark via-basic-dark to-transparent md:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-basic-dark via-basic-dark to-transparent md:w-24" />
       </div>
     </div>
   );
