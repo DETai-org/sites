@@ -14,7 +14,7 @@ export default function DetToDetaiBridge() {
     <Section variant="light">
       <div className="flex flex-col gap-mobile-6 md:gap-8">
         <HeadingLevel2>
-          DET ↔ DETai
+          От DET к DETai
         </HeadingLevel2>
         <div className="hidden flex-col gap-6 md:flex md:max-w-4xl">
           {paragraphs.map((paragraph) => (

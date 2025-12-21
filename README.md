@@ -25,7 +25,7 @@
 
 Hero — h1: «DET — Dialectical Existential Therapy.» — шрифт Lora (класс font-serif).
 
-Дет ↔ DETai — h2: «DET ↔ DETai» — шрифт Lora.
+От DET к DETai — h2: «От DET к DETai» — шрифт Lora.
 
 Проекты DETai — h2: «Проекты DETai» — шрифт Lora.
 
@@ -43,7 +43,7 @@ h3: «Исследователям и авторам» — Lora.
 
 h3: «Создателям технологий и продуктов» — Lora.
 
-Фундамент DET — h2: «Фундамент DET» — шрифт Lora.
+Основания DET — h2: «Основания DET» — шрифт Lora.
 
 Наша миссия — h2: «Наша миссия» — шрифт Lora.
 

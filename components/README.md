@@ -35,10 +35,10 @@ flowchart TB
     %% Главный поток страниц
     subgraph MainFlow[Секции внутри <main>]
         Hero[Hero — вводный блок с визуалом и CTA]
-        Bridge[DetToDetaiBridge — описание связи DET ↔ DETai]
+        Bridge[DetToDetaiBridge — описание связи «От DET к DETai»]
         Split[DetDetaiSplit — выбор направления]
         Audience[AudienceSection — карточки для целевых аудиторий]
-        Fundament[FundamentDetSection — ссылка на фундамент DET]
+        Fundament[FundamentDetSection — ссылка на основания DET]
         Mission[Mission — миссия и ценности]
     end
 
