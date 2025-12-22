@@ -24,7 +24,7 @@ export default function DetValues() {
       id="det-values"
       variant="dark"
       className="bg-basic-dark"
-      containerClassName="flex flex-col gap-mobile-5 md:gap-10"
+      containerClassName="flex flex-col gap-mobile-6 md:gap-10"
     >
       <div className="flex flex-col gap-mobile-3 md:gap-4">
         <Heading level={2} color="soft">
