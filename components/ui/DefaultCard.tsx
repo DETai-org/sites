@@ -9,6 +9,8 @@ type DefaultCardProps = {
   children: ReactNode;
   className?: string;
   variant?: "light" | "dark";
+  titlePrefix?: ReactNode;
+  titleClassName?: string;
 };
 
 const baseContainerClasses =
@@ -32,11 +34,23 @@ export default function DefaultCard({
   children,
   className,
   variant = "light",
+  titlePrefix,
+  titleClassName,
 }: DefaultCardProps) {
   return (
     <div className={cn(baseContainerClasses, variantContainerClasses[variant], className)}>
-      <Heading level={3} className={cn(baseTitleClasses, variantTitleClasses[variant])}>
-        {title}
+      <Heading
+        level={3}
+        className={cn(baseTitleClasses, variantTitleClasses[variant], titleClassName)}
+      >
+        {titlePrefix ? (
+          <span className="flex items-center gap-mobile-3 md:gap-3">
+            {titlePrefix}
+            <span>{title}</span>
+          </span>
+        ) : (
+          title
+        )}
       </Heading>
       {children}
     </div>

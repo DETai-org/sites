@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import BodyText from "../ui/BodyText";
 import DefaultCard from "../ui/DefaultCard";
 import Heading from "../ui/Heading";
@@ -34,9 +36,23 @@ export default function DetValues() {
       </div>
 
       <div className="grid grid-cols-1 gap-mobile-4 md:grid-cols-2 md:gap-6">
-        {detValues.map((value) => (
-          <DefaultCard key={value.title} title={value.title} variant="dark">
-            <BodyText className="text-mobile-body text-accent-soft md:text-xl md:leading-relaxed">
+        {detValues.map((value, index) => (
+          <DefaultCard
+            key={value.title}
+            title={value.title}
+            variant="dark"
+            titlePrefix={
+              <Image
+                alt={`Золотая цифра ${index + 1}`}
+                className="h-10 w-10 md:h-8 md:w-8"
+                height={40}
+                src={`/images/gold_numbers/${index + 1}_number.webp`}
+                width={40}
+              />
+            }
+            titleClassName="flex items-center gap-mobile-3 text-xl leading-snug md:gap-3 md:text-lg md:leading-tight"
+          >
+            <BodyText className="text-mobile-body text-accent-soft md:text-base md:leading-relaxed">
               {value.description}
             </BodyText>
           </DefaultCard>
