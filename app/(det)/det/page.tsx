@@ -1,6 +1,7 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import DetHero from "@/components/sections/DetHero";
+import DetCommunity from "@/components/sections/DetCommunity";
 import DetPractice from "@/components/sections/DetPractice";
 import DetScience from "@/components/sections/DetScience";
 import DetValues from "@/components/sections/DetValues";
@@ -14,6 +15,7 @@ export default function Page() {
         <DetValues />
         <DetScience />
         <DetPractice />
+        <DetCommunity />
       </main>
       <Footer />
     </div>
