@@ -15,8 +15,8 @@ export default function Header() {
           >
             Проекты
           </a>
-          <a className="hover:text-accent-primary" href="#fundament-det">
-            Ядро DET
+          <a className="hover:text-accent-primary" href="/det">
+            DET
           </a>
           <a className="hover:text-accent-primary" href="#mission">
             Миссия
