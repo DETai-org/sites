@@ -126,7 +126,7 @@ export default function DetScience() {
               aria-controls={`det-tabpanel-${tab.id}`}
               type="button"
               className={cn(
-                "whitespace-nowrap rounded-full border px-4 py-2 text-mobile-small font-semibold transition-colors duration-200",
+                "whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors duration-200 md:px-4 md:py-2 md:text-mobile-small",
                 activeTab === tab.id
                   ? "border-accent-primary/50 bg-accent-soft text-basic-dark shadow-sm"
                   : "border-basic-dark/10 bg-basic-light text-basic-dark hover:border-basic-dark/30"
@@ -179,8 +179,15 @@ function PublicationList({ id, labelledBy, publications }: PublicationListProps)
             <div className="flex flex-col gap-mobile-2 md:flex-row md:items-start md:justify-between">
               <Link
                 href={publication.href}
+                
+                
+
                 className={cn("text-lg font-semibold text-basic-dark md:text-xl", textLinkClasses)}
-              >
+
+                
+                
+                
+                
                 {publication.title}
               </Link>
               {publication.links && publication.links.length > 0 && (
@@ -197,8 +204,8 @@ function PublicationList({ id, labelledBy, publications }: PublicationListProps)
                 </div>
               )}
             </div>
-            <p className="text-mobile-small text-basic-dark md:text-lg md:leading-relaxed">
-              <span className="italic">{publication.venue}</span>
+            <p className="text-sm text-basic-dark md:text-lg md:leading-relaxed">
+              <span className="text-xs italic md:text-lg">{publication.venue}</span>
               {publication.authors ? ` — ${publication.authors}` : null} —
               <span className="font-medium"> {publication.year}</span>
             </p>
