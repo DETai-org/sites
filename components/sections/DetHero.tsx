@@ -1,9 +1,15 @@
-import Image from "next/image";
-
 import BodyText from "../ui/BodyText";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 import HeroScene from "./HeroScene";
+import AnimatedLogo from "../visual/AnimatedLogo";
+
+const brandDarkColor: [number, number, number, number] = [
+  30 / 255,
+  27 / 255,
+  25 / 255,
+  1,
+];
 
 export default function DetHero() {
   return (
@@ -33,12 +39,10 @@ export default function DetHero() {
       <HeroScene
         className="order-2 flex min-h-[22rem] flex-col items-center justify-center md:order-2 md:min-h-[30rem] lg:min-h-[34rem]"
       >
-        <Image
-          src="/assets/animations/logo.svg"
-          alt="DET logo"
-          width={288}
-          height={288}
-          className="logo logo--basic-dark h-[14rem] w-[14rem] object-contain md:h-[18rem] md:w-[18rem]"
+        <AnimatedLogo
+          size="100%"
+          className="h-[14rem] w-[14rem] md:h-[18rem] md:w-[18rem]"
+          colorOverride={brandDarkColor}
         />
       </HeroScene>
     </Section>
