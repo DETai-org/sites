@@ -68,5 +68,7 @@ shimmer — это фирменная фича primary.
 ## DefaultCard.tsx
 
 * Базовая карточка с рамкой, мягким фоном и hover-подъёмом.
-* Принимает `title`, `children`, опционально `className` и `titleAs` (`h3` | `h4`).
-* Сохраняет вертикальный ритм: gap мобильный/desktop, отступы `p-mobile-4` → `md:p-6`, рамку `border-accent-primary/30` и тень `shadow-sm` → `hover:shadow-lg` с лёгким сдвигом вверх.
+* Принимает `title`, `children`, опционально `className`, `titleAs` (`h3` | `h4`) и `variant` (`light` | `dark`).
+* Сохраняет вертикальный ритм: gap мобильный/desktop, отступы `p-mobile-4` → `md:p-6`, тень `shadow-sm` → `hover:shadow-lg` с лёгким сдвигом вверх.
+  * `variant="light"` (значение по умолчанию) — мягкий светлый фон `bg-accent-soft`, граница `border-accent-primary/30`, текст тёмный.
+  * `variant="dark"` — фон `bg-basic-dark`, текст `text-accent-soft`, усиленная граница `border-accent-primary/40`.
