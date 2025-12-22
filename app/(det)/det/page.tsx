@@ -1,6 +1,7 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import DetHero from "@/components/sections/DetHero";
+import DetScience from "@/components/sections/DetScience";
 import DetValues from "@/components/sections/DetValues";
 
 export default function Page() {
@@ -10,6 +11,7 @@ export default function Page() {
       <main className="flex flex-1 flex-col">
         <DetHero />
         <DetValues />
+        <DetScience />
       </main>
       <Footer />
     </div>
