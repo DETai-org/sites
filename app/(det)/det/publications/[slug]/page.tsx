@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -7,11 +8,41 @@ import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import {
+  buildPublicationDescription,
   getAllPublications,
   getPublicationBySlug,
+  getPublicationTypeLabel,
 } from "@/lib/publications/publications.utils";
 
-export default function PublicationPage({ params }: { params: { slug: string } }) {
+const publicationPageContainerClassName = "flex flex-col gap-8 md:gap-10";
+const actionLinkBaseClasses =
+  "rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 md:text-base";
+
+const publicationTypeTitle = "det-publication-page";
+
+type PublicationPageProps = { params: { slug: string } };
+
+function buildTitle(title: string, author: string, year: number) {
+  return `${title} — ${author}, ${year} | DETai`;
+}
+
+export function generateMetadata({ params }: PublicationPageProps): Metadata {
+  const publication = getPublicationBySlug(params.slug);
+
+  if (!publication) {
+    return {
+      title: "Публикация не найдена | DETai",
+      description: "Материал не найден.",
+    };
+  }
+
+  return {
+    title: buildTitle(publication.title, publication.authors[0], publication.year),
+    description: buildPublicationDescription(publication),
+  };
+}
+
+export default function PublicationPage({ params }: PublicationPageProps) {
   const publication = getPublicationBySlug(params.slug);
 
   if (!publication) notFound();
@@ -21,33 +52,37 @@ export default function PublicationPage({ params }: { params: { slug: string } }
       <Header />
       <main className="flex flex-1 flex-col">
         <Section
-          id="det-publication-page"
+          id={publicationTypeTitle}
           variant="light"
           className="bg-basic-light"
-          containerClassName="flex flex-col gap-6 md:gap-8"
+          containerClassName={publicationPageContainerClassName}
         >
-          <article className="flex flex-col gap-4 md:gap-6">
+          <article className="flex flex-col gap-5 md:gap-7">
             <Heading level={1} color="basic">
               {publication.title}
             </Heading>
 
             <div className="flex flex-col gap-1 text-mobile-small text-basic-dark/80 md:text-base">
-              <div className="font-semibold">
-                {publication.authors.join(", ")} · {publication.year}
+              <div className="flex flex-wrap items-center gap-2 font-semibold">
+                <span>{publication.authors.join(", ")}</span>
+                <span>· {publication.year}</span>
+                <span>· {getPublicationTypeLabel(publication.type)}</span>
+                {publication.journal ? <span>· {publication.journal}</span> : null}
               </div>
-              {publication.journal ? <div>{publication.journal}</div> : null}
             </div>
 
-            <BodyText variant="sectionDefaultOnLight" className="max-w-4xl text-basic-dark">
-              {publication.abstract}
-            </BodyText>
+            {publication.seoLead ? (
+              <p className="max-w-4xl text-base font-medium text-basic-dark md:text-lg">
+                {publication.seoLead}
+              </p>
+            ) : null}
 
             <div className="flex flex-wrap gap-3">
               <Link
                 href={publication.pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-accent-primary px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-hover"
+                className={`${actionLinkBaseClasses} bg-accent-primary text-basic-light hover:bg-accent-hover`}
               >
                 Скачать PDF
               </Link>
@@ -58,11 +93,63 @@ export default function PublicationPage({ params }: { params: { slug: string } }
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-basic-dark/15 px-4 py-2 text-sm font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover"
+                  className={`${actionLinkBaseClasses} border border-basic-dark/15 text-basic-dark hover:border-accent-primary/60 hover:text-accent-hover`}
                 >
-                  {link.label}
+                  Открыть в {link.label}
                 </Link>
               ))}
+            </div>
+
+            <div className="flex flex-col gap-5 rounded-2xl bg-white/70 p-mobile-3 shadow-sm md:gap-6 md:p-6">
+              <section className="flex flex-col gap-3">
+                <h2 className="text-lg font-semibold text-basic-dark md:text-xl">Аннотация</h2>
+                <BodyText variant="sectionDefaultOnLight" className="max-w-4xl text-basic-dark">
+                  {publication.abstract}
+                </BodyText>
+              </section>
+
+              {publication.keywords?.length ? (
+                <section className="flex flex-col gap-2">
+                  <h3 className="text-base font-semibold text-basic-dark md:text-lg">Ключевые слова</h3>
+                  <p className="text-mobile-small text-basic-dark/80 md:text-base">
+                    {publication.keywords.join(", ")}
+                  </p>
+                </section>
+              ) : null}
+
+              {publication.citation ? (
+                <section className="flex flex-col gap-2">
+                  <h3 className="text-base font-semibold text-basic-dark md:text-lg">Как цитировать</h3>
+                  <div className="flex flex-col gap-1 text-mobile-small text-basic-dark/80 md:text-base">
+                    {publication.citation.apa ? <p>APA: {publication.citation.apa}</p> : null}
+                    {publication.citation.gost ? <p>ГОСТ: {publication.citation.gost}</p> : null}
+                  </div>
+                </section>
+              ) : null}
+            </div>
+
+            <div className="flex flex-col gap-4 border-t border-basic-dark/10 pt-4 md:gap-5 md:pt-6">
+              <Link
+                href="/det/publications"
+                className="text-base font-semibold text-accent-primary underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover"
+              >
+                ← Все публикации
+              </Link>
+
+              <div className="flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 md:gap-4 md:p-6">
+                <p className="text-mobile-small text-basic-dark md:text-base">
+                  DETai — экосистема исследований, инструментов и проектов, объединяющих психологию, философию и технологии в рамках подхода DET.
+                </p>
+                <Link
+                  href="/det"
+                  className="inline-flex w-fit items-center rounded-full bg-basic-dark px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-primary md:text-base"
+                >
+                  О концепции DET
+                </Link>
+                <p className="text-xs text-basic-dark/70 md:text-mobile-small">
+                  Вы находитесь на сайте посвящённом диалектические-экзистенциальной терапии
+                </p>
+              </div>
             </div>
           </article>
         </Section>

@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
-import { getPublicationsByType } from "@/lib/publications/publications.utils";
+import { getPublicationTypeLabel, getPublicationsByType } from "@/lib/publications/publications.utils";
 import { Publication, PublicationType } from "@/lib/publications/types";
 
 const publicationSections: { id: PublicationType; label: string; description: string }[] = [
@@ -42,7 +42,7 @@ export default function Page() {
               Публикации
             </Heading>
             <BodyText variant="sectionDefaultOnLight" className="max-w-4xl">
-              Централизованный список научных материалов DET. Каждая позиция открывается отдельной страницей, откуда можно перейти к PDF и внешним ссылкам (например, DOI).
+              Централизованный список научных материалов DET. Каждая позиция открывается отдельной страницей, откуда доступен PDF и ссылки на внешние источники.
             </BodyText>
           </div>
 
@@ -97,35 +97,14 @@ function PublicationGroup({ section, publications }: PublicationGroupProps) {
                     {publication.title}
                   </Link>
                   <div className="text-mobile-small text-basic-dark/80 md:text-base">
-                    {publication.authors.join(", ")} · {publication.year}
+                    {publication.authors.join(", ")} · {publication.year} · {getPublicationTypeLabel(publication.type)}
                   </div>
                   {publication.journal ? (
                     <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
                   ) : null}
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <Link
-                    href={publication.pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full border border-basic-dark/15 px-3 py-1.5 text-xs font-semibold text-accent-primary transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover md:px-4 md:py-2 md:text-mobile-small"
-                  >
-                    Скачать PDF
-                  </Link>
-                  {publication.externalLinks?.map((link) => (
-                    <Link
-                      key={`${publication.slug}-${link.url}`}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full border border-basic-dark/15 px-3 py-1.5 text-xs font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover md:px-4 md:py-2 md:text-mobile-small"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
               </div>
-              <p className="text-mobile-small text-basic-dark md:text-base">{publication.abstract}</p>
+              <p className="text-mobile-small text-basic-dark md:text-base">{publication.seoLead ?? publication.abstract}</p>
             </article>
           ))}
         </div>

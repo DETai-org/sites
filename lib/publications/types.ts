@@ -7,7 +7,13 @@ export interface Publication {
   authors: string[];
   year: number;
   journal?: string;
+  seoLead?: string;
   abstract: string;
+  keywords?: string[];
+  citation?: {
+    apa?: string;
+    gost?: string;
+  };
   pdfUrl: string;
   externalLinks?: {
     label: string;
