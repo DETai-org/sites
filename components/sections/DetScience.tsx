@@ -7,6 +7,7 @@ import BodyText from "../ui/BodyText";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 import { cn } from "@/lib/utils";
+import { buildPublicationDescription } from "@/lib/publications/publications.description";
 import { getPublicationsByTypeClient } from "@/lib/publications/publications.client";
 import { Publication } from "@/lib/publications/types";
 
@@ -88,7 +89,7 @@ export default function DetScience() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 shadow-sm md:p-6">
+        <div className="paper--object paper--object-mobile rounded-2xl border border-basic-dark/10 p-mobile-3 shadow-sm md:p-6">
           {tabs.map((tab) => (
             <PublicationPanel
               key={tab.id}
@@ -129,7 +130,7 @@ function PublicationPanel({ id, labelledBy, active, publications }: PublicationP
       <div className="flex flex-col divide-y divide-basic-dark/10">
         {publications.map((publication) => (
           <article key={publication.slug} className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3">
-            <div className="flex flex-col gap-mobile-2 md:flex-row md:items-start md:justify-between">
+            <div className="flex flex-col gap-mobile-2 md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-4">
               <div className="flex flex-col gap-1">
                 <Link
                   href={`/det/publications/${publication.slug}`}
@@ -145,14 +146,14 @@ function PublicationPanel({ id, labelledBy, active, publications }: PublicationP
                 ) : null}
               </div>
 
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="mt-1 flex flex-wrap items-start gap-2 md:mt-0 md:w-28 md:flex-col md:items-end">
                 {getSortedPdfs(publication.pdfs).map((pdf) => (
                   <Link
                     key={`${publication.slug}-${pdf.lang}`}
                     href={pdf.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full border border-basic-dark/10 px-3 py-1 text-xs font-semibold text-accent-primary transition-colors duration-200 hover:border-accent-primary/50 hover:text-accent-hover"
+                    className="inline-flex w-28 justify-center rounded-full bg-basic-dark px-3 py-1 text-xs font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-primary"
                   >
                     PDF ({pdf.lang})
                   </Link>
@@ -163,14 +164,16 @@ function PublicationPanel({ id, labelledBy, active, publications }: PublicationP
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full border border-basic-dark/10 px-3 py-1 text-xs font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/50 hover:text-accent-hover"
+                    className="inline-flex w-28 justify-center rounded-full border border-basic-dark/15 bg-basic-light px-3 py-1 text-xs font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover"
                   >
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
-            <p className="text-sm text-basic-dark md:text-lg md:leading-relaxed">{publication.abstract}</p>
+            <p className="text-sm text-basic-dark md:text-lg md:leading-relaxed">
+              {buildPublicationDescription(publication)}
+            </p>
           </article>
         ))}
       </div>

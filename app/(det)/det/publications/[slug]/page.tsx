@@ -20,6 +20,8 @@ import { PublicationPdfLanguage } from "@/lib/publications/types";
 const publicationPageContainerClassName = "flex flex-col gap-8 md:gap-10";
 const actionLinkBaseClasses =
   "rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 md:text-base";
+const pdfLinkClasses = `${actionLinkBaseClasses} bg-basic-dark text-basic-light hover:bg-accent-primary`;
+const externalLinkClasses = `${actionLinkBaseClasses} border border-basic-dark/15 bg-basic-light text-basic-dark hover:border-accent-primary/60 hover:text-accent-hover`;
 
 const publicationTypeTitle = "det-publication-page";
 
@@ -88,7 +90,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
                     href={pdf.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${actionLinkBaseClasses} bg-accent-primary text-basic-light hover:bg-accent-hover`}
+                    className={pdfLinkClasses}
                   >
                     Открыть PDF ({pdf.lang})
                   </Link>
@@ -100,7 +102,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${actionLinkBaseClasses} border border-basic-dark/15 text-basic-dark hover:border-accent-primary/60 hover:text-accent-hover`}
+                    className={externalLinkClasses}
                   >
                     Открыть в {link.label}
                   </Link>
@@ -130,7 +132,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
               <PublicationShare />
             </div>
 
-            <div className="flex flex-col gap-5 rounded-2xl bg-white/70 p-mobile-3 shadow-sm md:gap-6 md:p-6">
+            <div className="paper--object paper--object-mobile flex flex-col gap-5 rounded-2xl p-mobile-3 shadow-sm md:gap-6 md:p-6">
               <section className="flex flex-col gap-3">
                 <h2 className="text-lg font-semibold text-basic-dark md:text-xl">Аннотация</h2>
                 <ExpandableAbstract text={publication.abstract} className="max-w-4xl" />
@@ -156,33 +158,33 @@ export default function PublicationPage({ params }: PublicationPageProps) {
               ) : null}
             </div>
 
-            <div className="flex flex-col gap-4 border-t border-basic-dark/10 pt-4 md:gap-5 md:pt-6">
-              <Link
-                href="/det/publications"
-                className="text-base font-semibold text-accent-primary underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover"
-              >
-                ← Все публикации
-              </Link>
+              <div className="flex flex-col gap-4 border-t border-basic-dark/10 pt-4 md:gap-5 md:pt-6">
+                <Link
+                  href="/det/publications"
+                  className="text-base font-semibold text-accent-primary underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover"
+                >
+                  ← Все публикации
+                </Link>
 
-              <div className="flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 md:gap-4 md:p-6">
-                <p className="text-mobile-small text-basic-dark md:text-base">
-                  DETai — экосистема инструментов и проектов, использующая научные данные в рамках Культуры DET.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <Link
-                    href="/det"
-                    className="inline-flex w-fit items-center rounded-full bg-basic-dark px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-primary md:text-base"
-                  >
-                    О концепции DET
-                  </Link>
-                  <Link
-                    href="/detai"
-                    className="inline-flex w-fit items-center rounded-full border border-basic-dark/15 px-4 py-2 text-sm font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover md:text-base"
-                  >
-                    Проекты DETai
-                  </Link>
-                </div>
-                <p className="text-xs text-basic-dark/70 md:text-mobile-small">
+                <div className="flex flex-col gap-3 rounded-2xl border border-basic-light/10 bg-basic-dark p-mobile-3 text-basic-light shadow-sm md:gap-4 md:p-6">
+                  <p className="text-mobile-small md:text-base">
+                    DETai — экосистема инструментов и проектов, использующая научные данные в рамках Культуры DET.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <Link
+                      href="/det"
+                      className="inline-flex w-fit items-center rounded-full border border-basic-light/20 bg-basic-dark px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:border-accent-primary/60 hover:bg-basic-dark md:text-base"
+                    >
+                      О концепции DET
+                    </Link>
+                    <Link
+                      href="/detai"
+                      className="inline-flex w-fit items-center rounded-full border border-basic-light/20 bg-basic-dark px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-primary md:text-base"
+                    >
+                      Проекты DETai
+                    </Link>
+                  </div>
+                  <p className="text-xs text-basic-light/70 md:text-mobile-small">
                   Данная публикация относится к исследовательскому полю, тематически связанному с экзистенциально-диалектической психотерапией (DET).
                 </p>
               </div>

@@ -42,17 +42,17 @@ export default function PublicationShare({ title = "Поделиться пуб�
   };
 
   const buttonBaseClasses =
-    "inline-flex items-center gap-2 rounded-full border border-basic-dark/10 bg-white/80 px-3 py-2 text-sm font-semibold text-basic-dark shadow-sm transition-colors duration-200 hover:border-accent-primary/50 hover:text-accent-hover";
+    "inline-flex items-center gap-2 rounded-full border border-basic-light/20 bg-basic-dark px-3 py-2 text-sm font-semibold text-basic-light shadow-sm transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-primary";
 
   return (
     <div
       className={cn(
-        "flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 md:p-4",
+        "flex flex-col gap-3 rounded-2xl border border-basic-light/15 bg-basic-dark p-mobile-3 text-basic-light md:p-4",
         compact && "md:flex-row md:items-center md:justify-between",
         className,
       )}
     >
-      {title ? <h3 className="text-base font-semibold text-basic-dark md:text-lg">{title}</h3> : null}
+      {title ? <h3 className="text-base font-semibold text-basic-light md:text-lg">{title}</h3> : null}
 
       <div className="flex flex-wrap items-center gap-2 md:gap-3">
         <button type="button" className={cn(buttonBaseClasses, "md:text-base")} onClick={handleCopy}>
@@ -81,7 +81,7 @@ export default function PublicationShare({ title = "Поделиться пуб�
         </Link>
       </div>
 
-      <div className="flex items-center gap-2 text-xs text-basic-dark/70 md:text-mobile-small">
+      <div className="flex items-center gap-2 text-xs text-basic-light/70 md:text-mobile-small">
         <Link2 className="h-4 w-4" aria-hidden />
         <span>{copied ? "Ссылка скопирована" : "Поделиться можно за 1 клик"}</span>
       </div>

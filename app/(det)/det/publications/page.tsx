@@ -5,7 +5,11 @@ import Header from "@/components/layout/Header";
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
-import { getPublicationTypeLabel, getPublicationsByType } from "@/lib/publications/publications.utils";
+import {
+  buildPublicationDescription,
+  getPublicationTypeLabel,
+  getPublicationsByType,
+} from "@/lib/publications/publications.utils";
 import { Publication, PublicationType } from "@/lib/publications/types";
 
 const publicationSections: { id: PublicationType; label: string; description: string }[] = [
@@ -69,7 +73,7 @@ type PublicationGroupProps = {
 
 function PublicationGroup({ section, publications }: PublicationGroupProps) {
   return (
-    <section className="flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 shadow-sm md:gap-4 md:p-6">
+    <section className="paper--object paper--object-mobile flex flex-col gap-3 rounded-2xl border border-basic-dark/10 p-mobile-3 shadow-sm md:gap-4 md:p-6">
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1">
           <h2 className="text-lg font-semibold text-basic-dark md:text-2xl">{section.label}</h2>
@@ -99,16 +103,16 @@ function PublicationGroup({ section, publications }: PublicationGroupProps) {
                   <div className="text-mobile-small text-basic-dark/80 md:text-base">
                     {publication.authors.join(", ")} · {publication.year} · {getPublicationTypeLabel(publication.type)}
                   </div>
-              {publication.journal ? (
-                <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
-              ) : null}
-            </div>
-          </div>
-          <p className="pt-1 text-mobile-small text-basic-dark/80 md:text-base">
-            {publication.seoLead ?? publication.abstract}
-          </p>
-        </article>
-      ))}
+                  {publication.journal ? (
+                    <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
+                  ) : null}
+                </div>
+              </div>
+              <p className="pt-1 text-mobile-small text-basic-dark/80 md:text-base">
+                {buildPublicationDescription(publication)}
+              </p>
+            </article>
+          ))}
         </div>
       )}
     </section>
