@@ -9,12 +9,12 @@ export default function Hero() {
     <Section
       id="hero"
       variant="dark"
-      className="relative min-h-screen overflow-hidden bg-bg bg-no-repeat [background-image:var(--hero-glow)]"
+      className="relative min-h-screen overflow-hidden bg-[color:rgb(var(--hero-bg))] bg-no-repeat [background-image:var(--hero-glow)]"
       containerClassName="relative flex min-h-screen flex-col justify-center gap-8 md:gap-12"
       fullWidth
     >
       <div className="relative z-20 w-full max-w-[48rem] md:max-w-[52rem]">
-        <HeroHeadingTitle className="text-fg">
+        <HeroHeadingTitle className="text-[color:rgb(var(--hero-text))]">
           DET — Dialectical Existential Therapy.
         </HeroHeadingTitle>
         <p className="mt-4 text-lg leading-snug text-[color:var(--hero-subtitle)] md:text-xl lg:text-2xl">
