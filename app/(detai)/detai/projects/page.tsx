@@ -9,7 +9,7 @@ export default function Page() {
   const extendedContainerClassName = "md:max-w-[96rem] md:px-16";
 
   return (
-    <div className="flex min-h-screen flex-col bg-bg text-fg">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section containerClassName={extendedContainerClassName}>

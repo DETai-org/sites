@@ -53,7 +53,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
   if (!publication) notFound();
 
   return (
-    <div className="flex min-h-screen flex-col bg-bg text-fg">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section

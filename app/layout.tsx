@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${lora.variable} ${greatVibes.variable} overflow-x-hidden font-sans antialiased bg-bg text-fg`}
+        className={`${openSans.variable} ${lora.variable} ${greatVibes.variable} overflow-x-hidden font-sans antialiased`}
       >
         <Providers>
           <ShimmerAutoTrigger />

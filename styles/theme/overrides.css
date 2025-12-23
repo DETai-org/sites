@@ -1,0 +1,31 @@
+.dark {
+  --bg: 30 27 25;
+  --fg: 228 215 198;
+  --surface: 42 37 33;
+  --surface-2: 56 49 44;
+  --border: 201 168 106;
+  --muted: 176 159 138;
+  --accent: 201 168 106;
+  --accent-soft: 186 156 106;
+  --soft-border: 201 168 106;
+  --panel-bg: 42 37 33;
+
+  --hero-bg: 30 27 25;
+  --hero-text: 228 215 198;
+  --hero-glow: radial-gradient(120% 140% at 20% 0%, rgb(var(--accent) / 0.18), transparent 65%);
+  --hero-subtitle: rgb(var(--muted));
+  --det-hero-bg: 30 27 25;
+  --det-hero-glow: radial-gradient(140% 140% at 18% 0%, rgb(var(--accent) / 0.2), transparent 68%);
+
+  --button-secondary-border: rgb(var(--border) / 0.6);
+  --button-secondary-text: rgb(var(--fg));
+  --button-primary-from: 170 132 64;
+  --button-primary-to: 210 178 116;
+
+  --paper-ambient: 34 30 28;
+  --paper-ambient-highlight: 201 168 106;
+  --paper-ambient-shadow: 8 6 5;
+  --paper-object-glow: 70 60 54;
+
+  --shimmer-highlight: 210 192 160;
+}

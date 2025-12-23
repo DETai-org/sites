@@ -41,7 +41,7 @@ const practiceSections = [
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col bg-bg text-fg">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section

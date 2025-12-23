@@ -1,0 +1,31 @@
+:root {
+  --bg: 246 241 233;
+  --fg: 30 27 25;
+  --surface: 242 229 194;
+  --surface-2: 30 27 25;
+  --border: 30 27 25;
+  --muted: 106 98 90;
+  --accent: 201 168 106;
+  --accent-soft: 242 229 194;
+  --soft-border: 30 27 25;
+  --panel-bg: 246 241 233;
+
+  --hero-bg: 30 27 25;
+  --hero-text: 242 229 194;
+  --hero-glow: none;
+  --hero-subtitle: rgb(var(--accent-soft));
+  --det-hero-bg: 242 229 194;
+  --det-hero-glow: none;
+
+  --button-secondary-border: rgb(var(--accent));
+  --button-secondary-text: rgb(var(--accent));
+  --button-primary-from: 182 142 60;
+  --button-primary-to: 242 211 137;
+
+  --paper-ambient: 246 243 236;
+  --paper-ambient-highlight: 255 255 255;
+  --paper-ambient-shadow: 0 0 0;
+  --paper-object-glow: 255 255 255;
+
+  --shimmer-highlight: 255 255 255;
+}
