@@ -15,6 +15,7 @@ import {
   getPublicationBySlug,
   getPublicationTypeLabel,
 } from "@/lib/publications/publications.utils";
+import { PublicationPdfLanguage } from "@/lib/publications/types";
 
 const publicationPageContainerClassName = "flex flex-col gap-8 md:gap-10";
 const actionLinkBaseClasses =
@@ -81,14 +82,17 @@ export default function PublicationPage({ params }: PublicationPageProps) {
 
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap gap-3">
-                <Link
-                  href={publication.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${actionLinkBaseClasses} bg-accent-primary text-basic-light hover:bg-accent-hover`}
-                >
-                  Скачать PDF
-                </Link>
+                {getSortedPdfs(publication.pdfs).map((pdf) => (
+                  <Link
+                    key={`${publication.slug}-${pdf.lang}`}
+                    href={pdf.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${actionLinkBaseClasses} bg-accent-primary text-basic-light hover:bg-accent-hover`}
+                  >
+                    Открыть PDF ({pdf.lang})
+                  </Link>
+                ))}
 
                 {publication.externalLinks?.map((link) => (
                   <Link
@@ -162,14 +166,22 @@ export default function PublicationPage({ params }: PublicationPageProps) {
 
               <div className="flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 md:gap-4 md:p-6">
                 <p className="text-mobile-small text-basic-dark md:text-base">
-                  DETai — экосистема исследований, инструментов и проектов, объединяющих психологию, философию и технологии в рамках подхода DET.
+                  DETai — экосистема инструментов и проектов, использующая научные данные в рамках Культуры DET.
                 </p>
-                <Link
-                  href="/det"
-                  className="inline-flex w-fit items-center rounded-full bg-basic-dark px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-primary md:text-base"
-                >
-                  О концепции DET
-                </Link>
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    href="/det"
+                    className="inline-flex w-fit items-center rounded-full bg-basic-dark px-4 py-2 text-sm font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-primary md:text-base"
+                  >
+                    О концепции DET
+                  </Link>
+                  <Link
+                    href="/detai"
+                    className="inline-flex w-fit items-center rounded-full border border-basic-dark/15 px-4 py-2 text-sm font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover md:text-base"
+                  >
+                    Проекты DETai
+                  </Link>
+                </div>
                 <p className="text-xs text-basic-dark/70 md:text-mobile-small">
                   Данная публикация относится к исследовательскому полю, тематически связанному с экзистенциально-диалектической психотерапией (DET).
                 </p>
@@ -187,4 +199,11 @@ export function generateStaticParams() {
   return getAllPublications().map((publication) => ({
     slug: publication.slug,
   }));
+}
+
+function getSortedPdfs(pdfs: { lang: PublicationPdfLanguage; url: string }[]) {
+  return [...pdfs].sort((a, b) => {
+    if (a.lang === b.lang) return 0;
+    return a.lang === "RU" ? -1 : 1;
+  });
 }

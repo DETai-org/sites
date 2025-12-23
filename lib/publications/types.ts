@@ -1,5 +1,12 @@
 export type PublicationType = "article" | "dissertation" | "thesis";
 
+export type PublicationPdfLanguage = "RU" | "EN";
+
+export interface PublicationPdf {
+  url: string;
+  lang: PublicationPdfLanguage;
+}
+
 export interface Publication {
   slug: string;
   type: PublicationType;
@@ -15,7 +22,7 @@ export interface Publication {
     gost?: string;
   };
   doi?: string;
-  pdfUrl: string;
+  pdfs: PublicationPdf[];
   externalLinks?: {
     label: string;
     url: string;
