@@ -12,7 +12,7 @@ export default function DetaiProjectsTeaser() {
     .filter((project): project is Project => Boolean(project));
 
   return (
-    <Section id="detai-projects" variant="dark" className="border-y border-accent-primary/25">
+    <Section id="detai-projects" variant="dark" className="border-y border-border/70">
       <div className="flex flex-col gap-mobile-6 md:gap-10">
         <div className="flex flex-col gap-mobile-2 md:gap-3">
           <HeadingLevel2 color="soft">Проекты DETai</HeadingLevel2>
@@ -30,11 +30,11 @@ export default function DetaiProjectsTeaser() {
         </div>
 
         <div className="flex flex-col gap-mobile-2 md:flex-row md:items-center md:justify-between md:gap-3">
-          <BodyText variant="sectionDefaultDark" className="text-accent-soft/90">
+          <BodyText variant="sectionDefaultDark" className="text-accentSoft/90">
             Экосистема растёт: новые агенты и сервисы будут появляться по мере публикации.
           </BodyText>
           <a
-            className="inline-flex items-center gap-mobile-2 text-mobile-body font-semibold text-accent-soft underline-offset-4 hover:underline md:text-base"
+            className="inline-flex items-center gap-mobile-2 text-mobile-body font-semibold text-accentSoft underline-offset-4 hover:underline md:text-base"
             href="/detai/projects"
           >
             Смотреть все проекты →

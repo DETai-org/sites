@@ -18,16 +18,16 @@ const baseContainerClasses =
   "flex h-full flex-col gap-mobile-2 rounded-xl border p-mobile-4 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg md:gap-3 md:p-6";
 
 const variantContainerClasses: Record<NonNullable<DefaultCardProps["variant"]>, string> = {
-  light: "border-accent-primary/30 bg-accent-soft text-basic-dark hover:border-accent-primary",
-  dark: "border-accent-primary/40 bg-basic-dark text-accent-soft shadow-md hover:border-accent-primary",
+  light: "border-border/70 bg-surface text-text hover:border-accent/70",
+  dark: "border-border/60 bg-surface2 text-accentSoft shadow-md hover:border-accent/70",
 };
 
 const baseTitleClasses =
   "min-h-[3.5rem] text-left text-xl leading-snug md:min-h-[5.5rem] md:text-[2rem] md:leading-snug font-serif font-semibold";
 
 const variantTitleClasses: Record<NonNullable<DefaultCardProps["variant"]>, string> = {
-  light: "text-basic-dark",
-  dark: "text-accent-soft",
+  light: "text-text",
+  dark: "text-accentSoft",
 };
 
 export default function DefaultCard({

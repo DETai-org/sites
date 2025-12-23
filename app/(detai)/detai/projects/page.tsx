@@ -9,13 +9,13 @@ export default function Page() {
   const extendedContainerClassName = "md:max-w-[96rem] md:px-16";
 
   return (
-    <div className="flex min-h-screen flex-col bg-basic-light text-basic-dark">
+    <div className="flex min-h-screen flex-col bg-canvas text-text">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section containerClassName={extendedContainerClassName}>
           <div className="flex flex-col gap-mobile-4 md:gap-6">
             <Heading level={1}>Проекты DETai</Heading>
-            <BodyText className="text-basic-dark md:text-xl md:leading-relaxed">
+            <BodyText className="text-text md:text-xl md:leading-relaxed">
               Здесь скоро появится подборка проектов DETai. Мы готовим описания, демо и навигацию по инструментам, которые
               развивают диалектически-экзистенциальную терапию с помощью современных технологий.
             </BodyText>

@@ -7,11 +7,10 @@ export default function DetCommunity() {
     <Section
       id="det-community"
       variant="dark"
-      className="bg-basic-dark"
       containerClassName="flex flex-col gap-mobile-3 md:gap-4"
     >
       <HeadingLevel2 color="soft">Сообщество и общий костёр</HeadingLevel2>
-      <BodyText className="max-w-4xl text-mobile-body text-accent-soft md:text-base md:leading-relaxed">
+      <BodyText className="max-w-4xl text-mobile-body text-accentSoft md:text-base md:leading-relaxed">
         Мы объединяем психологов, психотерапевтов и людей, идущих путём самопознания — чтобы быть у общего костра: чувствовать
         родство, честность и глубину.
         <br />

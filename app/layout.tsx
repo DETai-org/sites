@@ -4,6 +4,7 @@ import type { Viewport } from "next";
 import { Great_Vibes, Lora, Open_Sans } from "next/font/google";
 
 import ShimmerAutoTrigger from "@/components/layout/ShimmerAutoTrigger";
+import Providers from "./providers";
 
 const openSans = Open_Sans({
   subsets: ["latin", "cyrillic"],
@@ -38,12 +39,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${lora.variable} ${greatVibes.variable} overflow-x-hidden font-sans text-basic-dark bg-basic-light antialiased`}
+        className={`${openSans.variable} ${lora.variable} ${greatVibes.variable} overflow-x-hidden font-sans antialiased bg-canvas text-text`}
       >
-        <ShimmerAutoTrigger />
-        {children}
+        <Providers>
+          <ShimmerAutoTrigger />
+          {children}
+        </Providers>
       </body>
     </html>
   );

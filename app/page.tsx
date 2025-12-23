@@ -10,7 +10,7 @@ import Mission from "../components/sections/Mission";
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col bg-basic-light text-basic-dark">
+    <div className="flex min-h-screen flex-col bg-canvas text-text">
       <Header />
       <main className="flex flex-1 flex-col gap-0">
         <Hero />

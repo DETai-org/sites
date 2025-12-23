@@ -62,7 +62,6 @@ export default function DetScience() {
     <Section
       id="det-science"
       variant="light"
-      className="bg-basic-light"
       containerClassName="flex flex-col gap-mobile-5 md:gap-10"
     >
       <div className="flex flex-col gap-mobile-3 md:gap-4">
@@ -89,7 +88,7 @@ export default function DetScience() {
         <div
           role="tablist"
           aria-label="Категории публикаций"
-          className="flex flex-wrap gap-2 overflow-x-auto rounded-xl border border-basic-dark/10 bg-basic-light p-mobile-2 md:gap-3"
+          className="flex flex-wrap gap-2 overflow-x-auto rounded-xl border border-border/60 bg-surface p-mobile-2 md:gap-3"
         >
           {tabs.map((tab) => (
             <button
@@ -102,8 +101,8 @@ export default function DetScience() {
               className={cn(
                 "whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors duration-200 md:px-4 md:py-2 md:text-mobile-small",
                 activeTab === tab.id
-                  ? "border-accent-primary/50 bg-accent-soft text-basic-dark shadow-sm"
-                  : "border-basic-dark/10 bg-basic-light text-basic-dark hover:border-basic-dark/30"
+                  ? "border-accent/50 bg-accentSoft text-text shadow-sm"
+                  : "border-border/60 bg-surface text-text hover:border-border/80"
               )}
               onClick={() => setActiveTab(tab.id)}
             >
@@ -112,7 +111,7 @@ export default function DetScience() {
           ))}
         </div>
 
-        <div className="paper--object paper--object-mobile rounded-2xl border border-basic-dark/10 p-mobile-3 shadow-sm md:p-6">
+        <div className="paper--object paper--object-mobile rounded-2xl border border-border/60 p-mobile-3 shadow-sm md:p-6">
           {tabs.map((tab) => (
             <PublicationPanel
               key={tab.id}
@@ -126,12 +125,12 @@ export default function DetScience() {
         </div>
 
         <div className="flex flex-col gap-mobile-2 md:flex-row md:items-center md:justify-between md:gap-3">
-          <BodyText variant="sectionDefaultOnLight" className="text-mobile-small text-basic-dark/70 md:text-base">
+          <BodyText variant="sectionDefaultOnLight" className="text-mobile-small text-muted md:text-base">
             Полный каталог и свежие обновления — в разделе «Публикации».
           </BodyText>
           <Link
             href="/det/publications"
-            className="inline-flex items-center gap-mobile-1 text-mobile-body font-semibold text-accent-primary underline decoration-accent-primary/60 underline-offset-4 transition-colors duration-200 hover:text-accent-hover md:text-base"
+            className="inline-flex items-center gap-mobile-1 text-mobile-body font-semibold text-accent underline decoration-accent/60 underline-offset-4 transition-colors duration-200 hover:text-accentHover md:text-base"
           >
             Смотреть все публикации →
           </Link>
@@ -164,7 +163,7 @@ function PublicationPanel({ id, labelledBy, active, publications, limitMobile }:
 
   return (
     <div role="tabpanel" id={id} aria-labelledby={labelledBy}>
-      <div className="flex flex-col divide-y divide-basic-dark/10">
+      <div className="flex flex-col divide-y divide-border/50">
         {publications.map((publication, index) => (
           <article
             key={publication.slug}
@@ -177,15 +176,15 @@ function PublicationPanel({ id, labelledBy, active, publications, limitMobile }:
               <div className="flex flex-col gap-1">
                 <Link
                   href={`/det/publications/${publication.slug}`}
-                  className="text-base font-semibold text-basic-dark underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover md:text-xl"
+                  className="text-base font-semibold text-text underline decoration-accent/50 underline-offset-[6px] transition-colors duration-200 hover:text-accentHover md:text-xl"
                 >
                   {publication.title}
                 </Link>
-                <p className="text-mobile-small text-basic-dark/80 md:text-base">
+                <p className="text-mobile-small text-muted md:text-base">
                   {publication.authors.join(", ")} · {publication.year}
                 </p>
                 {publication.journal ? (
-                  <p className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</p>
+                  <p className="text-mobile-small text-muted/80 md:text-base">{publication.journal}</p>
                 ) : null}
               </div>
 
@@ -196,7 +195,7 @@ function PublicationPanel({ id, labelledBy, active, publications, limitMobile }:
                     href={pdf.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-28 justify-center rounded-full bg-basic-dark px-3 py-1 text-xs font-semibold text-basic-light transition-colors duration-200 hover:bg-accent-primary"
+                    className="inline-flex w-28 justify-center rounded-full bg-surface2 px-3 py-1 text-xs font-semibold text-accentSoft transition-colors duration-200 hover:bg-accent"
                   >
                     PDF ({pdf.lang})
                   </Link>
@@ -207,14 +206,14 @@ function PublicationPanel({ id, labelledBy, active, publications, limitMobile }:
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-28 justify-center rounded-full border border-basic-dark/15 bg-basic-light px-3 py-1 text-xs font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover"
+                    className="inline-flex w-28 justify-center rounded-full border border-border/60 bg-surface px-3 py-1 text-xs font-semibold text-text transition-colors duration-200 hover:border-accent/60 hover:text-accentHover"
                   >
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
-            <p className="text-sm text-basic-dark md:text-lg md:leading-relaxed">
+            <p className="text-sm text-text md:text-lg md:leading-relaxed">
               {buildPublicationDescription(publication)}
             </p>
           </article>

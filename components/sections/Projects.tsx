@@ -39,7 +39,7 @@ export default function Projects() {
     <Section id="projects">
       <div className="mb-mobile-6 flex flex-col gap-mobile-3 md:mb-12 md:gap-4">
         <HeadingLevel2>Проекты DETai</HeadingLevel2>
-        <p className="max-w-mobile text-mobile-body text-basic-dark md:max-w-2xl md:text-base md:leading-relaxed">
+        <p className="max-w-mobile text-mobile-body text-text md:max-w-2xl md:text-base md:leading-relaxed">
           Практические инструменты, создаваемые на основе метода DET и работающие в технологической экосистеме DETai.
         </p>
       </div>
@@ -47,24 +47,24 @@ export default function Projects() {
         {projects.map((project) => (
           <a
             key={project.name}
-            className="group flex h-full flex-col gap-mobile-3 rounded-lg border border-accent-primary/30 bg-accent-soft p-mobile-4 text-basic-dark shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accent-primary hover:shadow-lg md:gap-4 md:p-5"
+            className="group flex h-full flex-col gap-mobile-3 rounded-lg border border-accent/30 bg-accentSoft p-mobile-4 text-text shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg md:gap-4 md:p-5"
             href={project.href}
           >
-            <div className="flex items-center gap-mobile-3 text-xl font-serif font-semibold text-basic-dark md:gap-3 md:text-lg md:leading-tight">
+            <div className="flex items-center gap-mobile-3 text-xl font-serif font-semibold text-text md:gap-3 md:text-lg md:leading-tight">
               <span aria-hidden>{project.icon}</span>
               <span>{project.name}</span>
             </div>
-            <p className="mt-mobile-2 text-mobile-body text-basic-dark md:mt-1 md:text-base md:leading-relaxed">
+            <p className="mt-mobile-2 text-mobile-body text-text md:mt-1 md:text-base md:leading-relaxed">
               {project.description}
             </p>
-            <span className="mt-mobile-3 inline-flex w-fit items-center gap-mobile-2 text-sm font-medium text-basic-dark underline-offset-4 group-hover:underline md:gap-2 md:text-base">
+            <span className="mt-mobile-3 inline-flex w-fit items-center gap-mobile-2 text-sm font-medium text-text underline-offset-4 group-hover:underline md:gap-2 md:text-base">
               Подробнее →
             </span>
           </a>
         ))}
       </div>
       <div className="mt-mobile-6 md:mt-10">
-        <a className="text-mobile-body font-semibold text-basic-dark underline-offset-4 hover:underline md:text-base" href="/detai/projects">
+        <a className="text-mobile-body font-semibold text-text underline-offset-4 hover:underline md:text-base" href="/detai/projects">
           Все проекты →
         </a>
       </div>

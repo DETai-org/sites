@@ -35,14 +35,14 @@ export default function ExpandableAbstract({
 
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      <p className={cn("text-mobile-small text-basic-dark md:text-base md:leading-relaxed", textClassName)} style={clampStyles}>
+      <p className={cn("text-mobile-small text-text md:text-base md:leading-relaxed", textClassName)} style={clampStyles}>
         {text}
       </p>
 
       {shouldShowToggle ? (
         <button
           type="button"
-          className="self-start text-sm font-semibold text-accent-primary underline decoration-accent-primary/60 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover"
+          className="self-start text-sm font-semibold text-accent underline decoration-accent/60 underline-offset-[6px] transition-colors duration-200 hover:text-accentHover"
           onClick={() => setIsExpanded((current) => !current)}
           aria-expanded={isExpanded}
         >

@@ -23,7 +23,6 @@ export default function DetValues() {
     <Section
       id="det-values"
       variant="dark"
-      className="bg-basic-dark"
       containerClassName="flex flex-col gap-mobile-6 md:gap-10"
     >
       <div className="flex flex-col gap-mobile-3 md:gap-4">
@@ -54,7 +53,7 @@ export default function DetValues() {
               />
             }
           >
-            <BodyText className="text-left text-mobile-body text-accent-soft md:text-base md:leading-relaxed">
+            <BodyText className="text-left text-mobile-body text-accentSoft md:text-base md:leading-relaxed">
               {value.description}
             </BodyText>
           </DefaultCard>

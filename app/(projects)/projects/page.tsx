@@ -6,13 +6,13 @@ import Section from "@/components/ui/Section";
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col bg-basic-light text-basic-dark">
+    <div className="flex min-h-screen flex-col bg-canvas text-text">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section>
           <div className="flex flex-col gap-mobile-4 md:gap-6">
             <Heading level={1}>Проекты DETai</Heading>
-            <BodyText className="text-basic-dark md:text-xl md:leading-relaxed">
+            <BodyText className="text-text md:text-xl md:leading-relaxed">
               Здесь появится навигация по проектам DETai: от аналитических инструментов до интерфейсов сопровождения. Мы готовим
               информацию, чтобы можно было быстро перейти к нужному продукту и узнать о нём больше.
             </BodyText>

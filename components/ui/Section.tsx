@@ -22,8 +22,8 @@ export default function Section({
   children,
 }: SectionProps) {
   const variantClasses: Record<SectionVariant, string> = {
-    dark: "bg-basic-dark text-accent-soft",
-    light: "bg-basic-light text-basic-dark",
+    dark: "bg-surface2 text-accentSoft",
+    light: "bg-canvas text-text",
   };
 
   const baseContainerClasses = fullWidth

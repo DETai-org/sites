@@ -52,7 +52,7 @@ export default function MobileExpandableText({
   return (
     <div
       className={cn(
-        "md:hidden relative isolate w-full max-w-none overflow-hidden bg-basic-light", // mobile only
+        "md:hidden relative isolate w-full max-w-none overflow-hidden bg-canvas", // mobile only
         className,
       )}
       role="button"
@@ -93,8 +93,8 @@ export default function MobileExpandableText({
 
       {!isExpanded && remainingText ? (
         <>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-basic-light via-basic-light/90 to-transparent" />
-          <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 z-10 text-mobile-small font-semibold uppercase tracking-wide text-accent-primary">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-canvas via-canvas/90 to-transparent" />
+          <span className="pointer-events-none absolute bottom-mobile-3 right-mobile-4 z-10 text-mobile-small font-semibold uppercase tracking-wide text-accent">
             {moreLabel}
           </span>
         </>

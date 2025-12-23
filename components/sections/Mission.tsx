@@ -36,7 +36,7 @@ export default function Mission() {
           Наша миссия
         </Heading>
 
-        <div className="relative w-full overflow-hidden rounded-[18px] bg-basic-dark/80 px-0 py-mobile-2 md:px-0 md:py-8">
+        <div className="relative w-full overflow-hidden rounded-[18px] bg-surface2/90 px-0 py-mobile-2 md:px-0 md:py-8">
           <div className="flex w-full flex-col items-center gap-mobile-4 md:flex-row md:items-start md:gap-10">
             <div
               className="group/mission relative flex w-full flex-col gap-mobile-3 md:w-[36rem] md:shrink-0 md:gap-4"
@@ -55,7 +55,7 @@ export default function Mission() {
             >
               <div
                 className={cn(
-                  "absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-basic-dark px-6 text-center transition-opacity duration-500 ease-out",
+                  "absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-surface2 px-6 text-center transition-opacity duration-500 ease-out",
                   "group-hover/mission:pointer-events-none group-hover/mission:opacity-0 group-active/mission:pointer-events-none group-active/mission:opacity-0",
                   "md:items-start md:text-left",
                   isRevealed && shouldToggleOnClick && "pointer-events-none opacity-0"
@@ -73,7 +73,7 @@ export default function Mission() {
                 </div>
 
                 <div className="flex w-[9rem] items-center justify-center md:w-[12rem]">
-                  <p className="text-center text-sm uppercase tracking-[0.18em] text-accent-soft/70">Click me</p>
+                  <p className="text-center text-sm uppercase tracking-[0.18em] text-accentSoft/70">Click me</p>
                 </div>
               </div>
 

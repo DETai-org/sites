@@ -66,9 +66,9 @@
   inset: -35%;
   background: linear-gradient(
     120deg,
-    rgba(201, 168, 106, 0),
-    rgba(255, 255, 255, 0.6),
-    rgba(201, 168, 106, 0)
+    rgb(var(--accent) / 0),
+    rgb(var(--shimmer-highlight) / 0.6),
+    rgb(var(--accent) / 0)
   );
   opacity: 0;
   transform: translateX(-100%) rotate(18deg);
@@ -83,7 +83,7 @@
 }
 
 .btn-shimmer::after {
-  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 0 18px rgb(var(--shimmer-highlight) / 0.25);
   z-index: 0;
 }
 
@@ -102,5 +102,5 @@
 }
 
 .btn-shimmer:active::after {
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 6px rgb(var(--shimmer-highlight) / 0.1);
 }

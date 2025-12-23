@@ -17,7 +17,7 @@ export default function Hero() {
         <HeroHeadingTitle>
           DET — Dialectical Existential Therapy.
         </HeroHeadingTitle>
-        <p className="mt-4 text-lg leading-snug text-accent-soft md:text-xl lg:text-2xl">
+        <p className="mt-4 text-lg leading-snug text-accentSoft md:text-xl lg:text-2xl">
           Новый формат психотерапии
         </p>
       </div>

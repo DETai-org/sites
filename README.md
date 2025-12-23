@@ -57,6 +57,7 @@ detai-site/
 │
 ├── app/                           # Страницы и маршруты (App Router)
 │   ├── layout.tsx                 # Главный layout
+│   ├── providers.tsx              # Провайдеры приложения (тема, контексты)
 │   ├── page.tsx                   # Главная
 │   ├── about/page.tsx             # О проекте
 │   ├── products/page.tsx          # Продукты/боты экосистемы

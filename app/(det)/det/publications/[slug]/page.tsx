@@ -20,8 +20,8 @@ import { PublicationPdfLanguage } from "@/lib/publications/types";
 const publicationPageContainerClassName = "flex flex-col gap-8 md:gap-10";
 const actionLinkBaseClasses =
   "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-200 md:text-base";
-const pdfLinkClasses = `${actionLinkBaseClasses} bg-gradient-to-br from-[#B68E3C] to-[#F2D389] text-basic-dark shadow-[0_0_15px_rgba(201,168,106,0.25)] hover:brightness-105 active:brightness-95`;
-const externalLinkClasses = `${actionLinkBaseClasses} border-2 border-accent-primary text-accent-primary hover:bg-accent-soft/20 hover:text-accent-hover`;
+const pdfLinkClasses = `${actionLinkBaseClasses} bg-gradient-to-br from-accentActive to-accentSoft text-text shadow-[0_0_15px_rgb(var(--accent)/0.25)] hover:brightness-105 active:brightness-95`;
+const externalLinkClasses = `${actionLinkBaseClasses} border-2 border-accent text-accent hover:bg-accentSoft/20 hover:text-accentHover`;
 
 const publicationTypeTitle = "det-publication-page";
 
@@ -53,13 +53,12 @@ export default function PublicationPage({ params }: PublicationPageProps) {
   if (!publication) notFound();
 
   return (
-    <div className="flex min-h-screen flex-col bg-basic-light text-basic-dark">
+    <div className="flex min-h-screen flex-col bg-canvas text-text">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section
           id={publicationTypeTitle}
           variant="light"
-          className="bg-basic-light"
           containerClassName={publicationPageContainerClassName}
         >
           <article className="flex flex-col gap-5 md:gap-7">
@@ -67,7 +66,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
               {publication.title}
             </Heading>
 
-            <div className="flex flex-col gap-1 text-mobile-small text-basic-dark/80 md:text-base">
+            <div className="flex flex-col gap-1 text-mobile-small text-muted md:text-base">
               <div className="flex flex-wrap items-center gap-2 font-semibold">
                 <span>{publication.authors.join(", ")}</span>
                 <span>· {publication.year}</span>
@@ -77,7 +76,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
             </div>
 
             {publication.seoLead ? (
-              <p className="max-w-4xl text-base font-medium text-basic-dark md:text-lg">
+              <p className="max-w-4xl text-base font-medium text-text md:text-lg">
                 {publication.seoLead}
               </p>
             ) : null}
@@ -110,20 +109,20 @@ export default function PublicationPage({ params }: PublicationPageProps) {
               </div>
 
               {publication.doi ? (
-                <div className="flex flex-col gap-1 text-mobile-small text-basic-dark/70 md:text-base">
+                <div className="flex flex-col gap-1 text-mobile-small text-muted/80 md:text-base">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-semibold text-basic-dark">DOI:</span>
+                    <span className="font-semibold text-text">DOI:</span>
                     <Link
                       href={`https://doi.org/${publication.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline decoration-basic-dark/30 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover hover:decoration-accent-primary/60"
+                      className="underline decoration-border/60 underline-offset-[6px] transition-colors duration-200 hover:text-accentHover hover:decoration-accent/60"
                       title="DOI может вести на страницу регистрации и не всегда открывает статью"
                     >
                       {publication.doi}
                     </Link>
                   </div>
-                  <span className="text-xs italic text-basic-dark/60">
+                  <span className="text-xs italic text-muted/80">
                     DOI может вести на страницу регистрации и не всегда открывает статью
                   </span>
                 </div>
@@ -134,14 +133,14 @@ export default function PublicationPage({ params }: PublicationPageProps) {
 
             <div className="paper--object paper--object-mobile flex flex-col gap-5 rounded-2xl p-mobile-3 shadow-sm md:gap-6 md:p-6">
               <section className="flex flex-col gap-3">
-                <h2 className="text-lg font-semibold text-basic-dark md:text-xl">Аннотация</h2>
+                <h2 className="text-lg font-semibold text-text md:text-xl">Аннотация</h2>
                 <ExpandableAbstract text={publication.abstract} className="max-w-4xl" />
               </section>
 
               {publication.keywords?.length ? (
                 <section className="flex flex-col gap-2">
-                  <h3 className="text-base font-semibold text-basic-dark md:text-lg">Ключевые слова</h3>
-                  <p className="text-mobile-small text-basic-dark/80 md:text-base">
+                  <h3 className="text-base font-semibold text-text md:text-lg">Ключевые слова</h3>
+                  <p className="text-mobile-small text-muted md:text-base">
                     {publication.keywords.join(", ")}
                   </p>
                 </section>
@@ -149,8 +148,8 @@ export default function PublicationPage({ params }: PublicationPageProps) {
 
               {publication.citation ? (
                 <section className="flex flex-col gap-2">
-                  <h3 className="text-base font-semibold text-basic-dark md:text-lg">Как цитировать</h3>
-                  <div className="flex flex-col gap-1 text-mobile-small text-basic-dark/80 md:text-base">
+                  <h3 className="text-base font-semibold text-text md:text-lg">Как цитировать</h3>
+                  <div className="flex flex-col gap-1 text-mobile-small text-muted md:text-base">
                     {publication.citation.apa ? <p>APA: {publication.citation.apa}</p> : null}
                     {publication.citation.gost ? <p>ГОСТ: {publication.citation.gost}</p> : null}
                   </div>
@@ -158,15 +157,15 @@ export default function PublicationPage({ params }: PublicationPageProps) {
               ) : null}
             </div>
 
-            <div className="flex flex-col gap-4 border-t border-basic-dark/10 pt-4 md:gap-5 md:pt-6">
+            <div className="flex flex-col gap-4 border-t border-border/50 pt-4 md:gap-5 md:pt-6">
               <Link
                 href="/det/publications"
-                className="text-base font-semibold text-accent-primary underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover"
+                className="text-base font-semibold text-accent underline decoration-accent/50 underline-offset-[6px] transition-colors duration-200 hover:text-accentHover"
               >
                 ← Все публикации
               </Link>
 
-              <div className="flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-basic-light p-mobile-3 text-basic-dark shadow-sm md:gap-4 md:p-6">
+              <div className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-surface p-mobile-3 text-text shadow-sm md:gap-4 md:p-6">
                 <p className="text-mobile-small md:text-base">
                   DETai — экосистема инструментов и проектов, использующая научные данные в рамках Культуры DET.
                 </p>
@@ -182,7 +181,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
                     </Button>
                   </Link>
                 </div>
-                <p className="text-xs text-basic-dark/70 md:text-mobile-small">
+                <p className="text-xs text-muted md:text-mobile-small">
                   Данная публикация относится к исследовательскому полю, тематически связанному с экзистенциально-диалектической психотерапией (DET).
                 </p>
               </div>

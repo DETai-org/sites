@@ -70,5 +70,5 @@ shimmer — это фирменная фича primary.
 * Базовая карточка с рамкой, мягким фоном и hover-подъёмом.
 * Принимает `title`, `children`, опционально `className`, `titleAs` (`h3` | `h4`) и `variant` (`light` | `dark`).
 * Сохраняет вертикальный ритм: gap мобильный/desktop, отступы `p-mobile-4` → `md:p-6`, тень `shadow-sm` → `hover:shadow-lg` с лёгким сдвигом вверх.
-  * `variant="light"` (значение по умолчанию) — мягкий светлый фон `bg-accent-soft`, граница `border-accent-primary/30`, текст тёмный.
-  * `variant="dark"` — фон `bg-basic-dark`, текст `text-accent-soft`, усиленная граница `border-accent-primary/40`.
+  * `variant="light"` (значение по умолчанию) — фон `bg-surface`, граница `border-border/70`, текст `text-text`.
+  * `variant="dark"` — фон `bg-surface2`, текст `text-accentSoft`, граница `border-border/60`.

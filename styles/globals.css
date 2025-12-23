@@ -2,6 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: 246 241 233;
+  --surface: 255 252 247;
+  --surface-2: 30 27 25;
+  --text: 30 27 25;
+  --muted: 106 98 90;
+  --border: 210 196 173;
+  --accent: 201 168 106;
+  --accent-soft: 242 229 194;
+  --accent-hover: 198 156 90;
+  --accent-active: 184 146 79;
+
+  --paper-ambient: 246 243 236;
+  --paper-ambient-highlight: 255 255 255;
+  --paper-ambient-shadow: 0 0 0;
+  --paper-object-glow: 255 255 255;
+
+  --shimmer-highlight: 255 255 255;
+}
+
+.dark {
+  --bg: 24 21 20;
+  --surface: 32 28 26;
+  --surface-2: 20 18 16;
+  --text: 230 221 209;
+  --muted: 176 162 147;
+  --border: 82 72 66;
+  --accent: 198 164 98;
+  --accent-soft: 170 146 104;
+  --accent-hover: 214 180 118;
+  --accent-active: 156 124 74;
+
+  --paper-ambient: 34 30 28;
+  --paper-ambient-highlight: 214 196 162;
+  --paper-ambient-shadow: 8 6 5;
+  --paper-object-glow: 70 60 54;
+
+  --shimmer-highlight: 210 192 160;
+}
+
 @import "./ui-effects.css";
 @import "./project-cards.css";
 @import "./project-card.states.css";

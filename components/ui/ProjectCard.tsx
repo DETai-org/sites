@@ -122,14 +122,14 @@ export default function ProjectCard({
     >
       <Link
         href={href}
-        className="block h-full transition-transform duration-200 ease-out focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-primary/60"
+        className="block h-full transition-transform duration-200 ease-out focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent/60"
         aria-label={`Проект: ${title}`}
       >
-        <article className="project-card__surface detai-card-surface relative flex h-full min-h-[360px] flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accent-soft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:min-h-[380px] md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
+        <article className="project-card__surface detai-card-surface relative flex h-full min-h-[360px] flex-col justify-between gap-mobile-3 overflow-hidden p-mobile-4 text-accentSoft shadow-[0_18px_48px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out md:min-h-[380px] md:gap-4 md:p-5 group-hover:-translate-y-[3px]">
           <span className="project-card__status">{statusLabel}</span>
           <div className="flex flex-col gap-mobile-3 md:gap-4">
             <div className="flex items-start justify-between gap-mobile-3 md:gap-4">
-              <div className="relative h-22 w-22 shrink-0 overflow-hidden rounded-full border border-accent-primary/20">
+              <div className="relative h-22 w-22 shrink-0 overflow-hidden rounded-full border border-accent/20">
                 <Image
                   src={avatarSrc}
                   alt={`Аватар проекта: ${title}`}
@@ -140,12 +140,12 @@ export default function ProjectCard({
                 />
               </div>
 
-              <div className="h-18 w-18 shrink-0 rounded-lg border border-accent-primary/10 bg-basic-dark/15" aria-hidden />
+              <div className="h-18 w-18 shrink-0 rounded-lg border border-accent/10 bg-surface2/20" aria-hidden />
             </div>
 
             <h3
               className={cn(
-                "font-serif font-semibold text-accent-soft md:text-xl md:leading-tight",
+                "font-serif font-semibold text-accentSoft md:text-xl md:leading-tight",
                 compactMobileText
                   ? "text-[1.125rem] leading-[1.5rem]"
                   : "text-[1.25rem] leading-[1.65rem]",
@@ -157,7 +157,7 @@ export default function ProjectCard({
             <BodyText
               variant="projectCard"
               className={cn(
-                "project-card__description text-accent-soft/80",
+                "project-card__description text-accentSoft/80",
                 compactMobileText && "text-sm leading-[1.4rem]",
               )}
             >
@@ -166,7 +166,7 @@ export default function ProjectCard({
           </div>
 
           <div className="flex justify-end">
-            <span className="inline-flex items-center rounded-full border border-accent-primary/20 bg-basic-dark/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-accent-soft/90 md:text-xs">
+            <span className="inline-flex items-center rounded-full border border-accent/20 bg-surface2/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-accentSoft/90 md:text-xs">
               {echelonLabel}
             </span>
           </div>

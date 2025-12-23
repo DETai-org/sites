@@ -78,7 +78,6 @@ export default function DetPractice() {
     <Section
       id="det-practice"
       variant="light"
-      className="bg-basic-light"
       containerClassName="flex flex-col gap-mobile-5 md:gap-10"
     >
       <div className="flex flex-col gap-mobile-3 md:gap-4">
@@ -102,7 +101,7 @@ export default function DetPractice() {
         </BodyText>
       </div>
 
-      <div className="flex flex-wrap gap-2 overflow-x-auto rounded-xl border border-basic-dark/10 bg-white/70 p-mobile-2 md:gap-3 md:p-3">
+      <div className="flex flex-wrap gap-2 overflow-x-auto rounded-xl border border-border/60 bg-surface/80 p-mobile-2 md:gap-3 md:p-3">
         {filters.map((filter) => (
           <button
             key={filter.id}
@@ -110,8 +109,8 @@ export default function DetPractice() {
             className={cn(
               "whitespace-nowrap rounded-full border px-4 py-2 text-mobile-small font-semibold transition-colors duration-200 md:text-base",
               activeFilter === filter.id
-                ? "border-accent-primary/50 bg-accent-soft text-basic-dark shadow-sm"
-                : "border-basic-dark/10 bg-basic-light text-basic-dark hover:border-basic-dark/30",
+                ? "border-accent/50 bg-accentSoft text-text shadow-sm"
+                : "border-border/60 bg-surface text-text hover:border-border/80",
             )}
             aria-pressed={activeFilter === filter.id}
             onClick={() => setActiveFilter(filter.id)}
@@ -125,25 +124,25 @@ export default function DetPractice() {
         {filteredFormats.map((format) => (
           <article
             key={format.title}
-            className="flex h-full w-full flex-col gap-mobile-3 rounded-xl border border-accent-primary/30 bg-accent-soft p-mobile-4 text-basic-dark shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accent-primary hover:shadow-lg md:gap-4 md:p-6"
+            className="flex h-full w-full flex-col gap-mobile-3 rounded-xl border border-accent/30 bg-accentSoft p-mobile-4 text-text shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg md:gap-4 md:p-6"
           >
             <div className="flex items-start justify-between gap-mobile-2 md:gap-3">
               <Heading
                 level={3}
-                className="text-xl font-serif font-semibold leading-snug text-basic-dark md:text-[2rem] md:leading-snug"
+                className="text-xl font-serif font-semibold leading-snug text-text md:text-[2rem] md:leading-snug"
               >
                 {format.title}
               </Heading>
-              <span className="shrink-0 rounded-full border border-basic-dark/10 bg-white/80 px-3 py-1 text-xs font-semibold text-basic-dark shadow-sm md:text-sm">
+              <span className="shrink-0 rounded-full border border-border/60 bg-surface/80 px-3 py-1 text-xs font-semibold text-text shadow-sm md:text-sm">
                 {statusMeta[format.status].icon} {statusMeta[format.status].label}
               </span>
             </div>
-            <p className="text-mobile-small text-basic-dark md:text-base md:leading-relaxed">
+            <p className="text-mobile-small text-text md:text-base md:leading-relaxed">
               {format.description}
             </p>
             <Link
               href={format.href}
-              className="mt-auto inline-flex w-fit items-center gap-mobile-2 text-mobile-small font-semibold text-accent-primary underline decoration-accent-primary/60 underline-offset-4 transition-colors duration-200 hover:text-accent-hover md:gap-2 md:text-base"
+              className="mt-auto inline-flex w-fit items-center gap-mobile-2 text-mobile-small font-semibold text-accent underline decoration-accent/60 underline-offset-4 transition-colors duration-200 hover:text-accentHover md:gap-2 md:text-base"
             >
               Подробнее →
             </Link>
@@ -152,10 +151,10 @@ export default function DetPractice() {
       </div>
 
       <div className="mt-mobile-4 flex justify-end md:mt-6">
-        <p className="text-right text-mobile-small italic text-basic-dark md:text-sm">
+        <p className="text-right text-mobile-small italic text-muted md:text-sm">
           <em>
             Практика держится на человеке и позиции. <br />
-            А <Link href="/detai" className="text-accent-primary underline decoration-accent-primary/60 underline-offset-4 transition-colors duration-200 hover:text-accent-hover">DETai</Link>
+            А <Link href="/detai" className="text-accent underline decoration-accent/60 underline-offset-4 transition-colors duration-200 hover:text-accentHover">DETai</Link>
             {" "}
             добавляет инструменты поддержки — как продолжение, а не замена живого контакта.
           </em>

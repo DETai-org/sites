@@ -32,13 +32,12 @@ const publicationSections: { id: PublicationType; label: string; description: st
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col bg-basic-light text-basic-dark">
+    <div className="flex min-h-screen flex-col bg-canvas text-text">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section
           id="det-publications-page"
           variant="light"
-          className="bg-basic-light"
           containerClassName="flex flex-col gap-6 md:gap-10"
         >
           <div className="flex flex-col gap-mobile-3 md:gap-5">
@@ -73,13 +72,13 @@ type PublicationGroupProps = {
 
 function PublicationGroup({ section, publications }: PublicationGroupProps) {
   return (
-    <section className="paper--object paper--object-mobile flex flex-col gap-3 rounded-2xl border border-basic-dark/10 p-mobile-3 shadow-sm md:gap-4 md:p-6">
+    <section className="paper--object paper--object-mobile flex flex-col gap-3 rounded-2xl border border-border/60 p-mobile-3 shadow-sm md:gap-4 md:p-6">
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold text-basic-dark md:text-2xl">{section.label}</h2>
-          <p className="text-mobile-small text-basic-dark/80 md:text-base">{section.description}</p>
+          <h2 className="text-lg font-semibold text-text md:text-2xl">{section.label}</h2>
+          <p className="text-mobile-small text-muted md:text-base">{section.description}</p>
         </div>
-        <span className="rounded-full bg-basic-dark/5 px-3 py-1 text-xs font-semibold text-basic-dark md:text-sm">
+        <span className="rounded-full bg-surface/70 px-3 py-1 text-xs font-semibold text-text md:text-sm">
           {publications.length} {publications.length === 1 ? "публикация" : "публикации"}
         </span>
       </div>
@@ -89,26 +88,26 @@ function PublicationGroup({ section, publications }: PublicationGroupProps) {
           Материалы в этой категории появятся позже.
         </BodyText>
       ) : (
-        <div className="flex flex-col divide-y divide-basic-dark/10">
+        <div className="flex flex-col divide-y divide-border/50">
           {publications.map((publication) => (
             <article key={publication.slug} className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3">
               <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                 <div className="flex flex-col gap-1">
                   <Link
                     href={`/det/publications/${publication.slug}`}
-                    className="text-base font-semibold text-basic-dark underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover md:text-xl"
+                    className="text-base font-semibold text-text underline decoration-accent/50 underline-offset-[6px] transition-colors duration-200 hover:text-accentHover md:text-xl"
                   >
                     {publication.title}
                   </Link>
-                  <div className="text-mobile-small text-basic-dark/80 md:text-base">
+                  <div className="text-mobile-small text-muted md:text-base">
                     {publication.authors.join(", ")} · {publication.year} · {getPublicationTypeLabel(publication.type)}
                   </div>
                   {publication.journal ? (
-                    <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
+                    <div className="text-mobile-small text-muted/80 md:text-base">{publication.journal}</div>
                   ) : null}
                 </div>
               </div>
-              <p className="pt-1 text-mobile-small text-basic-dark/80 md:text-base">
+              <p className="pt-1 text-mobile-small text-muted md:text-base">
                 {buildPublicationDescription(publication)}
               </p>
             </article>

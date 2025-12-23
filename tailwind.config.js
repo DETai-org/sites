@@ -12,6 +12,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        canvas: "rgb(var(--bg) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        surface2: "rgb(var(--surface-2) / <alpha-value>)",
+        text: "rgb(var(--text) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        border: "rgb(var(--border) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        accentSoft: "rgb(var(--accent-soft) / <alpha-value>)",
+        accentHover: "rgb(var(--accent-hover) / <alpha-value>)",
+        accentActive: "rgb(var(--accent-active) / <alpha-value>)",
         basic: {
           dark: "#1E1B19",
           light: "#F6F1E9",

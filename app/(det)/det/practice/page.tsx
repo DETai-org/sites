@@ -41,12 +41,11 @@ const practiceSections = [
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col bg-basic-light text-basic-dark">
+    <div className="flex min-h-screen flex-col bg-canvas text-text">
       <Header />
       <main className="flex flex-1 flex-col">
         <Section
           variant="light"
-          className="bg-basic-light"
           containerClassName="flex flex-col gap-mobile-5 md:gap-10"
         >
           <div className="flex flex-col gap-mobile-3 md:gap-4">
@@ -66,25 +65,25 @@ export default function Page() {
               <section
                 key={section.id}
                 id={section.id}
-                className="flex flex-col gap-mobile-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-4 shadow-sm md:gap-4 md:p-6"
+                className="flex flex-col gap-mobile-3 rounded-2xl border border-border/60 bg-surface/80 p-mobile-4 shadow-sm md:gap-4 md:p-6"
               >
                 <div className="flex flex-col gap-mobile-2 md:flex-row md:items-center md:justify-between md:gap-3">
                   <Heading level={2} className="text-2xl font-serif font-semibold leading-snug md:text-[2rem] md:leading-snug">
                     {section.title}
                   </Heading>
-                  <span className="rounded-full bg-basic-light px-4 py-2 text-mobile-small font-semibold text-basic-dark shadow-sm md:text-base">
+                  <span className="rounded-full bg-surface px-4 py-2 text-mobile-small font-semibold text-text shadow-sm md:text-base">
                     {section.status}
                   </span>
                 </div>
-                <p className="text-mobile-body text-basic-dark md:text-base md:leading-relaxed">
+                <p className="text-mobile-body text-text md:text-base md:leading-relaxed">
                   {section.description}
                 </p>
                 {section.status !== "🟢 Сейчас доступно" && (
-                  <p className="text-mobile-small font-semibold text-accent-primary md:text-base">
+                  <p className="text-mobile-small font-semibold text-accent md:text-base">
                     Подробности появятся скоро
                   </p>
                 )}
-                <p className="text-mobile-small text-basic-dark md:text-base md:leading-relaxed">{section.note}</p>
+                <p className="text-mobile-small text-muted md:text-base md:leading-relaxed">{section.note}</p>
               </section>
             ))}
           </div>

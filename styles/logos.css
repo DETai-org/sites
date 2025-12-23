@@ -4,9 +4,9 @@
 }
 
 .logo--accent-soft {
-  color: #F2E5C2; /* ACCENT.SOFT */
+  color: rgb(var(--accent-soft));
 }
 
 .logo--basic-dark {
-  color: #1E1B19; /* BASIC.DARK */
+  color: rgb(var(--text));
 }
