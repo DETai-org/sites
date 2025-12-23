@@ -1,80 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import BodyText from "../ui/BodyText";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 import { cn } from "@/lib/utils";
-
-type PublicationLinkType = "PDF" | "DOI" | "SITE" | "LIST";
-
-type PublicationLink = {
-  type: PublicationLinkType;
-  href: string;
-};
-
-type Publication = {
-  title: string;
-  venue: string;
-  authors?: string;
-  year: number;
-  href: string;
-  links?: PublicationLink[];
-};
-
-const featuredArticles: Publication[] = [
-  {
-    title:
-      "Взаимосвязь занятий атлетизмом с психологическими чертами «тёмной триады» и установкой на преодоление",
-    venue: "Журнал «Психология и педагогика спортивной деятельности»",
-    authors: "Колхонен А.Ю., Андреев В.В.",
-    year: 2023,
-    href: "#",
-  },
-  {
-    title:
-      "Представления о «добре» и «зле» студентов-психологов в «до-ковидную эпоху» и в настоящее время. Часть 1. Анализ семантического пространства категорий «добро» и «зло»",
-    venue:
-      "Журнал «Институт психологии Российской академии наук. Социальная и экономическая психология»",
-    authors: "Юмкина Е.А., Колхонен А.Ю., Мироненко И.А.",
-    year: 2023,
-    href: "#",
-  },
-  {
-    title:
-      "Представления о «добре» и «зле» студентов-психологов в «до-ковидную эпоху» и в настоящее время. Часть 2. Содержательный анализ определений добра и зла",
-    venue:
-      "Журнал «Институт психологии Российской академии наук. Социальная и экономическая психология»",
-    authors: "Юмкина Е.А., Колхонен А.Ю., Мироненко И.А.",
-    year: 2023,
-    href: "#",
-  },
-];
-
-const dissertations: Publication[] = [
-  {
-    title: "Взаимосвязь этических представлений и характерологических особенностей личности",
-    venue:
-      "Диссертация на соискание учёной степени кандидата психологических наук",
-    year: 2025,
-    href: "#",
-  },
-];
-
-const talks: Publication[] = [];
+import { getPublicationsByType } from "@/lib/publications/publications.utils";
+import { Publication } from "@/lib/publications/types";
 
 type TabId = "articles" | "dissertations" | "talks";
 
-const tabs: { id: TabId; label: string }[] = [
-  { id: "articles", label: "Статьи" },
-  { id: "dissertations", label: "Диссертации" },
-  { id: "talks", label: "Тезисы и доклады" },
+const tabs: { id: TabId; label: string; type: Publication["type"] }[] = [
+  { id: "articles", label: "Статьи", type: "article" },
+  { id: "dissertations", label: "Диссертации", type: "dissertation" },
+  { id: "talks", label: "Тезисы и доклады", type: "thesis" },
 ];
 
 export default function DetScience() {
   const [activeTab, setActiveTab] = useState<TabId>("articles");
+
+  const publicationsByTab = useMemo(() => {
+    return tabs.reduce<Record<TabId, Publication[]>>((acc, tab) => {
+      acc[tab.id] = getPublicationsByType(tab.type);
+      return acc;
+    }, { articles: [], dissertations: [], talks: [] });
+  }, []);
 
   return (
     <Section
@@ -82,8 +34,6 @@ export default function DetScience() {
       variant="light"
       className="bg-basic-light"
       containerClassName="flex flex-col gap-mobile-5 md:gap-10"
-
-      className="text-base font-semibold text-basic-dark underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover md:text-xl"
     >
       <div className="flex flex-col gap-mobile-3 md:gap-4">
         <Heading level={2} color="basic">
@@ -91,10 +41,11 @@ export default function DetScience() {
         </Heading>
         <BodyText variant="sectionDefaultOnLight" className="max-w-4xl">
           DET вырастает из ценностей и подкрепляется научной обоснованностью — исследованием, наблюдением и моделями, которые
-          помогают удерживать ясность и проверяемость.<br />
+          помогают удерживать ясность и проверяемость.
           <br />
-          Мы уважаем данные и стремимся к точности, но не сводим человека к схеме: наука здесь — опора, а не рамка, которая
-          отменяет живое переживание.
+          <br />
+          Мы уважаем данные и стремимся к точности, но не сводим человека к схеме: наука здесь — опора, а не рамка, которая отменяет
+          живое переживание.
         </BodyText>
       </div>
 
@@ -138,88 +89,88 @@ export default function DetScience() {
         </div>
 
         <div className="rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 shadow-sm md:p-6">
-          {activeTab === "articles" && (
-            <PublicationList
-              id="det-tabpanel-articles"
-              labelledBy="det-tab-articles"
-              publications={featuredArticles}
+          {tabs.map((tab) => (
+            <PublicationPanel
+              key={tab.id}
+              id={`det-tabpanel-${tab.id}`}
+              labelledBy={`det-tab-${tab.id}`}
+              active={activeTab === tab.id}
+              publications={publicationsByTab[tab.id]}
             />
-          )}
-
-          {activeTab === "dissertations" && (
-            <PublicationList
-              id="det-tabpanel-dissertations"
-              labelledBy="det-tab-dissertations"
-              publications={dissertations}
-            />
-          )}
-
-          {activeTab === "talks" && (
-            <PlaceholderPanel id="det-tabpanel-talks" labelledBy="det-tab-talks" />
-          )}
+          ))}
         </div>
       </div>
     </Section>
   );
 }
 
-type PublicationListProps = {
+type PublicationPanelProps = {
   id: string;
   labelledBy: string;
+  active: boolean;
   publications: Publication[];
 };
 
-function PublicationList({ id, labelledBy, publications }: PublicationListProps) {
+function PublicationPanel({ id, labelledBy, active, publications }: PublicationPanelProps) {
+  if (!active) return null;
+
+  if (publications.length === 0) {
+    return (
+      <div role="tabpanel" id={id} aria-labelledby={labelledBy}>
+        <BodyText variant="sectionDefaultOnLight" className="text-mobile-small md:text-xl">
+          Здесь будут появляться новые материалы — статьи, диссертации и доклады по мере выхода.
+        </BodyText>
+      </div>
+    );
+  }
+
   return (
     <div role="tabpanel" id={id} aria-labelledby={labelledBy}>
       <div className="flex flex-col divide-y divide-basic-dark/10">
         {publications.map((publication) => (
-          <article key={publication.title} className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3">
+          <article key={publication.slug} className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3">
             <div className="flex flex-col gap-mobile-2 md:flex-row md:items-start md:justify-between">
-              <Link
-                href={publication.href}
-                className="text-base font-semibold text-basic-dark underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover md:text-xl"
-              >
-                {publication.title}
-              </Link>
-              {publication.links && publication.links.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2">
-                  {publication.links.map((link) => (
-                    <Link
-                      key={`${publication.title}-${link.type}`}
-                      href={link.href}
-                      className="rounded-full border border-basic-dark/10 px-3 py-1 text-xs font-semibold text-accent-primary transition-colors duration-200 hover:border-accent-primary/50 hover:text-accent-hover"
-                    >
-                      [{link.type}]
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <div className="flex flex-col gap-1">
+                <Link
+                  href={`/det/publications/${publication.slug}`}
+                  className="text-base font-semibold text-basic-dark underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover md:text-xl"
+                >
+                  {publication.title}
+                </Link>
+                <p className="text-mobile-small text-basic-dark/80 md:text-base">
+                  {publication.authors.join(", ")} · {publication.year}
+                </p>
+                {publication.journal ? (
+                  <p className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</p>
+                ) : null}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <Link
+                  href={publication.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-basic-dark/10 px-3 py-1 text-xs font-semibold text-accent-primary transition-colors duration-200 hover:border-accent-primary/50 hover:text-accent-hover"
+                >
+                  [PDF]
+                </Link>
+                {publication.externalLinks?.map((link) => (
+                  <Link
+                    key={`${publication.slug}-${link.url}`}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-basic-dark/10 px-3 py-1 text-xs font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/50 hover:text-accent-hover"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <p className="text-sm text-basic-dark md:text-lg md:leading-relaxed">
-              <span className="text-xs italic md:text-lg">{publication.venue}</span>
-              {publication.authors ? ` — ${publication.authors}` : null} —
-              <span className="font-medium"> {publication.year}</span>
-            </p>
+            <p className="text-sm text-basic-dark md:text-lg md:leading-relaxed">{publication.abstract}</p>
           </article>
         ))}
       </div>
-    </div>
-  );
-}
-
-type PlaceholderPanelProps = {
-  id: string;
-  labelledBy: string;
-};
-
-function PlaceholderPanel({ id, labelledBy }: PlaceholderPanelProps) {
-  return (
-    <div role="tabpanel" id={id} aria-labelledby={labelledBy}>
-      <BodyText variant="sectionDefaultOnLight" className="text-mobile-small md:text-xl">
-        Здесь будут появляться тезисы конференций, доклады и презентации по мере выхода — чтобы было видно, как идеи DET проходят
-        проверку и обсуждение в профессиональной среде.
-      </BodyText>
     </div>
   );
 }
