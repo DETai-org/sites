@@ -64,6 +64,12 @@ export const publications: Publication[] = [
       "светлая триада",
     ],
     pdfUrl: "/documents/research/2024-personality-typology-ethical-psychology.pdf",
+    externalLinks: [
+      {
+        label: "eLIBRARY",
+        url: "https://elibrary.ru/item.asp?id=82424043",
+      },
+    ],
   },
   {
     slug: "good-evil-self-actualization",
@@ -78,11 +84,6 @@ export const publications: Publication[] = [
     abstract:
       "Сопоставляет представления о добре и зле у людей с разным уровнем самоактуализации, демонстрируя связи ценностных ориентаций и личностной зрелости.",
     pdfUrl: "/documents/research/2025-good-evil-self-actualization_Kolkhonen_Mironenko.pdf",
-    externalLinks: [
-      {
-        label: "DOI 10.21638/spbu16.2025.108",
-        url: "https://doi.org/10.21638/spbu16.2025.108",
-      },
-    ],
+    doi: "10.21638/spbu16.2025.108",
   },
 ];
