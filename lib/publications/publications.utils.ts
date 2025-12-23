@@ -20,6 +20,14 @@ export function getPublicationBySlug(slug: string): Publication | undefined {
   return publications.find((publication) => publication.slug === slug);
 }
 
+export function getPublicationsBySlugs(slugs: string[]): Publication[] {
+  const publicationMap = new Map(publications.map((publication) => [publication.slug, publication]));
+
+  return slugs
+    .map((slug) => publicationMap.get(slug))
+    .filter((publication): publication is Publication => Boolean(publication));
+}
+
 export function getPublicationTypeLabel(type: PublicationType): string {
   return publicationTypeLabels[type];
 }

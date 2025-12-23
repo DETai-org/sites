@@ -8,23 +8,52 @@ import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 import { cn } from "@/lib/utils";
 import { buildPublicationDescription } from "@/lib/publications/publications.description";
-import { getPublicationsByTypeClient } from "@/lib/publications/publications.client";
+import { getPublicationsBySlugsClient } from "@/lib/publications/publications.client";
+import { publicationsTeaserConfig } from "@/lib/publications/publicationsTeaser.config";
 import { Publication } from "@/lib/publications/types";
 
 type TabId = "articles" | "dissertations" | "talks";
 
-const tabs: { id: TabId; label: string; type: Publication["type"] }[] = [
-  { id: "articles", label: "Статьи", type: "article" },
-  { id: "dissertations", label: "Диссертации", type: "dissertation" },
-  { id: "talks", label: "Тезисы и доклады", type: "thesis" },
+const tabs: {
+  id: TabId;
+  label: string;
+  type: Publication["type"];
+  limitDesktop: number;
+  limitMobile: number;
+  slugs: string[];
+}[] = [
+  {
+    id: "dissertations",
+    label: "Диссертации",
+    type: "dissertation",
+    limitDesktop: publicationsTeaserConfig.dissertations.limitDesktop,
+    limitMobile: publicationsTeaserConfig.dissertations.limitMobile,
+    slugs: publicationsTeaserConfig.dissertations.slugs,
+  },
+  {
+    id: "articles",
+    label: "Статьи",
+    type: "article",
+    limitDesktop: publicationsTeaserConfig.articles.limitDesktop,
+    limitMobile: publicationsTeaserConfig.articles.limitMobile,
+    slugs: publicationsTeaserConfig.articles.slugs,
+  },
+  {
+    id: "talks",
+    label: "Тезисы и доклады",
+    type: "thesis",
+    limitDesktop: publicationsTeaserConfig.thesis.limitDesktop,
+    limitMobile: publicationsTeaserConfig.thesis.limitMobile,
+    slugs: publicationsTeaserConfig.thesis.slugs,
+  },
 ];
 
 export default function DetScience() {
-  const [activeTab, setActiveTab] = useState<TabId>("articles");
+  const [activeTab, setActiveTab] = useState<TabId>("dissertations");
 
   const publicationsByTab = useMemo(() => {
     return tabs.reduce<Record<TabId, Publication[]>>((acc, tab) => {
-      acc[tab.id] = getPublicationsByTypeClient(tab.type);
+      acc[tab.id] = getPublicationsBySlugsClient(tab.slugs).slice(0, tab.limitDesktop);
       return acc;
     }, { articles: [], dissertations: [], talks: [] });
   }, []);
@@ -51,16 +80,10 @@ export default function DetScience() {
       </div>
 
       <div className="flex flex-col gap-mobile-4 md:gap-6" id="det-publications">
-        <div className="flex flex-wrap items-center justify-between gap-mobile-3 md:gap-4">
+        <div className="flex flex-wrap items-center gap-mobile-2 md:gap-3">
           <Heading level={3} color="basic" className="text-xl md:text-3xl">
             Публикации
           </Heading>
-          <Link
-            href="/det/publications"
-            className="text-mobile-small font-semibold text-accent-primary underline decoration-accent-primary/60 underline-offset-4 transition-colors duration-200 hover:text-accent-hover"
-          >
-            Смотреть все публикации →
-          </Link>
         </div>
 
         <div
@@ -97,8 +120,21 @@ export default function DetScience() {
               labelledBy={`det-tab-${tab.id}`}
               active={activeTab === tab.id}
               publications={publicationsByTab[tab.id]}
+              limitMobile={tab.limitMobile}
             />
           ))}
+        </div>
+
+        <div className="flex flex-col gap-mobile-2 md:flex-row md:items-center md:justify-between md:gap-3">
+          <BodyText variant="sectionDefaultOnLight" className="text-mobile-small text-basic-dark/70 md:text-base">
+            Полный каталог и свежие обновления — в разделе «Публикации».
+          </BodyText>
+          <Link
+            href="/det/publications"
+            className="inline-flex items-center gap-mobile-1 text-mobile-body font-semibold text-accent-primary underline decoration-accent-primary/60 underline-offset-4 transition-colors duration-200 hover:text-accent-hover md:text-base"
+          >
+            Смотреть все публикации →
+          </Link>
         </div>
       </div>
     </Section>
@@ -110,9 +146,10 @@ type PublicationPanelProps = {
   labelledBy: string;
   active: boolean;
   publications: Publication[];
+  limitMobile: number;
 };
 
-function PublicationPanel({ id, labelledBy, active, publications }: PublicationPanelProps) {
+function PublicationPanel({ id, labelledBy, active, publications, limitMobile }: PublicationPanelProps) {
   if (!active) return null;
 
   if (publications.length === 0) {
@@ -128,8 +165,14 @@ function PublicationPanel({ id, labelledBy, active, publications }: PublicationP
   return (
     <div role="tabpanel" id={id} aria-labelledby={labelledBy}>
       <div className="flex flex-col divide-y divide-basic-dark/10">
-        {publications.map((publication) => (
-          <article key={publication.slug} className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3">
+        {publications.map((publication, index) => (
+          <article
+            key={publication.slug}
+            className={cn(
+              "flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3",
+              index >= limitMobile ? "hidden md:flex" : undefined,
+            )}
+          >
             <div className="flex flex-col gap-mobile-2 md:grid md:grid-cols-[1fr_auto] md:items-start md:gap-4">
               <div className="flex flex-col gap-1">
                 <Link
