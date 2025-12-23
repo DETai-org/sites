@@ -99,14 +99,16 @@ function PublicationGroup({ section, publications }: PublicationGroupProps) {
                   <div className="text-mobile-small text-basic-dark/80 md:text-base">
                     {publication.authors.join(", ")} · {publication.year} · {getPublicationTypeLabel(publication.type)}
                   </div>
-                  {publication.journal ? (
-                    <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
-                  ) : null}
-                </div>
-              </div>
-              <p className="text-mobile-small text-basic-dark md:text-base">{publication.seoLead ?? publication.abstract}</p>
-            </article>
-          ))}
+              {publication.journal ? (
+                <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
+              ) : null}
+            </div>
+          </div>
+          <p className="pt-1 text-mobile-small text-basic-dark/80 md:text-base">
+            {publication.seoLead ?? publication.abstract}
+          </p>
+        </article>
+      ))}
         </div>
       )}
     </section>

@@ -14,6 +14,7 @@ export interface Publication {
     apa?: string;
     gost?: string;
   };
+  doi?: string;
   pdfUrl: string;
   externalLinks?: {
     label: string;

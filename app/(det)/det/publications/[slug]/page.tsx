@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import ExpandableAbstract from "@/components/sections/publications/ExpandableAbstract";
+import PublicationShare from "@/components/sections/publications/PublicationShare";
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
@@ -77,35 +79,57 @@ export default function PublicationPage({ params }: PublicationPageProps) {
               </p>
             ) : null}
 
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href={publication.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${actionLinkBaseClasses} bg-accent-primary text-basic-light hover:bg-accent-hover`}
-              >
-                Скачать PDF
-              </Link>
-
-              {publication.externalLinks?.map((link) => (
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-wrap gap-3">
                 <Link
-                  key={link.url}
-                  href={link.url}
+                  href={publication.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${actionLinkBaseClasses} border border-basic-dark/15 text-basic-dark hover:border-accent-primary/60 hover:text-accent-hover`}
+                  className={`${actionLinkBaseClasses} bg-accent-primary text-basic-light hover:bg-accent-hover`}
                 >
-                  Открыть в {link.label}
+                  Скачать PDF
                 </Link>
-              ))}
+
+                {publication.externalLinks?.map((link) => (
+                  <Link
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${actionLinkBaseClasses} border border-basic-dark/15 text-basic-dark hover:border-accent-primary/60 hover:text-accent-hover`}
+                  >
+                    Открыть в {link.label}
+                  </Link>
+                ))}
+              </div>
+
+              {publication.doi ? (
+                <div className="flex flex-col gap-1 text-mobile-small text-basic-dark/70 md:text-base">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-semibold text-basic-dark">DOI:</span>
+                    <Link
+                      href={`https://doi.org/${publication.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-basic-dark/30 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover hover:decoration-accent-primary/60"
+                      title="DOI может вести на страницу регистрации и не всегда открывает статью"
+                    >
+                      {publication.doi}
+                    </Link>
+                  </div>
+                  <span className="text-xs italic text-basic-dark/60">
+                    DOI может вести на страницу регистрации и не всегда открывает статью
+                  </span>
+                </div>
+              ) : null}
+
+              <PublicationShare />
             </div>
 
             <div className="flex flex-col gap-5 rounded-2xl bg-white/70 p-mobile-3 shadow-sm md:gap-6 md:p-6">
               <section className="flex flex-col gap-3">
                 <h2 className="text-lg font-semibold text-basic-dark md:text-xl">Аннотация</h2>
-                <BodyText variant="sectionDefaultOnLight" className="max-w-4xl text-basic-dark">
-                  {publication.abstract}
-                </BodyText>
+                <ExpandableAbstract text={publication.abstract} className="max-w-4xl" />
               </section>
 
               {publication.keywords?.length ? (
@@ -147,7 +171,7 @@ export default function PublicationPage({ params }: PublicationPageProps) {
                   О концепции DET
                 </Link>
                 <p className="text-xs text-basic-dark/70 md:text-mobile-small">
-                  Вы находитесь на сайте посвящённом диалектические-экзистенциальной терапии
+                  Данная публикация относится к исследовательскому полю, тематически связанному с экзистенциально-диалектической психотерапией (DET).
                 </p>
               </div>
             </div>
