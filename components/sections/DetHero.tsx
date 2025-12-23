@@ -16,7 +16,7 @@ export default function DetHero() {
     <Section
       id="det-hero"
       variant="light"
-      className="relative overflow-hidden bg-accentSoftVar"
+      className="relative overflow-hidden bg-[color:rgb(var(--det-hero-bg))] bg-no-repeat [background-image:var(--det-hero-glow)]"
       containerClassName="relative flex min-h-[70vh] flex-col justify-center gap-8 md:min-h-[80vh] md:gap-12"
       fullWidth
     >

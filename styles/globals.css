@@ -18,6 +18,8 @@
   --hero-text: 242 229 194;
   --hero-glow: none;
   --hero-subtitle: rgb(var(--accent-soft));
+  --det-hero-bg: 242 229 194;
+  --det-hero-glow: none;
 
   --button-secondary-border: rgb(var(--accent));
   --button-secondary-text: rgb(var(--accent));
@@ -48,6 +50,8 @@
   --hero-text: 228 215 198;
   --hero-glow: radial-gradient(120% 140% at 20% 0%, rgb(var(--accent) / 0.18), transparent 65%);
   --hero-subtitle: rgb(var(--muted));
+  --det-hero-bg: 30 27 25;
+  --det-hero-glow: radial-gradient(140% 140% at 18% 0%, rgb(var(--accent) / 0.2), transparent 68%);
 
   --button-secondary-border: rgb(var(--border) / 0.6);
   --button-secondary-text: rgb(var(--fg));
