@@ -1,8 +1,30 @@
+import Link from "next/link";
+
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import { getPublicationsByType } from "@/lib/publications/publications.utils";
+import { Publication, PublicationType } from "@/lib/publications/types";
+
+const publicationSections: { id: PublicationType; label: string; description: string }[] = [
+  {
+    id: "article",
+    label: "Статьи",
+    description: "Рецензируемые статьи и публикации, раскрывающие теорию и практику DET.",
+  },
+  {
+    id: "dissertation",
+    label: "Диссертации",
+    description: "Защищённые и готовящиеся диссертационные исследования по тематике DET.",
+  },
+  {
+    id: "thesis",
+    label: "Тезисы и доклады",
+    description: "Материалы конференций, презентации и краткие доклады.",
+  },
+];
 
 export default function Page() {
   return (
@@ -13,19 +35,101 @@ export default function Page() {
           id="det-publications-page"
           variant="light"
           className="bg-basic-light"
-          containerClassName="flex flex-col gap-mobile-3 md:gap-5"
+          containerClassName="flex flex-col gap-6 md:gap-10"
         >
-          <Heading level={1} color="basic">
-            Публикации
-          </Heading>
-          <BodyText variant="sectionDefaultOnLight" className="max-w-4xl">
-            Здесь будет собран полный список публикаций DET: статьи, диссертации, тезисы и доклады.<br />
-            <br />
-            Страница в разработке — скоро добавим навигацию по годам и форматам.
-          </BodyText>
+          <div className="flex flex-col gap-mobile-3 md:gap-5">
+            <Heading level={1} color="basic">
+              Публикации
+            </Heading>
+            <BodyText variant="sectionDefaultOnLight" className="max-w-4xl">
+              Централизованный список научных материалов DET. Каждая позиция открывается отдельной страницей, откуда можно перейти к PDF и внешним ссылкам (например, DOI).
+            </BodyText>
+          </div>
+
+          <div className="flex flex-col gap-6 md:gap-8">
+            {publicationSections.map((section) => (
+              <PublicationGroup
+                key={section.id}
+                section={section}
+                publications={getPublicationsByType(section.id)}
+              />
+            ))}
+          </div>
         </Section>
       </main>
       <Footer />
     </div>
+  );
+}
+
+type PublicationGroupProps = {
+  section: { id: PublicationType; label: string; description: string };
+  publications: Publication[];
+};
+
+function PublicationGroup({ section, publications }: PublicationGroupProps) {
+  return (
+    <section className="flex flex-col gap-3 rounded-2xl border border-basic-dark/10 bg-white/70 p-mobile-3 shadow-sm md:gap-4 md:p-6">
+      <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-1">
+          <h2 className="text-lg font-semibold text-basic-dark md:text-2xl">{section.label}</h2>
+          <p className="text-mobile-small text-basic-dark/80 md:text-base">{section.description}</p>
+        </div>
+        <span className="rounded-full bg-basic-dark/5 px-3 py-1 text-xs font-semibold text-basic-dark md:text-sm">
+          {publications.length} {publications.length === 1 ? "публикация" : "публикации"}
+        </span>
+      </div>
+
+      {publications.length === 0 ? (
+        <BodyText variant="sectionDefaultOnLight" className="text-mobile-small md:text-base">
+          Материалы в этой категории появятся позже.
+        </BodyText>
+      ) : (
+        <div className="flex flex-col divide-y divide-basic-dark/10">
+          {publications.map((publication) => (
+            <article key={publication.slug} className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 md:gap-3">
+              <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                <div className="flex flex-col gap-1">
+                  <Link
+                    href={`/det/publications/${publication.slug}`}
+                    className="text-base font-semibold text-basic-dark underline decoration-accent-primary/50 underline-offset-[6px] transition-colors duration-200 hover:text-accent-hover md:text-xl"
+                  >
+                    {publication.title}
+                  </Link>
+                  <div className="text-mobile-small text-basic-dark/80 md:text-base">
+                    {publication.authors.join(", ")} · {publication.year}
+                  </div>
+                  {publication.journal ? (
+                    <div className="text-mobile-small text-basic-dark/70 md:text-base">{publication.journal}</div>
+                  ) : null}
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link
+                    href={publication.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full border border-basic-dark/15 px-3 py-1.5 text-xs font-semibold text-accent-primary transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover md:px-4 md:py-2 md:text-mobile-small"
+                  >
+                    Скачать PDF
+                  </Link>
+                  {publication.externalLinks?.map((link) => (
+                    <Link
+                      key={`${publication.slug}-${link.url}`}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-basic-dark/15 px-3 py-1.5 text-xs font-semibold text-basic-dark transition-colors duration-200 hover:border-accent-primary/60 hover:text-accent-hover md:px-4 md:py-2 md:text-mobile-small"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <p className="text-mobile-small text-basic-dark md:text-base">{publication.abstract}</p>
+            </article>
+          ))}
+        </div>
+      )}
+    </section>
   );
 }
