@@ -7,7 +7,7 @@ import BodyText from "../ui/BodyText";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
 import { cn } from "@/lib/utils";
-import { buildPublicationDescription } from "@/lib/publications/publications.utils";
+import { buildPublicationDescription } from "@/lib/publications/publications.description";
 import { getPublicationsByTypeClient } from "@/lib/publications/publications.client";
 import { Publication } from "@/lib/publications/types";
 

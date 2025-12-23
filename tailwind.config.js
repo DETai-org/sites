@@ -4,12 +4,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   safelist: [
-    { pattern: /before:/ },
-    { pattern: /after:/ },
+    // Убраны неиспользуемые паттерны, чтобы сборка не предупреждала о safelist
     { pattern: /animate-/ },
-    { pattern: /bg-\[/ },
     { pattern: /translate-x/ },
-    { pattern: /auto-shimmer/ },
   ],
   darkMode: "class",
   theme: {
