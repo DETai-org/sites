@@ -13,7 +13,7 @@ export const publications: Publication[] = [
       "Исследование связывает силовые тренировки с выраженностью «тёмной триады» и готовностью к преодолению трудностей у спортсменов.",
     abstract:
       "Анализирует, как регулярные тренировки в силовых видах спорта сопряжены с выраженностью «тёмной триады» и мотивацией к преодолению трудностей у спортсменов.",
-    pdfUrl: "/documents/research/2023-athletics-dark-triad.pdf",
+    pdfUrl: "/documents/research/articles/2023-athletics-dark-triad.pdf",
   },
   {
     slug: "good-evil-social-representations-part-1",
@@ -27,7 +27,7 @@ export const publications: Publication[] = [
       "Сравнение семантических представлений о добре и зле у студентов-психологов до пандемии и в актуальный период с фиксацией сдвигов в коллективных оценках.",
     abstract:
       "Сравнивает семантическое наполнение категорий «добро» и «зло» у студентов-психологов до пандемии и после неё, фиксируя сдвиги в коллективных представлениях.",
-    pdfUrl: "/documents/research/2023-good-evil-social-representations_1.pdf",
+    pdfUrl: "/documents/research/articles/2023-good-evil-social-representations_1.pdf",
   },
   {
     slug: "good-evil-social-representations-part-2",
@@ -41,7 +41,7 @@ export const publications: Publication[] = [
       "Продолжение исследования представлений студентов о категориях добра и зла с фокусом на содержательные определения и устойчивые смысловые ядра.",
     abstract:
       "Продолжает исследование представлений студентов о добре и зле, углубляясь в конкретные определения и выявляя устойчивые смысловые ядра.",
-    pdfUrl: "/documents/research/2023-good-evil-social-representations_2.pdf",
+    pdfUrl: "/documents/research/articles/2023-good-evil-social-representations_2.pdf",
   },
   {
     slug: "personality-typology-ethical-psychology",
@@ -63,7 +63,7 @@ export const publications: Publication[] = [
       "тёмная триада",
       "светлая триада",
     ],
-    pdfUrl: "/documents/research/2024-personality-typology-ethical-psychology.pdf",
+    pdfUrl: "/documents/research/articles/2024-personality-typology-ethical-psychology.pdf",
     externalLinks: [
       {
         label: "eLIBRARY",
@@ -83,7 +83,7 @@ export const publications: Publication[] = [
       "Сопоставление представлений о добре и зле у людей с разным уровнем самоактуализации и анализ связи ценностных ориентаций с личностной зрелостью.",
     abstract:
       "Сопоставляет представления о добре и зле у людей с разным уровнем самоактуализации, демонстрируя связи ценностных ориентаций и личностной зрелости.",
-    pdfUrl: "/documents/research/2025-good-evil-self-actualization_Kolkhonen_Mironenko.pdf",
+    pdfUrl: "/documents/research/articles/2025-good-evil-self-actualization_Kolkhonen_Mironenko.pdf",
     doi: "10.21638/spbu16.2025.108",
   },
 ];
