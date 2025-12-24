@@ -22,7 +22,7 @@ export default function Section({
   children,
 }: SectionProps) {
   const variantClasses: Record<SectionVariant, string> = {
-    dark: "bg-surface2 text-accentSoftVar",
+    dark: "bg-surface2 text-accentSoftVar dark:text-fg",
     light: "bg-bg text-fg",
   };
 

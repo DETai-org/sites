@@ -18,7 +18,7 @@ type BodyTextProps = {
 const projectCardClasses = "text-mobile-small text-fg md:text-base";
 
 const variantClasses: Record<BodyTextVariant, string> = {
-  sectionDefaultDark: "text-mobile-body text-accentSoftVar md:text-xl md:leading-relaxed",
+  sectionDefaultDark: "text-mobile-body text-accentSoftVar md:text-xl md:leading-relaxed dark:text-fg",
   sectionDefaultOnLight: "text-mobile-body text-fg md:text-xl md:leading-relaxed",
   sectionBrand: "text-mobile-body text-accentVar md:text-xl md:leading-relaxed",
   projectCard: projectCardClasses,

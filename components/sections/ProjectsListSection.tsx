@@ -51,7 +51,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
   return (
     <div className="relative flex flex-col gap-mobile-3 md:gap-4">
       <div className="flex items-start justify-between gap-mobile-2 pr-14 md:items-center md:gap-3 md:pr-0">
-        <BodyText variant="sectionDefaultDark" className="text-accentSoftVar/80">
+        <BodyText variant="sectionDefaultDark" className="text-accentSoftVar/80 dark:text-fg/80">
           {ECHELON_TITLES[echelon]}
         </BodyText>
 
@@ -59,7 +59,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           <button
             type="button"
             onClick={() => scrollByCardWidth("left")}
-            className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90"
+            className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90 dark:text-fg dark:hover:text-fg/90"
             aria-label="Прокрутить влево"
           >
             ←
@@ -67,7 +67,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
           <button
             type="button"
             onClick={() => scrollByCardWidth("right")}
-            className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90"
+            className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90 dark:text-fg dark:hover:text-fg/90"
             aria-label="Прокрутить вправо"
           >
             →
@@ -79,7 +79,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
         <button
           type="button"
           onClick={() => scrollByCardWidth("left")}
-          className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90"
+          className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90 dark:text-fg dark:hover:text-fg/90"
           aria-label="Прокрутить влево"
         >
           ←
@@ -87,7 +87,7 @@ function EchelonRow({ echelon, items }: { echelon: Project["echelon"]; items: Pr
         <button
           type="button"
           onClick={() => scrollByCardWidth("right")}
-          className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90"
+          className="rounded-full border border-accentVar/30 bg-surface2/70 px-3 py-2 text-accentSoftVar transition-colors duration-150 hover:border-accentVar/60 hover:text-accentSoftVar/90 dark:text-fg dark:hover:text-fg/90"
           aria-label="Прокрутить вправо"
         >
           →
@@ -133,7 +133,7 @@ export default function ProjectsListSection({ containerClassName }: ProjectsList
   );
 
   return (
-    <section className="w-full bg-surface2 text-accentSoftVar">
+    <section className="w-full bg-surface2 text-accentSoftVar dark:text-fg">
       <div
         className={cn(
           "mx-auto w-full px-mobile-4 py-mobile-6 md:max-w-6xl md:px-10 md:py-20",
@@ -143,7 +143,7 @@ export default function ProjectsListSection({ containerClassName }: ProjectsList
         <div className="flex flex-col gap-mobile-6 md:gap-10">
           <div className="flex flex-col gap-mobile-2 md:gap-3">
             <HeadingLevel2 color="soft">Каталог проектов DETai</HeadingLevel2>
-            <BodyText variant="sectionDefaultDark" className="max-w-3xl text-accentSoftVar/80">
+            <BodyText variant="sectionDefaultDark" className="max-w-3xl text-accentSoftVar/80 dark:text-fg/80">
               Три эшелона проектов с готовыми и запланированными инструментами: прокручивайте, чтобы увидеть больше.
             </BodyText>
           </div>

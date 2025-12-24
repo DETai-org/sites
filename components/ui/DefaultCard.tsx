@@ -19,7 +19,7 @@ const baseContainerClasses =
 
 const variantContainerClasses: Record<NonNullable<DefaultCardProps["variant"]>, string> = {
   light: "border-accentVar/30 bg-surface text-fg hover:border-accentVar/60",
-  dark: "border-accentVar/40 bg-surface2 text-accentSoftVar shadow-md hover:border-accentVar/60",
+  dark: "border-accentVar/40 bg-surface2 text-accentSoftVar shadow-md hover:border-accentVar/60 dark:text-fg",
 };
 
 const baseTitleClasses =
@@ -27,7 +27,7 @@ const baseTitleClasses =
 
 const variantTitleClasses: Record<NonNullable<DefaultCardProps["variant"]>, string> = {
   light: "text-fg",
-  dark: "text-accentSoftVar",
+  dark: "text-accentSoftVar dark:text-fg",
 };
 
 export default function DefaultCard({

@@ -109,7 +109,7 @@ export default function DetPractice() {
             className={cn(
               "whitespace-nowrap rounded-full border px-4 py-2 text-mobile-small font-semibold transition-colors duration-200 md:text-base",
               activeFilter === filter.id
-                ? "border-accentVar/50 bg-accentSoftVar text-fg shadow-sm"
+                ? "border-accentVar/50 bg-accentSoftVar text-fg shadow-sm dark:bg-surface"
                 : "border-[color:rgb(var(--soft-border)/0.1)] bg-basic-light text-fg hover:border-[color:rgb(var(--soft-border)/0.2)] dark:bg-surface",
             )}
             aria-pressed={activeFilter === filter.id}
@@ -124,7 +124,7 @@ export default function DetPractice() {
         {filteredFormats.map((format) => (
           <article
             key={format.title}
-            className="flex h-full w-full flex-col gap-mobile-3 rounded-xl border border-accentVar/30 bg-accentSoftVar p-mobile-4 text-fg shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accentVar hover:shadow-lg md:gap-4 md:p-6"
+            className="flex h-full w-full flex-col gap-mobile-3 rounded-xl border border-accentVar/30 bg-accentSoftVar p-mobile-4 text-fg shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-accentVar hover:shadow-lg md:gap-4 md:p-6 dark:bg-surface"
           >
             <div className="flex items-start justify-between gap-mobile-2 md:gap-3">
               <Heading
