@@ -175,8 +175,22 @@ export default function DetaiInterfaceCultureSection() {
           </BodyText>
         </header>
 
-        <div className="relative flex items-center justify-center w-full max-w-[640px] mx-auto">
-          <div className="relative h-[380px] w-full max-w-[640px] md:h-[520px]">
+        <div className="flex flex-col gap-mobile-6 md:flex-row md:items-center md:gap-10">
+          <div className="relative overflow-hidden w-full aspect-[4/3] p-3 rounded-2xl border border-accentVar/30 bg-surface/70 shadow-[0_0_25px_rgb(var(--accent)_/_0.15)] md:w-[44%]">
+            <div className="absolute inset-0 rounded-2xl border border-accentSoftVar/20" />
+            <video
+              className="relative h-full w-full rounded-xl object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src="/video/Golden_Robotic_Hands.webm" type="video/webm" />
+            </video>
+          </div>
+          <div className="relative flex items-center justify-center w-full max-w-[640px] mx-auto md:w-[56%] md:mx-0">
+            <div className="relative h-[380px] w-full max-w-[640px] md:h-[520px]">
             <svg
               aria-hidden="true"
               className={cn(
