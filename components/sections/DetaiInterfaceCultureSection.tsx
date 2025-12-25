@@ -368,6 +368,7 @@ export default function DetaiInterfaceCultureSection() {
           </div>
         </div>
       </div>
+      </div>
     </Section>
   );
 }
