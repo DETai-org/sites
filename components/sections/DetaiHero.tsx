@@ -1,11 +1,33 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 import Button from "../ui/Button";
 import HeroHeadingTitle from "../ui/HeroHeadingTitle";
 import Section from "../ui/Section";
 import HeroScene from "./HeroScene";
 import Heading from "../ui/Heading";
+import { useDeviceSignals } from "@/lib/hooks/useDeviceSignals";
+import { cn } from "@/lib/utils";
 
 export default function DetaiHero() {
   const logoSize = "32rem";
+  const { isMobileDevice } = useDeviceSignals();
+  const [isVideoDimmed, setIsVideoDimmed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (!isMobileDevice) {
+      setIsVideoDimmed(false);
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setIsVideoDimmed(true);
+    }, 7000);
+
+    return () => window.clearTimeout(timer);
+  }, [isMobileDevice]);
 
   return (
     <Section
@@ -17,13 +39,22 @@ export default function DetaiHero() {
     >
       <div className="absolute inset-0">
         <video
-          className="h-full w-full object-cover object-right"
+          ref={videoRef}
+          className={cn(
+            "h-full w-full object-cover object-right transition-[filter,opacity] duration-700 ease-out translate-x-8 md:translate-x-0",
+            isVideoDimmed && isMobileDevice ? "grayscale opacity-60 saturate-50" : "opacity-100",
+          )}
           autoPlay
-          loop
           muted
           playsInline
           preload="auto"
           aria-hidden="true"
+          onEnded={() => {
+            if (videoRef.current) {
+              videoRef.current.pause();
+              videoRef.current.currentTime = Math.max(videoRef.current.duration - 0.05, 0);
+            }
+          }}
         >
           <source src="/video/robot_hero.mp4" type="video/mp4" />
         </video>
@@ -36,10 +67,12 @@ export default function DetaiHero() {
         disableParticles
       />
 
-      <div className="relative z-20 w-full max-w-[48rem] self-start md:max-w-[52rem]">
+      <div className="relative z-20 w-full max-w-[48rem] self-start -ml-2 md:ml-0 md:max-w-[52rem]">
         <HeroHeadingTitle className="text-[color:rgb(var(--hero-text))]">
           <span className="block">DETai</span>
-          <span className="block whitespace-nowrap">Диалектически-экзистенциальная терапия,</span>
+          <span className="block whitespace-normal md:whitespace-nowrap">
+            Диалектически-экзистенциальная терапия,
+          </span>
           <span className="block">обогащённая AI</span>
         </HeroHeadingTitle>
         <Heading
@@ -50,9 +83,9 @@ export default function DetaiHero() {
         </Heading>
       </div>
 
-      <div className="relative z-20 flex w-full max-w-[48rem] flex-col gap-6 self-start">
+      <div className="relative z-20 flex w-full max-w-[48rem] flex-col gap-6 self-start -ml-2 md:ml-0">
         <div className="mt-mobile-2 flex w-full flex-col items-start gap-4 md:mt-0 md:w-auto md:flex-row md:items-center md:justify-start md:gap-4 lg:gap-6">
-          <Button as="a" href="/detai/projects" variant="primary">
+          <Button as="a" href="/detai/projects" variant="primary" className="auto-shimmer">
             Проекты DETai
           </Button>
           <Button as="a" href="/det" variant="secondary">
