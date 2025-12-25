@@ -12,7 +12,7 @@ export default function DetaiHero() {
       id="detai-hero"
       variant="dark"
       className="relative min-h-screen overflow-hidden bg-[color:rgb(var(--hero-bg))] bg-no-repeat [background-image:var(--hero-glow)]"
-      containerClassName="relative flex min-h-screen flex-col justify-center gap-8 md:gap-12"
+      containerClassName="relative flex min-h-screen flex-col justify-between gap-8 py-16 md:gap-12 md:py-20"
       fullWidth
     >
       <div className="absolute inset-0">
@@ -31,11 +31,12 @@ export default function DetaiHero() {
       </div>
 
       <HeroScene
-        className="absolute inset-0 z-30 flex items-center justify-center min-h-full pointer-events-none"
+        className="absolute inset-0 z-30 flex min-h-full items-center justify-center pointer-events-none"
         logoSize={logoSize}
+        disableParticles
       />
 
-      <div className="relative z-20 w-full max-w-[48rem] md:max-w-[52rem]">
+      <div className="relative z-20 w-full max-w-[48rem] self-start md:max-w-[52rem]">
         <HeroHeadingTitle className="text-[color:rgb(var(--hero-text))]">
           <span className="block">DETai</span>
           <span className="block whitespace-nowrap">Диалектически-экзистенциальная терапия,</span>
@@ -49,8 +50,8 @@ export default function DetaiHero() {
         </Heading>
       </div>
 
-      <div className="relative z-20 flex w-full max-w-[48rem] flex-col gap-6">
-        <div className="mt-mobile-2 flex w-full flex-col items-center gap-4 md:mt-0 md:w-auto md:flex-row md:items-center md:justify-start md:gap-4 lg:gap-6">
+      <div className="relative z-20 flex w-full max-w-[48rem] flex-col gap-6 self-end">
+        <div className="mt-mobile-2 flex w-full flex-col items-end gap-4 md:mt-0 md:w-auto md:flex-row md:items-center md:justify-end md:gap-4 lg:gap-6">
           <Button as="a" href="/detai/projects" variant="primary">
             Проекты DETai
           </Button>
