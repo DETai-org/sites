@@ -82,7 +82,8 @@ detai-site/
 │   └── sections/                  # Крупные блоки страниц (molecules/organisms)
 │       ├── HeroSection.tsx
 │       ├── FeaturesSection.tsx
-│       └── ProductsSection.tsx
+│       ├── ProductsSection.tsx
+│       └── DetaiHero.tsx           # Hero-секция DETai с фоновым видео robot_hero.mp4
 │
 ├── styles/
 │   ├── globals.css          # минималистичный файл т.к. см. tailwind.config.js

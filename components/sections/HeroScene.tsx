@@ -13,13 +13,20 @@ type HeroSceneProps = {
   children?: ReactNode;
   className?: string;
   logoSize?: number | string;
+  disableParticles?: boolean;
 };
 
-export default function HeroScene({ children, className, logoSize = "24rem" }: HeroSceneProps) {
+export default function HeroScene({
+  children,
+  className,
+  logoSize = "24rem",
+  disableParticles = false,
+}: HeroSceneProps) {
   const sceneRef = useRef<HTMLDivElement | null>(null);
   const { isMobileDevice, hasNonMobileSignals } = useDeviceSignals();
 
-  const shouldRenderGlobalLayer = hasNonMobileSignals && !isMobileDevice;
+  const shouldRenderGlobalLayer = hasNonMobileSignals && !isMobileDevice && !disableParticles;
+  const shouldRenderLocalLayer = !disableParticles;
 
   return (
     <div
@@ -27,7 +34,7 @@ export default function HeroScene({ children, className, logoSize = "24rem" }: H
       className={cn("relative flex items-center justify-center w-full h-full min-h-[18rem]", className)}
     >
       {shouldRenderGlobalLayer && <CanvasGlobalParticlesLayer anchorRef={sceneRef} />}
-      <CanvasLocalParticlesLayer />
+      {shouldRenderLocalLayer && <CanvasLocalParticlesLayer />}
       {children ?? <AnimatedLogo size={logoSize} className="max-h-[28rem] max-w-[28rem]" />}
     </div>
   );
