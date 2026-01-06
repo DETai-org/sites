@@ -6,6 +6,8 @@ export const metadata = {
   description: "Посты блога",
 };
 
+export const runtime = "nodejs";
+
 export default function BlogPage() {
   const posts = getAllBlogPosts();
 

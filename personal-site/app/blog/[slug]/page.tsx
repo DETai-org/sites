@@ -7,6 +7,8 @@ interface BlogPostPageProps {
   };
 }
 
+export const runtime = "nodejs";
+
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getBlogPostBySlug(params.slug);
 

@@ -18,7 +18,14 @@ async function buildBlogPosts(): Promise<BlogPost[]> {
 
 async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<BlogPost> {
   const absolutePath = `${process.cwd()}/${post.contentFile}`;
-  const content = await readFile(absolutePath, "utf-8");
+  let content = "";
+
+  try {
+    content = await readFile(absolutePath, "utf-8");
+  } catch (error) {
+    console.error(`Не удалось прочитать контент поста ${post.slug}:`, error);
+  }
+
   const excerpt = post.excerpt?.trim() || buildBlogPostDescription({ content, excerpt: "" });
 
   return {
