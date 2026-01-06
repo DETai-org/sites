@@ -1,6 +1,6 @@
 "use client";
 
-import { type RefObject, useEffect, useRef } from "react";
+import { type RefObject, useCallback, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -77,7 +77,7 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
     },
   );
 
-  const switchPhase = (phase: Phase) => {
+  const switchPhase = useCallback((phase: Phase) => {
     const previousPhase = phaseRef.current;
     phaseRef.current = phase;
     if (phase === "idle") {
@@ -86,9 +86,9 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
       }
       spawnAccumulatorRef.current = 0;
     }
-  };
+  }, []);
 
-  const schedulePhases = () => {
+  const schedulePhases = useCallback(() => {
     timeoutsRef.current.forEach((id) => clearTimeout(id));
     timeoutsRef.current = [];
 
@@ -104,139 +104,121 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
     );
 
     timeoutsRef.current.push(start, toPeak, toFade, toIdle);
-  };
+  }, [switchPhase]);
 
-  const renderFrame = (context: CanvasRenderingContext2D, delta: number) => {
-    const m = metricsRef.current;
-    const phase = phaseRef.current;
-    const { spawnRate, speed, life, opacity } = PHASE_SETTINGS[phase];
+  const randomBetween = useCallback((min: number, max: number) => Math.random() * (max - min) + min, []);
 
-    context.clearRect(0, 0, m.width, m.height);
+  const spawnParticlesLayer = useCallback(
+    (
+      width: number,
+      height: number,
+      speed: [number, number],
+      life: [number, number],
+      opacityRange: [number, number],
+    ) => {
+      const { centerX, centerY } = metricsRef.current;
 
-    if (spawnRate > 0 && m.width > 0 && m.height > 0) {
-      const overlayRateScale = 1.0;
-      spawnAccumulatorRef.current += spawnRate * overlayRateScale * delta;
-      while (spawnAccumulatorRef.current >= 1) {
-        spawnParticlesLayer(m.width, m.height, speed, life, opacity);
-        spawnAccumulatorRef.current -= 1;
-      }
-    }
+      const spawnSpread = Math.min(width, height) * 0.4;
 
-    particlesRef.current = particlesRef.current.reduce<Particle[]>((next, particle) => {
-      const updated = updateParticle(particle, delta, m.width, m.height);
-      if (updated) {
-        drawParticle(context, updated);
-        next.push(updated);
-      }
-      return next;
-    }, []);
-  };
+      const targets: Array<{
+        spawn: () => [number, number];
+        tx: number;
+        ty: number;
+      }> = [
+        {
+          spawn: () => [
+            randomBetween(-spawnSpread, width + spawnSpread),
+            randomBetween(-spawnSpread, height + spawnSpread),
+          ],
+          tx: centerX,
+          ty: centerY,
+        },
+      ];
 
-  const spawnParticlesLayer = (
-    width: number,
-    height: number,
-    speed: [number, number],
-    life: [number, number],
-    opacityRange: [number, number],
-  ) => {
-    const { centerX, centerY } = metricsRef.current;
+      targets.forEach(({ spawn, tx, ty }) => {
+        const [x, y] = spawn();
+        const dx = tx - x;
+        const dy = ty - y;
+        const baseAngle = Math.atan2(dy, dx);
+        const jitter = (Math.random() - 0.5) * 0.01;
+        const swirl = (Math.random() - 0.5) * 0.04;
+        const angle = baseAngle + jitter + swirl;
 
-    const spawnSpread = Math.min(width, height) * 0.4;
+        const velocity = randomBetween(speed[0], speed[1]);
+        const length = randomBetween(5, 9);
+        const thickness = randomBetween(1.6, 2.2);
+        const opacity = randomBetween(opacityRange[0], opacityRange[1]);
+        const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
 
-    const targets: Array<{
-      spawn: () => [number, number];
-      tx: number;
-      ty: number;
-    }> = [
-      {
-        spawn: () => [
-          randomBetween(-spawnSpread, width + spawnSpread),
-          randomBetween(-spawnSpread, height + spawnSpread),
-        ],
-        tx: centerX,
-        ty: centerY,
-      },
-    ];
-
-    targets.forEach(({ spawn, tx, ty }) => {
-      const [x, y] = spawn();
-      const dx = tx - x;
-      const dy = ty - y;
-      const baseAngle = Math.atan2(dy, dx);
-      const jitter = (Math.random() - 0.5) * 0.01;
-      const swirl = (Math.random() - 0.5) * 0.04;
-      const angle = baseAngle + jitter + swirl;
-
-      const velocity = randomBetween(speed[0], speed[1]);
-      const length = randomBetween(5, 9);
-      const thickness = randomBetween(1.6, 2.2);
-      const opacity = randomBetween(opacityRange[0], opacityRange[1]);
-      const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
-
-      particlesRef.current.push({
-        x,
-        y,
-        vx: Math.cos(angle) * velocity,
-        vy: Math.sin(angle) * velocity,
-        tx,
-        ty,
-        life: randomBetween(life[0], life[1]),
-        opacity,
-        length,
-        thickness,
-        color,
+        particlesRef.current.push({
+          x,
+          y,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity,
+          tx,
+          ty,
+          life: randomBetween(life[0], life[1]),
+          opacity,
+          length,
+          thickness,
+          color,
+        });
       });
-    });
 
-    if (particlesRef.current.length > 320) {
-      particlesRef.current.splice(0, particlesRef.current.length - 320);
-    }
-  };
+      if (particlesRef.current.length > 320) {
+        particlesRef.current.splice(0, particlesRef.current.length - 320);
+      }
+    },
+    [randomBetween],
+  );
 
-  const updateParticle = (particle: Particle, delta: number, width: number, height: number): Particle | null => {
-    const damping = 0.993;
-    const pull = 84;
+  const updateParticle = useCallback(
+    (particle: Particle, delta: number, width: number, height: number): Particle | null => {
+      const damping = 0.993;
+      const pull = 84;
 
-    const nextLife = particle.life - delta;
-    if (nextLife <= 0) return null;
+      const nextLife = particle.life - delta;
+      if (nextLife <= 0) return null;
 
-    const lifeRatio = particle.life / (particle.life + delta);
+      const lifeRatio = particle.life / (particle.life + delta);
 
-    const dx = particle.tx - particle.x;
-    const dy = particle.ty - particle.y;
-    const distance = Math.hypot(dx, dy);
+      const dx = particle.tx - particle.x;
+      const dy = particle.ty - particle.y;
+      const distance = Math.hypot(dx, dy);
 
-    const distNorm = Math.min(distance / (Math.min(width, height) * 0.5), 1);
+      const distNorm = Math.min(distance / (Math.min(width, height) * 0.5), 1);
 
-    const pullFactor = 0.7 + (1 - distNorm) * 0.6;
+      const pullFactor = 0.7 + (1 - distNorm) * 0.6;
 
-    const earlyBoost = lifeRatio > 0.75 ? 2.0 : 1.0;
+      const earlyBoost = lifeRatio > 0.75 ? 2.0 : 1.0;
 
-    const ax = (dx / Math.max(distance, 1)) * pull * pullFactor * earlyBoost * delta;
-    const ay = (dy / Math.max(distance, 1)) * pull * pullFactor * earlyBoost * delta;
+      const ax = (dx / Math.max(distance, 1)) * pull * pullFactor * earlyBoost * delta;
+      const ay = (dy / Math.max(distance, 1)) * pull * pullFactor * earlyBoost * delta;
 
-    const nx = particle.x + (particle.vx + ax) * delta;
-    const ny = particle.y + (particle.vy + ay) * delta;
+      const nx = particle.x + (particle.vx + ax) * delta;
+      const ny = particle.y + (particle.vy + ay) * delta;
 
-    const nvx = (particle.vx + ax) * damping;
-    const nvy = (particle.vy + ay) * damping;
+      const nvx = (particle.vx + ax) * damping;
+      const nvy = (particle.vy + ay) * damping;
 
-    if (distance < Math.min(width, height) * 0.025) {
-      particle.opacity *= 0.9;
-    }
+      if (distance < Math.min(width, height) * 0.025) {
+        particle.opacity *= 0.9;
+      }
 
-    return {
-      ...particle,
-      x: nx,
-      y: ny,
-      vx: nvx,
-      vy: nvy,
-      life: nextLife,
-      opacity: particle.opacity * 0.99,
-    };
-  };
+      return {
+        ...particle,
+        x: nx,
+        y: ny,
+        vx: nvx,
+        vy: nvy,
+        life: nextLife,
+        opacity: particle.opacity * 0.99,
+      };
+    },
+    [],
+  );
 
-  const drawParticle = (context: CanvasRenderingContext2D, particle: Particle) => {
+  const drawParticle = useCallback((context: CanvasRenderingContext2D, particle: Particle) => {
     const angle = Math.atan2(particle.vy, particle.vx);
     context.save();
     context.translate(particle.x, particle.y);
@@ -249,9 +231,36 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
     context.lineTo(particle.length * 0.8, 0);
     context.stroke();
     context.restore();
-  };
+  }, []);
 
-  const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
+  const renderFrame = useCallback(
+    (context: CanvasRenderingContext2D, delta: number) => {
+      const m = metricsRef.current;
+      const phase = phaseRef.current;
+      const { spawnRate, speed, life, opacity } = PHASE_SETTINGS[phase];
+
+      context.clearRect(0, 0, m.width, m.height);
+
+      if (spawnRate > 0 && m.width > 0 && m.height > 0) {
+        const overlayRateScale = 1.0;
+        spawnAccumulatorRef.current += spawnRate * overlayRateScale * delta;
+        while (spawnAccumulatorRef.current >= 1) {
+          spawnParticlesLayer(m.width, m.height, speed, life, opacity);
+          spawnAccumulatorRef.current -= 1;
+        }
+      }
+
+      particlesRef.current = particlesRef.current.reduce<Particle[]>((next, particle) => {
+        const updated = updateParticle(particle, delta, m.width, m.height);
+        if (updated) {
+          drawParticle(context, updated);
+          next.push(updated);
+        }
+        return next;
+      }, []);
+    },
+    [drawParticle, spawnParticlesLayer, updateParticle],
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -423,7 +432,7 @@ export default function CanvasGlobalParticlesLayer({ className, anchorRef }: Can
       document.removeEventListener("visibilitychange", visibilityHandler);
       contextRef.current = null;
     };
-  }, [anchorRef]);
+  }, [anchorRef, renderFrame, schedulePhases]);
 
   return (
     <canvas
