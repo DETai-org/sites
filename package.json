@@ -11,5 +11,16 @@
     "build:detai": "npm --prefix detai-site run build",
     "start:detai": "npm --prefix detai-site run start",
     "lint:detai": "npm --prefix detai-site run lint"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "autoprefixer": "10.4.16",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.1.0",
+    "postcss": "8.4.31",
+    "tailwindcss": "3.4.1",
+    "typescript": "^5.0.0"
   }
 }

@@ -13,7 +13,11 @@
 
 - `package-lock.json` хранится только в корне репозитория.
 - Внутри сайтов lockfile не создаём.
-- Зависимости ставим только из корня: `npm install`.
+- Зависимости ставим только из корня: `npm install --prefix ..`.
+- Общие devDependencies (eslint/typescript/tailwind и типы) вынесены в корневой `package.json` и используются всеми сайтами.
+- Для `personal-site` TypeScript и типы продублированы в `dependencies`, чтобы сборка проходила при production install на Vercel.
+- Root Directory в Vercel — директория сайта (`detai-site` или `personal-site`).
+- `distDir` не переопределяется, у каждого сайта свой локальный `.next`.
 
 ## Vercel
 
