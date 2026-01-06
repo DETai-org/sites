@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   outputFileTracingIncludes: {
-    "/app/blog/[slug]/page": ["./lib/blog/posts/**"],
-    "/app/api/images/posts/[slug]/route": ["./wordpress-data/uploads/**"]
+    "/blog": ["./lib/blog/posts/**"],
+    "/blog/[slug]": ["./lib/blog/posts/**"],
+    "/api/images/posts/[slug]": ["./wordpress-data/uploads/**"]
   }
 };
 
