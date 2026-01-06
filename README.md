@@ -2,6 +2,22 @@
 
 Этот репозиторий — монорепозиторий с несколькими сайтами на Next.js.
 Каждый сайт — отдельное приложение со своими стилями и конфигами.
+Схема “1 GitHub repo (monorepo) → 2 папки → 2 Vercel Projects (по одному на сайт)” — нормальная практика, особенно когда:
+
+хочешь единые правила/инструменты (eslint, ts, tailwind, общие конфиги)
+
+есть/будут общие пакеты в packages/*
+
+удобно делать один PR, который может затронуть оба сайта (например, общий компонент/утилита)
+
+Когда monorepo — прям “в точку” ✅
+
+сайты связаны (общий дизайн/компоненты/утилиты)
+
+хочешь единый процесс зависимостей (как вы и сделали: root package-lock.json, workspaces)
+
+будет рост: 2 → 3 → 5 сайтов/приложений, и ты не хочешь плодить репы
+
 
 ## Структура
 
@@ -23,12 +39,12 @@
 
 ### detai-site
 
-- **Root Directory**: `/`
+- **Root Directory**: `detai-site`
 - **Install Command**: `npm install`
-- **Build Command**: `npm --workspace detai-site run build`
+- **Build Command**: `npm run build`
 
 ### personal-site
 
-- **Root Directory**: `/`
+- **Root Directory**: `personal-site`
 - **Install Command**: `npm install`
-- **Build Command**: `npm --workspace personal-site run build`
+- **Build Command**: `npm run build`
