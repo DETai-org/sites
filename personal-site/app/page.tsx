@@ -3,6 +3,7 @@ export default function HomePage() {
     <main className="page">
       <h1>Personal Site</h1>
       <p>Каркас готов к наполнению контентом.</p>
+      <p>Новый раздел блога уже доступен через меню.</p>
     </main>
   );
 }
