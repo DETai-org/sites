@@ -61,7 +61,7 @@ function extractCdata(item: string, tag: string): string | null {
 
 function normalizeContent(content: string): string {
   return content
-    .replace(/<!--.*?-->/gs, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/<p>\s*/g, "")
     .replace(/\s*<\/p>/g, "\n\n")
     .replace(/<br\s*\/?\s*>/g, "\n")
