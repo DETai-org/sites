@@ -15,6 +15,7 @@
 - Внутри сайтов lockfile не создаём.
 - Зависимости ставим только из корня: `npm install`.
 - Общие devDependencies (eslint/typescript/tailwind и типы) вынесены в корневой `package.json` и используются всеми сайтами.
+- Для `personal-site` TypeScript и типы продублированы в `dependencies`, чтобы сборка проходила при production install на Vercel.
 
 ## Vercel
 
