@@ -6,12 +6,25 @@
 ## Структура
 
 - `detai-site/` — основной сайт DET
-- `personal-site/` — будущий персональный сайт
+- `personal-site/` — персональный сайт
 - `packages/` — общий код/пакеты (опционально)
+
+## Правила monorepo
+
+- `package-lock.json` хранится только в корне репозитория.
+- Внутри сайтов lockfile не создаём.
+- Зависимости ставим только из корня: `npm install`.
 
 ## Vercel
 
-Для деплоя сайта DET укажите:
+### detai-site
 
-- **Root Directory**: `detai-site/`
-- Команды сборки/запуска — стандартные для Next.js (берутся из `detai-site/package.json`).
+- **Root Directory**: `/`
+- **Install Command**: `npm install`
+- **Build Command**: `npm --workspace detai-site run build`
+
+### personal-site
+
+- **Root Directory**: `/`
+- **Install Command**: `npm install`
+- **Build Command**: `npm --workspace personal-site run build`
