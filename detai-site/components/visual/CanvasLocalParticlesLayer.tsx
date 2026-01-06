@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -93,16 +93,16 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
 
   const metricsRef = useRef<{ width: number; height: number }>({ width: 0, height: 0 });
 
-  const switchPhase = (phase: Phase) => {
+  const switchPhase = useCallback((phase: Phase) => {
     phaseRef.current = phase;
     if (phase === "idle") {
       spawnAccumulatorRef.current = 0;
     } else {
       hasStartedCycleRef.current = true;
     }
-  };
+  }, []);
 
-  const schedulePhases = () => {
+  const schedulePhases = useCallback(() => {
     timeoutsRef.current.forEach((id) => clearTimeout(id));
     timeoutsRef.current = [];
 
@@ -118,254 +118,256 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     );
 
     timeoutsRef.current.push(start, toPeak, toFade, toIdle);
-  };
+  }, [switchPhase]);
 
-  const renderFrame = (context: CanvasRenderingContext2D, delta: number) => {
-    const m = metricsRef.current;
-    const phase = phaseRef.current;
-    const { spawnRate, speed, life, opacity } = PHASE_SETTINGS[phase];
+  const randomBetween = useCallback((min: number, max: number) => Math.random() * (max - min) + min, []);
+  const clamp = useCallback((value: number, min: number, max: number) => Math.max(min, Math.min(max, value)), []);
+  const lerp = useCallback((start: number, end: number, t: number) => start + (end - start) * t, []);
+  const easeOutQuad = useCallback((t: number) => 1 - (1 - t) * (1 - t), []);
+  const easeOutCubic = useCallback((t: number) => 1 - Math.pow(1 - t, 3), []);
+  const clusteredChance = useCallback(
+    (x: number, y: number, width: number, height: number, chanceRange: [number, number]) => {
+      const minChance = chanceRange[0];
+      const maxChance = chanceRange[1];
+      const nx = x / Math.max(width, 1);
+      const ny = y / Math.max(height, 1);
+      const wave =
+        (Math.sin(nx * 9.3 + ny * 5.1) +
+          Math.sin(nx * 4.7 - ny * 8.2) * 0.6 +
+          Math.sin((nx + ny) * 3.3) * 0.4 +
+          2) /
+        4;
+      return lerp(minChance, maxChance, clamp(wave, 0, 1));
+    },
+    [clamp, lerp],
+  );
 
-    context.clearRect(0, 0, m.width, m.height);
+  const spawnParticlesLayer = useCallback(
+    (
+      width: number,
+      height: number,
+      speed: [number, number],
+      life: [number, number],
+      opacityRange: [number, number],
+    ) => {
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const margin = Math.min(width, height) * 0.03;
+      const spawnSpread = Math.min(width, height) * 0.18;
+      const SPAWN_SIDE_MULTIPLIER = {
+        top: 1.9,
+        left: 1.7,
+        right: 1.0,
+        bottom: 1.0,
+      };
 
-    if (spawnRate > 0 && m.width > 0 && m.height > 0) {
-      spawnAccumulatorRef.current += spawnRate * delta;
-      while (spawnAccumulatorRef.current >= 1) {
-        spawnParticlesLayer(m.width, m.height, speed, life, opacity);
-        spawnAccumulatorRef.current -= 1;
-      }
-    }
+      const radius = Math.min(width, height) * 0.16;
 
-    particlesRef.current = particlesRef.current.reduce<Particle[]>((next, particle) => {
-      const updated = updateParticle(particle, delta, m.width, m.height);
-      if (updated) {
-        drawParticle(context, updated);
-        next.push(updated);
-      }
-      return next;
-    }, []);
-  };
+      const targets: Array<{
+        spawn: () => [number, number];
+        tx: number;
+        ty: number;
+      }> = [
+        {
+          spawn: () => [
+            Math.random() * width,
+            -margin +
+              randomBetween(
+                -spawnSpread * SPAWN_SIDE_MULTIPLIER.top,
+                spawnSpread * SPAWN_SIDE_MULTIPLIER.top,
+              ),
+          ],
+          tx: centerX,
+          ty: centerY - radius,
+        },
+        {
+          spawn: () => [Math.random() * width, height + margin + randomBetween(-spawnSpread, spawnSpread)],
+          tx: centerX,
+          ty: centerY + radius,
+        },
+        {
+          spawn: () => [
+            -margin +
+              randomBetween(
+                -spawnSpread * SPAWN_SIDE_MULTIPLIER.left,
+                spawnSpread * SPAWN_SIDE_MULTIPLIER.left,
+              ),
+            Math.random() * height,
+          ],
+          tx: centerX - radius,
+          ty: centerY,
+        },
+        {
+          spawn: () => [width + margin + randomBetween(-spawnSpread, spawnSpread), Math.random() * height],
+          tx: centerX + radius,
+          ty: centerY,
+        },
+      ];
 
-  const spawnParticlesLayer = (
-    width: number,
-    height: number,
-    speed: [number, number],
-    life: [number, number],
-    opacityRange: [number, number],
-  ) => {
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const margin = Math.min(width, height) * 0.03;
-    const spawnSpread = Math.min(width, height) * 0.18;
-    const SPAWN_SIDE_MULTIPLIER = {
-      top: 1.9,
-      left: 1.7,
-      right: 1.0,
-      bottom: 1.0,
-    };
+      targets.forEach(({ spawn, tx, ty }) => {
+        const [x, y] = spawn();
+        const dx = tx - x;
+        const dy = ty - y;
+        const baseAngle = Math.atan2(dy, dx);
+        const jitter = (Math.random() - 0.5) * 0.01;
+        const swirl = (Math.random() - 0.5) * 0.04;
+        const angle = baseAngle + jitter + swirl;
 
+        const velocity = randomBetween(speed[0], speed[1]);
+        const length = randomBetween(5, 9);
+        const thickness = randomBetween(1.6, 2.2);
+        const opacity = randomBetween(opacityRange[0], opacityRange[1]);
+        const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
+        const initialDistance = Math.hypot(dx, dy);
+        const blurClusterChance = clusteredChance(x, y, width, height, BLUR_CHANCE_RANGE);
+        const blurParticipant = Math.random() < blurClusterChance;
+        const blurStrength = blurParticipant ? randomBetween(BLUR_STRENGTH_RANGE[0], BLUR_STRENGTH_RANGE[1]) : 0;
+        const edgeParticipant = Math.random() < EDGE_OPACITY_CHANCE;
+        const edgeFadeUntil = edgeParticipant ? randomBetween(EDGE_FADE_RANGE[0], EDGE_FADE_RANGE[1]) : 0;
+        const edgeOpacityFactor = edgeParticipant
+          ? Math.random() < 0.45
+            ? randomBetween(EDGE_OPACITY_STRONG_RANGE[0], EDGE_OPACITY_STRONG_RANGE[1])
+            : randomBetween(EDGE_OPACITY_SOFT_RANGE[0], EDGE_OPACITY_SOFT_RANGE[1])
+          : 1;
+        const canGoOutbound = Math.random() < OUTBOUND_CHANCE;
 
-    const radius = Math.min(width, height) * 0.16;
+        const lifespan = randomBetween(life[0], life[1]);
 
-    const targets: Array<{
-      spawn: () => [number, number];
-      tx: number;
-      ty: number;
-    }> = [
-      {
-        spawn: () => [
-          Math.random() * width,
-          -margin +
-            randomBetween(
-              -spawnSpread * SPAWN_SIDE_MULTIPLIER.top,
-              spawnSpread * SPAWN_SIDE_MULTIPLIER.top,
-            ),
-        ],
-        tx: centerX,
-        ty: centerY - radius,
-      },
-      {
-        spawn: () => [Math.random() * width, height + margin + randomBetween(-spawnSpread, spawnSpread)],
-        tx: centerX,
-        ty: centerY + radius,
-      },
-      {
-        spawn: () => [
-          -margin +
-            randomBetween(
-              -spawnSpread * SPAWN_SIDE_MULTIPLIER.left,
-              spawnSpread * SPAWN_SIDE_MULTIPLIER.left,
-            ),
-          Math.random() * height,
-        ],
-        tx: centerX - radius,
-        ty: centerY,
-      },
-      {
-        spawn: () => [width + margin + randomBetween(-spawnSpread, spawnSpread), Math.random() * height],
-        tx: centerX + radius,
-        ty: centerY,
-      },
-    ];
-
-    targets.forEach(({ spawn, tx, ty }) => {
-      const [x, y] = spawn();
-      const dx = tx - x;
-      const dy = ty - y;
-      const baseAngle = Math.atan2(dy, dx);
-      const jitter = (Math.random() - 0.5) * 0.01;
-      const swirl = (Math.random() - 0.5) * 0.04;
-      const angle = baseAngle + jitter + swirl;
-
-      const velocity = randomBetween(speed[0], speed[1]);
-      const length = randomBetween(5, 9);
-      const thickness = randomBetween(1.6, 2.2);
-      const opacity = randomBetween(opacityRange[0], opacityRange[1]);
-      const color = GOLD_PALETTE[Math.random() > 0.55 ? 1 : 0];
-      const initialDistance = Math.hypot(dx, dy);
-      const blurClusterChance = clusteredChance(x, y, width, height, BLUR_CHANCE_RANGE);
-      const blurParticipant = Math.random() < blurClusterChance;
-      const blurStrength = blurParticipant ? randomBetween(BLUR_STRENGTH_RANGE[0], BLUR_STRENGTH_RANGE[1]) : 0;
-      const edgeParticipant = Math.random() < EDGE_OPACITY_CHANCE;
-      const edgeFadeUntil = edgeParticipant ? randomBetween(EDGE_FADE_RANGE[0], EDGE_FADE_RANGE[1]) : 0;
-      const edgeOpacityFactor = edgeParticipant
-        ? Math.random() < 0.45
-          ? randomBetween(EDGE_OPACITY_STRONG_RANGE[0], EDGE_OPACITY_STRONG_RANGE[1])
-          : randomBetween(EDGE_OPACITY_SOFT_RANGE[0], EDGE_OPACITY_SOFT_RANGE[1])
-        : 1;
-      const canGoOutbound = Math.random() < OUTBOUND_CHANCE;
-
-      const lifespan = randomBetween(life[0], life[1]);
-
-      particlesRef.current.push({
-        x,
-        y,
-        vx: Math.cos(angle) * velocity,
-        vy: Math.sin(angle) * velocity,
-        tx,
-        ty,
-        life: lifespan,
-        initialLife: lifespan,
-        opacity,
-        baseOpacity: opacity,
-        blur: 0,
-        length,
-        thickness,
-        color,
-        initialDistance,
-        edgeParticipant,
-        edgeFadeUntil,
-        edgeOpacityFactor,
-        blurParticipant,
-        blurStrength,
-        mode: "inbound",
-        canGoOutbound,
-        outboundAngle: null,
-        outboundSpeed: null,
+        particlesRef.current.push({
+          x,
+          y,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity,
+          tx,
+          ty,
+          life: lifespan,
+          initialLife: lifespan,
+          opacity,
+          baseOpacity: opacity,
+          blur: 0,
+          length,
+          thickness,
+          color,
+          initialDistance,
+          edgeParticipant,
+          edgeFadeUntil,
+          edgeOpacityFactor,
+          blurParticipant,
+          blurStrength,
+          mode: "inbound",
+          canGoOutbound,
+          outboundAngle: null,
+          outboundSpeed: null,
+        });
       });
-    });
 
-    if (particlesRef.current.length > 260) {
-      particlesRef.current.splice(0, particlesRef.current.length - 260);
-    }
-  };
+      if (particlesRef.current.length > 260) {
+        particlesRef.current.splice(0, particlesRef.current.length - 260);
+      }
+    },
+    [clusteredChance, randomBetween],
+  );
 
-  const updateParticle = (particle: Particle, delta: number, width: number, height: number): Particle | null => {
-    const damping = 0.993;
-    const pull = 84;
+  const updateParticle = useCallback(
+    (particle: Particle, delta: number, width: number, height: number): Particle | null => {
+      const damping = 0.993;
+      const pull = 84;
 
-    const nextLife = particle.life - delta;
-    if (nextLife <= 0) return null;
+      const nextLife = particle.life - delta;
+      if (nextLife <= 0) return null;
 
-    const lifeRatio = particle.life / (particle.life + delta);
+      const lifeRatio = particle.life / (particle.life + delta);
 
-    const dx = particle.tx - particle.x;
-    const dy = particle.ty - particle.y;
-    const distance = Math.hypot(dx, dy);
-    const minDimension = Math.min(width, height);
+      const dx = particle.tx - particle.x;
+      const dy = particle.ty - particle.y;
+      const distance = Math.hypot(dx, dy);
+      const minDimension = Math.min(width, height);
 
-    const distNorm = Math.min(distance / (minDimension * 0.5), 1);
-    const edgeEase = easeOutCubic(Math.pow(distNorm, 1.12));
-    const blur = particle.blurParticipant ? MAX_BLUR * particle.blurStrength * Math.pow(edgeEase, 1.4) : 0;
+      const distNorm = Math.min(distance / (minDimension * 0.5), 1);
+      const edgeEase = easeOutCubic(Math.pow(distNorm, 1.12));
+      const blur = particle.blurParticipant ? MAX_BLUR * particle.blurStrength * Math.pow(edgeEase, 1.4) : 0;
 
-    const pullFactor = 0.7 + (1 - distNorm) * 0.6;
-    const earlyBoost = lifeRatio > 0.75 && particle.mode === "inbound" ? 2.0 : 1.0;
+      const pullFactor = 0.7 + (1 - distNorm) * 0.6;
+      const earlyBoost = lifeRatio > 0.75 && particle.mode === "inbound" ? 2.0 : 1.0;
 
-    const directionX = dx / Math.max(distance, 1);
-    const directionY = dy / Math.max(distance, 1);
+      const directionX = dx / Math.max(distance, 1);
+      const directionY = dy / Math.max(distance, 1);
 
-    const outboundThreshold = minDimension * 0.04;
-    const shouldSwitchOutbound =
-      particle.mode === "inbound" && particle.canGoOutbound && distance < outboundThreshold;
+      const outboundThreshold = minDimension * 0.04;
+      const shouldSwitchOutbound =
+        particle.mode === "inbound" && particle.canGoOutbound && distance < outboundThreshold;
 
-    const outboundAngleJitter = (Math.random() - 0.5) * 0.25;
-    const outboundDirAngle =
-      particle.outboundAngle ?? Math.atan2(-directionY, -directionX) + outboundAngleJitter;
-    const outboundSpeed = particle.outboundSpeed ?? randomBetween(64, 108);
+      const outboundAngleJitter = (Math.random() - 0.5) * 0.25;
+      const outboundDirAngle =
+        particle.outboundAngle ?? Math.atan2(-directionY, -directionX) + outboundAngleJitter;
+      const outboundSpeed = particle.outboundSpeed ?? randomBetween(64, 108);
 
-    const ax =
-      particle.mode === "inbound"
-        ? directionX * pull * pullFactor * earlyBoost * delta
-        : Math.cos(outboundDirAngle) * pull * 0.12 * delta;
-    const ay =
-      particle.mode === "inbound"
-        ? directionY * pull * pullFactor * earlyBoost * delta
-        : Math.sin(outboundDirAngle) * pull * 0.12 * delta;
+      const ax =
+        particle.mode === "inbound"
+          ? directionX * pull * pullFactor * earlyBoost * delta
+          : Math.cos(outboundDirAngle) * pull * 0.12 * delta;
+      const ay =
+        particle.mode === "inbound"
+          ? directionY * pull * pullFactor * earlyBoost * delta
+          : Math.sin(outboundDirAngle) * pull * 0.12 * delta;
 
-    const nx = particle.x + (particle.vx + ax) * delta;
-    const ny = particle.y + (particle.vy + ay) * delta;
+      const nx = particle.x + (particle.vx + ax) * delta;
+      const ny = particle.y + (particle.vy + ay) * delta;
 
-    const nvx =
-      particle.mode === "inbound"
-        ? (particle.vx + ax) * damping
-        : (Math.cos(outboundDirAngle) * outboundSpeed + particle.vx * 0.6) * damping;
-    const nvy =
-      particle.mode === "inbound"
-        ? (particle.vy + ay) * damping
-        : (Math.sin(outboundDirAngle) * outboundSpeed + particle.vy * 0.6) * damping;
+      const nvx =
+        particle.mode === "inbound"
+          ? (particle.vx + ax) * damping
+          : (Math.cos(outboundDirAngle) * outboundSpeed + particle.vx * 0.6) * damping;
+      const nvy =
+        particle.mode === "inbound"
+          ? (particle.vy + ay) * damping
+          : (Math.sin(outboundDirAngle) * outboundSpeed + particle.vy * 0.6) * damping;
 
-    const travelProgress = particle.initialDistance
-      ? clamp(1 - distance / particle.initialDistance, 0, 1)
-      : 1;
-
-    const edgeOpacityBlend =
-      particle.edgeParticipant && particle.mode === "inbound"
-        ? lerp(
-            particle.edgeOpacityFactor,
-            1,
-            easeOutQuad(clamp(travelProgress / Math.max(particle.edgeFadeUntil, 0.0001), 0, 1)),
-          )
+      const travelProgress = particle.initialDistance
+        ? clamp(1 - distance / particle.initialDistance, 0, 1)
         : 1;
 
-    const opacityDecay =
-      particle.mode === "outbound" ? OUTBOUND_OPACITY_DECAY : INBOUND_OPACITY_DECAY;
+      const edgeOpacityBlend =
+        particle.edgeParticipant && particle.mode === "inbound"
+          ? lerp(
+              particle.edgeOpacityFactor,
+              1,
+              easeOutQuad(clamp(travelProgress / Math.max(particle.edgeFadeUntil, 0.0001), 0, 1)),
+            )
+          : 1;
 
-    const nearCenterFade = particle.mode === "inbound" && distance < minDimension * 0.025 ? 0.9 : 1;
+      const opacityDecay =
+        particle.mode === "outbound" ? OUTBOUND_OPACITY_DECAY : INBOUND_OPACITY_DECAY;
 
-    const nextBaseOpacity = particle.baseOpacity * opacityDecay * nearCenterFade;
-    const updatedOpacity = nextBaseOpacity * edgeOpacityBlend;
+      const nearCenterFade = particle.mode === "inbound" && distance < minDimension * 0.025 ? 0.9 : 1;
 
-    const nextMode = shouldSwitchOutbound ? "outbound" : particle.mode;
-    const nextLifeValue = shouldSwitchOutbound ? nextLife + OUTBOUND_LIFE_BONUS : nextLife;
-    const nextOutboundAngle = shouldSwitchOutbound ? outboundDirAngle : particle.outboundAngle;
-    const nextOutboundSpeed = shouldSwitchOutbound ? outboundSpeed : particle.outboundSpeed;
+      const nextBaseOpacity = particle.baseOpacity * opacityDecay * nearCenterFade;
+      const updatedOpacity = nextBaseOpacity * edgeOpacityBlend;
 
-    return {
-      ...particle,
-      x: nx,
-      y: ny,
-      vx: nvx,
-      vy: nvy,
-      life: nextLifeValue,
-      opacity: updatedOpacity,
-      baseOpacity: nextBaseOpacity,
-      blur,
-      mode: nextMode,
-      outboundSpeed: nextOutboundSpeed,
-      outboundAngle: nextOutboundAngle,
-    };
-  };
+      const nextMode = shouldSwitchOutbound ? "outbound" : particle.mode;
+      const nextLifeValue = shouldSwitchOutbound ? nextLife + OUTBOUND_LIFE_BONUS : nextLife;
+      const nextOutboundAngle = shouldSwitchOutbound ? outboundDirAngle : particle.outboundAngle;
+      const nextOutboundSpeed = shouldSwitchOutbound ? outboundSpeed : particle.outboundSpeed;
 
-  const drawParticle = (context: CanvasRenderingContext2D, particle: Particle) => {
+      return {
+        ...particle,
+        x: nx,
+        y: ny,
+        vx: nvx,
+        vy: nvy,
+        life: nextLifeValue,
+        opacity: updatedOpacity,
+        baseOpacity: nextBaseOpacity,
+        blur,
+        mode: nextMode,
+        outboundSpeed: nextOutboundSpeed,
+        outboundAngle: nextOutboundAngle,
+      };
+    },
+    [clamp, easeOutCubic, easeOutQuad, lerp, randomBetween],
+  );
+
+  const drawParticle = useCallback((context: CanvasRenderingContext2D, particle: Particle) => {
     const angle = Math.atan2(particle.vy, particle.vx);
     context.save();
     context.translate(particle.x, particle.y);
@@ -380,30 +382,35 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
     context.stroke();
     context.filter = "none";
     context.restore();
-  };
+  }, []);
 
-  const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min;
-  const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-  const lerp = (start: number, end: number, t: number) => start + (end - start) * t;
-  const easeOutQuad = (t: number) => 1 - (1 - t) * (1 - t);
-  const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-  const clusteredChance = (
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    [minChance, maxChance]: [number, number],
-  ) => {
-    const nx = width ? x / width : 0;
-    const ny = height ? y / height : 0;
-    const wave =
-      (Math.sin(nx * 9.3 + ny * 5.1) +
-        Math.sin(nx * 4.7 - ny * 8.2) * 0.6 +
-        Math.sin((nx + ny) * 3.3) * 0.4 +
-        2) /
-      4;
-    return lerp(minChance, maxChance, clamp(wave, 0, 1));
-  };
+  const renderFrame = useCallback(
+    (context: CanvasRenderingContext2D, delta: number) => {
+      const m = metricsRef.current;
+      const phase = phaseRef.current;
+      const { spawnRate, speed, life, opacity } = PHASE_SETTINGS[phase];
+
+      context.clearRect(0, 0, m.width, m.height);
+
+      if (spawnRate > 0 && m.width > 0 && m.height > 0) {
+        spawnAccumulatorRef.current += spawnRate * delta;
+        while (spawnAccumulatorRef.current >= 1) {
+          spawnParticlesLayer(m.width, m.height, speed, life, opacity);
+          spawnAccumulatorRef.current -= 1;
+        }
+      }
+
+      particlesRef.current = particlesRef.current.reduce<Particle[]>((next, particle) => {
+        const updated = updateParticle(particle, delta, m.width, m.height);
+        if (updated) {
+          drawParticle(context, updated);
+          next.push(updated);
+        }
+        return next;
+      }, []);
+    },
+    [drawParticle, spawnParticlesLayer, updateParticle],
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -563,7 +570,7 @@ export default function CanvasLocalParticlesLayer({ className }: CanvasLocalPart
       document.removeEventListener("visibilitychange", visibilityHandler);
       contextRef.current = null;
     };
-  }, []);
+  }, [renderFrame, schedulePhases]);
 
   return <canvas ref={canvasRef} className={cn("absolute inset-0 pointer-events-none z-10", className)} aria-hidden />;
 }
