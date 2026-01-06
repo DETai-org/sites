@@ -14,6 +14,7 @@
 - `package-lock.json` хранится только в корне репозитория.
 - Внутри сайтов lockfile не создаём.
 - Зависимости ставим только из корня: `npm install`.
+- Общие devDependencies (eslint/typescript/tailwind и типы) вынесены в корневой `package.json` и используются всеми сайтами.
 
 ## Vercel
 
