@@ -30,7 +30,11 @@ async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<
     console.info(`[blog] Чтение Markdown для "${post.slug}" из ${absolutePath}`);
     content = await readFile(absolutePath, "utf-8");
   } catch (error) {
-    console.error(`Не удалось прочитать контент поста ${post.slug}:`, error);
+    const errorCode = (error as NodeJS.ErrnoException | null)?.code ?? "unknown";
+    console.error(
+      `Не удалось прочитать контент поста ${post.slug}. Путь: ${absolutePath}. Код ошибки: ${errorCode}.`,
+      error
+    );
   }
 
   if (content.trim()) {

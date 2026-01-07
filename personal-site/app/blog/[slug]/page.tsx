@@ -16,8 +16,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const isDev = process.env.NODE_ENV === "development";
   const contentHtml = post.contentHtml.trim();
   const fallbackText = post.content.trim();
+  const emptyStateText = fallbackText || (isDev ? "Файл не найден." : "Контент скоро появится.");
 
   return (
     <main className="page">
@@ -41,7 +43,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           {contentHtml ? (
             <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
           ) : (
-            <p>{fallbackText || "Контент скоро появится."}</p>
+            <p>{emptyStateText}</p>
           )}
         </div>
       </article>
