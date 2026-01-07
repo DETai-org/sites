@@ -5,11 +5,171 @@
 
 body {
   margin: 0;
-  padding: 40px;
+  padding: 0;
+  background: #f8fafc;
+  color: #0f172a;
 }
 
 .page {
+  max-width: 980px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 32px 20px 60px;
+}
+
+.page__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-header {
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.site-header__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.site-header__logo {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-header__link {
+  font-size: 14px;
+  text-decoration: none;
+  color: #334155;
+}
+
+.site-header__link:hover {
+  color: #0f172a;
+}
+
+.blog-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.blog-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.blog-card__image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blog-card__meta {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.blog-card__title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.blog-card__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-card__excerpt {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.blog-card__link {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.blog-post {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.blog-post__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blog-post__meta {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.blog-post__title {
+  margin: 0;
+  font-size: 32px;
+}
+
+.blog-post__image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.blog-post__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  line-height: 1.7;
+  color: #1e293b;
+}
+
+.blog-post__subtitle {
+  margin: 0;
+  font-size: 24px;
+}
+
+@media (max-width: 720px) {
+  .blog-card {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
