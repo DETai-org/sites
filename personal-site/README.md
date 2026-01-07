@@ -6,7 +6,7 @@
 
 - `lib/blog/` — центральное место для метаданных и текста постов.
 - `lib/blog/posts/` — Markdown-файлы постов.
-- `public/images/posts/` — оптимизированные обложки (WebP) или временные плейсхолдеры.
+- `public/images/posts/` — обложки постов, которые раздаются напрямую из `public/` (бинарные файлы добавляются вручную, без коммита).
 - Markdown контент компилируется в безопасный HTML на этапе загрузки постов и сохраняется в поле `contentHtml`.
 
 ## Сырьё из WordPress
@@ -32,7 +32,7 @@ npx tsx scripts/optimize-images.ts \
   public/images/posts/eta-istoriya-pro-odnogo-cheloveka.webp
 ```
 
-> ⚠️ В репозиторий пока не кладём бинарные WebP-файлы из-за ограничений PR. После генерации локально замените `coverImage.src` в `lib/blog/blog.base.ts` на WebP и загрузите файл вручную в нужном окружении.
+> ⚠️ Если используете WebP, после генерации замените `coverImage.src` в `lib/blog/blog.base.ts` и загрузите файл в `public/images/posts/`.
 
 ### Черновая проверка списка постов
 

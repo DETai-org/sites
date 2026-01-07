@@ -1,0 +1,4 @@
+# Бинарные обложки постов добавляются вручную, без коммита
+public/images/posts/*.jpg
+public/images/posts/*.jpeg
+public/images/posts/*.webp
