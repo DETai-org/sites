@@ -1,0 +1,38 @@
+name: Auto Push and Merge PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  autopush:
+    if: contains(github.event.pull_request.body, '[autopush-site]')  # Проверяем описание PR на наличие метки
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js (если используется Next.js или другой фреймворк)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm install  # Или другой менеджер пакетов, если используется
+
+      - name: Run tests (если они есть)
+        run: |
+          npm run test  # Пример команды для запуска тестов
+
+      - name: Deploy (если нужно развернуть на сервере или в Vercel)
+        run: |
+          npm run deploy  # Или настройка для деплоя на выбранную платформу
+
+      - name: Merge Pull Request automatically
+        uses: peter-evans/merge-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull_request: ${{ github.event.pull_request.number }}
+          merge_method: merge  # Варианты: merge, squash, rebase
+          commit_message: 'Automatic merge after autopush-site PR'
