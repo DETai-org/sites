@@ -1,5 +1,4 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { baseBlogPosts } from "./blog.base";
 import { BlogPost, BlogPostBase } from "./types";
@@ -9,6 +8,8 @@ type ReadFile = typeof import("fs/promises").readFile;
 
 export const blogPosts: BlogPost[] = await buildBlogPosts();
 
+const markdownRoot = path.resolve(process.cwd(), "lib", "blog", "posts");
+
 async function buildBlogPosts(): Promise<BlogPost[]> {
   if (typeof window !== "undefined") {
     return baseBlogPosts.map((post) => buildClientPost(post));
@@ -16,13 +17,15 @@ async function buildBlogPosts(): Promise<BlogPost[]> {
 
   const { readFile } = await import("fs/promises");
 
+  if (process.env.NODE_ENV === "production") {
+    console.info(`[blog] Каталог Markdown: ${markdownRoot}`);
+  }
+
   return Promise.all(baseBlogPosts.map((post) => buildServerPost(post, readFile)));
 }
 
 async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<BlogPost> {
-  const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
-  const postsDirectory = path.resolve(moduleDirectory, "posts");
-  const absolutePath = path.join(postsDirectory, path.basename(post.contentFile));
+  const absolutePath = path.resolve(markdownRoot, path.basename(post.contentFile));
   let content = "";
   let contentHtml = "";
 
