@@ -24,11 +24,9 @@ export interface BlogPostBase {
   originalLink?: string;
   wordpressId?: number;
   excerpt?: string;
-  contentFile: string;
+  content: string;
 }
 
-export interface BlogPost extends Omit<BlogPostBase, "contentFile"> {
-  content: string;
-  contentHtml: string;
+export interface BlogPost extends BlogPostBase {
   excerpt: string;
 }

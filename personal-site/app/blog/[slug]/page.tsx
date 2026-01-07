@@ -16,10 +16,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const isDev = process.env.NODE_ENV === "development";
-  const contentHtml = post.contentHtml.trim();
-  const fallbackText = post.content.trim();
-  const emptyStateText = fallbackText || (isDev ? "Файл не найден." : "Контент скоро появится.");
+  const paragraphs = post.content
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
 
   return (
     <main className="page">
@@ -40,10 +40,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
         </header>
         <div className="blog-post__content">
-          {contentHtml ? (
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+          {paragraphs.length ? (
+            paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)
           ) : (
-            <p>{emptyStateText}</p>
+            <p>Контент скоро появится.</p>
           )}
         </div>
       </article>
