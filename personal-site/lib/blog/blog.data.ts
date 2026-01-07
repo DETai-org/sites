@@ -6,9 +6,12 @@ import { buildBlogPostDescription } from "./blog.description";
 
 type ReadFile = typeof import("fs/promises").readFile;
 
-export const blogPosts: BlogPost[] = await buildBlogPosts();
-
 const markdownRoot = path.resolve(process.cwd(), "lib", "blog", "posts");
+const blogPostsPromise = buildBlogPosts();
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  return blogPostsPromise;
+}
 
 async function buildBlogPosts(): Promise<BlogPost[]> {
   if (typeof window !== "undefined") {

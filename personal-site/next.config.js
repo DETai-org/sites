@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  outputFileTracingIncludes: {
-    "/blog": ["./lib/blog/posts/**"],
-    "/blog/[slug]": ["./lib/blog/posts/**"],
+  experimental: {
+    outputFileTracingIncludes: {
+      "/blog": ["./lib/blog/posts/**"],
+      "/blog/[slug]": ["./lib/blog/posts/**"],
+    },
   },
 };
 
