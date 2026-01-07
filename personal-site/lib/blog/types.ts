@@ -24,7 +24,7 @@ export interface BlogPostBase {
   originalLink?: string;
   wordpressId?: number;
   excerpt?: string;
-  content: string;
+  contentFile: string;
 }
 
 export interface BlogPost extends BlogPostBase {

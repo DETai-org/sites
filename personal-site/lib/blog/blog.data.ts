@@ -6,12 +6,10 @@ export const blogPosts: BlogPost[] = await buildBlogPosts();
 
 async function buildBlogPosts(): Promise<BlogPost[]> {
   return baseBlogPosts.map((post) => {
-    const content = post.content.trim();
-    const excerpt = post.excerpt?.trim() || buildBlogPostDescription({ content, excerpt: "" });
+    const excerpt = post.excerpt?.trim() || buildBlogPostDescription({ content: "", excerpt: "" });
 
     return {
       ...post,
-      content,
       excerpt,
     };
   });
