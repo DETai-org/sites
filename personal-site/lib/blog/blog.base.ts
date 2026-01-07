@@ -16,7 +16,7 @@ export const baseBlogPosts: BlogPostBase[] = [
     ],
     tags: [],
     coverImage: {
-      src: "/images/posts/eta-istoriya-pro-odnogo-cheloveka.jpg",
+      src: "/images/posts/maxresdefault.jpg",
       width: 1280,
       height: 720,
       alt: "Эта история про одного человека",
