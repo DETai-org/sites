@@ -1,3 +1,6 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import { baseBlogPosts } from "./blog.base";
 import { BlogPost, BlogPostBase } from "./types";
 import { buildBlogPostDescription } from "./blog.description";
@@ -17,7 +20,9 @@ async function buildBlogPosts(): Promise<BlogPost[]> {
 }
 
 async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<BlogPost> {
-  const absolutePath = `${process.cwd()}/${post.contentFile}`;
+  const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
+  const postsDirectory = path.resolve(moduleDirectory, "posts");
+  const absolutePath = path.join(postsDirectory, path.basename(post.contentFile));
   let content = "";
   let contentHtml = "";
 
