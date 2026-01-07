@@ -4,9 +4,9 @@ const nextConfig = {
   experimental: {
     outputFileTracingIncludes: {
       "/blog": ["./lib/blog/posts/**"],
-      "/blog/[slug]": ["./lib/blog/posts/**"]
-    }
-  }
+      "/blog/[slug]": ["./lib/blog/posts/**"],
+    },
+  },
 };
 
 module.exports = nextConfig;
