@@ -20,7 +20,8 @@ async function buildBlogPosts(): Promise<BlogPost[]> {
 }
 
 async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<BlogPost> {
-  const postsDirectory = fileURLToPath(new URL("./posts/", import.meta.url));
+  const moduleDirectory = path.dirname(fileURLToPath(import.meta.url));
+  const postsDirectory = path.resolve(moduleDirectory, "posts");
   const absolutePath = path.join(postsDirectory, path.basename(post.contentFile));
   let content = "";
   let contentHtml = "";
