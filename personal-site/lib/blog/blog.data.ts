@@ -19,11 +19,21 @@ async function buildBlogPosts(): Promise<BlogPost[]> {
 async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<BlogPost> {
   const absolutePath = `${process.cwd()}/${post.contentFile}`;
   let content = "";
+  let contentHtml = "";
 
   try {
+    console.info(`[blog] Чтение Markdown для "${post.slug}" из ${absolutePath}`);
     content = await readFile(absolutePath, "utf-8");
   } catch (error) {
     console.error(`Не удалось прочитать контент поста ${post.slug}:`, error);
+  }
+
+  if (content.trim()) {
+    try {
+      contentHtml = await renderMarkdownToHtml(content);
+    } catch (error) {
+      console.error(`Не удалось преобразовать Markdown поста ${post.slug} в HTML:`, error);
+    }
   }
 
   const excerpt = post.excerpt?.trim() || buildBlogPostDescription({ content, excerpt: "" });
@@ -31,6 +41,7 @@ async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<
   return {
     ...post,
     content,
+    contentHtml,
     excerpt,
   };
 }
@@ -41,6 +52,32 @@ function buildClientPost(post: BlogPostBase): BlogPost {
   return {
     ...post,
     content: "",
+    contentHtml: "",
     excerpt,
   };
+}
+
+async function renderMarkdownToHtml(markdown: string): Promise<string> {
+  const [
+    { remark },
+    { default: remarkGfm },
+    { default: remarkRehype },
+    { default: rehypeSanitize },
+    { default: rehypeStringify },
+  ] = await Promise.all([
+    import("remark"),
+    import("remark-gfm"),
+    import("remark-rehype"),
+    import("rehype-sanitize"),
+    import("rehype-stringify"),
+  ]);
+
+  const file = await remark()
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
+    .process(markdown);
+
+  return String(file);
 }

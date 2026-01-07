@@ -29,5 +29,6 @@ export interface BlogPostBase {
 
 export interface BlogPost extends Omit<BlogPostBase, "contentFile"> {
   content: string;
+  contentHtml: string;
   excerpt: string;
 }

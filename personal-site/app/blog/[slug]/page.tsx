@@ -16,10 +16,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const paragraphs = post.content
-    .split("\n\n")
-    .map((chunk) => chunk.trim())
-    .filter(Boolean);
+  const contentHtml = post.contentHtml.trim();
+  const fallbackText = post.content.trim();
 
   return (
     <main className="page">
@@ -40,17 +38,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
         </header>
         <div className="blog-post__content">
-          {paragraphs.map((paragraph, index) => {
-            if (paragraph.startsWith("# ")) {
-              return (
-                <h2 key={`${post.slug}-h2-${index}`} className="blog-post__subtitle">
-                  {paragraph.replace(/^#\s+/, "")}
-                </h2>
-              );
-            }
-
-            return <p key={`${post.slug}-p-${index}`}>{paragraph}</p>;
-          })}
+          {contentHtml ? (
+            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+          ) : (
+            <p>{fallbackText || "Контент скоро появится."}</p>
+          )}
         </div>
       </article>
     </main>
