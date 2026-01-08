@@ -21,9 +21,7 @@
 
 ## Структура
 
-- `detai-site/` — основной сайт DET
-- `personal-site/` — персональный сайт
-- `packages/` — общий код/пакеты (опционально)
+Структура проекта см. в Directory_structure.txt.
 
 ## Правила monorepo
 

@@ -1,0 +1,22 @@
+.
+├── README.md
+├── Directory_structure.txt
+├── app/                          # Страницы и маршруты
+├── components/                   # UI-компоненты
+├── lib/                          # Логика и данные
+│   └── blog/
+│       ├── README.md
+│       ├── blog.base.ts
+│       ├── blog.client.ts
+│       ├── blog.data.ts
+│       ├── blog.description.ts
+│       ├── blog.utils.ts
+│       ├── posts/
+│       └── types.ts
+├── public/                       # Публичные файлы (картинки постов и т.д.)
+├── scripts/                      # Скрипты миграции
+├── wordpress-data/               # Экспорт WordPress и вложения
+├── next.config.js
+├── package.json
+├── tsconfig.json
+└── next-env.d.ts
