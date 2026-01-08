@@ -1,0 +1,39 @@
+.
+├── README.md
+├── Directory_structure.txt
+├── app/                          # Страницы и маршруты (App Router)
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── providers.tsx
+│   ├── (det)/
+│   ├── (detai)/
+│   ├── (marketing)/
+│   ├── (projects)/
+│   ├── about/
+│   ├── colors/
+│   ├── contacts/
+│   ├── legal/
+│   ├── privacy/
+│   ├── products/
+│   │   └── _components/
+│   └── team/
+├── components/                   # UI-компоненты и секции
+│   ├── layout/
+│   ├── sections/
+│   ├── ui/
+│   └── visual/
+├── i18n/                         # Локализации
+├── lib/                          # Хелперы, данные, утилиты
+│   ├── hooks/
+│   ├── publications/
+│   ├── projects.ts
+│   └── utils.ts
+├── public/                       # Публичные файлы (images, assets, robots)
+├── scripts/                      # Служебные скрипты
+├── styles/                       # Глобальные стили и токены темы
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.json
+└── next-env.d.ts

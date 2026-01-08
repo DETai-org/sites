@@ -1,0 +1,10 @@
+.
+├── AGENT.md
+├── Directory_structure.txt
+├── README.md
+├── detai-site/                   # Подробная структура: detai-site/Directory_structure.txt
+├── personal-site/                # Подробная структура: personal-site/Directory_structure.txt
+├── packages/                     # Общие пакеты (workspaces)
+├── package.json
+├── package-lock.json
+└── node_modules/                 # Установленные зависимости (локально)
