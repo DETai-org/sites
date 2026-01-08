@@ -1,7 +1,7 @@
 name: Auto Push and Merge PR 🧭
 
 on:
-  workflow_dispatch:               # ручной запуск для тестирования
+  workflow_dispatch:               # ручной запуск для тестов
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened]
@@ -9,13 +9,12 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened]
 
-# Токену нужны права на мердж PR
 permissions:
   pull-requests: write
   contents: read
 
 jobs:
-  # Job для проверки/деплоя — запускается в контексте pull_request (без доступа к секретам для форков)
+  # Запускаем проверки/деплой в контексте pull_request (без секретов дл�� форков)
   checks:
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
@@ -40,38 +39,72 @@ jobs:
         run: |
           npm run deploy || echo "skip deploy"
 
-  # Отдельный job для мерджа — запускается в контексте base-репозитория (pull_request_target)
-  # Важно: тут мы НЕ делаем checkout PR-кода — только вызываем API для мержа.
+  # Автомердж — в контексте base-репозитория (pull_request_target).
+  # НЕ делает checkout PR-кода, только проверяет статусы коммита и затем выполняет merge через REST API.
   automerge:
-    needs: checks
-    if: ${{ github.event.pull_request.body && contains(github.event.pull_request.body, '[autopush-site]') && github.event_name == 'pull_request_target' }}
+    if: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.body && contains(github.event.pull_request.body, '[autopush-site]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Info
         run: |
           echo "Event: $GITHUB_EVENT_NAME"
           echo "Repo: $GITHUB_REPOSITORY"
-          echo "PR: ${{ github.event.pull_request.number }}"
-          echo "PR head repo: ${{ github.event.pull_request.head.repo.full_name }}"
-          echo "PR head ref: ${{ github.event.pull_request.head.ref }}"
+          echo "PR number: ${{ github.event.pull_request.number }}"
+          echo "PR head sha: ${{ github.event.pull_request.head.sha }}"
 
-      - name: Merge Pull Request via REST API (safe, no checkout)
+      - name: Wait for required checks to become successful
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Проверяем combined status (state может быть: success, pending, failure)
+          MAX_ATTEMPTS=12
+          SLEEP_SECONDS=5
+          i=1
+          state=""
+          echo "Checking combined status for commit $PR_SHA in $REPO"
+          while [ $i -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $i/$MAX_ATTEMPTS..."
+            resp=$(curl -s -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${REPO}/commits/${PR_SHA}/status")
+            # извлекаем state без jq
+            state=$(echo "$resp" | sed -n 's/.*"state":"\([^"]*\)".*/\1/p' | head -n1)
+            echo "Combined state: ${state}"
+            if [ "$state" = "success" ]; then
+              echo "All required checks are successful."
+              break
+            fi
+            if [ "$state" = "failure" ] || [ "$state" = "error" ]; then
+              echo "One or more checks failed or errored. Response:"
+              echo "$resp"
+              exit 1
+            fi
+            # pending or empty -> sleep and retry
+            sleep $SLEEP_SECONDS
+            i=$((i+1))
+          done
+
+          if [ "$state" != "success" ]; then
+            echo "Checks did not reach success state within timeout (state=${state}). Aborting merge."
+            exit 1
+          fi
+
+      - name: Merge Pull Request via REST API
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUM: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
         run: |
           if [ -z "$PR_NUM" ] || [ "$PR_NUM" = "null" ]; then
             echo "No pull request number found, skipping merge."
             exit 0
           fi
-
-          echo "Attempting to merge PR #$PR_NUM in repository $GITHUB_REPOSITORY ..."
-
+          echo "Attempting to merge PR #$PR_NUM in repository $REPO ..."
           RESP_FILE=$(mktemp)
           HTTP_CODE=$(curl -s -o "$RESP_FILE" -w "%{http_code}" -X PUT \
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${PR_NUM}/merge" \
+            "https://api.github.com/repos/${REPO}/pulls/${PR_NUM}/merge" \
             -d '{"commit_title":"Automatic merge after autopush-site PR","merge_method":"merge"}')
 
           echo "HTTP code: $HTTP_CODE"
@@ -81,6 +114,5 @@ jobs:
             echo "Merge succeeded (HTTP $HTTP_CODE)."
           else
             echo "Merge failed (HTTP $HTTP_CODE). See response above."
-            # Если 403 с "Resource not accessible by integration" — значит проблема прав/контекста (см. пояснение ниже)
             exit 1
           fi
