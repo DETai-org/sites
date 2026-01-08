@@ -1,4 +1,4 @@
-name: Auto Push and Merge PR 🧭
+name: Auto Push and Merge PR 🧭 Ы
 
 on:
   workflow_dispatch:               # ручной запуск для тестов
