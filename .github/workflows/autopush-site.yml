@@ -3,7 +3,10 @@ name: Auto Push and Merge PR 🧭
 on:
   workflow_dispatch:               # ручной запуск для тестирования
   pull_request:
-    branches: [main]               # <-- запускать только для PR, целящихся в main
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  pull_request_target:
+    branches: [main]
     types: [opened, synchronize, reopened]
 
 # Токену нужны права на мердж PR
@@ -12,11 +15,10 @@ permissions:
   contents: read
 
 jobs:
-  autopush:
-    # Выполняем job только если в описании PR есть метка [autopush-site]
-    if: ${{ github.event.pull_request.body && contains(github.event.pull_request.body, '[autopush-site]') }}
+  # Job для проверки/деплоя — запускается в контексте pull_request (без доступа к секретам для форков)
+  checks:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,11 +40,26 @@ jobs:
         run: |
           npm run deploy || echo "skip deploy"
 
-      - name: Merge Pull Request via REST API
+  # Отдельный job для мерджа — запускается в контексте base-репозитория (pull_request_target)
+  # Важно: тут мы НЕ делаем checkout PR-кода — только вызываем API для мержа.
+  automerge:
+    needs: checks
+    if: ${{ github.event.pull_request.body && contains(github.event.pull_request.body, '[autopush-site]') && github.event_name == 'pull_request_target' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Info
+        run: |
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "PR: ${{ github.event.pull_request.number }}"
+          echo "PR head repo: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "PR head ref: ${{ github.event.pull_request.head.ref }}"
+
+      - name: Merge Pull Request via REST API (safe, no checkout)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.pull_request.number }}
         run: |
-          PR_NUM=${{ github.event.pull_request.number }}
           if [ -z "$PR_NUM" ] || [ "$PR_NUM" = "null" ]; then
             echo "No pull request number found, skipping merge."
             exit 0
@@ -50,17 +67,20 @@ jobs:
 
           echo "Attempting to merge PR #$PR_NUM in repository $GITHUB_REPOSITORY ..."
 
-          HTTP_CODE=$(curl -s -o /tmp/merge_resp -w "%{http_code}" -X PUT \
+          RESP_FILE=$(mktemp)
+          HTTP_CODE=$(curl -s -o "$RESP_FILE" -w "%{http_code}" -X PUT \
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls/$PR_NUM/merge" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${PR_NUM}/merge" \
             -d '{"commit_title":"Automatic merge after autopush-site PR","merge_method":"merge"}')
+
+          echo "HTTP code: $HTTP_CODE"
+          cat "$RESP_FILE" || true
 
           if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
             echo "Merge succeeded (HTTP $HTTP_CODE)."
-            cat /tmp/merge_resp
           else
-            echo "Merge failed (HTTP $HTTP_CODE). Response:"
-            cat /tmp/merge_resp
+            echo "Merge failed (HTTP $HTTP_CODE). See response above."
+            # Если 403 с "Resource not accessible by integration" — значит проблема прав/контекста (см. пояснение ниже)
             exit 1
           fi
