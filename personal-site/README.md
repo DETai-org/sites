@@ -1,5 +1,7 @@
 # Personal Site
 
+Welcome to my personal site! 🚀 Here you'll find the latest updates and projects.
+
 Персональный сайт на Next.js. Здесь готовится перенос блога из WordPress и новая структура данных.
 
 ## Структура данных блога
