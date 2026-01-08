@@ -1,22 +1,40 @@
 .
-├── README.md
-├── Directory_structure.txt
-├── app/                          # Страницы и маршруты
-├── components/                   # UI-компоненты
-├── lib/                          # Логика и данные
+├── app/
+│   ├── blog/
+│   │   ├── [slug]/
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   └── layout/
+│       └── Header.tsx
+├── lib/
 │   └── blog/
+│       ├── posts/
+│       │   └── eta-istoriya-pro-odnogo-cheloveka.md
 │       ├── README.md
 │       ├── blog.base.ts
 │       ├── blog.client.ts
 │       ├── blog.data.ts
 │       ├── blog.description.ts
 │       ├── blog.utils.ts
-│       ├── posts/
 │       └── types.ts
-├── public/                       # Публичные файлы (картинки постов и т.д.)
-├── scripts/                      # Скрипты миграции
-├── wordpress-data/               # Экспорт WordPress и вложения
+├── public/
+│   └── images/
+│       └── posts/
+│           ├── eta-istoriya-pro-odnogo-cheloveka.svg
+│           └── maxresdefault.jpg
+├── scripts/
+│   ├── extract-posts.ts
+│   ├── migrate-wordpress.ts
+│   └── optimize-images.ts
+├── wordpress-data/ (внутри несколько тысяч файлов)
+├── .gitignore
+├── Directory_structure.txt
+├── README.md
+├── next-env.d.ts
 ├── next.config.js
 ├── package.json
-├── tsconfig.json
-└── next-env.d.ts
+└── tsconfig.json
