@@ -1,39 +1,212 @@
 .
-├── README.md
-├── Directory_structure.txt
-├── app/                          # Страницы и маршруты (App Router)
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── providers.tsx
+├── app/
 │   ├── (det)/
+│   │   └── det/
+│   │       ├── core/
+│   │       │   ├── [slug]/
+│   │       │   │   └── page.tsx
+│   │       │   └── page.tsx
+│   │       ├── idea/
+│   │       │   └── page.tsx
+│   │       ├── logo/
+│   │       │   └── page.tsx
+│   │       ├── practice/
+│   │       │   └── page.tsx
+│   │       ├── publications/
+│   │       │   ├── [slug]/
+│   │       │   │   └── page.tsx
+│   │       │   └── page.tsx
+│   │       ├── symbol/
+│   │       │   └── page.tsx
+│   │       └── page.tsx
 │   ├── (detai)/
+│   │   └── detai/
+│   │       ├── projects/
+│   │       │   └── page.tsx
+│   │       └── page.tsx
 │   ├── (marketing)/
+│   │   └── .gitkeep
 │   ├── (projects)/
+│   │   └── projects/
+│   │       ├── galton/
+│   │       │   └── page.tsx
+│   │       ├── infra/
+│   │       │   └── page.tsx
+│   │       ├── matrix/
+│   │       │   └── page.tsx
+│   │       ├── news-agent/
+│   │       │   └── page.tsx
+│   │       └── pulse/
+│   │           └── page.tsx
 │   ├── about/
+│   │   └── .gitkeep
 │   ├── colors/
+│   │   └── page.tsx
 │   ├── contacts/
+│   │   └── page.tsx
 │   ├── legal/
+│   │   ├── privacy/
+│   │   │   └── page.tsx
+│   │   └── terms/
+│   │       └── page.tsx
 │   ├── privacy/
+│   │   └── .gitkeep
 │   ├── products/
 │   │   └── _components/
-│   └── team/
-├── components/                   # UI-компоненты и секции
+│   │       └── .gitkeep
+│   ├── team/
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── providers.tsx
+├── components/
 │   ├── layout/
+│   │   ├── .gitkeep
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   └── ShimmerAutoTrigger.tsx
 │   ├── sections/
+│   │   ├── publications/
+│   │   │   ├── ExpandableAbstract.tsx
+│   │   │   └── PublicationShare.tsx
+│   │   ├── .gitkeep
+│   │   ├── AudienceSection.tsx
+│   │   ├── DetCommunity.tsx
+│   │   ├── DetDetaiSplit.tsx
+│   │   ├── DetHero.tsx
+│   │   ├── DetPractice.tsx
+│   │   ├── DetScience.tsx
+│   │   ├── DetToDetaiBridge.tsx
+│   │   ├── DetValues.tsx
+│   │   ├── DetaiHero.tsx
+│   │   ├── DetaiPlatformSection.tsx
+│   │   ├── DetaiProjectsTeaser.tsx
+│   │   ├── DetaiUmbrellaBrandSection.tsx
+│   │   ├── FundamentDetSection.tsx
+│   │   ├── Hero.tsx
+│   │   ├── HeroScene.tsx
+│   │   ├── Mission.tsx
+│   │   ├── Projects.tsx
+│   │   └── ProjectsListSection.tsx
 │   ├── ui/
-│   └── visual/
-├── i18n/                         # Локализации
-├── lib/                          # Хелперы, данные, утилиты
+│   │   ├── BodyText.tsx
+│   │   ├── Button.tsx
+│   │   ├── DefaultCard.tsx
+│   │   ├── Heading.tsx
+│   │   ├── HeadingLevel2.tsx
+│   │   ├── HeroHeadingTitle.tsx
+│   │   ├── MobileExpandableText.tsx
+│   │   ├── ProjectCard.tsx
+│   │   ├── README.md
+│   │   ├── Section.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   ├── card.tsx
+│   │   ├── input.tsx
+│   │   └── textarea.tsx
+│   ├── visual/
+│   │   ├── AnimatedLogo.tsx
+│   │   ├── CanvasGlobalParticlesLayer.tsx
+│   │   ├── CanvasLocalParticlesLayer.tsx
+│   │   └── CanvasPulseLightLayer.tsx
+│   └── README.md
+├── i18n/
+│   ├── cn.json
+│   ├── de.json
+│   ├── en.json
+│   ├── fi.json
+│   └── ru.json
+├── lib/
 │   ├── hooks/
+│   │   └── useDeviceSignals.ts
 │   ├── publications/
+│   │   ├── README.md
+│   │   ├── publications.base.ts
+│   │   ├── publications.client.ts
+│   │   ├── publications.data.ts
+│   │   ├── publications.description.ts
+│   │   ├── publications.utils.ts
+│   │   ├── publicationsTeaser.config.ts
+│   │   └── types.ts
 │   ├── projects.ts
 │   └── utils.ts
-├── public/                       # Публичные файлы (images, assets, robots)
-├── scripts/                      # Служебные скрипты
-├── styles/                       # Глобальные стили и токены темы
+├── public/
+│   ├── assets/
+│   │   ├── animations/
+│   │   │   ├── logo-detai-static.json
+│   │   │   ├── logo.svg
+│   │   │   ├── logo_intro.json
+│   │   │   └── logo_pulse.json
+│   │   ├── .gitkeep
+│   │   ├── README.md
+│   │   └── robot_head_wip.glb
+│   ├── documents/
+│   │   └── research/
+│   │       ├── articles/
+│   │       │   ├── 2023-athletics-dark-triad.pdf
+│   │       │   ├── 2023-good-evil-social-representations_1.pdf
+│   │       │   ├── 2023-good-evil-social-representations_2.pdf
+│   │       │   ├── 2024-personality-typology-ethical-psychology.pdf
+│   │       │   └── 2025-good-evil-self-actualization_Kolkhonen_Mironenko.pdf
+│   │       ├── dissertations/
+│   │       │   ├── Dissertation_Kolkhonen_(EN).pdf
+│   │       │   └── Dissertation_Kolkhonen_(RU).pdf
+│   │       ├── theses/
+│   │       │   ├── 2023-dialektika-dobra-i-zla-kak-resurs-produktivnosti-zhizni.pdf
+│   │       │   ├── 2023-kolkhonen-civilizational-tension-psychotherapy.pdf
+│   │       │   └── 2023-kolkhonen-eros-thanatos-nuclear-threat.pdf
+│   │       └── .gitkeep
+│   ├── images/
+│   │   ├── avatars_projects/
+│   │   │   ├── DEFAULT_AVATAR.webp
+│   │   │   ├── Francis Galton.webp
+│   │   │   ├── status_in-progress.webp
+│   │   │   ├── status_planned.webp
+│   │   │   └── test.txt
+│   │   ├── backgrounds/
+│   │   │   ├── .gitkeep
+│   │   │   ├── Paper_background.webp
+│   │   │   ├── paper-scroll-edges-mask.webp
+│   │   │   ├── paper-scroll-shape-mask.webp
+│   │   │   └── robot_hero.webp
+│   │   ├── gold_numbers/
+│   │   │   ├── .gitkeep
+│   │   │   ├── 1_number.webp
+│   │   │   ├── 2_number.webp
+│   │   │   ├── 3_number.webp
+│   │   │   ├── 4_number.webp
+│   │   │   ├── 5_number.webp
+│   │   │   ├── 6_number.webp
+│   │   │   └── 7_number.webp
+│   │   ├── products/
+│   │   │   └── .gitkeep
+│   │   ├── ui/
+│   │   │   └── .gitkeep
+│   │   ├── .gitkeep
+│   │   └── DETai-infographic.svg
+│   ├── video/
+│   │   ├── .gitkeep
+│   │   ├── Golden_Robotic_Hands.webm
+│   │   └── robot_hero.mp4
+│   └── README.md
+├── scripts/
+│   └── inspect-lottie.js
+├── styles/
+│   ├── theme/
+│   │   ├── overrides.css
+│   │   └── tokens.css
+│   ├── README.md
+│   ├── backgrounds.css
+│   ├── globals.css
+│   ├── logos.css
+│   ├── project-card.states.css
+│   ├── project-cards.css
+│   └── ui-effects.css
+├── .eslintrc.json
+├── Directory_structure.txt
+├── README.md
+├── next-env.d.ts
 ├── next.config.js
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js
-├── tsconfig.json
-└── next-env.d.ts
+└── tsconfig.json
