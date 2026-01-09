@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getAvailableLangsForPost, getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
+import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
 import { isLang } from "../../../../lib/blog/blog.i18n";
+import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
 
 interface BlogPostPageProps {
   params: {
@@ -12,32 +14,34 @@ interface BlogPostPageProps {
 
 export const runtime = "nodejs";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
-
-export async function generateMetadata({ params }: BlogPostPageProps) {
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   if (!isLang(params.lang)) {
-    notFound();
+    return {};
   }
 
   const post = await getPostByLangAndSlug(params.lang, params.slug);
 
   if (!post) {
-    notFound();
+    return {};
   }
 
-  const languages = getAvailableLangsForPost(post.id).reduce<Record<string, string>>(
-    (acc, lang) => {
-      acc[lang] = `/${lang}/blog/${post.slugs[lang]}`;
-      return acc;
-    },
-    {}
-  );
+  const { getAvailableLangsForPost } = await import("../../../../lib/blog/blog.data");
+  const availableLangs = getAvailableLangsForPost(post.id);
+  const canonicalSlug = post.slugs[params.lang];
+  const languages = availableLangs.reduce<Record<string, string>>((acc, lang) => {
+    const slug = post.slugs[lang];
+    if (slug) {
+      acc[lang] = `/${lang}/blog/${slug}`;
+    }
+    return acc;
+  }, {});
 
   return {
     title: post.titles[params.lang],
     description: post.excerpt,
-    metadataBase: new URL(siteUrl),
+    metadataBase: getMetadataBase(),
     alternates: {
+      canonical: canonicalSlug ? `/${params.lang}/blog/${canonicalSlug}` : undefined,
       languages,
     },
   };

@@ -13,6 +13,11 @@
 
 см personal-site/lib/blog/README.md
 
+## 🌍 SEO для блога
+
+Canonical и hreflang для страниц блога строятся от `metadataBase`. Значение берётся из
+`NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_VERCEL_URL` или `VERCEL_URL` (в этом порядке).
+
 
 ___
 ## Сырьё из WordPress
