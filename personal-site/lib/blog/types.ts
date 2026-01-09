@@ -1,4 +1,5 @@
 export type BlogPostStatus = "publish" | "draft" | "private";
+export type Lang = "ru" | "en" | "de" | "fi" | "cn";
 
 export interface BlogTaxonomy {
   title: string;
@@ -13,7 +14,8 @@ export interface BlogImage {
 }
 
 export interface BlogPostBase {
-  slug: string;
+  id: string;
+  slugs: Record<Lang, string>;
   title: string;
   publishedAt: string;
   author: string;
@@ -24,11 +26,17 @@ export interface BlogPostBase {
   originalLink?: string;
   wordpressId?: number;
   excerpt?: string;
-  contentFile: string;
+  contentFiles: Record<Lang, string>;
 }
 
-export interface BlogPost extends Omit<BlogPostBase, "contentFile"> {
+export interface BlogPostSummary extends Omit<BlogPostBase, "slugs" | "contentFiles"> {
+  lang: Lang;
+  slug: string;
+  excerpt: string;
+}
+
+export interface BlogPost extends BlogPostSummary {
+  slugs: Record<Lang, string>;
   content: string;
   contentHtml: string;
-  excerpt: string;
 }
