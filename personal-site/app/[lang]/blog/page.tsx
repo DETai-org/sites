@@ -10,12 +10,29 @@ interface BlogPageProps {
   };
 }
 
-export const metadata = {
-  title: "Блог",
-  description: "Посты блога",
-};
-
 export const runtime = "nodejs";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
+
+export function generateMetadata({ params }: BlogPageProps) {
+  if (!isLang(params.lang)) {
+    notFound();
+  }
+
+  const languages = supportedLangs.reduce<Record<string, string>>((acc, lang) => {
+    acc[lang] = `/${lang}/blog`;
+    return acc;
+  }, {});
+
+  return {
+    title: "Блог",
+    description: "Посты блога",
+    metadataBase: new URL(siteUrl),
+    alternates: {
+      languages,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return supportedLangs.map((lang) => ({ lang }));
