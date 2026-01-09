@@ -1,0 +1,69 @@
+import { notFound } from "next/navigation";
+
+import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
+import { isLang } from "../../../../lib/blog/blog.i18n";
+
+interface BlogPostPageProps {
+  params: {
+    lang: string;
+    slug: string;
+  };
+}
+
+export const runtime = "nodejs";
+
+export async function generateStaticParams() {
+  const { baseBlogPosts } = await import("../../../../lib/blog/blog.base");
+  const { getAvailableLangsForPost } = await import("../../../../lib/blog/blog.data");
+
+  return baseBlogPosts.flatMap((post) =>
+    getAvailableLangsForPost(post.id).map((lang) => ({
+      lang,
+      slug: post.slugs[lang],
+    }))
+  );
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  if (!isLang(params.lang)) {
+    notFound();
+  }
+
+  const post = await getPostByLangAndSlug(params.lang, params.slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const contentHtml = post.contentHtml.trim();
+  const fallbackText = post.content.trim();
+
+  return (
+    <main className="page">
+      <article className="blog-post">
+        <header className="blog-post__header">
+          <p className="blog-post__meta">
+            {new Date(post.publishedAt).toLocaleDateString("ru-RU")} · {post.author}
+          </p>
+          <h1 className="blog-post__title">{post.title}</h1>
+          {post.coverImage ? (
+            <img
+              className="blog-post__image"
+              src={post.coverImage.src}
+              width={post.coverImage.width}
+              height={post.coverImage.height}
+              alt={post.coverImage.alt}
+            />
+          ) : null}
+        </header>
+        <div className="blog-post__content">
+          {contentHtml ? (
+            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+          ) : (
+            <p>{fallbackText || "Контент скоро появится."}</p>
+          )}
+        </div>
+      </article>
+    </main>
+  );
+}

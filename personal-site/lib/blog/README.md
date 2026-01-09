@@ -2,8 +2,8 @@
 
 Эта директория хранит схему и контент блога персонального сайта. Все страницы блога должны брать данные только отсюда, поэтому для добавления нового поста достаточно:
 
-1. создать Markdown-файл в `lib/blog/posts/`;
-2. добавить запись в [`blog.base.ts`](./blog.base.ts) согласно типам из [`types.ts`](./types.ts);
+1. создать папку поста в `lib/blog/posts/<postId>/` и добавить Markdown-файлы переводов (`ru.md`, `en.md` и т.д.);
+2. добавить запись в [`blog.base.ts`](./blog.base.ts) согласно типам из [`types.ts`](./types.ts) и заполнить `slugs` + `contentFiles`;
 3. подготовить обложку и положить её в `public/images/posts/` (WebP или временный SVG).
 
 ## Структура файлов
@@ -13,12 +13,12 @@
 - `blog.client.ts` — данные для клиентских компонентов.
 - `blog.description.ts` — генерация краткого описания.
 - `blog.utils.ts` — вспомогательные выборки.
-- `posts/` — Markdown-файлы с текстом.
+- `posts/` — Markdown-файлы с текстом, сгруппированные по `postId` и языкам.
 
 ## Как добавлять новый пост
 
-1. Сохраните текст поста в `lib/blog/posts/<slug>.md`.
+1. Сохраните текст поста в `lib/blog/posts/<postId>/<lang>.md`.
 2. Скопируйте обложку из `wordpress-data/uploads`, оптимизируйте её и положите в `public/images/posts/`. Если WebP нельзя добавить в PR, используйте временный SVG и сохраните WebP отдельно.
-3. Заполните метаданные в `blog.base.ts`: `title`, `publishedAt`, `categories`, `tags`, `coverImage`.
+3. Заполните метаданные в `blog.base.ts`: `title`, `publishedAt`, `categories`, `tags`, `coverImage`, `slugs`, `contentFiles`.
 
 [⬅ Вернуться к основному README](../../README.md)

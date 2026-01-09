@@ -1,19 +1,16 @@
-import { getBlogPosts } from "./blog.data";
-import { BlogPost } from "./types";
+import { getPostByLangAndSlug, getPostsIndexForLang } from "./blog.data";
+import { BlogPost, BlogPostSummary, Lang } from "./types";
 import { buildBlogPostDescription } from "./blog.description";
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  return getBlogPosts();
+export async function getBlogPostByLangAndSlug(
+  lang: Lang,
+  slug: string
+): Promise<BlogPost | undefined> {
+  return getPostByLangAndSlug(lang, slug);
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
-  const posts = await getBlogPosts();
-  return posts.find((post) => post.slug === slug);
-}
-
-export async function getBlogPostsByCategory(slug: string): Promise<BlogPost[]> {
-  const posts = await getBlogPosts();
-  return posts.filter((post) => post.categories.some((category) => category.slug === slug));
+export async function getBlogPostsIndexForLang(lang: Lang): Promise<BlogPostSummary[]> {
+  return getPostsIndexForLang(lang);
 }
 
 export { buildBlogPostDescription };

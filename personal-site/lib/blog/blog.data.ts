@@ -1,69 +1,135 @@
 import path from "node:path";
 
 import { baseBlogPosts } from "./blog.base";
-import { BlogPost, BlogPostBase } from "./types";
+import { BlogPost, BlogPostBase, BlogPostSummary, Lang } from "./types";
 import { buildBlogPostDescription } from "./blog.description";
+import { supportedLangs } from "./blog.i18n";
 
 type ReadFile = typeof import("fs/promises").readFile;
 
-const markdownRoot = path.resolve(process.cwd(), "lib", "blog", "posts");
-const blogPostsPromise = buildBlogPosts();
+const markdownRoot = path.resolve(process.cwd());
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  return blogPostsPromise;
+export function getAllPostIds(): string[] {
+  return baseBlogPosts.map((post) => post.id);
 }
 
-async function buildBlogPosts(): Promise<BlogPost[]> {
+export function getAvailableLangsForPost(id: string): Lang[] {
+  const post = baseBlogPosts.find((entry) => entry.id === id);
+
+  if (!post) {
+    return [];
+  }
+
+  return supportedLangs.filter((lang) => Boolean(post.contentFiles?.[lang]));
+}
+
+export async function getPostByLangAndSlug(
+  lang: Lang,
+  slug: string
+): Promise<BlogPost | undefined> {
   if (typeof window !== "undefined") {
-    return baseBlogPosts.map((post) => buildClientPost(post));
+    return undefined;
+  }
+
+  const post = baseBlogPosts.find((entry) => entry.slugs[lang] === slug);
+
+  if (!post) {
+    return undefined;
   }
 
   const { readFile } = await import("fs/promises");
+  const { content, contentHtml, excerpt } = await buildPostContent(post, lang, readFile);
 
-  if (process.env.NODE_ENV === "production") {
-    console.info(`[blog] Каталог Markdown: ${markdownRoot}`);
-  }
-
-  return Promise.all(baseBlogPosts.map((post) => buildServerPost(post, readFile)));
+  return {
+    ...post,
+    lang,
+    slug,
+    excerpt,
+    content,
+    contentHtml,
+  };
 }
 
-async function buildServerPost(post: BlogPostBase, readFile: ReadFile): Promise<BlogPost> {
-  const absolutePath = path.resolve(markdownRoot, path.basename(post.contentFile));
-  let content = "";
-  let contentHtml = "";
-
-  try {
-    console.info(`[blog] Чтение Markdown для "${post.slug}" из ${absolutePath}`);
-    content = await readFile(absolutePath, "utf-8");
-  } catch (error) {
-    console.error(`Не удалось прочитать контент поста ${post.slug}:`, error);
+export async function getPostsIndexForLang(lang: Lang): Promise<BlogPostSummary[]> {
+  if (typeof window !== "undefined") {
+    return [];
   }
+
+  const { readFile } = await import("fs/promises");
+  const posts = baseBlogPosts.filter((entry) => entry.contentFiles?.[lang]);
+
+  return Promise.all(
+    posts.map(async (post) => {
+      const { excerpt } = await buildPostExcerpt(post, lang, readFile);
+
+      return {
+        ...post,
+        lang,
+        slug: post.slugs[lang],
+        excerpt,
+      };
+    })
+  );
+}
+
+export function getPostBaseById(id: string): BlogPostBase | undefined {
+  return baseBlogPosts.find((entry) => entry.id === id);
+}
+
+async function buildPostContent(
+  post: BlogPostBase,
+  lang: Lang,
+  readFile: ReadFile
+): Promise<{ content: string; contentHtml: string; excerpt: string }> {
+  const { content, excerpt } = await buildPostExcerpt(post, lang, readFile);
+  let contentHtml = "";
 
   if (content.trim()) {
     try {
       contentHtml = await renderMarkdownToHtml(content);
     } catch (error) {
-      console.error(`Не удалось преобразовать Markdown поста ${post.slug} в HTML:`, error);
+      console.error(
+        `Не удалось преобразовать Markdown поста ${post.id} (${lang}) в HTML:`,
+        error
+      );
     }
   }
 
-  const excerpt = post.excerpt?.trim() || buildBlogPostDescription({ content, excerpt: "" });
-
   return {
-    ...post,
     content,
     contentHtml,
     excerpt,
   };
 }
 
-function buildClientPost(post: BlogPostBase): BlogPost {
-  const excerpt = post.excerpt?.trim() || "";
+async function buildPostExcerpt(
+  post: BlogPostBase,
+  lang: Lang,
+  readFile: ReadFile
+): Promise<{ content: string; excerpt: string }> {
+  const contentFile = post.contentFiles[lang];
+  let content = "";
+
+  if (!contentFile) {
+    return {
+      content,
+      excerpt: post.excerpt?.trim() || "",
+    };
+  }
+
+  const absolutePath = path.resolve(markdownRoot, contentFile);
+
+  try {
+    console.info(`[blog] Чтение Markdown для "${post.id}" (${lang}) из ${absolutePath}`);
+    content = await readFile(absolutePath, "utf-8");
+  } catch (error) {
+    console.error(`Не удалось прочитать контент поста ${post.id} (${lang}):`, error);
+  }
+
+  const excerpt = post.excerpt?.trim() || buildBlogPostDescription({ content, excerpt: "" });
 
   return {
-    ...post,
-    content: "",
-    contentHtml: "",
+    content,
     excerpt,
   };
 }
