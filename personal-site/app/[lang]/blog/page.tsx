@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getPostsIndexForLang } from "../../../lib/blog/blog.data";
 import { isLang, supportedLangs } from "../../../lib/blog/blog.i18n";
+import { getMetadataBase } from "../../../lib/blog/blog.metadata";
 
 interface BlogPageProps {
   params: {
@@ -10,25 +12,30 @@ interface BlogPageProps {
   };
 }
 
+const blogMetadata = {
+  title: "Блог",
+  description: "Посты блога",
+};
+
 export const runtime = "nodejs";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
-
-export function generateMetadata({ params }: BlogPageProps) {
+export function generateMetadata({ params }: BlogPageProps): Metadata {
   if (!isLang(params.lang)) {
-    notFound();
+    return {};
   }
 
+  const canonicalPath = `/${params.lang}/blog`;
   const languages = supportedLangs.reduce<Record<string, string>>((acc, lang) => {
     acc[lang] = `/${lang}/blog`;
     return acc;
   }, {});
 
   return {
-    title: "Блог",
-    description: "Посты блога",
-    metadataBase: new URL(siteUrl),
+    title: blogMetadata.title,
+    description: blogMetadata.description,
+    metadataBase: getMetadataBase(),
     alternates: {
+      canonical: canonicalPath,
       languages,
     },
   };
