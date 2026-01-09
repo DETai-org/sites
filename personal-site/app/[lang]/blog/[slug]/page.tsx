@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
+import { getAvailableLangsForPost, getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
 import { isLang } from "../../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
 
@@ -13,6 +13,37 @@ interface BlogPostPageProps {
 }
 
 export const runtime = "nodejs";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000";
+
+export async function generateMetadata({ params }: BlogPostPageProps) {
+  if (!isLang(params.lang)) {
+    notFound();
+  }
+
+  const post = await getPostByLangAndSlug(params.lang, params.slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const languages = getAvailableLangsForPost(post.id).reduce<Record<string, string>>(
+    (acc, lang) => {
+      acc[lang] = `/${lang}/blog/${post.slugs[lang]}`;
+      return acc;
+    },
+    {}
+  );
+
+  return {
+    title: post.titles[params.lang],
+    description: post.excerpt,
+    metadataBase: new URL(siteUrl),
+    alternates: {
+      languages,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const { baseBlogPosts } = await import("../../../../lib/blog/blog.base");
