@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
 import { isLang } from "../../../../lib/blog/blog.i18n";
+import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
 
 interface BlogPostPageProps {
   params: {
@@ -22,6 +24,39 @@ export async function generateStaticParams() {
       slug: post.slugs[lang],
     }))
   );
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  if (!isLang(params.lang)) {
+    return {};
+  }
+
+  const post = await getPostByLangAndSlug(params.lang, params.slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const { getAvailableLangsForPost } = await import("../../../../lib/blog/blog.data");
+  const availableLangs = getAvailableLangsForPost(post.id);
+  const canonicalSlug = post.slugs[params.lang];
+  const languages = availableLangs.reduce<Record<string, string>>((acc, lang) => {
+    const slug = post.slugs[lang];
+    if (slug) {
+      acc[lang] = `/${lang}/blog/${slug}`;
+    }
+    return acc;
+  }, {});
+
+  return {
+    title: post.titles[params.lang],
+    description: post.excerpt,
+    metadataBase: getMetadataBase(),
+    alternates: {
+      canonical: canonicalSlug ? `/${params.lang}/blog/${canonicalSlug}` : undefined,
+      languages,
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

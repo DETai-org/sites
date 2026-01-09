@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { getPostsIndexForLang } from "../../../lib/blog/blog.data";
 import { isLang, supportedLangs } from "../../../lib/blog/blog.i18n";
+import { getMetadataBase } from "../../../lib/blog/blog.metadata";
 
 interface BlogPageProps {
   params: {
@@ -19,6 +21,28 @@ export const runtime = "nodejs";
 
 export function generateStaticParams() {
   return supportedLangs.map((lang) => ({ lang }));
+}
+
+export function generateMetadata({ params }: BlogPageProps): Metadata {
+  if (!isLang(params.lang)) {
+    return {};
+  }
+
+  const canonicalPath = `/${params.lang}/blog`;
+  const languages = supportedLangs.reduce<Record<string, string>>((acc, lang) => {
+    acc[lang] = `/${lang}/blog`;
+    return acc;
+  }, {});
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+    metadataBase: getMetadataBase(),
+    alternates: {
+      canonical: canonicalPath,
+      languages,
+    },
+  };
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
