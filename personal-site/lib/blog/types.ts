@@ -16,7 +16,7 @@ export interface BlogImage {
 export interface BlogPostBase {
   id: string;
   slugs: Record<Lang, string>;
-  title: string;
+  titles: Record<Lang, string>;
   publishedAt: string;
   author: string;
   status: BlogPostStatus;
