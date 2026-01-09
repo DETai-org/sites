@@ -29,7 +29,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const post = await getPostByLangAndSlug(params.lang, params.slug);
+  const lang = params.lang;
+  const post = await getPostByLangAndSlug(lang, params.slug);
 
   if (!post) {
     notFound();
@@ -45,7 +46,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="blog-post__meta">
             {new Date(post.publishedAt).toLocaleDateString("ru-RU")} · {post.author}
           </p>
-          <h1 className="blog-post__title">{post.title}</h1>
+          <h1 className="blog-post__title">{post.titles[lang]}</h1>
           {post.coverImage ? (
             <img
               className="blog-post__image"

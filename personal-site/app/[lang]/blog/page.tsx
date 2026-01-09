@@ -51,7 +51,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 {new Date(post.publishedAt).toLocaleDateString("ru-RU")} · {post.author}
               </p>
               <h2 className="blog-card__title">
-                <Link href={`/${post.lang}/blog/${post.slug}`}>{post.title}</Link>
+                <Link href={`/${post.lang}/blog/${post.slug}`}>
+                  {post.titles[post.lang]}
+                </Link>
               </h2>
               <p className="blog-card__excerpt">{post.excerpt}</p>
               <Link className="blog-card__link" href={`/${post.lang}/blog/${post.slug}`}>
