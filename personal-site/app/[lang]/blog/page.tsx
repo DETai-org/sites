@@ -12,7 +12,7 @@ interface BlogPageProps {
   };
 }
 
-export const metadata = {
+const blogMetadata = {
   title: "Блог",
   description: "Посты блога",
 };
@@ -35,8 +35,8 @@ export function generateMetadata({ params }: BlogPageProps): Metadata {
   }, {});
 
   return {
-    title: metadata.title,
-    description: metadata.description,
+    title: blogMetadata.title,
+    description: blogMetadata.description,
     metadataBase: getMetadataBase(),
     alternates: {
       canonical: canonicalPath,
