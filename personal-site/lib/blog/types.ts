@@ -85,7 +85,7 @@ export interface BlogPostBase {
 }
 
 export interface BlogPostResolved
-  extends BlogPostBase,
+  extends Omit<BlogPostBase, "rubric" | "category" | "keywords">,
     BlogPostLocalizedFields,
     BlogTaxonomyLocalized {}
 
