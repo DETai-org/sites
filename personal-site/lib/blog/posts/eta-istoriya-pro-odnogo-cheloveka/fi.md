@@ -1,3 +1,21 @@
+---
+type: post
+id: eta-istoriya-pro-odnogo-cheloveka
+slug: tama-tarina-yhdesta-ihmisesta
+authors:
+  - Anton
+date_ymd: 2016-05-16
+status: publish
+title: "Tämä tarina kertoo yhdestä ihmisestä"
+preview: "Vertaus siitä, miten menestyksen halu joutuu koetukselle."
+seoLead: "Tarina siitä, että todellinen menestys syntyy, kun sitä haluaa yhtä paljon kuin elää."
+taxonomy:
+  rubric_ids: ["rubric:orientation-toward-overcoming"]
+  category_ids: ["category:overcoming"]
+  keyword_ids: ["keyword:existential-choice"]
+  keywords_raw: ["menestys", "ylittäminen", "motivaatio"]
+---
+
 🤯✍️💖💖💖💖
 
 Tämä on tarina yhdestä ihmisestä, joka todella halusi menestyä omalla alallaan. Hän meni tunnetun mestarin luo ja kysyi: "Miten minusta voi tulla yhtä menestynyt kuin sinä?" Mestari vastasi: "Kerron sinulle salaisuuteni. Tule huomenna rannalle kello neljä aamulla." Nuori mies yllättyi kovasti ja sanoi: "En halua uida, haluan että kaikki onnistuu." Mestari vastasi: "Jos todella haluat sitä, tavataan huomenna kello neljä aamulla"...............
