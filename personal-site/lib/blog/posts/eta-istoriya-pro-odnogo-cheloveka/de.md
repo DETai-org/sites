@@ -1,3 +1,21 @@
+---
+type: post
+id: eta-istoriya-pro-odnogo-cheloveka
+slug: diese-geschichte-uber-eine-person
+authors:
+  - Anton
+date_ymd: 2016-05-16
+status: publish
+title: "Diese Geschichte handelt von einer Person"
+preview: "Eine Parabel darüber, wie der Wunsch nach Erfolg auf die Probe gestellt wird."
+seoLead: "Eine Geschichte, die daran erinnert, dass echter Erfolg kommt, wenn man ihn so sehr will wie das Leben."
+taxonomy:
+  rubric_ids: ["rubric:orientation-toward-overcoming"]
+  category_ids: ["category:overcoming"]
+  keyword_ids: ["keyword:existential-choice"]
+  keywords_raw: ["Erfolg", "Überwindung", "Motivation"]
+---
+
 🤯✍️💖💖💖💖
 
 Dies ist eine Geschichte über einen Menschen, der unbedingt in seinem Bereich erfolgreich werden wollte. Er ging zu einem bekannten Meister und fragte: „Wie kann ich so erfolgreich werden wie du?“ Darauf antwortete der Meister: „Ich verrate dir mein Geheimnis. Komm morgen um 4 Uhr morgens an den Strand.“ Der junge Mann war sehr überrascht und sagte: „Ich will nicht schwimmen, ich will, dass bei mir alles klappt.“ Der Meister antwortete: „Wenn du es wirklich willst, treffen wir uns morgen um 4 Uhr morgens“...............

@@ -1,3 +1,21 @@
+---
+type: post
+id: eta-istoriya-pro-odnogo-cheloveka
+slug: this-story-about-one-person
+authors:
+  - Anton
+date_ymd: 2016-05-16
+status: publish
+title: "This story is about one person"
+preview: "A parable about how the desire for success is tested."
+seoLead: "A story reminding that real success comes when you want it as much as you want to live."
+taxonomy:
+  rubric_ids: ["rubric:orientation-toward-overcoming"]
+  category_ids: ["category:overcoming"]
+  keyword_ids: ["keyword:existential-choice"]
+  keywords_raw: ["success", "overcoming", "motivation"]
+---
+
 🤯✍️💖💖💖💖
 
 This is a story about one person who really wanted to become successful in his craft. He went to a well-known master and asked: “How can I become as successful as you?” The master replied: “I will tell you my secret. Come to the beach tomorrow at 4 a.m.” The young man was very surprised and said: “I don’t want to swim, I want everything to work out for me.” The master answered: “If you truly want it, meet me tomorrow at 4 a.m.”...............

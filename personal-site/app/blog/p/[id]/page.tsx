@@ -1,7 +1,7 @@
 import { cookies, headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
-import { getPostBaseById } from "../../../../lib/blog/blog.data";
+import { getPostBaseById, getPostSlugById } from "../../../../lib/blog/blog.data";
 import { defaultLang, normalizeLang } from "../../../../lib/blog/blog.i18n";
 
 interface BlogNeutralPageProps {
@@ -19,8 +19,8 @@ export const metadata = {
 
 export const runtime = "nodejs";
 
-export default function BlogNeutralPage({ params }: BlogNeutralPageProps) {
-  const post = getPostBaseById(params.id);
+export default async function BlogNeutralPage({ params }: BlogNeutralPageProps) {
+  const post = await getPostBaseById(params.id);
 
   if (!post) {
     notFound();
@@ -31,7 +31,7 @@ export default function BlogNeutralPage({ params }: BlogNeutralPageProps) {
 
   const preferredLang = cookieLang ?? headerLang ?? defaultLang;
   const fallbackLang = post.contentFiles[preferredLang] ? preferredLang : defaultLang;
-  const slug = post.slugs[fallbackLang] ?? post.slugs[defaultLang];
+  const slug = await getPostSlugById(params.id, fallbackLang);
 
   if (!slug) {
     notFound();

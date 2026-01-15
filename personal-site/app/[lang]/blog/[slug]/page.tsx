@@ -25,8 +25,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return {};
   }
 
-  const { getAvailableLangsForPost } = await import("../../../../lib/blog/blog.data");
-  const availableLangs = getAvailableLangsForPost(post.id);
+  const { getAvailableLangsForPost, getPostBaseById } = await import(
+    "../../../../lib/blog/blog.data"
+  );
+  const basePost = await getPostBaseById(post.id);
+
+  if (!basePost) {
+    return {};
+  }
+
+  const availableLangs = getAvailableLangsForPost(basePost);
   const canonicalSlug = post.slugs[params.lang];
   const languages = availableLangs.reduce<Record<string, string>>((acc, lang) => {
     const slug = post.slugs[lang];
@@ -48,15 +56,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 }
 
 export async function generateStaticParams() {
-  const { baseBlogPosts } = await import("../../../../lib/blog/blog.base");
-  const { getAvailableLangsForPost } = await import("../../../../lib/blog/blog.data");
+  const { getPostRoutes } = await import("../../../../lib/blog/blog.data");
 
-  return baseBlogPosts.flatMap((post) =>
-    getAvailableLangsForPost(post.id).map((lang) => ({
-      lang,
-      slug: post.slugs[lang],
-    }))
-  );
+  return getPostRoutes();
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

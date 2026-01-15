@@ -1,3 +1,21 @@
+---
+type: post
+id: eta-istoriya-pro-odnogo-cheloveka
+slug: zhe-shi-yi-ge-ren-de-gu-shi
+authors:
+  - Anton
+date_ymd: 2016-05-16
+status: publish
+title: "这是关于一个人的故事"
+preview: "关于成功欲望被考验的一则寓言。"
+seoLead: "一个提醒：真正的成功来自于你对它的渴望像对生命一样强烈。"
+taxonomy:
+  rubric_ids: ["rubric:orientation-toward-overcoming"]
+  category_ids: ["category:overcoming"]
+  keyword_ids: ["keyword:existential-choice"]
+  keywords_raw: ["成功", "克服", "动力"]
+---
+
 🤯✍️💖💖💖💖
 
 这是一个关于一个人的故事，他非常想在自己的事业上获得成功。他找到一位著名的导师，问道：“怎样才能像你一样成功？”导师回答：“我告诉你我的秘密。明天凌晨四点来海滩。”年轻人非常惊讶，说：“我不想游泳，我想要一切都顺利。”导师回答：“如果你真的想要，明天凌晨四点见。”...............
