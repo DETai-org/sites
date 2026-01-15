@@ -250,7 +250,7 @@ function resolvePostMeta(
 
 function resolveTaxonomy(
   slug: string,
-  definitions: typeof blogRubrics,
+  definitions: Array<{ slug: string; labels: Record<Lang, string> }>,
   lang: Lang
 ): BlogPostResolved["rubric"] {
   return {
