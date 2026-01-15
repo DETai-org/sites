@@ -1,8 +1,6 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 
-import Header from "../../components/layout/Header";
-import "../globals.css";
 import { isLang } from "../../lib/blog/blog.i18n";
 
 interface LangLayoutProps {
@@ -17,12 +15,5 @@ export default function LangLayout({ children, params }: LangLayoutProps) {
     notFound();
   }
 
-  return (
-    <html lang={params.lang}>
-      <body>
-        <Header />
-        {children}
-      </body>
-    </html>
-  );
+  return <>{children}</>;
 }
