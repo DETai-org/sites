@@ -2,7 +2,7 @@ export type BlogPostStatus = "publish" | "draft" | "private";
 export type Lang = "ru" | "en" | "de" | "fi" | "cn";
 
 export interface BlogTaxonomy {
-  title: string;
+  label: string;
   slug: string;
 }
 
@@ -20,8 +20,10 @@ export interface BlogPostBase {
   publishedAt: string;
   author: string;
   status: BlogPostStatus;
-  categories: BlogTaxonomy[];
-  tags: BlogTaxonomy[];
+  rubric: BlogTaxonomy;
+  category: BlogTaxonomy;
+  keywords: BlogTaxonomy[];
+  keywordsRaw: string[];
   coverImage?: BlogImage;
   originalLink?: string;
   wordpressId?: number;

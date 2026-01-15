@@ -23,11 +23,16 @@ export const baseBlogPosts: BlogPostBase[] = [
     originalLink:
       "https://antonkolhonen.com/trenirovki/eta-istoriya-pro-odnogo-cheloveka",
     wordpressId: 3026,
-    categories: [
-      { title: "Психология", slug: "psihologiya" },
-      { title: "Тренировки", slug: "trenirovki" },
-    ],
-    tags: [],
+    rubric: {
+      label: "Установка на преодоление",
+      slug: "rubric:orientation-toward-overcoming",
+    },
+    category: {
+      label: "Преодоление",
+      slug: "category:overcoming",
+    },
+    keywords: [{ label: "Existential choice", slug: "keyword:existential-choice" }],
+    keywordsRaw: ["успех", "преодоление", "мотивация"],
     coverImage: {
       src: "/images/posts/maxresdefault.jpg",
       width: 1280,
