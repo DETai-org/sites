@@ -19,7 +19,7 @@
 
 1. Сохраните текст поста в `lib/blog/posts/<postId>/<lang>.md`.
 2. Скопируйте обложку из `wordpress-data/uploads`, оптимизируйте её и положите в `public/images/posts/`. Если WebP нельзя добавить в PR, используйте временный SVG и сохраните WebP отдельно.
-3. Заполните метаданные в `blog.base.ts`: `title`, `publishedAt`, `categories`, `tags`, `coverImage`, `slugs`, `contentFiles`.
+3. Заполните метаданные в `blog.base.ts`: `title`, `publishedAt`, `rubric` (одна рубрика на пост), `category` (одна категория на пост), `keywords`, `keywordsRaw`, `coverImage`, `slugs`, `contentFiles`.
 
 [⬅ Вернуться к основному README](../../README.md)
 
@@ -48,6 +48,10 @@
   * `id` — внутренний идентификатор;
   * `slugs` — локализованные slug’и для каждого языка;
   * `titles` — локализованные заголовки (с fallback на default);
+  * `rubric` — рубрика поста (одна на пост, `slug` = `rubric_ids` из стандарта);
+  * `category` — категория поста (одна на пост, `slug` = `category_ids` из стандарта);
+  * `keywords` — ключевые слова из словаря (`slug` = `keyword_ids`);
+  * `keywordsRaw` — сырые ключевые слова (массив строк), аналог `keywords_raw` из стандарта.
   * `contentFiles` — соответствие языков и markdown-файлов.
 * Метаданные не парсятся из Markdown — контент и мета разделены намеренно.
 
