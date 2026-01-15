@@ -25,8 +25,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return {};
   }
 
-  const { getAvailableLangsForPost } = await import("../../../../lib/blog/blog.data");
-  const availableLangs = getAvailableLangsForPost(post);
+  const { getAvailableLangsForPost, getPostBaseById } = await import(
+    "../../../../lib/blog/blog.data"
+  );
+  const basePost = await getPostBaseById(post.id);
+
+  if (!basePost) {
+    return {};
+  }
+
+  const availableLangs = getAvailableLangsForPost(basePost);
   const canonicalSlug = post.slugs[params.lang];
   const languages = availableLangs.reduce<Record<string, string>>((acc, lang) => {
     const slug = post.slugs[lang];
