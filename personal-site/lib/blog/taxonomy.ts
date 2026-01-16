@@ -104,6 +104,23 @@ export const blogCategories: BlogCategoryDefinition[] = [
       cn: "关于克服困难与内在阻碍的实践与故事的分类。",
     },
   },
+  {
+    slug: "category:psychology",
+    labels: {
+      ru: "Психология",
+      en: "Psychology",
+      de: "Psychologie",
+      fi: "Psykologia",
+      cn: "心理学",
+    },
+    description: {
+      ru: "Категория о психологических размышлениях, наблюдениях и темах внутренней жизни.",
+      en: "A category about psychological reflections, observations, and inner life themes.",
+      de: "Eine Kategorie über psychologische Reflexionen, Beobachtungen und Themen des inneren Lebens.",
+      fi: "Kategoria psykologisista pohdinnoista, havainnoista ja sisäisen elämän teemoista.",
+      cn: "关于心理反思、观察与内在生活主题的分类。",
+    },
+  },
 ];
 
 export const blogKeywords: BlogKeywordDefinition[] = [
