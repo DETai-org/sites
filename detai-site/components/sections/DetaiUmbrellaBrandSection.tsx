@@ -71,10 +71,10 @@ export default function DetaiUmbrellaBrandSection() {
           <div className="flex w-full items-center justify-center py-mobile-2 md:py-3">
             <Image
               alt="Umbrella Brand"
-              className="h-auto w-[240px] md:w-[360px]"
-              height={180}
+              className="h-auto w-[320px] md:w-[520px]"
+              height={240}
               src="/images/Umbrella_text.webp"
-              width={800}
+              width={1040}
             />
           </div>
           <Heading level={2}>DETai — Umbrella Brand</Heading>
