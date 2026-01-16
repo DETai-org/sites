@@ -2,14 +2,13 @@
   "vocabulary": "thematic_cycles",
   "version": "v0.2",
   "policy": {
-    "description": "Тематические циклы оформляются по структуре publications_schema, чтобы быть совместимыми с общими правилами описания документов."
+    "description": "Тематические циклы оформляются по структуре publications_schema. Для каждого цикла допускается явная привязка к сайту (personal или professional) либо отсутствие привязки до принятия решения."
   },
   "blocks": [
     {
-      "id": "cycles:personal-site",
-      "label": "Персональный сайт",
-      "description": "Тематические циклы персонального сайта, отражающие устойчивые нарративы и авторские исследовательские серии.",
-      "site_channel": "personal_site_blog",
+      "id": "cycles:general",
+      "label": "Тематические циклы",
+      "description": "Тематические циклы для персонального и профессионального сайтов с возможностью временно оставить принадлежность неуказанной.",
       "items": [
         {
           "type": "post",
@@ -18,7 +17,8 @@
             "authors": ["Anton"],
             "date_ymd": "2026-01-20",
             "status": "publish",
-            "channels": ["personal_site_blog"]
+            "channels": [],
+            "site_scope": null
           },
           "descriptive": {
             "title": "Сказки о Северном ветре",
@@ -45,7 +45,8 @@
             "authors": ["Anton"],
             "date_ymd": "2026-01-20",
             "status": "publish",
-            "channels": ["personal_site_blog"]
+            "channels": ["detai_site_blog"],
+            "site_scope": "professional"
           },
           "descriptive": {
             "title": "Психология и AI",
@@ -72,7 +73,8 @@
             "authors": ["Anton"],
             "date_ymd": "2026-01-20",
             "status": "publish",
-            "channels": ["personal_site_blog"]
+            "channels": ["personal_site_blog"],
+            "site_scope": "personal"
           },
           "descriptive": {
             "title": "Аспирантура",
