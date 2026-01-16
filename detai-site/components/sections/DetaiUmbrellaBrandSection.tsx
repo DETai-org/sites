@@ -1,6 +1,8 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 
+import Image from "next/image";
+
 import BodyText from "../ui/BodyText";
 import Heading from "../ui/Heading";
 import Section from "../ui/Section";
@@ -66,6 +68,15 @@ export default function DetaiUmbrellaBrandSection() {
     <Section variant="light" id="detai-umbrella-brand">
       <div className="flex flex-col gap-mobile-4 md:gap-8">
         <div className="flex flex-col gap-mobile-3 md:gap-4">
+          <div className="flex w-full items-center justify-center py-mobile-2 md:py-3">
+            <Image
+              alt="Umbrella Brand"
+              className="h-auto w-[240px] md:w-[360px]"
+              height={180}
+              src="/images/Umbrella_text.webp"
+              width={800}
+            />
+          </div>
           <Heading level={2}>DETai — Umbrella Brand</Heading>
           <BodyText variant="sectionDefaultOnLight">
             Один бренд. Разные инструменты. Единый язык, качество и репутация.
