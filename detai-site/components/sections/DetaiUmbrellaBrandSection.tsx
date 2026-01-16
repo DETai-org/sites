@@ -68,59 +68,61 @@ export default function DetaiUmbrellaBrandSection() {
     <Section variant="light" id="detai-umbrella-brand">
       <div className="flex flex-col gap-mobile-4 md:gap-8">
         <div className="flex flex-col gap-mobile-3 md:gap-4">
-          <div className="flex w-full items-center justify-center py-mobile-2 md:py-3">
-            <Image
-              alt="Umbrella Brand"
-              className="h-auto w-[320px] md:w-[520px]"
-              height={240}
-              src="/images/Umbrella_text.webp"
-              width={1040}
-            />
-          </div>
           <Heading level={2}>DETai — Umbrella Brand</Heading>
           <BodyText variant="sectionDefaultOnLight">
             Один бренд. Разные инструменты. Единый язык, качество и репутация.
           </BodyText>
         </div>
-        <div className={infographicWrapperClasses}>
-          <div
-            className="relative w-full"
-            dangerouslySetInnerHTML={{ __html: interactiveInfographicSvg }}
-          />
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 h-full w-full"
-            viewBox="0 0 1440 810"
-          >
-            <defs>
-              <path id="detai-label-arc-top" d="M 610 230 Q 720 150 830 230" />
-              <path id="detai-label-arc-right" d="M 900 320 Q 990 405 900 490" />
-              <path id="detai-label-arc-bottom" d="M 610 585 Q 720 670 830 585" />
-              <path id="detai-label-arc-left" d="M 540 490 Q 450 405 540 320" />
-            </defs>
-            <g className="fill-fg text-[14px] font-semibold tracking-[0.04em] md:text-[16px]">
-              <text textAnchor="middle">
-                <textPath href="#detai-label-arc-top" startOffset="50%">
-                  Инновационность
-                </textPath>
-              </text>
-              <text textAnchor="middle">
-                <textPath href="#detai-label-arc-right" startOffset="50%">
-                  Три эшелона
-                </textPath>
-              </text>
-              <text textAnchor="middle">
-                <textPath href="#detai-label-arc-bottom" startOffset="50%">
-                  Связность
-                </textPath>
-              </text>
-              <text textAnchor="middle">
-                <textPath href="#detai-label-arc-left" startOffset="50%">
-                  Стандарт
-                </textPath>
-              </text>
-            </g>
-          </svg>
+        <div className="relative">
+          <div className="flex w-full justify-end pb-mobile-3 md:pb-4">
+            <Image
+              alt="Umbrella Brand"
+              className="h-auto w-[420px] md:w-[720px]"
+              height={360}
+              src="/images/Umbrella_text.webp"
+              width={1440}
+            />
+          </div>
+          <div className={infographicWrapperClasses}>
+            <div
+              className="relative w-full"
+              dangerouslySetInnerHTML={{ __html: interactiveInfographicSvg }}
+            />
+            <svg
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              viewBox="0 0 1440 810"
+            >
+              <defs>
+                <path id="detai-label-arc-top" d="M 610 230 Q 720 150 830 230" />
+                <path id="detai-label-arc-right" d="M 900 320 Q 990 405 900 490" />
+                <path id="detai-label-arc-bottom" d="M 610 585 Q 720 670 830 585" />
+                <path id="detai-label-arc-left" d="M 540 490 Q 450 405 540 320" />
+              </defs>
+              <g className="fill-fg text-[14px] font-semibold tracking-[0.04em] md:text-[16px]">
+                <text textAnchor="middle">
+                  <textPath href="#detai-label-arc-top" startOffset="50%">
+                    Инновационность
+                  </textPath>
+                </text>
+                <text textAnchor="middle">
+                  <textPath href="#detai-label-arc-right" startOffset="50%">
+                    Три эшелона
+                  </textPath>
+                </text>
+                <text textAnchor="middle">
+                  <textPath href="#detai-label-arc-bottom" startOffset="50%">
+                    Связность
+                  </textPath>
+                </text>
+                <text textAnchor="middle">
+                  <textPath href="#detai-label-arc-left" startOffset="50%">
+                    Стандарт
+                  </textPath>
+                </text>
+              </g>
+            </svg>
+          </div>
         </div>
       </div>
     </Section>
