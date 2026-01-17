@@ -16,7 +16,6 @@ taxonomy:
   keywords_raw: ["menestys", "ylittäminen", "motivaatio"]
 ---
 
-🤯✍️💖💖💖💖
 
 Tämä on tarina yhdestä ihmisestä, joka todella halusi menestyä omalla alallaan. Hän meni tunnetun mestarin luo ja kysyi: "Miten minusta voi tulla yhtä menestynyt kuin sinä?" Mestari vastasi: "Kerron sinulle salaisuuteni. Tule huomenna rannalle kello neljä aamulla." Nuori mies yllättyi kovasti ja sanoi: "En halua uida, haluan että kaikki onnistuu." Mestari vastasi: "Jos todella haluat sitä, tavataan huomenna kello neljä aamulla"...............
 
