@@ -16,7 +16,6 @@ taxonomy:
   keywords_raw: ["success", "overcoming", "motivation"]
 ---
 
-🤯✍️💖💖💖💖
 
 This is a story about one person who really wanted to become successful in his craft. He went to a well-known master and asked: “How can I become as successful as you?” The master replied: “I will tell you my secret. Come to the beach tomorrow at 4 a.m.” The young man was very surprised and said: “I don’t want to swim, I want everything to work out for me.” The master answered: “If you truly want it, meet me tomorrow at 4 a.m.”...............
 

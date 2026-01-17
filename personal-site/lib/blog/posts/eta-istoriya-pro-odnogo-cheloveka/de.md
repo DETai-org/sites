@@ -16,7 +16,6 @@ taxonomy:
   keywords_raw: ["Erfolg", "Überwindung", "Motivation"]
 ---
 
-🤯✍️💖💖💖💖
 
 Dies ist eine Geschichte über einen Menschen, der unbedingt in seinem Bereich erfolgreich werden wollte. Er ging zu einem bekannten Meister und fragte: „Wie kann ich so erfolgreich werden wie du?“ Darauf antwortete der Meister: „Ich verrate dir mein Geheimnis. Komm morgen um 4 Uhr morgens an den Strand.“ Der junge Mann war sehr überrascht und sagte: „Ich will nicht schwimmen, ich will, dass bei mir alles klappt.“ Der Meister antwortete: „Wenn du es wirklich willst, treffen wir uns morgen um 4 Uhr morgens“...............
 
