@@ -45,7 +45,7 @@ export const baseBlogPosts: BlogPostBase[] = [
       alt: "Сила и свет, хаус и мрак",
     },
     contentFiles: {
-      ru: "lib/blog/posts/Сила и свет, хаус и мрак/ru.md",
+      ru: "lib/blog/posts/sila-i-svet-haus-i-mrak/ru.md",
       en: "",
       de: "",
       fi: "",
