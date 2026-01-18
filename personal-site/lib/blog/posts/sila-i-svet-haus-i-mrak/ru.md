@@ -1,19 +1,26 @@
 ---
 type: post
-id: sila-i-svet-haus-i-mrak
-slug: sila-i-svet-haus-i-mrak
-authors:
-  - Anton
-date_ymd: 2016-06-23
-status: publish
-title: "Сила и свет, хаус и мрак"
-preview: "Вечный конфликт между светом и мраком, свободой и страхом."
-seoLead: "Лирический текст о внутренней борьбе, хаосе и поиске света."
-taxonomy:
-  rubric_ids: ["rubric:shadow-and-light"]
-  category_ids: ["category:psychology"]
-  keyword_ids: []
-  keywords_raw: []
+administrative:
+  id: sila-i-svet-haus-i-mrak
+  authors:
+    - Anton Kolhonen
+  date_ymd: 2026-01-17
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  size: "L"
+  title: "Сила и свет, хаус и мрак"
+  preview: "Сила и свет, хаус и мрак — это текст о том, как в человеке сталкиваются страх и свобода, день и ночь, внутренний раскол и тяга к живому. 🌓 Что остаётся, когда привычный покой больше не держит?"
+  seoLead: "Стихотворный текст о противостоянии света и мрака, внутреннем конфликте и поиске свободы через любовь и страх."
+  taxonomy:
+    rubric_ids: ["rubric:shadow-and-light"]
+    category_ids: ["category:shadow-and-light"]
+    keyword_ids: ["keyword:ambivalence"]
+    keywords_raw: ["внутренний конфликт", "свет и мрак", "страх и свобода"]
+structural:
+  external_links: []
+  document_links: []
 ---
 
 ## Сила и свет
