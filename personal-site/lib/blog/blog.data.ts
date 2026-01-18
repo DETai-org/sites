@@ -16,6 +16,7 @@ import {
 import { buildBlogPostDescription } from "./blog.description";
 import { supportedLangs } from "./blog.i18n";
 import { blogCategories, blogKeywords, blogRubrics, getTaxonomyLabel } from "./taxonomy";
+import { normalizeIsoDate, resolveIsoDateFromYmd } from "./blog.utils";
 
 type ReadFile = typeof import("fs/promises").readFile;
 
@@ -229,9 +230,11 @@ function resolvePostMeta(
   const localizedFrontmatter =
     frontmatters[lang] ?? frontmatters[langFallback] ?? canonicalFrontmatter;
   const resolvedStatus = canonicalFrontmatter?.administrative?.status || post.status;
-  const resolvedPublishedAt = canonicalFrontmatter?.administrative?.date_ymd
-    ? `${canonicalFrontmatter.administrative.date_ymd}T00:00:00+00:00`
-    : post.publishedAt;
+  const basePublishedAt = normalizeIsoDate(post.publishedAt);
+  const frontmatterPublishedAt = resolveIsoDateFromYmd(
+    canonicalFrontmatter?.administrative?.date_ymd
+  );
+  const resolvedPublishedAt = frontmatterPublishedAt ?? basePublishedAt;
   const taxonomy = canonicalFrontmatter?.descriptive?.taxonomy;
   const rubricSlug = taxonomy?.rubric_ids?.[0] ?? post.rubric.slug;
   const categorySlug = taxonomy?.category_ids?.[0] ?? post.category.slug;

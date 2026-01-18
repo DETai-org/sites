@@ -6,6 +6,7 @@ import { getPostsIndexForLang } from "../../../lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../lib/blog/blog.metadata";
 import type { Lang } from "../../../lib/blog/types";
+import { formatBlogDate } from "../../../lib/blog/blog.utils";
 
 interface BlogPageProps {
   params: {
@@ -94,33 +95,38 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <p>{copy.subheading}</p>
       </div>
       <section className="blog-grid">
-        {posts.map((post) => (
-          <article key={`${post.id}-${post.lang}`} className="blog-card">
-            {post.coverImage ? (
-              <img
-                className="blog-card__image"
-                src={post.coverImage.src}
-                width={post.coverImage.width}
-                height={post.coverImage.height}
-                alt={post.coverImage.alt}
-              />
-            ) : null}
-            <div className="blog-card__body">
-              <p className="blog-card__meta">
-                {new Date(post.publishedAt).toLocaleDateString(locale)} · {post.author}
-              </p>
-              <h2 className="blog-card__title">
-                <Link href={`/${post.lang}/blog/${post.slug}`}>
-                  {post.titles[post.lang]}
+        {posts.map((post) => {
+          const formattedDate = formatBlogDate(post.publishedAt, locale);
+          const metaParts = [formattedDate, post.author].filter(Boolean);
+
+          return (
+            <article key={`${post.id}-${post.lang}`} className="blog-card">
+              {post.coverImage ? (
+                <img
+                  className="blog-card__image"
+                  src={post.coverImage.src}
+                  width={post.coverImage.width}
+                  height={post.coverImage.height}
+                  alt={post.coverImage.alt}
+                />
+              ) : null}
+              <div className="blog-card__body">
+                {metaParts.length ? (
+                  <p className="blog-card__meta">{metaParts.join(" · ")}</p>
+                ) : null}
+                <h2 className="blog-card__title">
+                  <Link href={`/${post.lang}/blog/${post.slug}`}>
+                    {post.titles[post.lang]}
+                  </Link>
+                </h2>
+                <p className="blog-card__excerpt">{post.excerpt}</p>
+                <Link className="blog-card__link" href={`/${post.lang}/blog/${post.slug}`}>
+                  {copy.readMore}
                 </Link>
-              </h2>
-              <p className="blog-card__excerpt">{post.excerpt}</p>
-              <Link className="blog-card__link" href={`/${post.lang}/blog/${post.slug}`}>
-                {copy.readMore}
-              </Link>
-            </div>
-          </article>
-        ))}
+              </div>
+            </article>
+          );
+        })}
       </section>
     </main>
   );

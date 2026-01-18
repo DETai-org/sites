@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
 import { blogLocaleByLang, isLang } from "../../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
+import { formatBlogDate } from "../../../../lib/blog/blog.utils";
 
 interface BlogPostPageProps {
   params: {
@@ -76,14 +77,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const contentHtml = post.contentHtml.trim();
   const fallbackText = post.content.trim();
   const locale = blogLocaleByLang[post.lang];
+  const formattedDate = formatBlogDate(post.publishedAt, locale);
+  const metaParts = [formattedDate, post.author].filter(Boolean);
 
   return (
     <main className="page">
       <article className="blog-post">
         <header className="blog-post__header">
-          <p className="blog-post__meta">
-            {new Date(post.publishedAt).toLocaleDateString(locale)} · {post.author}
-          </p>
+          {metaParts.length ? (
+            <p className="blog-post__meta">{metaParts.join(" · ")}</p>
+          ) : null}
           <h1 className="blog-post__title">{post.titles[lang]}</h1>
           {post.coverImage ? (
             <img
