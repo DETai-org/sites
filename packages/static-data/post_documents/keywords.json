@@ -1,0 +1,30 @@
+{
+  "vocabulary": "keywords",
+  "version": "v0.1",
+  "policy": {
+    "generation_mode": "hybrid",
+    "description": "Keywords may be AI-generated at document creation time. New keywords are first added as candidates and later reviewed and promoted to the approved state."
+  },
+  "items": [
+    {
+      "id": "keyword:ambivalence",
+      "type": "keyword",
+      "label": "Синхронные колебания двух звезд‑двойников",
+      "description": "Специфическая метка для описания редких случаев, когда фиксируются совпадающие фазовые циклы у пары звёзд‑двойников в закрытом каталоге наблюдений.",
+      "lifecycle": "approved",
+      "origin": "manual",
+      "created_at": "2026-01",
+      "parent_id": null
+    },
+    {
+      "id": "keyword:inner-tension",
+      "type": "keyword",
+      "label": "Маршрут ледяных кернов архива станции «Полюс‑12»",
+      "description": "Метка для узкого набора полевых записей о транспортировке кернов льда по внутреннему маршруту станции «Полюс‑12» в сезон 2039–2040.",
+      "lifecycle": "candidate",
+      "origin": "ai",
+      "created_at": "2026-01",
+      "parent_id": null
+    }
+  ]
+}
