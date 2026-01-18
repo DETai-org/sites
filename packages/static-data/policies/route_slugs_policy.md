@@ -33,12 +33,12 @@
 ---
 
 ## 4) Где хранится
-`routeSlugs` хранится внутри `packages/static-data/taxonomy.base.json` в каждой сущности таксономии.
+`routeSlugs` хранится внутри per-type JSON файлов в `packages/static-data/post_documents/**` в каждой сущности таксономии.
 
 ---
 
 ## 5) Формат данных
-Каждый элемент таксономии (rubric/category/keyword) имеет:
+Каждый элемент таксономии (rubric/category/keyword) внутри per-type JSON файла имеет:
 
 - `id: string` (stable id)
 - `routeSlugs: { ru, en, de, fi, cn }` (локализованные route slugs)
@@ -118,4 +118,3 @@
 Эта политика регулирует **только таксономию** (rubrics/categories/keywords).
 
 Локализация slug постов — отдельный шаг и отдельная политика, потому что требует миграции структуры хранения и маршрутизации. ❗❗
-
