@@ -2,14 +2,32 @@
   "vocabulary": "categories",
   "version": "v0.1",
   "policy": {
-    "description": "Категории — универсальные метки и фильтры для кросс-тематической классификации. Они применимы к любому документу и любой рубрике, помогают связывать материалы по общим темам и обеспечивают единый слой навигации."
+    "description": {
+      "ru": "Категории — универсальные метки и фильтры для кросс-тематической классификации. Они применимы к любому документу и любой рубрике, помогают связывать материалы по общим темам и обеспечивают единый слой навигации.",
+      "en": "Categories are universal tags and filters for cross-thematic classification. They apply to any document and any rubric, help connect materials by shared topics, and provide a unified navigation layer.",
+      "de": "Kategorien sind universelle Tags und Filter für eine themenübergreifende Klassifikation. Sie gelten für jedes Dokument und jede Rubrik, helfen Materialien über gemeinsame Themen zu verbinden und bieten eine einheitliche Navigationsebene.",
+      "fi": "Kategoriat ovat universaaleja tageja ja suodattimia poikkiteemaiseen luokitteluun. Ne soveltuvat mihin tahansa dokumenttiin ja rubriikkiin, auttavat yhdistämään materiaalit yhteisten teemojen kautta ja tarjoavat yhtenäisen navigointikerroksen.",
+      "cn": "类别是跨主题分类的通用标签和筛选器，适用于任何文档和任何栏目，帮助按共同主题关联内容，并提供统一的导航层。"
+    }
   },
   "items": [
     {
       "id": "category:top-ideas",
       "type": "category",
-      "label": "ТОП идеи",
-      "description": "Эта категория охватывает ключевые идеи, которые выделяются своей значимостью и влиянием. Эти идеи не только важны, но и оказывают сильное воздействие на понимание важных аспектов жизни, науки, психологии и человеческих взаимодействий. Здесь собраны концепты, которые стали основой для дальнейших размышлений и обсуждений.",
+      "label": {
+        "ru": "ТОП идеи",
+        "en": "Top Ideas",
+        "de": "Top-Ideen",
+        "fi": "Huippuideat",
+        "cn": "顶级理念"
+      },
+      "description": {
+        "ru": "Эта категория охватывает ключевые идеи, которые выделяются своей значимостью и влиянием. Эти идеи не только важны, но и оказывают сильное воздействие на понимание важных аспектов жизни, науки, психологии и человеческих взаимодействий. Здесь собраны концепты, которые стали основой для дальнейших размышлений и обсуждений.",
+        "en": "This category covers key ideas that stand out for their significance and influence. These ideas are not only important but also strongly shape understanding of key aspects of life, science, psychology, and human interactions. It collects concepts that have become a foundation for further reflection and discussion.",
+        "de": "Diese Kategorie umfasst Schlüsselideen, die sich durch ihre Bedeutung und Wirkung auszeichnen. Diese Ideen sind nicht nur wichtig, sondern prägen auch das Verständnis zentraler Aspekte von Leben, Wissenschaft, Psychologie und menschlichen Interaktionen. Hier sind Konzepte gesammelt, die zur Grundlage für weitere Reflexionen und Diskussionen wurden.",
+        "fi": "Tämä kategoria kattaa keskeiset ideat, jotka erottuvat merkityksensä ja vaikutuksensa vuoksi. Nämä ideat eivät ole vain tärkeitä, vaan vaikuttavat voimakkaasti ymmärrykseen elämän, tieteen, psykologian ja ihmisten välisen vuorovaikutuksen keskeisistä puolista. Se kokoaa käsitteitä, jotka ovat muodostaneet perustan jatkopohdinnoille ja keskusteluille.",
+        "cn": "该类别涵盖具有重要性和影响力的关键理念。这些理念不仅重要，还深刻影响对生活、科学、心理学以及人际互动重要方面的理解。这里汇集了成为进一步思考与讨论基础的概念。"
+      },
       "emoji": "❗️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -17,8 +35,20 @@
     {
       "id": "category:unusual-style",
       "type": "category",
-      "label": "Необычный стиль",
-      "description": "В этой категории собраны тексты, наполненные каламбурами, играми слов и причудливыми метафорами. Такой стиль можно сравнить с тем, что используется в рэпе для создания 'вордплеев' — игра слов, неожиданные ассоциации и метафоры делают текст ярким и запоминающимся. Это категория для контента, который выходит за пределы стандартного подхода к письменной речи и привлекает внимание за счет нестандартного изложения.",
+      "label": {
+        "ru": "Необычный стиль",
+        "en": "Unusual Style",
+        "de": "Ungewöhnlicher Stil",
+        "fi": "Epätavallinen tyyli",
+        "cn": "非寻常风格"
+      },
+      "description": {
+        "ru": "В этой категории собраны тексты, наполненные каламбурами, играми слов и причудливыми метафорами. Такой стиль можно сравнить с тем, что используется в рэпе для создания 'вордплеев' — игра слов, неожиданные ассоциации и метафоры делают текст ярким и запоминающимся. Это категория для контента, который выходит за пределы стандартного подхода к письменной речи и привлекает внимание за счет нестандартного изложения.",
+        "en": "This category collects texts filled with puns, wordplay, and quirky metaphors. Such a style can be compared to rap wordplay: unexpected associations and metaphors make the text vivid and memorable. It is for content that goes beyond standard writing approaches and draws attention through unconventional expression.",
+        "de": "Diese Kategorie vereint Texte voller Wortspiele, Kalauer und eigenwilliger Metaphern. Ein solcher Stil lässt sich mit Rap-Wordplay vergleichen: Unerwartete Assoziationen und Metaphern machen den Text lebendig und einprägsam. Es ist eine Kategorie für Inhalte, die über den Standard schriftlicher Ausdrucksweise hinausgehen und durch ungewöhnliche Darstellung Aufmerksamkeit erregen.",
+        "fi": "Tämä kategoria kokoaa tekstejä, jotka ovat täynnä sanaleikkejä, kielellisiä pelejä ja omalaatuisia metaforia. Tyyliä voi verrata rap-lyriikan wordplayhin: yllättävät assosiaatiot ja metaforat tekevät tekstistä elävän ja mieleenpainuvan. Se on sisältöä varten, joka ylittää tavanomaisen kirjoittamisen ja herättää huomiota epätavallisella ilmaisulla.",
+        "cn": "该类别收录充满双关、文字游戏和奇特隐喻的文本。这种风格可与说唱中的词汇游戏相比：意外联想和隐喻使文本鲜明而难忘。它适合突破常规写作方式、以非常规表达吸引注意力的内容。"
+      },
       "emoji": "✴️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -26,8 +56,20 @@
     {
       "id": "category:science-and-psychology",
       "type": "category",
-      "label": "Наука и психология",
-      "description": "Здесь собраны материалы, связанные с научными исследованиями и теоретическими разработками в области психологии. В отличие от категории 'Психотерапия', которая акцентирует внимание на практическом применении знаний, эта категория посвящена теории, научным терминам и подходам, которые лежат в основе психологии как науки.",
+      "label": {
+        "ru": "Наука и психология",
+        "en": "Science and Psychology",
+        "de": "Wissenschaft und Psychologie",
+        "fi": "Tiede ja psykologia",
+        "cn": "科学与心理学"
+      },
+      "description": {
+        "ru": "Здесь собраны материалы, связанные с научными исследованиями и теоретическими разработками в области психологии. В отличие от категории 'Психотерапия', которая акцентирует внимание на практическом применении знаний, эта категория посвящена теории, научным терминам и подходам, которые лежат в основе психологии как науки.",
+        "en": "This category collects materials related to scientific research and theoretical developments in psychology. Unlike the 'Psychotherapy' category, which focuses on practical application, this one is devoted to theory, scientific terminology, and approaches that underpin psychology as a science.",
+        "de": "Hier sind Materialien zu wissenschaftlicher Forschung und theoretischen Entwicklungen in der Psychologie gesammelt. Im Unterschied zur Kategorie „Psychotherapie“, die die praktische Anwendung von Wissen betont, widmet sich diese Kategorie der Theorie, wissenschaftlichen Begriffen und Ansätzen, die der Psychologie als Wissenschaft zugrunde liegen.",
+        "fi": "Tässä kategoriassa on psykologiaan liittyviä tieteellisiä tutkimuksia ja teoreettisia kehityksiä. Toisin kuin 'Psykoterapia'-kategoria, joka korostaa tiedon käytännön soveltamista, tämä kategoria keskittyy teoriaan, tieteellisiin käsitteisiin ja lähestymistapoihin, jotka muodostavat psykologian tieteen perustan.",
+        "cn": "这里汇集与心理学领域科学研究和理论发展相关的材料。与强调知识实践应用的“心理治疗”类别不同，本类别聚焦于理论、科学术语以及支撑心理学作为科学的研究方法与路径。"
+      },
       "emoji": "⚛️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -35,8 +77,20 @@
     {
       "id": "category:psychotherapy",
       "type": "category",
-      "label": "Психотерапия",
-      "description": "Эта категория фокусируется на практическом применении психотерапевтических методов и техник. Здесь рассматриваются реальные кейсы, терапевтические подходы и способы работы с пациентами в различных ситуациях. Акцент на том, как научные принципы и теории находят свое применение в реальной практике психотерапевта.",
+      "label": {
+        "ru": "Психотерапия",
+        "en": "Psychotherapy",
+        "de": "Psychotherapie",
+        "fi": "Psykoterapia",
+        "cn": "心理治疗"
+      },
+      "description": {
+        "ru": "Эта категория фокусируется на практическом применении психотерапевтических методов и техник. Здесь рассматриваются реальные кейсы, терапевтические подходы и способы работы с пациентами в различных ситуациях. Акцент на том, как научные принципы и теории находят свое применение в реальной практике психотерапевта.",
+        "en": "This category focuses on the practical application of psychotherapeutic methods and techniques. It covers real cases, therapeutic approaches, and ways of working with clients in various situations. The emphasis is on how scientific principles and theories are applied in real psychotherapeutic practice.",
+        "de": "Diese Kategorie konzentriert sich auf die praktische Anwendung psychotherapeutischer Methoden und Techniken. Hier werden reale Fälle, therapeutische Ansätze und Arbeitsweisen mit Klient*innen in unterschiedlichen Situationen betrachtet. Der Fokus liegt darauf, wie wissenschaftliche Prinzipien und Theorien in der realen psychotherapeutischen Praxis angewendet werden.",
+        "fi": "Tämä kategoria keskittyy psykoterapeuttisten menetelmien ja tekniikoiden käytännön soveltamiseen. Se käsittelee todellisia tapauksia, terapeuttisia lähestymistapoja ja tapoja työskennellä asiakkaiden kanssa erilaisissa tilanteissa. Painopiste on siinä, miten tieteelliset periaatteet ja teoriat toteutuvat psykoterapeutin arjessa.",
+        "cn": "该类别聚焦心理治疗方法与技术的实际应用。这里讨论真实个案、治疗路径以及在不同情境下与来访者工作的方式。重点在于科学原理与理论如何落地于现实的心理治疗实践。"
+      },
       "emoji": "🕎",
       "parent_id": null,
       "lifecycle": "approved"
@@ -44,8 +98,20 @@
     {
       "id": "category:humanistic-principles",
       "type": "category",
-      "label": "Гуманистические принципы",
-      "description": "В этой категории рассматриваются принципы, основанные на ценностях, человеческом потенциале и самореализации. Гуманизм акцентирует внимание на достоинстве личности, ее свободе и ответственности. Это подход, который ориентирован на развитие внутреннего мира человека и его способности к самосовершенствованию.",
+      "label": {
+        "ru": "Гуманистические принципы",
+        "en": "Humanistic Principles",
+        "de": "Humanistische Prinzipien",
+        "fi": "Humanistiset periaatteet",
+        "cn": "人文主义原则"
+      },
+      "description": {
+        "ru": "В этой категории рассматриваются принципы, основанные на ценностях, человеческом потенциале и самореализации. Гуманизм акцентирует внимание на достоинстве личности, ее свободе и ответственности. Это подход, который ориентирован на развитие внутреннего мира человека и его способности к самосовершенствованию.",
+        "en": "This category examines principles grounded in values, human potential, and self-realization. Humanism emphasizes personal dignity, freedom, and responsibility. It is an approach focused on developing a person's inner world and capacity for self-improvement.",
+        "de": "In dieser Kategorie werden Prinzipien betrachtet, die auf Werten, menschlichem Potenzial und Selbstverwirklichung basieren. Der Humanismus betont die Würde der Person, ihre Freiheit und Verantwortung. Es ist ein Ansatz, der auf die Entwicklung der inneren Welt des Menschen und seine Fähigkeit zur Selbstverbesserung ausgerichtet ist.",
+        "fi": "Tässä kategoriassa tarkastellaan arvoihin, inhimilliseen potentiaaliin ja itsensä toteuttamiseen perustuvia periaatteita. Humanismi korostaa henkilön arvokkuutta, vapautta ja vastuuta. Se on lähestymistapa, joka tähtää ihmisen sisäisen maailman kehittämiseen ja hänen kykyynsä parantaa itseään.",
+        "cn": "该类别讨论以价值观、人类潜能和自我实现为基础的原则。人文主义强调个体尊严、自由与责任。这是一种关注内在世界发展与自我完善能力的取向。"
+      },
       "emoji": "⚜️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -53,8 +119,20 @@
     {
       "id": "category:relationships-ideas",
       "type": "category",
-      "label": "Идеи про отношения",
-      "description": "Здесь обсуждаются различные аспекты отношений между людьми: от личных и романтических до социальных и профессиональных. Важными темами являются динамика общения, конфликты, доверие, а также понимание и разрешение проблем, возникающих в межличностных связях.",
+      "label": {
+        "ru": "Идеи про отношения",
+        "en": "Ideas about Relationships",
+        "de": "Ideen über Beziehungen",
+        "fi": "Ideoita ihmissuhteista",
+        "cn": "关于关系的想法"
+      },
+      "description": {
+        "ru": "Здесь обсуждаются различные аспекты отношений между людьми: от личных и романтических до социальных и профессиональных. Важными темами являются динамика общения, конфликты, доверие, а также понимание и разрешение проблем, возникающих в межличностных связях.",
+        "en": "This category discusses various aspects of relationships between people—from personal and romantic to social and professional. Key themes include communication dynamics, conflict, trust, and understanding and resolving issues that arise in interpersonal connections.",
+        "de": "Hier werden verschiedene Aspekte zwischenmenschlicher Beziehungen diskutiert: von persönlichen und romantischen bis hin zu sozialen und beruflichen. Wichtige Themen sind Kommunikationsdynamik, Konflikte, Vertrauen sowie das Verstehen und Lösen von Problemen, die in zwischenmenschlichen Beziehungen entstehen.",
+        "fi": "Tässä kategoriassa käsitellään ihmissuhteiden eri puolia henkilökohtaisista ja romanttisista sosiaalisiin ja ammatillisiin. Keskeisiä teemoja ovat viestinnän dynamiikka, konfliktit, luottamus sekä ihmissuhteissa syntyvien ongelmien ymmärtäminen ja ratkaiseminen.",
+        "cn": "这里讨论人际关系的各个方面，从个人和浪漫关系到社会与职业关系。重要主题包括沟通动态、冲突、信任，以及理解并解决人际联系中的问题。"
+      },
       "emoji": "💙",
       "parent_id": null,
       "lifecycle": "approved"
@@ -62,8 +140,20 @@
     {
       "id": "category:education-in-universities",
       "type": "category",
-      "label": "Об образовании в университетах",
-      "description": "В этой категории собираются идеи и обсуждения, касающиеся высшего образования, образовательных систем и подходов, используемых в университетах. Здесь рассматриваются не только образовательные программы, но и подходы к обучению, личностному росту студентов, а также влияние образовательных институтов на общество.",
+      "label": {
+        "ru": "Об образовании в университетах",
+        "en": "On University Education",
+        "de": "Über Hochschulbildung",
+        "fi": "Yliopistokoulutuksesta",
+        "cn": "关于大学教育"
+      },
+      "description": {
+        "ru": "В этой категории собираются идеи и обсуждения, касающиеся высшего образования, образовательных систем и подходов, используемых в университетах. Здесь рассматриваются не только образовательные программы, но и подходы к обучению, личностному росту студентов, а также влияние образовательных институтов на общество.",
+        "en": "This category gathers ideas and discussions about higher education, educational systems, and approaches used in universities. It covers not only curricula but also teaching approaches, students' personal development, and the impact of educational institutions on society.",
+        "de": "In dieser Kategorie werden Ideen und Diskussionen über Hochschulbildung, Bildungssysteme und Ansätze an Universitäten gesammelt. Sie betrachtet nicht nur Studienprogramme, sondern auch Lehransätze, die persönliche Entwicklung der Studierenden sowie den Einfluss von Bildungseinrichtungen auf die Gesellschaft.",
+        "fi": "Tämä kategoria kokoaa ideoita ja keskusteluja korkeakoulutuksesta, koulutusjärjestelmistä ja yliopistoissa käytettävistä lähestymistavoista. Se käsittelee paitsi koulutusohjelmia myös opetuskäytäntöjä, opiskelijoiden henkilökohtaista kasvua sekä koulutusinstituutioiden vaikutusta yhteiskuntaan.",
+        "cn": "该类别汇集有关高等教育、教育体系以及大学中采用的方法的想法与讨论。这里不仅讨论课程设置，也涵盖教学方式、学生的个人成长以及教育机构对社会的影响。"
+      },
       "emoji": "🛐",
       "parent_id": null,
       "lifecycle": "approved"
@@ -71,8 +161,20 @@
     {
       "id": "category:moral-ethics",
       "type": "category",
-      "label": "Мораль, этика",
-      "description": "Эта категория охватывает темы, связанные с моральными и этическими вопросами, возникающими в обществе и в жизни человека. Обсуждаются различные дилеммы, связанные с правами и обязанностями, а также вопросы справедливости, честности, ответственности и других этических норм.",
+      "label": {
+        "ru": "Мораль, этика",
+        "en": "Morality and Ethics",
+        "de": "Moral und Ethik",
+        "fi": "Moraali ja etiikka",
+        "cn": "道德与伦理"
+      },
+      "description": {
+        "ru": "Эта категория охватывает темы, связанные с моральными и этическими вопросами, возникающими в обществе и в жизни человека. Обсуждаются различные дилеммы, связанные с правами и обязанностями, а также вопросы справедливости, честности, ответственности и других этических норм.",
+        "en": "This category covers topics related to moral and ethical questions that arise in society and in a person's life. It discusses dilemmas about rights and duties, as well as issues of justice, honesty, responsibility, and other ethical norms.",
+        "de": "Diese Kategorie umfasst Themen im Zusammenhang mit moralischen und ethischen Fragen, die in der Gesellschaft und im Leben des Menschen auftreten. Es werden unterschiedliche Dilemmata zu Rechten und Pflichten sowie Fragen der Gerechtigkeit, Ehrlichkeit, Verantwortung und anderen ethischen Normen diskutiert.",
+        "fi": "Tämä kategoria kattaa yhteiskunnassa ja ihmisen elämässä esiintyvät moraaliset ja eettiset kysymykset. Siinä käsitellään oikeuksiin ja velvollisuuksiin liittyviä dilemmoja sekä oikeudenmukaisuuden, rehellisyyden, vastuun ja muiden eettisten normien teemoja.",
+        "cn": "该类别涵盖社会和个人生活中出现的道德与伦理问题。讨论与权利与义务相关的各种两难，以及公平、诚实、责任等伦理规范。"
+      },
       "emoji": "Ⓜ️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -80,8 +182,20 @@
     {
       "id": "category:about-me",
       "type": "category",
-      "label": "Про меня",
-      "description": "В этом разделе собраны материалы, посвященные личному опыту, саморефлексии и внутреннему миру автора. Здесь могут быть размышления о личной идентичности, путях самопознания и развития, а также истории из жизни, которые позволяют лучше понять автора и его философию.",
+      "label": {
+        "ru": "Про меня",
+        "en": "About Me",
+        "de": "Über mich",
+        "fi": "Minusta",
+        "cn": "关于我"
+      },
+      "description": {
+        "ru": "В этом разделе собраны материалы, посвященные личному опыту, саморефлексии и внутреннему миру автора. Здесь могут быть размышления о личной идентичности, путях самопознания и развития, а также истории из жизни, которые позволяют лучше понять автора и его философию.",
+        "en": "This section gathers materials devoted to the author's personal experience, self-reflection, and inner world. It may include reflections on identity, paths of self-knowledge and development, as well as life stories that help better understand the author and his philosophy.",
+        "de": "In diesem Bereich sind Materialien zum persönlichen Erlebnis, zur Selbstreflexion und zur inneren Welt des Autors gesammelt. Hier können Überlegungen zur Identität, Wege der Selbsterkenntnis und Entwicklung sowie Lebensgeschichten stehen, die helfen, den Autor und seine Philosophie besser zu verstehen.",
+        "fi": "Tässä osiossa on materiaaleja, jotka käsittelevät kirjoittajan henkilökohtaista kokemusta, itsereflektiota ja sisäistä maailmaa. Se voi sisältää pohdintoja identiteetistä, itsetuntemuksen ja kehityksen poluista sekä elämäntarinoita, jotka auttavat ymmärtämään kirjoittajaa ja hänen filosofiaansa.",
+        "cn": "本部分收录关于作者个人经验、自我反思与内在世界的材料。这里可能包括对身份认同、自我认知与发展的路径的思考，以及有助于理解作者及其哲学的生活故事。"
+      },
       "emoji": "🙋‍♂️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -89,8 +203,20 @@
     {
       "id": "category:transference",
       "type": "category",
-      "label": "Перенос",
-      "description": "Категория, посвященная одному из ключевых понятий психоанализа — переносу. Это психологический процесс, при котором чувства и эмоции, возникающие по отношению к важным фигурам из прошлого, переносятся на другого человека, чаще всего на терапевта. Здесь рассматриваются различные аспекты и случаи переноса, а также его влияние на психотерапевтическую практику.",
+      "label": {
+        "ru": "Перенос",
+        "en": "Transference",
+        "de": "Übertragung",
+        "fi": "Siirto",
+        "cn": "移情"
+      },
+      "description": {
+        "ru": "Категория, посвященная одному из ключевых понятий психоанализа — переносу. Это психологический процесс, при котором чувства и эмоции, возникающие по отношению к важным фигурам из прошлого, переносятся на другого человека, чаще всего на терапевта. Здесь рассматриваются различные аспекты и случаи переноса, а также его влияние на психотерапевтическую практику.",
+        "en": "A category devoted to one of the key concepts of psychoanalysis—transference. It is a psychological process in which feelings and emotions toward significant figures from the past are transferred to another person, most often the therapist. This category explores various aspects and cases of transference and its impact on psychotherapeutic practice.",
+        "de": "Eine Kategorie, die einem der zentralen Begriffe der Psychoanalyse gewidmet ist — der Übertragung. Es ist ein psychologischer Prozess, bei dem Gefühle und Emotionen, die sich auf wichtige Figuren aus der Vergangenheit beziehen, auf eine andere Person, meist die Therapeutin oder den Therapeuten, übertragen werden. Hier werden verschiedene Aspekte und Fälle der Übertragung sowie ihr Einfluss auf die psychotherapeutische Praxis betrachtet.",
+        "fi": "Kategoria, joka on omistettu psykoanalyysin keskeiselle käsitteelle – siirrolle. Se on psykologinen prosessi, jossa menneisyyden merkittäviin henkilöihin liittyvät tunteet ja emootiot siirtyvät toiseen henkilöön, useimmiten terapeuttiin. Tässä tarkastellaan siirron eri puolia ja tapauksia sekä sen vaikutusta psykoterapeuttiseen käytäntöön.",
+        "cn": "该类别聚焦精神分析的关键概念之一——移情。移情是一种心理过程，当人们对过去重要人物的感受与情绪被转移到另一人身上，通常是治疗师。这里讨论移情的不同方面与案例，以及其对心理治疗实践的影响。"
+      },
       "emoji": "🚻",
       "parent_id": null,
       "lifecycle": "approved"
@@ -98,8 +224,20 @@
     {
       "id": "category:countertransference",
       "type": "category",
-      "label": "Контрперенос",
-      "description": "В отличие от переноса, контрперенос — это эмоциональный отклик терапевта на перенос пациента. В этой категории рассматриваются реакции терапевта, которые могут возникнуть в ответ на чувства пациента, а также то, как эти реакции могут влиять на терапевтический процесс и его результаты.",
+      "label": {
+        "ru": "Контрперенос",
+        "en": "Countertransference",
+        "de": "Gegenübertragung",
+        "fi": "Vastasiirto",
+        "cn": "反移情"
+      },
+      "description": {
+        "ru": "В отличие от переноса, контрперенос — это эмоциональный отклик терапевта на перенос пациента. В этой категории рассматриваются реакции терапевта, которые могут возникнуть в ответ на чувства пациента, а также то, как эти реакции могут влиять на терапевтический процесс и его результаты.",
+        "en": "Unlike transference, countertransference is the therapist's emotional response to the client's transference. This category examines the therapist's reactions that may arise in response to a client's feelings and how these reactions can influence the therapeutic process and outcomes.",
+        "de": "Im Gegensatz zur Übertragung ist Gegenübertragung die emotionale Reaktion der Therapeutin oder des Therapeuten auf die Übertragung der Patientin oder des Patienten. In dieser Kategorie werden die Reaktionen der Therapeutin/des Therapeuten betrachtet, die als Antwort auf die Gefühle der Patientin/des Patienten auftreten können, sowie wie diese Reaktionen den therapeutischen Prozess und seine Ergebnisse beeinflussen können.",
+        "fi": "Toisin kuin siirto, vastasiirto on terapeutin emotionaalinen vastaus asiakkaan siirtoon. Tässä kategoriassa käsitellään terapeutin reaktioita, jotka voivat syntyä vastauksena asiakkaan tunteisiin, sekä sitä, miten nämä reaktiot voivat vaikuttaa terapeuttiseen prosessiin ja sen tuloksiin.",
+        "cn": "与移情不同，反移情是治疗师对来访者移情的情绪反应。本类别讨论治疗师可能出现的反应，以及这些反应如何影响治疗过程和结果。"
+      },
       "emoji": "🚹",
       "parent_id": null,
       "lifecycle": "approved"
@@ -107,8 +245,20 @@
     {
       "id": "category:skills-techniques",
       "type": "category",
-      "label": "Навыки, приемы, техники",
-      "description": "В этой категории собраны практические техники и методы, которые используются в различных областях — от психотерапии до личностного развития и профессиональной деятельности. Это категория для тех, кто хочет освоить новые навыки или усовершенствовать существующие практики.",
+      "label": {
+        "ru": "Навыки, приемы, техники",
+        "en": "Skills, Methods, Techniques",
+        "de": "Fähigkeiten, Methoden, Techniken",
+        "fi": "Taidot, menetelmät, tekniikat",
+        "cn": "技能、方法与技巧"
+      },
+      "description": {
+        "ru": "В этой категории собраны практические техники и методы, которые используются в различных областях — от психотерапии до личностного развития и профессиональной деятельности. Это категория для тех, кто хочет освоить новые навыки или усовершенствовать существующие практики.",
+        "en": "This category collects practical techniques and methods used across different fields—from psychotherapy to personal development and professional practice. It is for those who want to learn new skills or improve existing practices.",
+        "de": "In dieser Kategorie sind praktische Techniken und Methoden gesammelt, die in unterschiedlichen Bereichen eingesetzt werden — von der Psychotherapie bis zur persönlichen Entwicklung und beruflichen Praxis. Sie richtet sich an alle, die neue Fähigkeiten erlernen oder bestehende Praktiken verbessern möchten.",
+        "fi": "Tämä kategoria kokoaa käytännön tekniikoita ja menetelmiä, joita käytetään eri aloilla — psykoterapiasta henkilökohtaiseen kehitykseen ja ammatilliseen toimintaan. Se on tarkoitettu niille, jotka haluavat oppia uusia taitoja tai parantaa olemassa olevia käytäntöjä.",
+        "cn": "该类别汇集应用于不同领域的实用技术与方法——从心理治疗到个人成长和专业实践。它适合希望学习新技能或改进既有实践的人。"
+      },
       "emoji": "🪡",
       "parent_id": null,
       "lifecycle": "approved"
@@ -116,8 +266,20 @@
     {
       "id": "category:resistance-in-therapy",
       "type": "category",
-      "label": "Сопротивление в терапии",
-      "description": "Это категория для обсуждения психологического сопротивления, которое может возникать в ходе терапии. Сопротивление — это бессознательное избегание изменений или неприятных тем, которое часто возникает у пациентов в процессе работы с терапевтом.",
+      "label": {
+        "ru": "Сопротивление в терапии",
+        "en": "Resistance in Therapy",
+        "de": "Widerstand in der Therapie",
+        "fi": "Vastustus terapiassa",
+        "cn": "治疗中的阻抗"
+      },
+      "description": {
+        "ru": "Это категория для обсуждения психологического сопротивления, которое может возникать в ходе терапии. Сопротивление — это бессознательное избегание изменений или неприятных тем, которое часто возникает у пациентов в процессе работы с терапевтом.",
+        "en": "This category is for discussing psychological resistance that can arise during therapy. Resistance is an unconscious avoidance of change or unpleasant topics that often appears in clients' work with a therapist.",
+        "de": "Diese Kategorie dient der Diskussion psychologischer Widerstände, die im Verlauf einer Therapie auftreten können. Widerstand ist ein unbewusstes Vermeiden von Veränderung oder unangenehmen Themen, das bei Patient*innen während der Arbeit mit Therapeut*innen häufig auftritt.",
+        "fi": "Tämä kategoria on tarkoitettu psykoterapiassa mahdollisesti esiintyvän psykologisen vastustuksen käsittelyyn. Vastustus on tiedostamatonta muutoksen tai epämiellyttävien aiheiden välttelyä, joka usein ilmenee asiakkailla terapeutin kanssa työskentelyn aikana.",
+        "cn": "该类别用于讨论治疗过程中可能出现的心理阻抗。阻抗是一种无意识地回避改变或不愉快主题的现象，常在与治疗师合作时出现。"
+      },
       "emoji": "🆚",
       "parent_id": null,
       "lifecycle": "approved"
@@ -125,8 +287,20 @@
     {
       "id": "category:defense-mechanisms",
       "type": "category",
-      "label": "Защитные механизмы",
-      "description": "Здесь обсуждаются различные бессознательные стратегии, которые помогают человеку защищаться от стресса, тревоги и эмоциональной боли. Категория включает в себя такие механизмы, как отрицание, подавление, проекция и многие другие, которые играют важную роль в психическом здоровье.",
+      "label": {
+        "ru": "Защитные механизмы",
+        "en": "Defense Mechanisms",
+        "de": "Abwehrmechanismen",
+        "fi": "Puolustusmekanismit",
+        "cn": "防御机制"
+      },
+      "description": {
+        "ru": "Здесь обсуждаются различные бессознательные стратегии, которые помогают человеку защищаться от стресса, тревоги и эмоциональной боли. Категория включает в себя такие механизмы, как отрицание, подавление, проекция и многие другие, которые играют важную роль в психическом здоровье.",
+        "en": "This category discusses various unconscious strategies that help a person protect themselves from stress, anxiety, and emotional pain. It includes mechanisms such as denial, repression, projection, and many others that play an important role in mental health.",
+        "de": "Hier werden verschiedene unbewusste Strategien behandelt, die einem Menschen helfen, sich vor Stress, Angst und emotionalem Schmerz zu schützen. Die Kategorie umfasst Mechanismen wie Verleugnung, Unterdrückung, Projektion und viele andere, die eine wichtige Rolle für die psychische Gesundheit spielen.",
+        "fi": "Tässä kategoriassa käsitellään erilaisia tiedostamattomia strategioita, jotka auttavat ihmistä suojautumaan stressiltä, ahdistukselta ja emotionaaliselta kivulta. Kategoria sisältää mekanismeja kuten kieltäminen, tukahduttaminen, projektio ja monet muut, jotka ovat tärkeitä mielenterveydelle.",
+        "cn": "这里讨论帮助人们防御压力、焦虑和情绪痛苦的各种无意识策略。该类别包含否认、压抑、投射等多种机制，它们在心理健康中发挥重要作用。"
+      },
       "emoji": "🛡",
       "parent_id": null,
       "lifecycle": "approved"
@@ -134,8 +308,20 @@
     {
       "id": "category:effectiveness",
       "type": "category",
-      "label": "Эффективность",
-      "description": "В этой категории рассматривается эффективность с точки зрения бизнеса, коучинга и успешных бизнес-идей. Это могут быть способы измерения и оценки успешности различных бизнес-проектов, методологий и подходов, которые ориентированы на достижение быстрых и заметных результатов.",
+      "label": {
+        "ru": "Эффективность",
+        "en": "Effectiveness",
+        "de": "Effektivität",
+        "fi": "Tehokkuus",
+        "cn": "有效性"
+      },
+      "description": {
+        "ru": "В этой категории рассматривается эффективность с точки зрения бизнеса, коучинга и успешных бизнес-идей. Это могут быть способы измерения и оценки успешности различных бизнес-проектов, методологий и подходов, которые ориентированы на достижение быстрых и заметных результатов.",
+        "en": "This category examines effectiveness from the perspective of business, coaching, and successful business ideas. It can include ways to measure and evaluate the success of various projects, methodologies, and approaches aimed at achieving fast and tangible results.",
+        "de": "In dieser Kategorie wird Effektivität aus der Perspektive von Business, Coaching und erfolgreichen Geschäftsideen betrachtet. Dazu gehören Methoden zur Messung und Bewertung des Erfolgs verschiedener Projekte, Methodologien und Ansätze, die auf schnelle und spürbare Ergebnisse ausgerichtet sind.",
+        "fi": "Tässä kategoriassa tarkastellaan tehokkuutta liiketoiminnan, coachingin ja onnistuneiden liikeideoiden näkökulmasta. Siihen voivat kuulua tavat mitata ja arvioida erilaisten projektien, menetelmien ja lähestymistapojen onnistumista, jotka tähtäävät nopeisiin ja näkyviin tuloksiin.",
+        "cn": "该类别从商业、教练与成功商业理念的角度讨论有效性。内容包括衡量与评估不同项目、方法论与路径成功度的方式，这些方法旨在实现快速且可见的结果。"
+      },
       "emoji": "⛳️",
       "parent_id": null,
       "lifecycle": "approved"
@@ -143,8 +329,20 @@
     {
       "id": "category:overcoming",
       "type": "category",
-      "label": "Преодоление",
-      "description": "Категория, посвященная темам преодоления жизненных препятствий, трудностей и личных кризисов. Здесь рассматриваются пути преодоления страхов, сомнений, а также примеры того, как можно справиться с различными вызовами и выйти из сложных ситуаций.",
+      "label": {
+        "ru": "Преодоление",
+        "en": "Overcoming",
+        "de": "Überwindung",
+        "fi": "Selviytyminen",
+        "cn": "克服"
+      },
+      "description": {
+        "ru": "Категория, посвященная темам преодоления жизненных препятствий, трудностей и личных кризисов. Здесь рассматриваются пути преодоления страхов, сомнений, а также примеры того, как можно справиться с различными вызовами и выйти из сложных ситуаций.",
+        "en": "A category devoted to overcoming life obstacles, difficulties, and personal crises. It explores ways to overcome fears and doubts, as well as examples of how to cope with various challenges and get through difficult situations.",
+        "de": "Eine Kategorie, die Themen der Überwindung von Lebenshindernissen, Schwierigkeiten und persönlichen Krisen gewidmet ist. Hier werden Wege betrachtet, Ängste und Zweifel zu überwinden, sowie Beispiele dafür, wie man mit verschiedenen Herausforderungen umgehen und aus schwierigen Situationen herauskommen kann.",
+        "fi": "Kategoria, joka on omistettu elämän esteiden, vaikeuksien ja henkilökohtaisten kriisien ylittämiselle. Se tarkastelee tapoja voittaa pelot ja epäilykset sekä esimerkkejä siitä, miten selviytyä erilaisista haasteista ja päästä vaikeista tilanteista eteenpäin.",
+        "cn": "该类别聚焦克服生活障碍、困难与个人危机的主题。这里讨论战胜恐惧与怀疑的路径，并提供如何应对各种挑战、走出困境的示例。"
+      },
       "emoji": "💪",
       "parent_id": null,
       "lifecycle": "approved"
@@ -152,8 +350,20 @@
     {
       "id": "category:shadow-and-light",
       "type": "category",
-      "label": "Тень и Свет",
-      "description": "Эта категория исследует дуальности человеческого опыта — противоположности, такие как добро и зло, свет и тьма, сознание и бессознательное. Здесь рассматриваются способы интеграции этих противоположностей в личном развитии и психотерапевтической практике.",
+      "label": {
+        "ru": "Тень и Свет",
+        "en": "Shadow and Light",
+        "de": "Schatten und Licht",
+        "fi": "Varjo ja valo",
+        "cn": "阴影与光"
+      },
+      "description": {
+        "ru": "Эта категория исследует дуальности человеческого опыта — противоположности, такие как добро и зло, свет и тьма, сознание и бессознательное. Здесь рассматриваются способы интеграции этих противоположностей в личном развитии и психотерапевтической практике.",
+        "en": "This category explores the dualities of human experience—opposites such as good and evil, light and darkness, conscious and unconscious. It examines ways to integrate these opposites in personal development and psychotherapeutic practice.",
+        "de": "Diese Kategorie untersucht die Dualitäten menschlicher Erfahrung — Gegensätze wie Gut und Böse, Licht und Dunkelheit, Bewusstes und Unbewusstes. Hier werden Wege betrachtet, diese Gegensätze in der persönlichen Entwicklung und psychotherapeutischen Praxis zu integrieren.",
+        "fi": "Tämä kategoria tutkii inhimillisen kokemuksen dualiteetteja — vastakohtia kuten hyvä ja paha, valo ja pimeys, tietoinen ja tiedostamaton. Se tarkastelee tapoja integroida nämä vastakohdat henkilökohtaisessa kasvussa ja psykoterapeuttisessa käytännössä.",
+        "cn": "该类别探讨人类经验中的二元对立——如善与恶、光与暗、意识与无意识。这里讨论在个人成长与心理治疗实践中整合这些对立面的方式。"
+      },
       "emoji": "🌓",
       "parent_id": null,
       "lifecycle": "approved"
@@ -161,9 +371,20 @@
     {
       "id": "category:patterns",
       "type": "category",
-      "label": "Паттерны",
-      "type": "category",
-      "description": "В этой категории исследуются повторяющиеся шаблоны поведения, мыслей или событий, которые оказывают влияние на жизнь человека. Эти паттерны могут быть как полезными, так и разрушительными, и в рамках категории анализируются способы их преодоления или использования.",
+      "label": {
+        "ru": "Паттерны",
+        "en": "Patterns",
+        "de": "Muster",
+        "fi": "Mallit",
+        "cn": "模式"
+      },
+      "description": {
+        "ru": "В этой категории исследуются повторяющиеся шаблоны поведения, мыслей или событий, которые оказывают влияние на жизнь человека. Эти паттерны могут быть как полезными, так и разрушительными, и в рамках категории анализируются способы их преодоления или использования.",
+        "en": "This category examines recurring patterns of behavior, thought, or events that influence a person's life. These patterns can be helpful or destructive, and the category analyzes ways to overcome or use them.",
+        "de": "In dieser Kategorie werden wiederkehrende Muster von Verhalten, Gedanken oder Ereignissen untersucht, die das Leben eines Menschen beeinflussen. Diese Muster können sowohl hilfreich als auch destruktiv sein, und die Kategorie analysiert Wege, sie zu überwinden oder zu nutzen.",
+        "fi": "Tässä kategoriassa tutkitaan toistuvia käyttäytymisen, ajatusten tai tapahtumien malleja, jotka vaikuttavat ihmisen elämään. Nämä mallit voivat olla sekä hyödyllisiä että haitallisia, ja kategoriassa analysoidaan tapoja ylittää ne tai hyödyntää niitä.",
+        "cn": "该类别研究影响个人生活的重复行为、思维或事件模式。这些模式可能有益也可能具有破坏性，分类中分析如何克服或利用它们。"
+      },
       "emoji": "🔂",
       "parent_id": null,
       "lifecycle": "approved"
@@ -171,8 +392,20 @@
     {
       "id": "category:self-promotion-skills",
       "type": "category",
-      "label": "Скилл самопиара",
-      "description": "Эта категория охватывает умение эффективно продвигать себя, свои идеи и проекты. В ней рассматриваются методы личного брендинга, самопрезентации и эффективного позиционирования себя в обществе и в профессиональной сфере.",
+      "label": {
+        "ru": "Скилл самопиара",
+        "en": "Self-Promotion Skill",
+        "de": "Selbstvermarktungs-Skill",
+        "fi": "Itsensä markkinoinnin taito",
+        "cn": "自我推广技能"
+      },
+      "description": {
+        "ru": "Эта категория охватывает умение эффективно продвигать себя, свои идеи и проекты. В ней рассматриваются методы личного брендинга, самопрезентации и эффективного позиционирования себя в обществе и в профессиональной сфере.",
+        "en": "This category covers the ability to effectively promote yourself, your ideas, and projects. It discusses methods of personal branding, self-presentation, and effective positioning in society and the professional sphere.",
+        "de": "Diese Kategorie umfasst die Fähigkeit, sich selbst, eigene Ideen und Projekte effektiv zu vermarkten. Sie behandelt Methoden des Personal Branding, der Selbstpräsentation und der wirksamen Positionierung in Gesellschaft und Beruf.",
+        "fi": "Tämä kategoria kattaa kyvyn markkinoida itseään, omia ideoitaan ja projektejaan tehokkaasti. Se käsittelee henkilöbrändäystä, itse-esittelyä ja tehokasta asemoitumista yhteiskunnassa ja työelämässä.",
+        "cn": "该类别涵盖有效推广自己、想法和项目的能力。它讨论个人品牌建设、自我呈现以及在社会与职业领域中的有效定位。"
+      },
       "emoji": "🤘",
       "parent_id": null,
       "lifecycle": "approved"
@@ -180,8 +413,20 @@
     {
       "id": "category:narcissism",
       "type": "category",
-      "label": "Нарциссизм",
-      "description": "В этой категории обсуждается нарциссизм как личностная особенность, а также как более широкое социальное явление. Рассматриваются различные аспекты нарциссической личности, её влияние на отношения и общество в целом.",
+      "label": {
+        "ru": "Нарциссизм",
+        "en": "Narcissism",
+        "de": "Narzissmus",
+        "fi": "Narsismi",
+        "cn": "自恋"
+      },
+      "description": {
+        "ru": "В этой категории обсуждается нарциссизм как личностная особенность, а также как более широкое социальное явление. Рассматриваются различные аспекты нарциссической личности, её влияние на отношения и общество в целом.",
+        "en": "This category discusses narcissism as a personality trait and as a broader social phenomenon. It examines different aspects of the narcissistic personality and its impact on relationships and society as a whole.",
+        "de": "In dieser Kategorie wird Narzissmus als Persönlichkeitsmerkmal und als breiteres soziales Phänomen diskutiert. Es werden verschiedene Aspekte der narzisstischen Persönlichkeit betrachtet sowie ihr Einfluss auf Beziehungen und die Gesellschaft insgesamt.",
+        "fi": "Tässä kategoriassa käsitellään narsismia sekä persoonallisuuden piirteenä että laajempana sosiaalisena ilmiönä. Se tarkastelee narsistisen persoonallisuuden eri puolia sekä sen vaikutusta ihmissuhteisiin ja yhteiskuntaan kokonaisuutena.",
+        "cn": "该类别讨论自恋作为人格特质以及更广泛的社会现象。它探讨自恋人格的不同方面及其对关系和社会整体的影响。"
+      },
       "emoji": "🪞",
       "parent_id": null,
       "lifecycle": "approved"
@@ -189,8 +434,20 @@
     {
       "id": "category:ai",
       "type": "category",
-      "label": "AI",
-      "description": "Эта категория охватывает темы, связанные с искусственным интеллектом, его развитием и применением в различных сферах. Здесь обсуждаются как технологические аспекты, так и влияние ИИ на общество, психику человека и различные профессиональные области.",
+      "label": {
+        "ru": "AI",
+        "en": "AI",
+        "de": "KI",
+        "fi": "Tekoäly",
+        "cn": "AI"
+      },
+      "description": {
+        "ru": "Эта категория охватывает темы, связанные с искусственным интеллектом, его развитием и применением в различных сферах. Здесь обсуждаются как технологические аспекты, так и влияние ИИ на общество, психику человека и различные профессиональные области.",
+        "en": "This category covers topics related to artificial intelligence, its development, and its applications across domains. It discusses both technological aspects and the impact of AI on society, human psychology, and various professional fields.",
+        "de": "Diese Kategorie umfasst Themen rund um künstliche Intelligenz, ihre Entwicklung und Anwendung in verschiedenen Bereichen. Hier werden sowohl technologische Aspekte als auch der Einfluss von KI auf die Gesellschaft, die menschliche Psyche und verschiedene Berufsfelder diskutiert.",
+        "fi": "Tämä kategoria kattaa tekoälyyn, sen kehitykseen ja sovelluksiin liittyviä teemoja. Siinä käsitellään sekä teknologisia puolia että tekoälyn vaikutusta yhteiskuntaan, ihmisen psyykeen ja eri ammattialoihin.",
+        "cn": "该类别涵盖与人工智能、其发展及应用相关的主题。这里讨论技术层面以及AI对社会、人类心理和各类职业领域的影响。"
+      },
       "emoji": "🤖",
       "parent_id": null,
       "lifecycle": "approved"

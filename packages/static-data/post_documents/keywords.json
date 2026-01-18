@@ -3,14 +3,32 @@
   "version": "v0.1",
   "policy": {
     "generation_mode": "hybrid",
-    "description": "Keywords may be AI-generated at document creation time. New keywords are first added as candidates and later reviewed and promoted to the approved state."
+    "description": {
+      "ru": "Ключевые слова могут генерироваться ИИ во время создания документа. Новые ключевые слова сначала добавляются как кандидаты, а затем проходят проверку и переводятся в статус approved.",
+      "en": "Keywords may be AI-generated at document creation time. New keywords are first added as candidates and later reviewed and promoted to the approved state.",
+      "de": "Schlüsselwörter können bei der Dokumenterstellung durch KI erzeugt werden. Neue Schlüsselwörter werden zuerst als Kandidaten hinzugefügt und später geprüft und in den Status approved überführt.",
+      "fi": "Avainsanat voidaan luoda tekoälyllä dokumentin luontivaiheessa. Uudet avainsanat lisätään ensin ehdokkaina ja tarkistetaan myöhemmin, jolloin ne siirretään hyväksyttyyn tilaan.",
+      "cn": "关键词可以在文档创建时由 AI 生成。新的关键词会先作为候选项添加，之后经过审核并提升为 approved 状态。"
+    }
   },
   "items": [
     {
       "id": "keyword:ambivalence",
       "type": "keyword",
-      "label": "Синхронные колебания двух звезд‑двойников",
-      "description": "Специфическая метка для описания редких случаев, когда фиксируются совпадающие фазовые циклы у пары звёзд‑двойников в закрытом каталоге наблюдений.",
+      "label": {
+        "ru": "Синхронные колебания двух звезд‑двойников",
+        "en": "Synchronous oscillations of two twin stars",
+        "de": "Synchrone Schwingungen zweier Doppelsterne",
+        "fi": "Kahden kaksoistähden synkroniset värähtelyt",
+        "cn": "两颗双子星的同步振荡"
+      },
+      "description": {
+        "ru": "Специфическая метка для описания редких случаев, когда фиксируются совпадающие фазовые циклы у пары звёзд‑двойников в закрытом каталоге наблюдений.",
+        "en": "A specific tag for describing rare cases when matching phase cycles are recorded for a pair of twin stars in a closed observation catalog.",
+        "de": "Eine spezifische Markierung zur Beschreibung seltener Fälle, in denen übereinstimmende Phasenzyklen bei einem Doppelsternpaar in einem geschlossenen Beobachtungskatalog festgehalten werden.",
+        "fi": "Erityinen tunniste harvinaisten tapausten kuvaamiseen, joissa kahden kaksoistähden yhteensopivat vaihesyklit on kirjattu suljettuun havaintoluetteloon.",
+        "cn": "用于描述罕见情况的特定标签：在封闭观测目录中记录到一对双子星相位周期相同。"
+      },
       "lifecycle": "approved",
       "origin": "manual",
       "created_at": "2026-01",
@@ -19,8 +37,20 @@
     {
       "id": "keyword:inner-tension",
       "type": "keyword",
-      "label": "Маршрут ледяных кернов архива станции «Полюс‑12»",
-      "description": "Метка для узкого набора полевых записей о транспортировке кернов льда по внутреннему маршруту станции «Полюс‑12» в сезон 2039–2040.",
+      "label": {
+        "ru": "Маршрут ледяных кернов архива станции «Полюс‑12»",
+        "en": "Route of ice cores from the Pole-12 station archive",
+        "de": "Route der Eiskerne aus dem Archiv der Station „Pol-12“",
+        "fi": "Pole-12-aseman arkiston jääkairanäytteiden reitti",
+        "cn": "“极点-12”站档案中的冰芯运输路线"
+      },
+      "description": {
+        "ru": "Метка для узкого набора полевых записей о транспортировке кернов льда по внутреннему маршруту станции «Полюс‑12» в сезон 2039–2040.",
+        "en": "A tag for a narrow set of field notes about transporting ice cores along the internal route of the Pole-12 station in the 2039–2040 season.",
+        "de": "Eine Markierung für einen engen Satz von Feldnotizen über den Transport von Eiskernen entlang der internen Route der Station „Pol-12“ in der Saison 2039–2040.",
+        "fi": "Tunniste suppealle joukolle kenttämuistiinpanoja, jotka koskevat jääkairanäytteiden kuljetusta Pole-12-aseman sisäistä reittiä pitkin kaudella 2039–2040.",
+        "cn": "用于标记一小部分野外记录，内容为 2039–2040 季节在“极点-12”站内部路线运输冰芯的过程。"
+      },
       "lifecycle": "candidate",
       "origin": "ai",
       "created_at": "2026-01",
