@@ -1,19 +1,25 @@
 ---
 type: post
-id: eta-istoriya-pro-odnogo-cheloveka
-slug: tama-tarina-yhdesta-ihmisesta
-authors:
-  - Anton
-date_ymd: 2016-05-16
-status: publish
-title: "Tämä tarina kertoo yhdestä ihmisestä"
-preview: "Vertaus siitä, miten menestyksen halu joutuu koetukselle."
-seoLead: "Tarina siitä, että todellinen menestys syntyy, kun sitä haluaa yhtä paljon kuin elää."
-taxonomy:
-  rubric_ids: ["rubric:orientation-toward-overcoming"]
-  category_ids: ["category:overcoming"]
-  keyword_ids: ["keyword:existential-choice"]
-  keywords_raw: ["menestys", "ylittäminen", "motivaatio"]
+administrative:
+  id: eta-istoriya-pro-odnogo-cheloveka
+  authors:
+    - Anton
+  date_ymd: 2016-05-16
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  title: "Tämä tarina kertoo yhdestä ihmisestä"
+  preview: "Vertaus siitä, miten menestyksen halu joutuu koetukselle."
+  seoLead: "Tarina siitä, että todellinen menestys syntyy, kun sitä haluaa yhtä paljon kuin elää."
+  taxonomy:
+    rubric_ids: ["rubric:orientation-toward-overcoming"]
+    category_ids: ["category:overcoming"]
+    keyword_ids: ["keyword:existential-choice"]
+    keywords_raw: ["menestys", "ylittäminen", "motivaatio"]
+structural:
+  external_links: []
+  document_links: []
 ---
 
 

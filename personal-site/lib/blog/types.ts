@@ -35,17 +35,31 @@ export interface BlogTaxonomyIds {
   keywords_raw?: string[];
 }
 
-export interface BlogPostFrontmatter {
-  type?: "post";
+export interface BlogPostFrontmatterAdministrative {
   id?: string;
-  slug?: string;
   authors?: string[];
   date_ymd?: string;
   status?: BlogPostStatus;
+  channels?: string[];
+}
+
+export interface BlogPostFrontmatterDescriptive {
   title?: string;
   preview?: string;
   seoLead?: string;
   taxonomy?: BlogTaxonomyIds;
+}
+
+export interface BlogPostFrontmatterStructural {
+  external_links?: string[];
+  document_links?: string[];
+}
+
+export interface BlogPostFrontmatter {
+  type?: "post";
+  administrative: BlogPostFrontmatterAdministrative;
+  descriptive: BlogPostFrontmatterDescriptive;
+  structural: BlogPostFrontmatterStructural;
 }
 
 export interface BlogTaxonomyLocalized {

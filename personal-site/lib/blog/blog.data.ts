@@ -107,8 +107,9 @@ export async function getPostRoutes(): Promise<Array<{ lang: Lang; slug: string 
   for (const post of baseBlogPosts) {
     for (const lang of supportedLangs) {
       const frontmatter = await readFrontmatter(post, lang, readFile);
-      if (frontmatter?.slug) {
-        routes.push({ lang, slug: frontmatter.slug });
+      const slug = frontmatter?.administrative?.id;
+      if (slug) {
+        routes.push({ lang, slug });
       }
     }
   }
@@ -138,7 +139,10 @@ export async function getPostSlugById(id: string, lang: Lang): Promise<string | 
     const resolvedId = resolveLocalizedFields(frontmatters).fields.id;
 
     if (resolvedId === id) {
-      return frontmatters[lang]?.slug ?? frontmatters[defaultLang]?.slug;
+      return (
+        frontmatters[lang]?.administrative?.id ??
+        frontmatters[defaultLang]?.administrative?.id
+      );
     }
   }
 
@@ -224,17 +228,17 @@ function resolvePostMeta(
   const canonicalFrontmatter = frontmatters[defaultLang] ?? frontmatters[langFallback];
   const localizedFrontmatter =
     frontmatters[lang] ?? frontmatters[langFallback] ?? canonicalFrontmatter;
-  const resolvedStatus = canonicalFrontmatter?.status || post.status;
-  const resolvedPublishedAt = canonicalFrontmatter?.date_ymd
-    ? `${canonicalFrontmatter.date_ymd}T00:00:00+00:00`
+  const resolvedStatus = canonicalFrontmatter?.administrative?.status || post.status;
+  const resolvedPublishedAt = canonicalFrontmatter?.administrative?.date_ymd
+    ? `${canonicalFrontmatter.administrative.date_ymd}T00:00:00+00:00`
     : post.publishedAt;
-  const taxonomy = canonicalFrontmatter?.taxonomy;
+  const taxonomy = canonicalFrontmatter?.descriptive?.taxonomy;
   const rubricSlug = taxonomy?.rubric_ids?.[0] ?? post.rubric.slug;
   const categorySlug = taxonomy?.category_ids?.[0] ?? post.category.slug;
   const keywordSlugs = taxonomy?.keyword_ids ?? post.keywords.map((keyword) => keyword.slug);
   const keywordsRaw =
-    localizedFrontmatter?.taxonomy?.keywords_raw?.length
-      ? localizedFrontmatter.taxonomy.keywords_raw
+    localizedFrontmatter?.descriptive?.taxonomy?.keywords_raw?.length
+      ? localizedFrontmatter.descriptive.taxonomy.keywords_raw
       : post.keywordsRaw;
 
   return {
@@ -271,16 +275,22 @@ function resolveLocalizedFields(
     : (supportedLangs.find((lang) => frontmatters[lang]) ?? defaultLang);
 
   const fallbackFrontmatter = frontmatters[fallbackLang];
-  const fallbackId = fallbackFrontmatter?.id ?? "unknown-post";
+  const fallbackId = fallbackFrontmatter?.administrative?.id ?? "unknown-post";
 
   const slugs = supportedLangs.reduce<Record<Lang, string>>((acc, lang) => {
-    const slug = frontmatters[lang]?.slug ?? frontmatters[fallbackLang]?.slug ?? fallbackId;
+    const slug =
+      frontmatters[lang]?.administrative?.id ??
+      frontmatters[fallbackLang]?.administrative?.id ??
+      fallbackId;
     acc[lang] = slug;
     return acc;
   }, {} as Record<Lang, string>);
 
   const titles = supportedLangs.reduce<Record<Lang, string>>((acc, lang) => {
-    const title = frontmatters[lang]?.title ?? frontmatters[fallbackLang]?.title ?? fallbackId;
+    const title =
+      frontmatters[lang]?.descriptive?.title ??
+      frontmatters[fallbackLang]?.descriptive?.title ??
+      fallbackId;
     acc[lang] = title;
     return acc;
   }, {} as Record<Lang, string>);
@@ -303,7 +313,7 @@ async function findPostBySlug(
 ): Promise<{ post: BlogPostBase; frontmatters: Partial<Record<Lang, BlogPostFrontmatter>> } | undefined> {
   for (const post of posts) {
     const frontmatter = await readFrontmatter(post, lang, readFile);
-    if (frontmatter?.slug === slug) {
+    if (frontmatter?.administrative?.id === slug) {
       const frontmatters = await buildFrontmatterMap(post, readFile);
       return { post, frontmatters };
     }

@@ -1,19 +1,25 @@
 ---
 type: post
-id: eta-istoriya-pro-odnogo-cheloveka
-slug: eta-istoriya-pro-odnogo-cheloveka
-authors:
-  - Anton
-date_ymd: 2016-05-16
-status: publish
-title: "Эта история про одного человека"
-preview: "История о том, как желание добиться успеха проверяется на прочность."
-seoLead: "Притча о том, что настоящий успех приходит, когда ты хочешь его так же, как хочешь жить."
-taxonomy:
-  rubric_ids: ["rubric:orientation-toward-overcoming"]
-  category_ids: ["category:overcoming"]
-  keyword_ids: ["keyword:existential-choice"]
-  keywords_raw: ["успех", "преодоление", "мотивация"]
+administrative:
+  id: eta-istoriya-pro-odnogo-cheloveka
+  authors:
+    - Anton
+  date_ymd: 2016-05-16
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  title: "Эта история про одного человека"
+  preview: "История о том, как желание добиться успеха проверяется на прочность."
+  seoLead: "Притча о том, что настоящий успех приходит, когда ты хочешь его так же, как хочешь жить."
+  taxonomy:
+    rubric_ids: ["rubric:orientation-toward-overcoming"]
+    category_ids: ["category:overcoming"]
+    keyword_ids: ["keyword:existential-choice"]
+    keywords_raw: ["успех", "преодоление", "мотивация"]
+structural:
+  external_links: []
+  document_links: []
 ---
 
 
