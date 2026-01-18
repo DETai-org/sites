@@ -79,7 +79,7 @@ export async function getPostsIndexForLang(lang: Lang): Promise<BlogPostSummary[
   const { readFile } = await import("fs/promises");
   const posts = baseBlogPosts.filter((entry) => entry.contentFiles?.[lang]);
 
-  return Promise.all(
+  const summaries = await Promise.all(
     posts.map(async (post) => {
       const { excerpt, frontmatter } = await buildPostExcerpt(post, lang, readFile);
       const frontmatters = await buildFrontmatterMap(post, readFile);
@@ -93,6 +93,10 @@ export async function getPostsIndexForLang(lang: Lang): Promise<BlogPostSummary[
         frontmatter,
       };
     })
+  );
+
+  return summaries.sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 }
 

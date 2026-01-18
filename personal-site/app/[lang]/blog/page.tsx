@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getPostsIndexForLang } from "../../../lib/blog/blog.data";
-import { isLang, supportedLangs } from "../../../lib/blog/blog.i18n";
+import { blogLocaleByLang, isLang, supportedLangs } from "../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../lib/blog/blog.metadata";
 import type { Lang } from "../../../lib/blog/types";
 
@@ -47,14 +47,6 @@ const blogCopyByLang: Record<Lang, { heading: string; subheading: string; readMo
     subheading: "来自 WordPress 的首批材料。",
     readMore: "阅读全文 →"
   }
-};
-
-const blogLocaleByLang: Record<Lang, string> = {
-  ru: "ru-RU",
-  en: "en-US",
-  de: "de-DE",
-  fi: "fi-FI",
-  cn: "zh-CN"
 };
 
 export const runtime = "nodejs";
