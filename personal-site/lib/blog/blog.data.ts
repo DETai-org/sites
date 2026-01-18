@@ -53,9 +53,10 @@ export async function getPostByLangAndSlug(
   }
 
   const { post, frontmatters } = match;
+  const contentLang = resolveContentLang(post, lang) ?? lang;
   const { content, contentHtml, excerpt, frontmatter } = await buildPostContent(
     post,
-    lang,
+    contentLang,
     readFile
   );
   const resolvedPost = resolvePostMeta(post, frontmatters, lang);
@@ -77,11 +78,12 @@ export async function getPostsIndexForLang(lang: Lang): Promise<BlogPostSummary[
   }
 
   const { readFile } = await import("fs/promises");
-  const posts = baseBlogPosts.filter((entry) => entry.contentFiles?.[lang]);
+  const posts = baseBlogPosts.filter((entry) => resolveContentLang(entry, lang));
 
   const summaries = await Promise.all(
     posts.map(async (post) => {
-      const { excerpt, frontmatter } = await buildPostExcerpt(post, lang, readFile);
+      const contentLang = resolveContentLang(post, lang) ?? lang;
+      const { excerpt, frontmatter } = await buildPostExcerpt(post, contentLang, readFile);
       const frontmatters = await buildFrontmatterMap(post, readFile);
       const resolvedPost = resolvePostMeta(post, frontmatters, lang);
 
@@ -105,9 +107,13 @@ export async function getPostRoutes(): Promise<Array<{ lang: Lang; slug: string 
   const routes: Array<{ lang: Lang; slug: string }> = [];
 
   for (const post of baseBlogPosts) {
+    const frontmatters = await buildFrontmatterMap(post, readFile);
+    if (!Object.keys(frontmatters).length) {
+      continue;
+    }
+    const { fields } = resolveLocalizedFields(frontmatters);
     for (const lang of supportedLangs) {
-      const frontmatter = await readFrontmatter(post, lang, readFile);
-      const slug = frontmatter?.administrative?.id;
+      const slug = fields.slugs[lang];
       if (slug) {
         routes.push({ lang, slug });
       }
@@ -312,9 +318,12 @@ async function findPostBySlug(
   readFile: ReadFile
 ): Promise<{ post: BlogPostBase; frontmatters: Partial<Record<Lang, BlogPostFrontmatter>> } | undefined> {
   for (const post of posts) {
-    const frontmatter = await readFrontmatter(post, lang, readFile);
-    if (frontmatter?.administrative?.id === slug) {
-      const frontmatters = await buildFrontmatterMap(post, readFile);
+    const frontmatters = await buildFrontmatterMap(post, readFile);
+    if (!Object.keys(frontmatters).length) {
+      continue;
+    }
+    const { fields } = resolveLocalizedFields(frontmatters);
+    if (fields.slugs[lang] === slug) {
       return { post, frontmatters };
     }
   }
@@ -387,4 +396,16 @@ async function renderMarkdownToHtml(markdown: string): Promise<string> {
     .process(markdown);
 
   return String(file);
+}
+
+function resolveContentLang(post: BlogPostBase, lang: Lang): Lang | undefined {
+  if (post.contentFiles?.[lang]) {
+    return lang;
+  }
+
+  if (post.contentFiles?.[defaultLang]) {
+    return defaultLang;
+  }
+
+  return supportedLangs.find((entry) => Boolean(post.contentFiles?.[entry]));
 }
