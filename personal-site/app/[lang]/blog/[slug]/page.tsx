@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
-import { isLang } from "../../../../lib/blog/blog.i18n";
+import { blogLocaleByLang, isLang } from "../../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
 
 interface BlogPostPageProps {
@@ -75,13 +75,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const contentHtml = post.contentHtml.trim();
   const fallbackText = post.content.trim();
+  const locale = blogLocaleByLang[post.lang];
 
   return (
     <main className="page">
       <article className="blog-post">
         <header className="blog-post__header">
           <p className="blog-post__meta">
-            {new Date(post.publishedAt).toLocaleDateString("ru-RU")} · {post.author}
+            {new Date(post.publishedAt).toLocaleDateString(locale)} · {post.author}
           </p>
           <h1 className="blog-post__title">{post.titles[lang]}</h1>
           {post.coverImage ? (
