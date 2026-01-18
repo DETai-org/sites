@@ -1,19 +1,25 @@
 ---
 type: post
-id: eta-istoriya-pro-odnogo-cheloveka
-slug: this-story-about-one-person
-authors:
-  - Anton
-date_ymd: 2016-05-16
-status: publish
-title: "This story is about one person"
-preview: "A parable about how the desire for success is tested."
-seoLead: "A story reminding that real success comes when you want it as much as you want to live."
-taxonomy:
-  rubric_ids: ["rubric:orientation-toward-overcoming"]
-  category_ids: ["category:overcoming"]
-  keyword_ids: ["keyword:existential-choice"]
-  keywords_raw: ["success", "overcoming", "motivation"]
+administrative:
+  id: eta-istoriya-pro-odnogo-cheloveka
+  authors:
+    - Anton
+  date_ymd: 2016-05-16
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  title: "This story is about one person"
+  preview: "A parable about how the desire for success is tested."
+  seoLead: "A story reminding that real success comes when you want it as much as you want to live."
+  taxonomy:
+    rubric_ids: ["rubric:orientation-toward-overcoming"]
+    category_ids: ["category:overcoming"]
+    keyword_ids: ["keyword:existential-choice"]
+    keywords_raw: ["success", "overcoming", "motivation"]
+structural:
+  external_links: []
+  document_links: []
 ---
 
 

@@ -46,7 +46,8 @@
 * Общие метаданные хранятся централизованно в `blog.base.ts`.
 * Для постов поддерживаются:
 
-* `id`, `slug`, `title`, `preview`, `seoLead` — берутся из frontmatter (по языкам).
+* `id`, `title`, `preview`, `seoLead` — берутся из frontmatter (по языкам).
+* `slug` для маршрутов строится из `administrative.id`.
 * `rubric` — рубрика поста (одна на пост, `slug` = `rubric_ids` из стандарта).
 * `category` — категория поста (одна на пост, `slug` = `category_ids` из стандарта).
 * `keywords` — ключевые слова из словаря (`slug` = `keyword_ids`).
@@ -54,6 +55,36 @@
 * `contentFiles` — соответствие языков и markdown-файлов.
 * Метаданные из frontmatter приоритетны для `id`, `status`, `date_ymd`, `taxonomy`, `title`, `preview`, `seoLead`.
 * Переводы рубрик, категорий и ключевых слов лежат в `lib/blog/taxonomy.ts` (label/description/postulate).
+
+#### 🧩 Структура frontmatter (актуальная схема)
+
+Frontmatter всегда содержит вложенные блоки:
+
+```yaml
+---
+type: post
+administrative:
+  id: some-post-id
+  authors:
+    - Anton
+  date_ymd: 2026-01-17
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  title: "Заголовок поста"
+  preview: "Короткий анонс."
+  seoLead: "SEO-лид."
+  taxonomy:
+    rubric_ids: ["rubric:shadow-and-light"]
+    category_ids: ["category:shadow-and-light"]
+    keyword_ids: ["keyword:ambivalence"]
+    keywords_raw: ["внутренний конфликт"]
+structural:
+  external_links: []
+  document_links: []
+---
+```
 
 ### 🔹 i18n логика
 

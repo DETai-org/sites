@@ -1,19 +1,25 @@
 ---
 type: post
-id: eta-istoriya-pro-odnogo-cheloveka
-slug: zhe-shi-yi-ge-ren-de-gu-shi
-authors:
-  - Anton
-date_ymd: 2016-05-16
-status: publish
-title: "这是关于一个人的故事"
-preview: "关于成功欲望被考验的一则寓言。"
-seoLead: "一个提醒：真正的成功来自于你对它的渴望像对生命一样强烈。"
-taxonomy:
-  rubric_ids: ["rubric:orientation-toward-overcoming"]
-  category_ids: ["category:overcoming"]
-  keyword_ids: ["keyword:existential-choice"]
-  keywords_raw: ["成功", "克服", "动力"]
+administrative:
+  id: eta-istoriya-pro-odnogo-cheloveka
+  authors:
+    - Anton
+  date_ymd: 2016-05-16
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  title: "这是关于一个人的故事"
+  preview: "关于成功欲望被考验的一则寓言。"
+  seoLead: "一个提醒：真正的成功来自于你对它的渴望像对生命一样强烈。"
+  taxonomy:
+    rubric_ids: ["rubric:orientation-toward-overcoming"]
+    category_ids: ["category:overcoming"]
+    keyword_ids: ["keyword:existential-choice"]
+    keywords_raw: ["成功", "克服", "动力"]
+structural:
+  external_links: []
+  document_links: []
 ---
 
 

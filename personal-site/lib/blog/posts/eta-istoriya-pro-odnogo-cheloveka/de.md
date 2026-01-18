@@ -1,19 +1,25 @@
 ---
 type: post
-id: eta-istoriya-pro-odnogo-cheloveka
-slug: diese-geschichte-uber-eine-person
-authors:
-  - Anton
-date_ymd: 2016-05-16
-status: publish
-title: "Diese Geschichte handelt von einer Person"
-preview: "Eine Parabel darüber, wie der Wunsch nach Erfolg auf die Probe gestellt wird."
-seoLead: "Eine Geschichte, die daran erinnert, dass echter Erfolg kommt, wenn man ihn so sehr will wie das Leben."
-taxonomy:
-  rubric_ids: ["rubric:orientation-toward-overcoming"]
-  category_ids: ["category:overcoming"]
-  keyword_ids: ["keyword:existential-choice"]
-  keywords_raw: ["Erfolg", "Überwindung", "Motivation"]
+administrative:
+  id: eta-istoriya-pro-odnogo-cheloveka
+  authors:
+    - Anton
+  date_ymd: 2016-05-16
+  status: publish
+  channels:
+    - personal_site_blog
+descriptive:
+  title: "Diese Geschichte handelt von einer Person"
+  preview: "Eine Parabel darüber, wie der Wunsch nach Erfolg auf die Probe gestellt wird."
+  seoLead: "Eine Geschichte, die daran erinnert, dass echter Erfolg kommt, wenn man ihn so sehr will wie das Leben."
+  taxonomy:
+    rubric_ids: ["rubric:orientation-toward-overcoming"]
+    category_ids: ["category:overcoming"]
+    keyword_ids: ["keyword:existential-choice"]
+    keywords_raw: ["Erfolg", "Überwindung", "Motivation"]
+structural:
+  external_links: []
+  document_links: []
 ---
 
 
