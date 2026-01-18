@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
+    externalDir: true,
     outputFileTracingIncludes: {
       "/blog": ["./lib/blog/posts/**"],
       "/blog/[slug]": ["./lib/blog/posts/**"],
