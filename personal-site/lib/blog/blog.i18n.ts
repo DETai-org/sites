@@ -13,11 +13,24 @@ export function normalizeLang(value?: string | null): Lang | undefined {
   }
 
   const normalized = value.toLowerCase();
-  const base = normalized.split("-")[0];
+  const candidates = normalized.split(",");
 
-  if (base === "zh") {
-    return "cn";
+  for (const candidate of candidates) {
+    const primary = candidate.split(";")[0]?.trim();
+    if (!primary) {
+      continue;
+    }
+
+    const base = primary.split("-")[0];
+
+    if (base === "zh") {
+      return "cn";
+    }
+
+    if (isLang(base)) {
+      return base;
+    }
   }
 
-  return isLang(base) ? base : undefined;
+  return undefined;
 }
