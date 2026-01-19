@@ -31,6 +31,13 @@
       "items": [
         {
           "id": "rubric:shadow-and-light",
+          "routeSlugs": {
+            "ru": "ten-i-svet",
+            "en": "shadow-and-light",
+            "de": "schatten-und-licht",
+            "fi": "varjo-ja-valo",
+            "cn": "yin-ying-yu-guang"
+          },
           "type": "rubric",
           "label": {
             "ru": "Тень и Свет",
@@ -135,6 +142,13 @@
         },
         {
           "id": "rubric:personality-types-and-existential-strategies",
+          "routeSlugs": {
+            "ru": "tipy-lichnosti",
+            "en": "personality-types",
+            "de": "personlichkeitstypen",
+            "fi": "persoonallisuustyypit",
+            "cn": "ren-ge-lei-xing"
+          },
           "type": "rubric",
           "label": {
             "ru": "Типы личности",
@@ -239,6 +253,13 @@
         },
         {
           "id": "rubric:orientation-toward-overcoming",
+          "routeSlugs": {
+            "ru": "ustanovka-na-preodolenie",
+            "en": "orientation-toward-overcoming",
+            "de": "ausrichtung-auf-uberwindung",
+            "fi": "ylittamiseen-suuntautuminen",
+            "cn": "yi-ke-fu-wei-dao-xiang"
+          },
           "type": "rubric",
           "label": {
             "ru": "Установка на преодоление",
@@ -363,6 +384,13 @@
       "items": [
         {
           "id": "rubric:personal-psychology",
+          "routeSlugs": {
+            "ru": "psihologiya",
+            "en": "psychology",
+            "de": "psychologie",
+            "fi": "psykologia",
+            "cn": "xin-li-xue"
+          },
           "type": "rubric",
           "label": {
             "ru": "Психология",
@@ -467,6 +495,13 @@
         },
         {
           "id": "rubric:personal-lesgaft-study-notes",
+          "routeSlugs": {
+            "ru": "mysli-vo-vremya-ucheby-v-lesgafta",
+            "en": "thoughts-during-studies-at-lesgaft",
+            "de": "gedanken-wahrend-des-studiums-an-der-lesgaft-universitat",
+            "fi": "ajatuksia-lesgaft-opintojen-aikana",
+            "cn": "zai-lai-si-ga-fu-te-xue-xi-shi-de-si-kao"
+          },
           "type": "rubric",
           "label": {
             "ru": "Мысли во время учёбы в Лесгафта",
@@ -571,6 +606,13 @@
         },
         {
           "id": "rubric:personal-health-practices",
+          "routeSlugs": {
+            "ru": "massazh",
+            "en": "massage",
+            "de": "massage",
+            "fi": "hieronta",
+            "cn": "an-mo"
+          },
           "type": "rubric",
           "label": {
             "ru": "Массаж",
@@ -675,6 +717,13 @@
         },
         {
           "id": "rubric:personal-training",
+          "routeSlugs": {
+            "ru": "trenirovki",
+            "en": "training",
+            "de": "training",
+            "fi": "harjoittelu",
+            "cn": "xun-lian"
+          },
           "type": "rubric",
           "label": {
             "ru": "Тренировки",
@@ -779,6 +828,13 @@
         },
         {
           "id": "rubric:self-promotion-skills",
+          "routeSlugs": {
+            "ru": "skill-samopiara",
+            "en": "self-promotion-skill",
+            "de": "selbstvermarktungs-skill",
+            "fi": "itsensa-markkinoinnin-taito",
+            "cn": "zi-wo-tui-guang-ji-neng"
+          },
           "type": "rubric",
           "label": {
             "ru": "Скилл самопиара",
@@ -888,6 +944,13 @@
         },
         {
           "id": "rubric:personal-rhyme-poetry",
+          "routeSlugs": {
+            "ru": "rifma-i-stih",
+            "en": "rhyme-and-verse",
+            "de": "reim-und-vers",
+            "fi": "riimi-ja-runo",
+            "cn": "yun-yu-shi"
+          },
           "type": "rubric",
           "label": {
             "ru": "Рифма и стих",
@@ -992,6 +1055,13 @@
         },
         {
           "id": "rubric:personal-key-milestones",
+          "routeSlugs": {
+            "ru": "klyuchevye-vehi",
+            "en": "key-milestones",
+            "de": "schlussel-meilensteine",
+            "fi": "keskeiset-virstanpylvaat",
+            "cn": "guan-jian-li-cheng-bei"
+          },
           "type": "rubric",
           "label": {
             "ru": "Ключевые вехи",

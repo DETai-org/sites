@@ -12,6 +12,7 @@ export type TaxonomySiteChannel = "detai_site_blog" | "personal_site_blog";
 
 export interface TaxonomyRubricDefinition {
   slug: string;
+  routeSlugs: LocalizedText;
   labels: LocalizedText;
   description: LocalizedText;
   definition: {
@@ -80,6 +81,7 @@ interface RubricsDocumentBlock {
 
 interface RubricItem {
   id: string;
+  routeSlugs: LocalizedText;
   label: LocalizedText;
   description: LocalizedText;
   definition?: {
@@ -165,6 +167,7 @@ function loadRubrics(siteChannel: TaxonomySiteChannel): TaxonomyRubricDefinition
   }
 
   return Array.from(itemsMap.values()).map((item) => {
+    const routeSlugs = ensureLocalized(item.routeSlugs, `rubric ${item.id} routeSlugs`);
     const labels = ensureLocalized(item.label, `rubric ${item.id} label`);
     const description = ensureLocalized(item.description, `rubric ${item.id} description`);
     const postulate = ensureLocalized(
@@ -178,6 +181,7 @@ function loadRubrics(siteChannel: TaxonomySiteChannel): TaxonomyRubricDefinition
 
     return {
       slug: item.id,
+      routeSlugs,
       labels,
       description,
       definition: {

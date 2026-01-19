@@ -10,6 +10,7 @@ const taxonomy = loadTaxonomyBundle("personal_site_blog");
 
 export const blogRubrics: BlogRubricDefinition[] = taxonomy.rubrics.map((rubric) => ({
   slug: rubric.slug,
+  routeSlugs: rubric.routeSlugs,
   labels: rubric.labels,
   description: rubric.description,
   definition: {
@@ -40,4 +41,15 @@ export function getTaxonomyLabel(
 
 export function getRubricDefinition(slug: string): BlogRubricDefinition | undefined {
   return blogRubrics.find((rubric) => rubric.slug === slug);
+}
+
+export function getRubricByRouteSlug(
+  routeSlug: string,
+  lang: Lang
+): BlogRubricDefinition | undefined {
+  return blogRubrics.find((rubric) => rubric.routeSlugs[lang] === routeSlug);
+}
+
+export function getRubricRouteSlug(slug: string, lang: Lang): string {
+  return getRubricDefinition(slug)?.routeSlugs[lang] ?? slug;
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { getRubricRouteSlug } from "../../lib/blog/taxonomy";
 import type { BlogPostSummary } from "../../lib/blog/types";
 
 interface BlogPostCardProps {
@@ -31,7 +32,7 @@ export default function BlogPostCard({ post, readMoreLabel, meta }: BlogPostCard
           {post.rubric ? (
             <Link
               className="blog-card__tag"
-              href={`/${post.lang}/blog/${encodeURIComponent(post.rubric.slug)}`}
+              href={`/${post.lang}/blog/${getRubricRouteSlug(post.rubric.slug, post.lang)}`}
             >
               {post.rubric.label}
             </Link>
