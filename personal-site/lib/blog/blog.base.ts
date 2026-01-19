@@ -46,7 +46,7 @@ export const baseBlogPosts: BlogPostBase[] = [
     },
     contentFiles: {
       ru: "lib/blog/posts/sila-i-svet-haus-i-mrak/ru.md",
-      en: "",
+      en: "lib/blog/posts/sila-i-svet-haus-i-mrak/en.md",
       de: "",
       fi: "",
       cn: "",
