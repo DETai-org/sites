@@ -10,6 +10,7 @@ administrative:
     - personal_site_blog
 descriptive:
   size: "L"
+  routeSlug: "kraft-und-licht-chaos-und-dunkelheit"
   title: "Kraft und Licht, Chaos und Dunkelheit"
   preview: "Kraft und Licht, Chaos und Dunkelheit — ein poetischer Text über den Zusammenstoß von Angst und Freiheit, Tag und Nacht, innerer Spaltung und der Sehnsucht nach Leben. 🌓 Was bleibt, wenn vertraute Ruhe nicht mehr trägt?"
   seoLead: "Ein poetischer Text über das Gegenspiel von Licht und Dunkelheit, inneren Konflikt und die Suche nach Freiheit durch Liebe und Angst."

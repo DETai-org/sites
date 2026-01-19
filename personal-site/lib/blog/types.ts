@@ -46,6 +46,7 @@ export interface BlogPostFrontmatterAdministrative {
 }
 
 export interface BlogPostFrontmatterDescriptive {
+  routeSlug?: string;
   title?: string;
   preview?: string;
   seoLead?: string;
