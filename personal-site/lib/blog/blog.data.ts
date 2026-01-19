@@ -108,7 +108,8 @@ export async function getPostRoutes(): Promise<Array<{ lang: Lang; slug: string 
   for (const post of baseBlogPosts) {
     for (const lang of supportedLangs) {
       const frontmatter = await readFrontmatter(post, lang, readFile);
-      const slug = frontmatter?.administrative?.id;
+      const slug =
+        frontmatter?.descriptive?.routeSlug ?? frontmatter?.administrative?.id;
       if (slug) {
         routes.push({ lang, slug });
       }
@@ -141,6 +142,8 @@ export async function getPostSlugById(id: string, lang: Lang): Promise<string | 
 
     if (resolvedId === id) {
       return (
+        frontmatters[lang]?.descriptive?.routeSlug ??
+        frontmatters[defaultLang]?.descriptive?.routeSlug ??
         frontmatters[lang]?.administrative?.id ??
         frontmatters[defaultLang]?.administrative?.id
       );
@@ -282,6 +285,8 @@ function resolveLocalizedFields(
 
   const slugs = supportedLangs.reduce<Record<Lang, string>>((acc, lang) => {
     const slug =
+      frontmatters[lang]?.descriptive?.routeSlug ??
+      frontmatters[fallbackLang]?.descriptive?.routeSlug ??
       frontmatters[lang]?.administrative?.id ??
       frontmatters[fallbackLang]?.administrative?.id ??
       fallbackId;
@@ -316,7 +321,9 @@ async function findPostBySlug(
 ): Promise<{ post: BlogPostBase; frontmatters: Partial<Record<Lang, BlogPostFrontmatter>> } | undefined> {
   for (const post of posts) {
     const frontmatter = await readFrontmatter(post, lang, readFile);
-    if (frontmatter?.administrative?.id === slug) {
+    const routeSlug =
+      frontmatter?.descriptive?.routeSlug ?? frontmatter?.administrative?.id;
+    if (routeSlug === slug) {
       const frontmatters = await buildFrontmatterMap(post, readFile);
       return { post, frontmatters };
     }

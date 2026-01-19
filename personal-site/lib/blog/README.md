@@ -47,7 +47,7 @@
 * Для постов поддерживаются:
 
 * `id`, `title`, `preview`, `seoLead` — берутся из frontmatter (по языкам).
-* `slug` для маршрутов строится из `administrative.id`.
+* `slug` для маршрутов строится из `descriptive.routeSlug`.
 * `rubric` — рубрика поста (одна на пост, `slug` = `rubric_ids` из стандарта).
 * `category` — категория поста (одна на пост, `slug` = `category_ids` из стандарта).
 * `keywords` — ключевые слова из словаря (`slug` = `keyword_ids`).
@@ -72,6 +72,7 @@ administrative:
   channels:
     - personal_site_blog
 descriptive:
+  routeSlug: "primer-sluga"
   title: "Заголовок поста"
   preview: "Короткий анонс."
   seoLead: "SEO-лид."
