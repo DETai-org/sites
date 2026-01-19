@@ -365,17 +365,91 @@
         "fi": "Persoonallisuuden pimeä ja valoisa puoli",
         "cn": "人格的暗与亮面"
       },
+      "title": {
+        "ru": "Тёмная и светлая сторона личности — интеграция противоположностей для личностного роста",
+        "en": "Dark and Light Side of Personality — Integrating Opposites for Personal Growth",
+        "de": "Dunkle und helle Seite der Persönlichkeit — Gegensätze für persönliches Wachstum integrieren",
+        "fi": "Persoonallisuuden pimeä ja valoisa puoli — vastakohtien integraatio henkilökohtaiseen kasvuun",
+        "cn": "人格的暗与亮面——通过整合对立促进个人成长"
+      },
       "description": {
-        "ru": "Эта категория исследует дуальности человеческого опыта и личности — противоположности, такие как добро и зло, свет и тьма, сознание и бессознательное. Здесь рассматриваются способы интеграции этих противоположностей в личном развитии и психотерапевтической практике.",
-        "en": "This category explores the dualities of human experience and personality—opposites such as good and evil, light and darkness, conscious and unconscious. It examines ways to integrate these opposites in personal development and psychotherapeutic practice.",
-        "de": "Diese Kategorie untersucht die Dualitäten menschlicher Erfahrung und Persönlichkeit — Gegensätze wie Gut und Böse, Licht und Dunkelheit, Bewusstes und Unbewusstes. Hier werden Wege betrachtet, diese Gegensätze in der persönlichen Entwicklung und psychotherapeutischen Praxis zu integrieren.",
-        "fi": "Tämä kategoria tutkii inhimillisen kokemuksen ja persoonallisuuden dualiteetteja — vastakohtia kuten hyvä ja paha, valo ja pimeys, tietoinen ja tiedostamaton. Se tarkastelee tapoja integroida nämä vastakohdat henkilökohtaisessa kasvussa ja psykoterapeuttisessa käytännössä.",
-        "cn": "该类别探讨人类经验与人格中的二元对立——如善与恶、光与暗、意识与无意识。这里讨论在个人成长与心理治疗实践中整合这些对立面的方式。"
+        "ru": "Тёмная и светлая сторона личности — это категория, которая исследует дуальности человеческого опыта, такие как добро и зло, свет и тьма, и как их интеграция способствует развитию личности. Узнайте, как эти противоположности влияют на самосознание и психотерапевтическую практику.",
+        "en": "Dark and Light Side of Personality is a category that explores the dualities of human experience, such as good and evil, light and darkness, and how their integration supports personal growth. Learn how these opposites influence self-awareness and psychotherapeutic practice.",
+        "de": "Die dunkle und helle Seite der Persönlichkeit ist eine Kategorie, die Dualitäten menschlicher Erfahrung untersucht, wie Gut und Böse, Licht und Dunkelheit, und wie deren Integration die persönliche Entwicklung fördert. Erfahren Sie, wie diese Gegensätze Selbstwahrnehmung und psychotherapeutische Praxis beeinflussen.",
+        "fi": "Persoonallisuuden pimeä ja valoisa puoli on kategoria, joka tutkii inhimillisen kokemuksen dualiteetteja, kuten hyvää ja pahaa, valoa ja pimeyttä, ja miten niiden integraatio edistää henkilökohtaista kasvua. Opi, miten nämä vastakohdat vaikuttavat itsetietoisuuteen ja psykoterapeuttiseen käytäntöön.",
+        "cn": "“人格的暗与亮面”类别探讨人类经验的二元性，如善与恶、光与暗，以及它们的整合如何促进个人成长。了解这些对立如何影响自我觉察与心理治疗实践。"
       },
       "emoji": "🌓",
       "parent_id": null,
       "lifecycle": "approved",
-      "landing_page": true
+      "landing_page": true,
+      "seo_keywords": {
+        "ru": [
+          "Тёмная сторона личности",
+          "светлая сторона личности",
+          "дуальности человеческого опыта",
+          "психология добра и зла",
+          "интеграция противоположностей",
+          "психотерапия тень и свет",
+          "амбивалентность",
+          "личностное развитие",
+          "внутренние конфликты",
+          "баланс светлого и тёмного",
+          "психология личности"
+        ],
+        "en": [
+          "dark side of personality",
+          "light side of personality",
+          "dualities of human experience",
+          "psychology of good and evil",
+          "integration of opposites",
+          "shadow and light psychotherapy",
+          "ambivalence",
+          "personal development",
+          "inner conflicts",
+          "balance of light and dark",
+          "personality psychology"
+        ],
+        "de": [
+          "dunkle Seite der Persönlichkeit",
+          "helle Seite der Persönlichkeit",
+          "Dualitäten menschlicher Erfahrung",
+          "Psychologie von Gut und Böse",
+          "Integration von Gegensätzen",
+          "Psychotherapie von Schatten und Licht",
+          "Ambivalenz",
+          "persönliche Entwicklung",
+          "innere Konflikte",
+          "Balance von Licht und Dunkel",
+          "Persönlichkeitspsychologie"
+        ],
+        "fi": [
+          "persoonallisuuden pimeä puoli",
+          "persoonallisuuden valoisa puoli",
+          "inhimillisen kokemuksen dualiteetit",
+          "hyvän ja pahan psykologia",
+          "vastakohtien integraatio",
+          "varjo ja valo psykoterapiassa",
+          "ambivalenssi",
+          "henkilökohtainen kasvu",
+          "sisäiset konfliktit",
+          "valon ja pimeyden tasapaino",
+          "persoonallisuuspsykologia"
+        ],
+        "cn": [
+          "人格的暗面",
+          "人格的亮面",
+          "人类经验的二元性",
+          "善恶心理学",
+          "对立的整合",
+          "阴影与光的心理治疗",
+          "矛盾心理",
+          "个人成长",
+          "内在冲突",
+          "光与暗的平衡",
+          "人格心理学"
+        ]
+      }
     },
     {
       "id": "category:patterns",
@@ -399,25 +473,95 @@
       "lifecycle": "approved"
     },
     {
-      "id": "category:self-promotion-skills",
+      "id": "category:branding-det",
       "type": "category",
       "label": {
-        "ru": "Скилл самопиара",
-        "en": "Self-Promotion Skill",
-        "de": "Selbstvermarktungs-Skill",
-        "fi": "Itsensä markkinoinnin taito",
-        "cn": "自我推广技能"
+        "ru": "Брендинг DET",
+        "en": "DET Branding",
+        "de": "DET-Branding",
+        "fi": "DET-brändäys",
+        "cn": "DET 品牌化"
+      },
+      "title": {
+        "ru": "Наш бренд: психологический взгляд — как создать и укрепить свою публичную идентичность",
+        "en": "Our Brand: A Psychological View — How to Create and Strengthen Your Public Identity",
+        "de": "Unsere Marke: eine psychologische Perspektive — wie man eine öffentliche Identität aufbaut und stärkt",
+        "fi": "Brändimme: psykologinen näkökulma — miten luoda ja vahvistaa oma julkinen identiteetti",
+        "cn": "我们的品牌：心理学视角——如何建立并强化你的公众身份"
       },
       "description": {
-        "ru": "Эта категория охватывает умение эффективно продвигать себя, свои идеи и проекты. В ней рассматриваются методы личного брендинга, самопрезентации и эффективного позиционирования себя в обществе и в профессиональной сфере.",
-        "en": "This category covers the ability to effectively promote yourself, your ideas, and projects. It discusses methods of personal branding, self-presentation, and effective positioning in society and the professional sphere.",
-        "de": "Diese Kategorie umfasst die Fähigkeit, sich selbst, eigene Ideen und Projekte effektiv zu vermarkten. Sie behandelt Methoden des Personal Branding, der Selbstpräsentation und der wirksamen Positionierung in Gesellschaft und Beruf.",
-        "fi": "Tämä kategoria kattaa kyvyn markkinoida itseään, omia ideoitaan ja projektejaan tehokkaasti. Se käsittelee henkilöbrändäystä, itse-esittelyä ja tehokasta asemoitumista yhteiskunnassa ja työelämässä.",
-        "cn": "该类别涵盖有效推广自己、想法和项目的能力。它讨论个人品牌建设、自我呈现以及在社会与职业领域中的有效定位。"
+        "ru": "Категория «Брендинг DET» исследует, как психологический подход к самопрезентации помогает создать и укрепить личную идентичность и брендинг. В этой категории мы не просто говорим о личном бренде, а показываем, как он создаётся через конкретные шаги, внутренние разработки и философию экосистемы DETai. Здесь акцент на психологическом взгляде на создание публичности и видимости, которые становятся частью позиционирования и самопонимания.",
+        "en": "The “DET Branding” category explores how a psychological approach to self-presentation helps create and strengthen personal identity and branding. In this category we do not just talk about a personal brand; we show how it is created through concrete steps, internal development, and the philosophy of the DETai ecosystem. The emphasis is on a psychological view of creating publicity and visibility that become part of positioning and self-understanding.",
+        "de": "Die Kategorie „DET-Branding“ untersucht, wie ein psychologischer Ansatz zur Selbstpräsentation hilft, persönliche Identität und Branding zu schaffen und zu stärken. In dieser Kategorie sprechen wir nicht nur über eine persönliche Marke, sondern zeigen, wie sie durch konkrete Schritte, interne Entwicklungen und die Philosophie des DETai-Ökosystems entsteht. Der Schwerpunkt liegt auf der psychologischen Sicht auf die Entstehung von Öffentlichkeit und Sichtbarkeit, die Teil von Positionierung und Selbstverständnis werden.",
+        "fi": "Kategoria “DET-brändäys” tutkii, miten psykologinen lähestymistapa itse-esittelyyn auttaa luomaan ja vahvistamaan henkilökohtaista identiteettiä ja brändäystä. Tässä kategoriassa emme pelkästään puhu henkilöbrändistä, vaan näytämme, miten se syntyy konkreettisten askelten, sisäisen kehityksen ja DETai-ekosysteemin filosofian kautta. Painopiste on psykologisessa näkökulmassa julkisuuden ja näkyvyyden rakentamiseen, joista tulee osa asemointia ja itseymmärrystä.",
+        "cn": "“DET 品牌化”类别探讨心理学视角的自我呈现如何帮助创建并强化个人身份与品牌。在这里，我们不仅谈论个人品牌，还展示它如何通过具体步骤、内部发展以及 DETai 生态系统的哲学而形成。重点在于对公共曝光与可见度构建的心理学视角，它们成为定位与自我理解的一部分。"
       },
       "emoji": "🤘",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true,
+      "seo_keywords": {
+        "ru": [
+          "личный бренд",
+          "психология самопрезентации",
+          "публичность",
+          "личная идентичность",
+          "публичное позиционирование",
+          "психология личности",
+          "стратегия самопрезентации",
+          "личный брендинг",
+          "самоутверждение",
+          "психология публичности"
+        ],
+        "en": [
+          "personal brand",
+          "psychology of self-presentation",
+          "publicity",
+          "personal identity",
+          "public positioning",
+          "personality psychology",
+          "self-presentation strategy",
+          "personal branding",
+          "self-assertion",
+          "psychology of visibility"
+        ],
+        "de": [
+          "Personal Branding",
+          "Psychologie der Selbstpräsentation",
+          "Öffentlichkeit",
+          "persönliche Identität",
+          "öffentliches Positionieren",
+          "Persönlichkeitspsychologie",
+          "Selbstpräsentationsstrategie",
+          "persönliche Markenbildung",
+          "Selbstbehauptung",
+          "Psychologie der Sichtbarkeit"
+        ],
+        "fi": [
+          "henkilöbrändi",
+          "itse-esittelyn psykologia",
+          "julkisuus",
+          "henkilöidentiteetti",
+          "julkinen asemointi",
+          "persoonallisuuspsykologia",
+          "itse-esittelyn strategia",
+          "henkilöbrändäys",
+          "itsensä vahvistaminen",
+          "näkyvyyden psykologia"
+        ],
+        "cn": [
+          "个人品牌",
+          "自我呈现心理学",
+          "公众曝光",
+          "个人身份",
+          "公众定位",
+          "人格心理学",
+          "自我呈现策略",
+          "个人品牌塑造",
+          "自我肯定",
+          "可见性心理学"
+        ]
+      }
     },
     {
       "id": "category:narcissism",
