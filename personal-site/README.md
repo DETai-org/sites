@@ -33,6 +33,7 @@ ___
 
 - `wordpress-data/WordPress.2026-01-06.xml` — экспорт постов.
 - `wordpress-data/uploads/` — исходные изображения.
+- `wordpress-data/telegram-notes.md` — тексты и заголовки постов из тематических рубрик.
 
 ## Скрипты миграции
 
