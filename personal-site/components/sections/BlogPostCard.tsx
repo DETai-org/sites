@@ -29,7 +29,10 @@ export default function BlogPostCard({ post, readMoreLabel, meta }: BlogPostCard
         </h2>
         <div className="blog-card__tags">
           {post.rubric ? (
-            <Link className="blog-card__tag" href={`/${post.lang}/blog/${post.rubric.slug}`}>
+            <Link
+              className="blog-card__tag"
+              href={`/${post.lang}/blog/${encodeURIComponent(post.rubric.slug)}`}
+            >
               {post.rubric.label}
             </Link>
           ) : null}

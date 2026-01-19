@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const lang = params.lang;
-  const rubric = getRubricDefinition(params.slug);
+  const rubric = resolveRubricFromSlug(params.slug);
 
   if (rubric) {
     const titleSuffix: Record<string, string> = {
@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const lang = params.lang;
-  const rubric = getRubricDefinition(params.slug);
+  const rubric = resolveRubricFromSlug(params.slug);
 
   if (rubric) {
     const posts = await getPostsIndexForLang(lang);
@@ -231,4 +231,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
     </main>
   );
+}
+
+function resolveRubricFromSlug(slug: string) {
+  const direct = getRubricDefinition(slug);
+  if (direct) {
+    return direct;
+  }
+
+  const decoded = safeDecode(slug);
+  if (decoded !== slug) {
+    const decodedMatch = getRubricDefinition(decoded);
+    if (decodedMatch) {
+      return decodedMatch;
+    }
+  }
+
+  if (!slug.startsWith("rubric:")) {
+    const prefixed = getRubricDefinition(`rubric:${slug}`);
+    if (prefixed) {
+      return prefixed;
+    }
+  }
+
+  if (decoded && !decoded.startsWith("rubric:")) {
+    return getRubricDefinition(`rubric:${decoded}`);
+  }
+
+  return undefined;
+}
+
+function safeDecode(value: string) {
+  try {
+    return decodeURIComponent(value);
+  } catch (error) {
+    console.warn("[blog] Некорректный slug рубрики:", error);
+    return value;
+  }
 }
