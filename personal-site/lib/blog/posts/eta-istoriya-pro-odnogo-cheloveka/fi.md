@@ -9,7 +9,7 @@ administrative:
   channels:
     - personal_site_blog
 descriptive:
-  routeSlug: "tama-tarina-kertoo-yhdesta-ihmisesta"
+  routeSlug: "tarina-yhdesta-ihmisesta"
   title: "Tämä tarina kertoo yhdestä ihmisestä"
   preview: "Vertaus siitä, miten menestyksen halu joutuu koetukselle."
   seoLead: "Tarina siitä, että todellinen menestys syntyy, kun sitä haluaa yhtä paljon kuin elää."

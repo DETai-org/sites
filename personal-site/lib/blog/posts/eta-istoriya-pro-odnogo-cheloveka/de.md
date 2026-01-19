@@ -9,7 +9,7 @@ administrative:
   channels:
     - personal_site_blog
 descriptive:
-  routeSlug: "diese-geschichte-handelt-von-einer-person"
+  routeSlug: "geschichte-einer-person"
   title: "Diese Geschichte handelt von einer Person"
   preview: "Eine Parabel darüber, wie der Wunsch nach Erfolg auf die Probe gestellt wird."
   seoLead: "Eine Geschichte, die daran erinnert, dass echter Erfolg kommt, wenn man ihn so sehr will wie das Leben."
