@@ -16,6 +16,7 @@ export interface BlogTaxonomyDefinition {
 }
 
 export interface BlogRubricDefinition extends BlogTaxonomyDefinition {
+  routeSlugs: Record<Lang, string>;
   description: Record<Lang, string>;
   definition: {
     postulate: Record<Lang, string>;

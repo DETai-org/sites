@@ -10,9 +10,9 @@ administrative:
     - personal_site_blog
 descriptive:
   size: "L"
-  title: "Strength and light, chaos and darkness"
-  preview: "Strength and light, chaos and darkness is a text about how fear and freedom, day and night collide within a person, about an inner split and a pull toward the living. 🌓 What remains when familiar calm no longer holds?"
-  seoLead: "A poetic text about the clash of light and darkness, inner conflict, and the search for freedom through love and fear."
+  title: "Power and Light, Chaos and Darkness"
+  preview: "Power and light, chaos and darkness — a poetic text about the clash of fear and freedom, day and night, inner split and the pull toward life. 🌓 What remains when familiar calm no longer holds?"
+  seoLead: "A poetic text about the opposition of light and darkness, inner conflict, and the search for freedom through love and fear."
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
     category_ids: ["category:dark-and-light-side-of-personality"]
@@ -23,24 +23,24 @@ structural:
   document_links: []
 ---
 
-## Strength and light
+## Power and Light
 
-This is an eternal conflict, shadows itching to fall into doubts, different demons, super-ideas, at times the urge to lie under granite. Chaos and pain, troubles with yourself. Fears→Freedom→Thanatos→Love... About such a person the everyday man will say: "Hysterical"! — Of course, he’s alive!!!
+This is an eternal conflict: shadows fall into doubt, various demons, super-ideas, a desire to lie beneath the granite. Chaos and pain, troubles with the self. Fear → Freedom → Thanatos → Love... The average onlooker says, “Hysterical!” — of course, because he is alive.
 
-## Chaos and darkness
+## Chaos and Darkness
 
-You are so pleased with yourself, calm, joyful, ordinary... and what: football, discos, a little beer, a car, TV and sex — a classic mid-level manager type, the life of the party, he keeps spinning an office romance.
+You’re so satisfied with yourself, calm, joyful, ordinary... and what? Football, discos, a beer, a car, TV, and sex — the classic mid-level manager, the soul of the company, always spinning the office romance.
 
-"What inner conflict do you have?
+“What inner conflict do you have?
 
-How to pick a tie today to match the jacket color?
+How to pick a tie to match the jacket today?
 
-How to pick sneakers to match the snapback?"
+How to pick sneakers to match the snapback?”
 
-But there will be no clap when two palms don’t meet in it.
+But there will be no clap if two palms don’t meet within it.
 
-And though Day and Night look like enemies. They serve a single goal,
+And though Day and Night look like enemies, they serve a single purpose,
 
-In mutual love they multiply their common labors.
+In mutual love they multiply their shared labors.
 
-If there were no Night, how could there gather in a person the Wealth that Day spends so generously?
+If there were no Night, how could there be in a human the wealth that Day spends so generously?

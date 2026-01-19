@@ -5,7 +5,11 @@ import { getPostByLangAndSlug, getPostsIndexForLang } from "../../../../lib/blog
 import { blogLocaleByLang, isLang, supportedLangs } from "../../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
 import { formatBlogDate } from "../../../../lib/blog/blog.utils";
-import { blogRubrics, getRubricDefinition } from "../../../../lib/blog/taxonomy";
+import {
+  blogRubrics,
+  getRubricByRouteSlug,
+  getRubricDefinition,
+} from "../../../../lib/blog/taxonomy";
 import type { Lang } from "../../../../lib/blog/types";
 import BlogPostCard from "../../../../components/sections/BlogPostCard";
 
@@ -24,7 +28,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const lang = params.lang;
-  const rubric = resolveRubricFromSlug(params.slug);
+  const rubric = resolveRubricFromSlug(params.slug, lang);
 
   if (rubric) {
     const titleSuffix: Record<string, string> = {
@@ -41,9 +45,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       fi: "Rubriikki liittyy DETai-ekosysteemin muihin teemoihin.",
       cn: "该栏目与 DETai 生态系统的其他主题相连接。",
     };
-    const canonicalPath = `/${lang}/blog/${rubric.slug}`;
+    const canonicalPath = `/${lang}/blog/${rubric.routeSlugs[lang]}`;
     const languages = supportedLangs.reduce<Record<string, string>>((acc, lang) => {
-      acc[lang] = `/${lang}/blog/${rubric.slug}`;
+      acc[lang] = `/${lang}/blog/${rubric.routeSlugs[lang]}`;
       return acc;
     }, {});
 
@@ -102,7 +106,7 @@ export async function generateStaticParams() {
   const rubricRoutes = supportedLangs.flatMap((lang) =>
     blogRubrics.map((rubric) => ({
       lang,
-      slug: rubric.slug,
+      slug: rubric.routeSlugs[lang],
     }))
   );
 
@@ -115,7 +119,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const lang = params.lang;
-  const rubric = resolveRubricFromSlug(params.slug);
+  const rubric = resolveRubricFromSlug(params.slug, lang);
 
   if (rubric) {
     const posts = await getPostsIndexForLang(lang);
@@ -233,39 +237,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   );
 }
 
-function resolveRubricFromSlug(slug: string) {
-  const direct = getRubricDefinition(slug);
-  if (direct) {
-    return direct;
-  }
-
-  const decoded = safeDecode(slug);
-  if (decoded !== slug) {
-    const decodedMatch = getRubricDefinition(decoded);
-    if (decodedMatch) {
-      return decodedMatch;
-    }
-  }
-
-  if (!slug.startsWith("rubric:")) {
-    const prefixed = getRubricDefinition(`rubric:${slug}`);
-    if (prefixed) {
-      return prefixed;
-    }
-  }
-
-  if (decoded && !decoded.startsWith("rubric:")) {
-    return getRubricDefinition(`rubric:${decoded}`);
-  }
-
-  return undefined;
-}
-
-function safeDecode(value: string) {
-  try {
-    return decodeURIComponent(value);
-  } catch (error) {
-    console.warn("[blog] Некорректный slug рубрики:", error);
-    return value;
-  }
+function resolveRubricFromSlug(slug: string, lang: Lang) {
+  return getRubricByRouteSlug(slug, lang) ?? getRubricDefinition(slug);
 }

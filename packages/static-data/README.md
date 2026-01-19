@@ -4,6 +4,6 @@
 
 ## Структура
 
-- `post_documents/` — источник истины для таксономии: per-type JSON файлы (например, `categories.json`, `rubrics.json`, `keywords.json`), где каждая сущность хранится в одном объекте вместе со всеми переводами.
+- `post_documents/` — источник истины для таксономии: per-type JSON файлы (например, `categories.json`, `rubrics.json`, `keywords.json`), где каждая сущность хранится в одном объекте вместе со всеми переводами и локализованными `routeSlugs` (см. `policies/route_slugs_policy.md`).
 - `policies/` — технические политики и правила работы с данными (включая политику локализованных slug постов).
 - `research_publication/` — данные и документы, связанные с публикациями.
