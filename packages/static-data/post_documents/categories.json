@@ -8,7 +8,8 @@
       "de": "Kategorien sind universelle Tags und Filter für eine themenübergreifende Klassifikation. Sie gelten für jedes Dokument und jede Rubrik, helfen Materialien über gemeinsame Themen zu verbinden und bieten eine einheitliche Navigationsebene.",
       "fi": "Kategoriat ovat universaaleja tageja ja suodattimia poikkiteemaiseen luokitteluun. Ne soveltuvat mihin tahansa dokumenttiin ja rubriikkiin, auttavat yhdistämään materiaalit yhteisten teemojen kautta ja tarjoavat yhtenäisen navigointikerroksen.",
       "cn": "类别是跨主题分类的通用标签和筛选器，适用于任何文档和任何栏目，帮助按共同主题关联内容，并提供统一的导航层。"
-    }
+    },
+    "reference": "см category_policies.md"
   },
   "items": [
     {
@@ -72,7 +73,8 @@
       },
       "emoji": "⚛️",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:psychotherapy",
@@ -93,7 +95,8 @@
       },
       "emoji": "🕎",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:humanistic-principles",
@@ -156,7 +159,8 @@
       },
       "emoji": "🛐",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:moral-ethics",
@@ -219,7 +223,8 @@
       },
       "emoji": "🚻",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:countertransference",
@@ -240,7 +245,8 @@
       },
       "emoji": "🚹",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:skills-techniques",
@@ -282,7 +288,8 @@
       },
       "emoji": "🆚",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:defense-mechanisms",
@@ -303,7 +310,8 @@
       },
       "emoji": "🛡",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:effectiveness",
@@ -429,7 +437,8 @@
       },
       "emoji": "🪞",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:ai",
@@ -450,7 +459,8 @@
       },
       "emoji": "🤖",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     }
   ]
 }
