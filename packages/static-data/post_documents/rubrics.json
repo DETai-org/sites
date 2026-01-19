@@ -39,6 +39,13 @@
             "fi": "Varjo ja valo",
             "cn": "阴影与光"
           },
+          "title": {
+            "ru": "Тень и Свет — диалектика противоположностей в человеческом опыте",
+            "en": "Shadow and Light — the dialectic of opposites in human experience",
+            "de": "Schatten und Licht — die Dialektik der Gegensätze in der menschlichen Erfahrung",
+            "fi": "Varjo ja valo — vastakohtien dialektiikka inhimillisessä kokemuksessa",
+            "cn": "阴影与光——人类体验中的对立辩证"
+          },
           "description": {
             "ru": "Рубрика о взаимодействии противоположностей в человеческом опыте и их интеграции как источнике развития и устойчивости.",
             "en": "A rubric about the interaction of opposites in human experience and their integration as a source of development and resilience.",
@@ -89,6 +96,38 @@
               "cn": "作为辩证-存在主义治疗（DET）的基础向量使用。在治疗分析中：帮助识别内在两极（价值/冲动、理想/欲望、责任/自由），不将其简化为“对/错”，而是探索它们的对话。适用于处理矛盾、内疚、羞耻、愤怒、相互冲突的决定和危机。\n\n视觉隐喻：“阴影与光 🌓”——不是斗争，而是一种动态，两极对整体性与运动都必不可少。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "диалектика тени и света",
+              "интеграция противоположностей в терапии",
+              "рост через внутреннее напряжение",
+              "тень и свет в человеческом опыте"
+            ],
+            "en": [
+              "dialectic of shadow and light",
+              "integration of opposites in therapy",
+              "growth through inner tension",
+              "shadow and light in human experience"
+            ],
+            "de": [
+              "Dialektik von Schatten und Licht",
+              "Integration von Gegensätzen in der Therapie",
+              "Wachstum durch innere Spannung",
+              "Schatten und Licht in der menschlichen Erfahrung"
+            ],
+            "fi": [
+              "varjon ja valon dialektiikka",
+              "vastakohtien integraatio terapiassa",
+              "kasvu sisäisen jännitteen kautta",
+              "varjo ja valo inhimillisessä kokemuksessa"
+            ],
+            "cn": [
+              "阴影与光的辩证",
+              "治疗中对立面的整合",
+              "通过内在张力成长",
+              "人类体验中的阴影与光"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "manual",
           "created_at": "2026-01-15",
@@ -103,6 +142,13 @@
             "de": "Persönlichkeitstypen",
             "fi": "Persoonallisuustyypit",
             "cn": "人格类型"
+          },
+          "title": {
+            "ru": "Типы личности — экзистенциальные стратегии и ось стабильность—движение",
+            "en": "Personality Types — existential strategies and the stability–movement axis",
+            "de": "Persönlichkeitstypen — existenzielle Strategien und die Achse Stabilität–Bewegung",
+            "fi": "Persoonallisuustyypit — eksistentiaaliset strategiat ja vakaus–liike-akseli",
+            "cn": "人格类型——存在性策略与稳定—运动轴"
           },
           "description": {
             "ru": "Рубрика о спектре форм человеческой экзистенции между устойчивым покоем и избыточным движением, определяющих способы выбора, реакции и стратегий жизни.",
@@ -154,6 +200,38 @@
               "cn": "用于治疗过程中的诊断性取向：帮助识别维持稳定或追求变化的主导策略，以及它们如何影响人格完整性。适用于分析危机、职业与个人分岔点，并寻找可持续的发展模式。\n\n视觉参照：标志展开的动态 — 诞生 → 扩展 → 辩证形成 → 对立增长 → 生产性展开 → 稳定开放的人格结构。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "типы личности и экзистенциальные стратегии",
+              "ось стабильность и движение",
+              "личностные стратегии выбора",
+              "экзистенциальная динамика личности"
+            ],
+            "en": [
+              "personality types and existential strategies",
+              "stability and movement axis",
+              "personal strategies of choice",
+              "existential dynamics of personality"
+            ],
+            "de": [
+              "Persönlichkeitstypen und existenzielle Strategien",
+              "Achse Stabilität und Bewegung",
+              "persönliche Wahlstrategien",
+              "existenzielle Dynamik der Persönlichkeit"
+            ],
+            "fi": [
+              "persoonallisuustyypit ja eksistentiaaliset strategiat",
+              "vakaus ja liike -akseli",
+              "henkilökohtaiset valintastrategiat",
+              "persoonallisuuden eksistentiaalinen dynamiikka"
+            ],
+            "cn": [
+              "人格类型与存在性策略",
+              "稳定与运动轴",
+              "个人选择策略",
+              "人格的存在动力学"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "manual",
           "created_at": "2026-01-15",
@@ -168,6 +246,13 @@
             "de": "Ausrichtung auf Überwindung",
             "fi": "Ylittämiseen suuntautuminen",
             "cn": "以克服为导向"
+          },
+          "title": {
+            "ru": "Установка на преодоление — рост через трудности, кризисы и напряжение",
+            "en": "Orientation toward Overcoming — growth through difficulties, crises, and tension",
+            "de": "Ausrichtung auf Überwindung — Wachstum durch Schwierigkeiten, Krisen und Spannung",
+            "fi": "Ylittämiseen suuntautuminen — kasvu vaikeuksien, kriisien ja jännitteen kautta",
+            "cn": "以克服为导向——通过困难、危机与张力成长"
           },
           "description": {
             "ru": "Рубрика о восприятии напряжения и трудностей как необходимого материала личностного развития и источника внутренней трансформации.",
@@ -219,6 +304,38 @@
               "cn": "用于处理创伤经历、长期压力和“卡住”阶段，帮助将经验重新理解为强化与韧性的材料。在需要承受压力并保持发展方向的选择情境中也很有用。\n\n视觉隐喻：“文明的紧张”、“日落之后是黎明”、“杀不死你的使你更强”。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "установка на преодоление и устойчивость",
+              "рост через кризисы и трудности",
+              "напряжение как ресурс развития",
+              "преодоление препятствий в терапии"
+            ],
+            "en": [
+              "orientation toward overcoming and resilience",
+              "growth through crises and difficulties",
+              "tension as a resource for development",
+              "overcoming obstacles in therapy"
+            ],
+            "de": [
+              "Ausrichtung auf Überwindung und Resilienz",
+              "Wachstum durch Krisen und Schwierigkeiten",
+              "Spannung als Ressource für Entwicklung",
+              "Überwindung von Hindernissen in der Therapie"
+            ],
+            "fi": [
+              "ylittämiseen suuntautuminen ja kestävyys",
+              "kasvu kriisien ja vaikeuksien kautta",
+              "jännite kehityksen resurssina",
+              "esteiden ylittäminen terapiassa"
+            ],
+            "cn": [
+              "以克服为导向与韧性",
+              "通过危机与困难成长",
+              "张力作为发展的资源",
+              "治疗中的障碍克服"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "manual",
           "created_at": "2026-01-15",
@@ -253,6 +370,13 @@
             "de": "Psychologie",
             "fi": "Psykologia",
             "cn": "心理学"
+          },
+          "title": {
+            "ru": "Психология — личные наблюдения, практики и выводы автора",
+            "en": "Psychology — the author’s personal observations, practices, and conclusions",
+            "de": "Psychologie — persönliche Beobachtungen, Praktiken und Schlussfolgerungen des Autors",
+            "fi": "Psykologia — kirjoittajan henkilökohtaiset havainnot, käytännöt ja johtopäätökset",
+            "cn": "心理学——作者的个人观察、实践与结论"
           },
           "description": {
             "ru": "Рубрика о психологических идеях и наблюдениях автора: от базовых понятий до личных выводов и практических выводов из опыта.",
@@ -304,6 +428,38 @@
               "cn": "适用于记录心理治疗思想、对自我与他人的观察、经验解读，以及可在生活或工作中应用的实践性结论。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "личная психология и рефлексия",
+              "психологические наблюдения автора",
+              "практические выводы из опыта",
+              "язык описания переживаний"
+            ],
+            "en": [
+              "personal psychology and reflection",
+              "author’s psychological observations",
+              "practical takeaways from experience",
+              "language for describing experiences"
+            ],
+            "de": [
+              "persönliche Psychologie und Reflexion",
+              "psychologische Beobachtungen des Autors",
+              "praktische Erkenntnisse aus Erfahrung",
+              "Sprache zur Beschreibung von Erleben"
+            ],
+            "fi": [
+              "henkilökohtainen psykologia ja reflektio",
+              "kirjoittajan psykologiset havainnot",
+              "käytännön johtopäätökset kokemuksesta",
+              "kokemusten kuvaamisen kieli"
+            ],
+            "cn": [
+              "个人心理学与反思",
+              "作者的心理观察",
+              "经验中的实践性结论",
+              "描述体验的语言"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
@@ -318,6 +474,13 @@
             "de": "Gedanken während des Studiums an der Lesgaft-Universität",
             "fi": "Ajatuksia Lesgaft-opintojen aikana",
             "cn": "在莱斯加夫特学习时的思考"
+          },
+          "title": {
+            "ru": "Мысли во время учёбы в Лесгафта — учебный опыт и личные инсайты",
+            "en": "Thoughts During Study at Lesgaft — learning experience and personal insights",
+            "de": "Gedanken während des Studiums an der Lesgaft — Lernerfahrung und persönliche Einsichten",
+            "fi": "Ajatuksia Lesgaftin opintojen aikana — oppimiskokemus ja henkilökohtaiset oivallukset",
+            "cn": "在列斯加夫特学习期间的思考——学习经历与个人洞见"
           },
           "description": {
             "ru": "Рубрика с наблюдениями и выводами, сделанными в период обучения в университете Лесгафта, включая академические и личные инсайты.",
@@ -369,6 +532,38 @@
               "cn": "用于发布关于课程、项目、学习中的发现，以及对塑造专业身份的教育过程的批判性反思。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "учёба в Лесгафта и личные инсайты",
+              "академический опыт и развитие",
+              "переход от теории к практике",
+              "образовательные наблюдения автора"
+            ],
+            "en": [
+              "study at Lesgaft and personal insights",
+              "academic experience and development",
+              "transition from theory to practice",
+              "author’s educational observations"
+            ],
+            "de": [
+              "Studium an der Lesgaft und persönliche Einsichten",
+              "akademische Erfahrung und Entwicklung",
+              "Übergang von Theorie zu Praxis",
+              "pädagogische Beobachtungen des Autors"
+            ],
+            "fi": [
+              "opiskelu Lesgaftissa ja henkilökohtaiset oivallukset",
+              "akateeminen kokemus ja kehitys",
+              "siirtymä teoriasta käytäntöön",
+              "kirjoittajan koulutushavainnot"
+            ],
+            "cn": [
+              "在列斯加夫特的学习与个人洞见",
+              "学术经验与发展",
+              "从理论到实践的过渡",
+              "作者的教育观察"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
@@ -383,6 +578,13 @@
             "de": "Massage",
             "fi": "Hieronta",
             "cn": "按摩"
+          },
+          "title": {
+            "ru": "Массаж — телесные практики восстановления и поддержания здоровья",
+            "en": "Massage — bodily practices for recovery and maintaining health",
+            "de": "Massage — körperliche Praktiken zur Regeneration und Gesundheitserhaltung",
+            "fi": "Hieronta — kehon palautumisen ja terveyden ylläpidon käytännöt",
+            "cn": "按摩——身体恢复与健康维护的实践"
           },
           "description": {
             "ru": "Рубрика о массаже как телесной практике восстановления и поддержания здоровья, объединяющая личные наблюдения, техники и эффекты.",
@@ -434,6 +636,38 @@
               "cn": "适用于关于按摩类型、自我按摩、恢复流程的文本，以及对按摩如何影响体能、情绪平衡与恢复质量的观察。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "массаж и восстановление тела",
+              "телесные практики здоровья",
+              "мышечное расслабление и тонус",
+              "самомассаж и восстановительные протоколы"
+            ],
+            "en": [
+              "massage and body recovery",
+              "bodily health practices",
+              "muscle relaxation and tone",
+              "self-massage and recovery protocols"
+            ],
+            "de": [
+              "Massage und körperliche Regeneration",
+              "körperliche Gesundheitspraktiken",
+              "Muskelentspannung und Tonus",
+              "Selbstmassage und Erholungsprotokolle"
+            ],
+            "fi": [
+              "hieronta ja kehon palautuminen",
+              "keholliset terveyskäytännöt",
+              "lihasten rentoutus ja tonus",
+              "itsehieronta ja palautumisprotokollat"
+            ],
+            "cn": [
+              "按摩与身体恢复",
+              "身体健康实践",
+              "肌肉放松与张力",
+              "自我按摩与恢复方案"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
@@ -448,6 +682,13 @@
             "de": "Training",
             "fi": "Harjoittelu",
             "cn": "训练"
+          },
+          "title": {
+            "ru": "Тренировки — дисциплина, прогресс и устойчивость через спорт",
+            "en": "Training — discipline, progress, and resilience through sport",
+            "de": "Training — Disziplin, Fortschritt und Resilienz durch Sport",
+            "fi": "Harjoittelu — kurinalaisuus, edistyminen ja kestävyys urheilun kautta",
+            "cn": "训练——通过运动实现纪律、进步与韧性"
           },
           "description": {
             "ru": "Рубрика о тренировочном процессе, дисциплине и личных методиках, где спорт выступает способом развития характера и устойчивости. Здесь фиксируются программы, прогресс, восстановление и наблюдения о том, как регулярные тренировки меняют тело и мышление.",
@@ -499,9 +740,150 @@
               "cn": "用于记录训练方法、计划、运动习惯以及与力量、耐力和自我调节发展相关的个人发现。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "тренировки и дисциплина",
+              "спорт как развитие характера",
+              "прогресс и устойчивость",
+              "осознанная тренировочная практика"
+            ],
+            "en": [
+              "training and discipline",
+              "sport as character development",
+              "progress and resilience",
+              "mindful training practice"
+            ],
+            "de": [
+              "Training und Disziplin",
+              "Sport als Charakterentwicklung",
+              "Fortschritt und Resilienz",
+              "bewusste Trainingspraxis"
+            ],
+            "fi": [
+              "harjoittelu ja kurinalaisuus",
+              "urheilu luonteen kehittämisenä",
+              "edistyminen ja kestävyys",
+              "tietoinen harjoittelukäytäntö"
+            ],
+            "cn": [
+              "训练与纪律",
+              "运动促进品格发展",
+              "进步与韧性",
+              "有意识的训练实践"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
+          "parent_id": null
+        },
+        {
+          "id": "rubric:self-promotion-skills",
+          "type": "rubric",
+          "label": {
+            "ru": "Скилл самопиара",
+            "en": "Self-Promotion Skill",
+            "de": "Selbstvermarktungs-Skill",
+            "fi": "Itsensä markkinoinnin taito",
+            "cn": "自我推广技能"
+          },
+          "title": {
+            "ru": "Скилл самопиара — создание личного бренда через публичную идентичность",
+            "en": "Self-Promotion Skill — building a personal brand through public identity",
+            "de": "Selbstvermarktungs-Skill — Aufbau einer persönlichen Marke durch öffentliche Identität",
+            "fi": "Itsensä markkinoinnin taito — henkilöbrändin rakentaminen julkisen identiteetin kautta",
+            "cn": "自我推广技能——通过公众身份打造个人品牌"
+          },
+          "description": {
+            "ru": "Рубрика о самопрезентации, личном бренде и публичной идентичности в экосистеме DETai, где действия формируют мифологию.",
+            "en": "A rubric about self-presentation, personal branding, and public identity in the DETai ecosystem, where actions shape mythology.",
+            "de": "Eine Rubrik über Selbstpräsentation, persönliche Marke und öffentliche Identität im DETai-Ökosystem, in dem Handlungen Mythologie formen.",
+            "fi": "Rubriikki itsensä esittelystä, henkilöbrändistä ja julkisesta identiteetistä DETai-ekosysteemissä, jossa teot muovaavat mytologiaa.",
+            "cn": "关于自我呈现、个人品牌与 DETai 生态系统中的公共身份的栏目，在其中行动塑造神话。"
+          },
+          "definition": {
+            "postulate": {
+              "ru": "Самопрезентация — это не просто инструмент маркетинга, это способ создания смысла и мифа вокруг экосистемы. Процесс самопиара — это способ **делать видимым** то, что лежит в основе.",
+              "en": "Self-presentation is not just a marketing tool; it is a way to create meaning and myth around the ecosystem. The process of self-promotion is a way to **make visible** what lies at the core.",
+              "de": "Selbstpräsentation ist nicht nur ein Marketinginstrument, sondern eine Möglichkeit, Bedeutung und Mythos um das Ökosystem zu schaffen. Der Prozess der Selbstvermarktung ist eine Weise, das zugrunde Liegende **sichtbar zu machen**.",
+              "fi": "Itsensä esittely ei ole vain markkinointiväline, vaan tapa luoda merkitystä ja myyttiä ekosysteemin ympärille. Itsensä markkinoinnin prosessi on tapa **tehdä näkyväksi** se, mikä on perustana.",
+              "cn": "自我呈现不仅是营销工具，更是围绕生态系统创造意义与神话的方式。自我推广的过程是**让基础可见**的方式。"
+            },
+            "conceptual_keys": {
+              "ru": [
+                "самопрезентация",
+                "мифология экосистемы",
+                "публичность как часть идентичности",
+                "построение конкурентоспособной мифологии"
+              ],
+              "en": [
+                "self-presentation",
+                "ecosystem mythology",
+                "publicness as part of identity",
+                "building a competitive mythology"
+              ],
+              "de": [
+                "Selbstpräsentation",
+                "Mythologie des Ökosystems",
+                "Öffentlichkeit als Teil der Identität",
+                "Aufbau einer wettbewerbsfähigen Mythologie"
+              ],
+              "fi": [
+                "itsensä esittely",
+                "ekosysteemin mytologia",
+                "julkisuus osana identiteettiä",
+                "kilpailukykyisen mytologian rakentaminen"
+              ],
+              "cn": [
+                "自我呈现",
+                "生态系统神话",
+                "公共性作为身份的一部分",
+                "构建具竞争力的神话"
+              ]
+            },
+            "practical_application": {
+              "ru": "Рубрика помогает раскрыть принципы создания публичной идентичности через осознанные действия и самопрезентацию, которые отражают философию и ценности экосистемы DETai. Мы рассматриваем, как внутренний мир и внешняя публичность переплетаются, создавая целостный образ и уникальность. Также рубрика помогает преодолевать барьеры, такие как стыд и неуверенность, в процессе публичного позиционирования.",
+              "en": "The rubric helps reveal the principles of creating a public identity through conscious actions and self-presentation that reflect the philosophy and values of the DETai ecosystem. We examine how the inner world and external publicity intertwine, creating a coherent image and uniqueness. The rubric also helps overcome barriers such as shame and insecurity in the process of public positioning.",
+              "de": "Die Rubrik hilft, die Prinzipien der Schaffung einer öffentlichen Identität durch bewusste Handlungen und Selbstpräsentation zu entfalten, die die Philosophie und Werte des DETai-Ökosystems widerspiegeln. Wir betrachten, wie innere Welt und äußere Öffentlichkeit sich verflechten und ein kohärentes Bild sowie Einzigartigkeit schaffen. Außerdem hilft die Rubrik, Barrieren wie Scham und Unsicherheit im Prozess der öffentlichen Positionierung zu überwinden.",
+              "fi": "Rubriikki auttaa avaamaan julkisen identiteetin rakentamisen periaatteita tietoisten tekojen ja itsensä esittelyn kautta, jotka heijastavat DETai-ekosysteemin filosofiaa ja arvoja. Tarkastelemme, miten sisäinen maailma ja ulkoinen julkisuus kietoutuvat toisiinsa luoden eheän kuvan ja ainutlaatuisuuden. Rubriikki auttaa myös ylittämään esteitä, kuten häpeää ja epävarmuutta, julkisen positioinnin prosessissa.",
+              "cn": "该栏目帮助揭示通过有意识的行动与自我呈现来构建公共身份的原则，这些行动反映 DETai 生态系统的哲学与价值观。我们探讨内在世界与外在公众性如何交织，形成完整形象与独特性。栏目也帮助克服在公共定位过程中出现的障碍，例如羞耻与不自信。"
+            }
+          },
+          "seo_keywords": {
+            "ru": [
+              "самопрезентация и личный бренд",
+              "публичная идентичность в DETai",
+              "мифология экосистемы и публичность",
+              "публичное позиционирование без стыда"
+            ],
+            "en": [
+              "self-presentation and personal brand",
+              "public identity in DETai",
+              "ecosystem mythology and publicity",
+              "public positioning without shame"
+            ],
+            "de": [
+              "Selbstpräsentation und persönliche Marke",
+              "öffentliche Identität in DETai",
+              "Mythologie des Ökosystems und Öffentlichkeit",
+              "öffentliches Positionieren ohne Scham"
+            ],
+            "fi": [
+              "itsensä esittely ja henkilöbrändi",
+              "julkinen identiteetti DETai:ssa",
+              "ekosysteemin mytologia ja julkisuus",
+              "julkinen positiointi ilman häpeää"
+            ],
+            "cn": [
+              "自我呈现与个人品牌",
+              "DETai 的公共身份",
+              "生态系统神话与公众性",
+              "无羞耻的公开定位"
+            ]
+          },
+          "lifecycle": "approved",
+          "origin": "manual",
+          "created_at": "2026-01-25",
           "parent_id": null
         },
         {
@@ -513,6 +895,13 @@
             "de": "Reim und Vers",
             "fi": "Riimi ja runo",
             "cn": "韵与诗"
+          },
+          "title": {
+            "ru": "Рифма и стих — поэзия, ритм и личные состояния",
+            "en": "Rhyme and Verse — poetry, rhythm, and personal states",
+            "de": "Reim und Vers — Poesie, Rhythmus und persönliche Zustände",
+            "fi": "Riimi ja runo — runous, rytmi ja henkilökohtaiset tilat",
+            "cn": "韵与诗——诗意、节奏与个人状态"
           },
           "description": {
             "ru": "Рубрика с поэтическими текстами и рифмованными заметками: короткие стихи, лирические зарисовки и ритмичные посты, передающие настроение, образы и внутренние состояния.",
@@ -564,6 +953,38 @@
               "cn": "用于发布诗歌形式、节奏性札记与创意即兴，反映情感、状态与瞬间想法。"
             }
           },
+          "seo_keywords": {
+            "ru": [
+              "рифма и стихотворные заметки",
+              "поэзия и ритм",
+              "личные состояния в стихах",
+              "лирические зарисовки автора"
+            ],
+            "en": [
+              "rhyme and poetic notes",
+              "poetry and rhythm",
+              "personal states in verse",
+              "author’s lyrical sketches"
+            ],
+            "de": [
+              "Reim- und Gedichtnotizen",
+              "Poesie und Rhythmus",
+              "persönliche Zustände in Versen",
+              "lyrische Skizzen des Autors"
+            ],
+            "fi": [
+              "riimi- ja runomuistiinpanot",
+              "runous ja rytmi",
+              "henkilökohtaiset tilat runoissa",
+              "kirjoittajan lyyriset luonnokset"
+            ],
+            "cn": [
+              "押韵与诗歌札记",
+              "诗歌与节奏",
+              "诗中的个人状态",
+              "作者的抒情速写"
+            ]
+          },
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
@@ -578,6 +999,13 @@
             "de": "Schlüssel-Meilensteine",
             "fi": "Keskeiset virstanpylväät",
             "cn": "关键里程碑"
+          },
+          "title": {
+            "ru": "Ключевые вехи — важные события и траектория личного пути",
+            "en": "Key Milestones — important events and the trajectory of a personal path",
+            "de": "Schlüsselmeilensteine — wichtige Ereignisse und die Trajektorie des persönlichen Wegs",
+            "fi": "Keskeiset virstanpylväät — tärkeät tapahtumat ja henkilökohtaisen polun kaari",
+            "cn": "关键里程碑——重要事件与个人路径轨迹"
           },
           "description": {
             "ru": "Рубрика для фиксации значимых событий и переломных моментов, определяющих траекторию личного и профессионального пути.",
@@ -628,6 +1056,38 @@
               "fi": "Soveltuu merkittävien elämäntapahtumien, vaiheiden vaihtumisen, tärkeiden ammatillisten päätösten ja henkilökohtaisten saavutusten kuvaamiseen, jotka määrittävät jatkosuunnan.",
               "cn": "适用于描述重要的人生事件、阶段转换、关键的职业决定以及设定后续方向的个人成就。"
             }
+          },
+          "seo_keywords": {
+            "ru": [
+              "ключевые вехи личного пути",
+              "значимые события и решения",
+              "траектория профессионального развития",
+              "переломные моменты жизни"
+            ],
+            "en": [
+              "key milestones of a personal path",
+              "significant events and decisions",
+              "trajectory of professional development",
+              "turning points in life"
+            ],
+            "de": [
+              "Schlüsselmeilensteine des persönlichen Wegs",
+              "bedeutende Ereignisse und Entscheidungen",
+              "Trajektorie der beruflichen Entwicklung",
+              "Wendepunkte im Leben"
+            ],
+            "fi": [
+              "henkilökohtaisen polun avainvirstanpylväät",
+              "merkittävät tapahtumat ja päätökset",
+              "ammatillisen kehityksen trajektori",
+              "elämän käännekohdat"
+            ],
+            "cn": [
+              "个人路径的关键里程碑",
+              "重要事件与决定",
+              "职业发展的轨迹",
+              "人生的转折点"
+            ]
           },
           "lifecycle": "approved",
           "origin": "wordpress_import",
