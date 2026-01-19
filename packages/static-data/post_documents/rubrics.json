@@ -361,6 +361,122 @@
           "origin": "manual",
           "created_at": "2026-01-15",
           "parent_id": null
+        },
+        {
+          "id": "rubric:self-promotion-skills",
+          "routeSlugs": {
+            "ru": "skill-samopiara",
+            "en": "self-promotion-skill",
+            "de": "selbstvermarktungs-skill",
+            "fi": "itsensa-markkinoinnin-taito",
+            "cn": "zi-wo-tui-guang-ji-neng"
+          },
+          "type": "rubric",
+          "label": {
+            "ru": "Скилл самопиара",
+            "en": "Self-Promotion Skill",
+            "de": "Selbstvermarktungs-Skill",
+            "fi": "Itsensä markkinoinnin taito",
+            "cn": "自我推广技能"
+          },
+          "title": {
+            "ru": "Скилл самопиара — создание личного бренда через публичную идентичность",
+            "en": "Self-Promotion Skill — building a personal brand through public identity",
+            "de": "Selbstvermarktungs-Skill — Aufbau einer persönlichen Marke durch öffentliche Identität",
+            "fi": "Itsensä markkinoinnin taito — henkilöbrändin rakentaminen julkisen identiteetin kautta",
+            "cn": "自我推广技能——通过公众身份打造个人品牌"
+          },
+          "description": {
+            "ru": "Рубрика о самопрезентации, личном бренде и публичной идентичности в экосистеме DETai, где действия формируют мифологию.",
+            "en": "A rubric about self-presentation, personal branding, and public identity in the DETai ecosystem, where actions shape mythology.",
+            "de": "Eine Rubrik über Selbstpräsentation, persönliche Marke und öffentliche Identität im DETai-Ökosystem, in dem Handlungen Mythologie formen.",
+            "fi": "Rubriikki itsensä esittelystä, henkilöbrändistä ja julkisesta identiteetistä DETai-ekosysteemissä, jossa teot muovaavat mytologiaa.",
+            "cn": "关于自我呈现、个人品牌与 DETai 生态系统中的公共身份的栏目，在其中行动塑造神话。"
+          },
+          "definition": {
+            "postulate": {
+              "ru": "Самопрезентация — это не просто инструмент маркетинга, это способ создания смысла и мифа вокруг экосистемы. Процесс самопиара — это способ **делать видимым** то, что лежит в основе.",
+              "en": "Self-presentation is not just a marketing tool; it is a way to create meaning and myth around the ecosystem. The process of self-promotion is a way to **make visible** what lies at the core.",
+              "de": "Selbstpräsentation ist nicht nur ein Marketinginstrument, sondern eine Möglichkeit, Bedeutung und Mythos um das Ökosystem zu schaffen. Der Prozess der Selbstvermarktung ist eine Weise, das zugrunde Liegende **sichtbar zu machen**.",
+              "fi": "Itsensä esittely ei ole vain markkinointiväline, vaan tapa luoda merkitystä ja myyttiä ekosysteemin ympärille. Itsensä markkinoinnin prosessi on tapa **tehdä näkyväksi** se, mikä on perustana.",
+              "cn": "自我呈现不仅是营销工具，更是围绕生态系统创造意义与神话的方式。自我推广的过程是**让基础可见**的方式。"
+            },
+            "conceptual_keys": {
+              "ru": [
+                "самопрезентация",
+                "мифология экосистемы",
+                "публичность как часть идентичности",
+                "построение конкурентоспособной мифологии"
+              ],
+              "en": [
+                "self-presentation",
+                "ecosystem mythology",
+                "publicness as part of identity",
+                "building a competitive mythology"
+              ],
+              "de": [
+                "Selbstpräsentation",
+                "Mythologie des Ökosystems",
+                "Öffentlichkeit als Teil der Identität",
+                "Aufbau einer wettbewerbsfähigen Mythologie"
+              ],
+              "fi": [
+                "itsensä esittely",
+                "ekosysteemin mytologia",
+                "julkisuus osana identiteettiä",
+                "kilpailukykyisen mytologian rakentaminen"
+              ],
+              "cn": [
+                "自我呈现",
+                "生态系统神话",
+                "公共性作为身份的一部分",
+                "构建具竞争力的神话"
+              ]
+            },
+            "practical_application": {
+              "ru": "Рубрика помогает раскрыть принципы создания публичной идентичности через осознанные действия и самопрезентацию, которые отражают философию и ценности экосистемы DETai. Мы рассматриваем, как внутренний мир и внешняя публичность переплетаются, создавая целостный образ и уникальность. Также рубрика помогает преодолевать барьеры, такие как стыд и неуверенность, в процессе публичного позиционирования.",
+              "en": "The rubric helps reveal the principles of creating a public identity through conscious actions and self-presentation that reflect the philosophy and values of the DETai ecosystem. We examine how the inner world and external publicity intertwine, creating a coherent image and uniqueness. The rubric also helps overcome barriers such as shame and insecurity in the process of public positioning.",
+              "de": "Die Rubrik hilft, die Prinzipien der Schaffung einer öffentlichen Identität durch bewusste Handlungen und Selbstpräsentation zu entfalten, die die Philosophie und Werte des DETai-Ökosystems widerspiegeln. Wir betrachten, wie innere Welt und äußere Öffentlichkeit sich verflechten und ein kohärentes Bild sowie Einzigartigkeit schaffen. Außerdem hilft die Rubrik, Barrieren wie Scham und Unsicherheit im Prozess der öffentlichen Positionierung zu überwinden.",
+              "fi": "Rubriikki auttaa avaamaan julkisen identiteetin rakentamisen periaatteita tietoisten tekojen ja itsensä esittelyn kautta, jotka heijastavat DETai-ekosysteemin filosofiaa ja arvoja. Tarkastelemme, miten sisäinen maailma ja ulkoinen julkisuus kietoutuvat toisiinsa luoden eheän kuvan ja ainutlaatuisuuden. Rubriikki auttaa myös ylittämään esteitä, kuten häpeää ja epävarmuutta, julkisen positioinnin prosessissa.",
+              "cn": "该栏目帮助揭示通过有意识的行动与自我呈现来构建公共身份的原则，这些行动反映 DETai 生态系统的哲学与价值观。我们探讨内在世界与外在公众性如何交织，形成完整形象与独特性。栏目也帮助克服在公共定位过程中出现的障碍，例如羞耻与不自信。"
+            }
+          },
+          "seo_keywords": {
+            "ru": [
+              "самопрезентация и личный бренд",
+              "публичная идентичность в DETai",
+              "мифология экосистемы и публичность",
+              "публичное позиционирование без стыда"
+            ],
+            "en": [
+              "self-presentation and personal brand",
+              "public identity in DETai",
+              "ecosystem mythology and publicity",
+              "public positioning without shame"
+            ],
+            "de": [
+              "Selbstpräsentation und persönliche Marke",
+              "öffentliche Identität in DETai",
+              "Mythologie des Ökosystems und Öffentlichkeit",
+              "öffentliches Positionieren ohne Scham"
+            ],
+            "fi": [
+              "itsensä esittely ja henkilöbrändi",
+              "julkinen identiteetti DETai:ssa",
+              "ekosysteemin mytologia ja julkisuus",
+              "julkinen positiointi ilman häpeää"
+            ],
+            "cn": [
+              "自我呈现与个人品牌",
+              "DETai 的公共身份",
+              "生态系统神话与公众性",
+              "无羞耻的公开定位"
+            ]
+          },
+          "lifecycle": "approved",
+          "origin": "manual",
+          "created_at": "2026-01-25",
+          "parent_id": null
         }
       ]
     },
@@ -824,122 +940,6 @@
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
-          "parent_id": null
-        },
-        {
-          "id": "rubric:self-promotion-skills",
-          "routeSlugs": {
-            "ru": "skill-samopiara",
-            "en": "self-promotion-skill",
-            "de": "selbstvermarktungs-skill",
-            "fi": "itsensa-markkinoinnin-taito",
-            "cn": "zi-wo-tui-guang-ji-neng"
-          },
-          "type": "rubric",
-          "label": {
-            "ru": "Скилл самопиара",
-            "en": "Self-Promotion Skill",
-            "de": "Selbstvermarktungs-Skill",
-            "fi": "Itsensä markkinoinnin taito",
-            "cn": "自我推广技能"
-          },
-          "title": {
-            "ru": "Скилл самопиара — создание личного бренда через публичную идентичность",
-            "en": "Self-Promotion Skill — building a personal brand through public identity",
-            "de": "Selbstvermarktungs-Skill — Aufbau einer persönlichen Marke durch öffentliche Identität",
-            "fi": "Itsensä markkinoinnin taito — henkilöbrändin rakentaminen julkisen identiteetin kautta",
-            "cn": "自我推广技能——通过公众身份打造个人品牌"
-          },
-          "description": {
-            "ru": "Рубрика о самопрезентации, личном бренде и публичной идентичности в экосистеме DETai, где действия формируют мифологию.",
-            "en": "A rubric about self-presentation, personal branding, and public identity in the DETai ecosystem, where actions shape mythology.",
-            "de": "Eine Rubrik über Selbstpräsentation, persönliche Marke und öffentliche Identität im DETai-Ökosystem, in dem Handlungen Mythologie formen.",
-            "fi": "Rubriikki itsensä esittelystä, henkilöbrändistä ja julkisesta identiteetistä DETai-ekosysteemissä, jossa teot muovaavat mytologiaa.",
-            "cn": "关于自我呈现、个人品牌与 DETai 生态系统中的公共身份的栏目，在其中行动塑造神话。"
-          },
-          "definition": {
-            "postulate": {
-              "ru": "Самопрезентация — это не просто инструмент маркетинга, это способ создания смысла и мифа вокруг экосистемы. Процесс самопиара — это способ **делать видимым** то, что лежит в основе.",
-              "en": "Self-presentation is not just a marketing tool; it is a way to create meaning and myth around the ecosystem. The process of self-promotion is a way to **make visible** what lies at the core.",
-              "de": "Selbstpräsentation ist nicht nur ein Marketinginstrument, sondern eine Möglichkeit, Bedeutung und Mythos um das Ökosystem zu schaffen. Der Prozess der Selbstvermarktung ist eine Weise, das zugrunde Liegende **sichtbar zu machen**.",
-              "fi": "Itsensä esittely ei ole vain markkinointiväline, vaan tapa luoda merkitystä ja myyttiä ekosysteemin ympärille. Itsensä markkinoinnin prosessi on tapa **tehdä näkyväksi** se, mikä on perustana.",
-              "cn": "自我呈现不仅是营销工具，更是围绕生态系统创造意义与神话的方式。自我推广的过程是**让基础可见**的方式。"
-            },
-            "conceptual_keys": {
-              "ru": [
-                "самопрезентация",
-                "мифология экосистемы",
-                "публичность как часть идентичности",
-                "построение конкурентоспособной мифологии"
-              ],
-              "en": [
-                "self-presentation",
-                "ecosystem mythology",
-                "publicness as part of identity",
-                "building a competitive mythology"
-              ],
-              "de": [
-                "Selbstpräsentation",
-                "Mythologie des Ökosystems",
-                "Öffentlichkeit als Teil der Identität",
-                "Aufbau einer wettbewerbsfähigen Mythologie"
-              ],
-              "fi": [
-                "itsensä esittely",
-                "ekosysteemin mytologia",
-                "julkisuus osana identiteettiä",
-                "kilpailukykyisen mytologian rakentaminen"
-              ],
-              "cn": [
-                "自我呈现",
-                "生态系统神话",
-                "公共性作为身份的一部分",
-                "构建具竞争力的神话"
-              ]
-            },
-            "practical_application": {
-              "ru": "Рубрика помогает раскрыть принципы создания публичной идентичности через осознанные действия и самопрезентацию, которые отражают философию и ценности экосистемы DETai. Мы рассматриваем, как внутренний мир и внешняя публичность переплетаются, создавая целостный образ и уникальность. Также рубрика помогает преодолевать барьеры, такие как стыд и неуверенность, в процессе публичного позиционирования.",
-              "en": "The rubric helps reveal the principles of creating a public identity through conscious actions and self-presentation that reflect the philosophy and values of the DETai ecosystem. We examine how the inner world and external publicity intertwine, creating a coherent image and uniqueness. The rubric also helps overcome barriers such as shame and insecurity in the process of public positioning.",
-              "de": "Die Rubrik hilft, die Prinzipien der Schaffung einer öffentlichen Identität durch bewusste Handlungen und Selbstpräsentation zu entfalten, die die Philosophie und Werte des DETai-Ökosystems widerspiegeln. Wir betrachten, wie innere Welt und äußere Öffentlichkeit sich verflechten und ein kohärentes Bild sowie Einzigartigkeit schaffen. Außerdem hilft die Rubrik, Barrieren wie Scham und Unsicherheit im Prozess der öffentlichen Positionierung zu überwinden.",
-              "fi": "Rubriikki auttaa avaamaan julkisen identiteetin rakentamisen periaatteita tietoisten tekojen ja itsensä esittelyn kautta, jotka heijastavat DETai-ekosysteemin filosofiaa ja arvoja. Tarkastelemme, miten sisäinen maailma ja ulkoinen julkisuus kietoutuvat toisiinsa luoden eheän kuvan ja ainutlaatuisuuden. Rubriikki auttaa myös ylittämään esteitä, kuten häpeää ja epävarmuutta, julkisen positioinnin prosessissa.",
-              "cn": "该栏目帮助揭示通过有意识的行动与自我呈现来构建公共身份的原则，这些行动反映 DETai 生态系统的哲学与价值观。我们探讨内在世界与外在公众性如何交织，形成完整形象与独特性。栏目也帮助克服在公共定位过程中出现的障碍，例如羞耻与不自信。"
-            }
-          },
-          "seo_keywords": {
-            "ru": [
-              "самопрезентация и личный бренд",
-              "публичная идентичность в DETai",
-              "мифология экосистемы и публичность",
-              "публичное позиционирование без стыда"
-            ],
-            "en": [
-              "self-presentation and personal brand",
-              "public identity in DETai",
-              "ecosystem mythology and publicity",
-              "public positioning without shame"
-            ],
-            "de": [
-              "Selbstpräsentation und persönliche Marke",
-              "öffentliche Identität in DETai",
-              "Mythologie des Ökosystems und Öffentlichkeit",
-              "öffentliches Positionieren ohne Scham"
-            ],
-            "fi": [
-              "itsensä esittely ja henkilöbrändi",
-              "julkinen identiteetti DETai:ssa",
-              "ekosysteemin mytologia ja julkisuus",
-              "julkinen positiointi ilman häpeää"
-            ],
-            "cn": [
-              "自我呈现与个人品牌",
-              "DETai 的公共身份",
-              "生态系统神话与公众性",
-              "无羞耻的公开定位"
-            ]
-          },
-          "lifecycle": "approved",
-          "origin": "manual",
-          "created_at": "2026-01-25",
           "parent_id": null
         },
         {
