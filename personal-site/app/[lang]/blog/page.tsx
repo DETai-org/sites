@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getPostsIndexForLang } from "../../../lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../lib/blog/blog.metadata";
+import { blogCategories, blogRubrics } from "../../../lib/blog/taxonomy";
 import type { Lang } from "../../../lib/blog/types";
-import { formatBlogDate } from "../../../lib/blog/blog.utils";
+import BlogFilters from "./_components/BlogFilters";
 
 interface BlogPageProps {
   params: {
@@ -22,31 +22,92 @@ const blogMetadataByLang: Record<Lang, { title: string; description: string }> =
   cn: { title: "博客", description: "博客文章" }
 };
 
-const blogCopyByLang: Record<Lang, { heading: string; subheading: string; readMore: string }> = {
+const blogCopyByLang: Record<
+  Lang,
+  {
+    heading: string;
+    subheading: string;
+    readMore: string;
+    filtersHeading: string;
+    filtersLead: string;
+    allLabel: string;
+    rubricsLabel: string;
+    categoriesLabel: string;
+    authorsLabel: string;
+    yearsLabel: string;
+    resultsLabel: string;
+    emptyState: string;
+  }
+> = {
   ru: {
     heading: "Блог",
     subheading: "Первые материалы из WordPress.",
-    readMore: "Читать полностью →"
+    readMore: "Читать полностью →",
+    filtersHeading: "Фильтры",
+    filtersLead: "Выберите рубрики, категории, авторов или годы, чтобы сузить список.",
+    allLabel: "Все",
+    rubricsLabel: "Рубрики",
+    categoriesLabel: "Категории",
+    authorsLabel: "Авторы",
+    yearsLabel: "Годы",
+    resultsLabel: "Подобранных постов:",
+    emptyState: "Посты с такими фильтрами пока не найдены.",
   },
   en: {
     heading: "Blog",
     subheading: "First materials from WordPress.",
-    readMore: "Read more →"
+    readMore: "Read more →",
+    filtersHeading: "Filters",
+    filtersLead: "Pick rubrics, categories, authors, or years to narrow the list.",
+    allLabel: "All",
+    rubricsLabel: "Rubrics",
+    categoriesLabel: "Categories",
+    authorsLabel: "Authors",
+    yearsLabel: "Years",
+    resultsLabel: "Posts found:",
+    emptyState: "No posts match the selected filters yet.",
   },
   de: {
     heading: "Blog",
     subheading: "Erste Materialien aus WordPress.",
-    readMore: "Weiterlesen →"
+    readMore: "Weiterlesen →",
+    filtersHeading: "Filter",
+    filtersLead: "Wähle Rubriken, Kategorien, Autor:innen oder Jahre, um die Liste zu verfeinern.",
+    allLabel: "Alle",
+    rubricsLabel: "Rubriken",
+    categoriesLabel: "Kategorien",
+    authorsLabel: "Autor:innen",
+    yearsLabel: "Jahre",
+    resultsLabel: "Gefundene Beiträge:",
+    emptyState: "Für diese Filter gibt es noch keine Beiträge.",
   },
   fi: {
     heading: "Blogi",
     subheading: "Ensimmäiset materiaalit WordPressistä.",
-    readMore: "Lue lisää →"
+    readMore: "Lue lisää →",
+    filtersHeading: "Suodattimet",
+    filtersLead: "Valitse rubriikit, kategoriat, kirjoittajat tai vuodet rajataksesi listaa.",
+    allLabel: "Kaikki",
+    rubricsLabel: "Rubriikit",
+    categoriesLabel: "Kategoriat",
+    authorsLabel: "Kirjoittajat",
+    yearsLabel: "Vuodet",
+    resultsLabel: "Löydettyjä postauksia:",
+    emptyState: "Näillä suodattimilla ei ole vielä postauksia.",
   },
   cn: {
     heading: "博客",
     subheading: "来自 WordPress 的首批材料。",
-    readMore: "阅读全文 →"
+    readMore: "阅读全文 →",
+    filtersHeading: "筛选",
+    filtersLead: "选择栏目、类别、作者或年份来缩小列表。",
+    allLabel: "全部",
+    rubricsLabel: "栏目",
+    categoriesLabel: "类别",
+    authorsLabel: "作者",
+    yearsLabel: "年份",
+    resultsLabel: "匹配的文章：",
+    emptyState: "暂无符合筛选条件的文章。",
   }
 };
 
@@ -84,9 +145,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
     notFound();
   }
 
-  const posts = await getPostsIndexForLang(params.lang);
-  const locale = blogLocaleByLang[params.lang];
-  const copy = blogCopyByLang[params.lang];
+  const lang = params.lang;
+  const posts = await getPostsIndexForLang(lang);
+  const locale = blogLocaleByLang[lang];
+  const copy = blogCopyByLang[lang];
+  const rubrics = blogRubrics.map((rubric) => ({
+    slug: rubric.slug,
+    label: rubric.labels[lang],
+  }));
+  const categories = blogCategories.map((category) => ({
+    slug: category.slug,
+    label: category.labels[lang],
+  }));
 
   return (
     <main className="page">
@@ -94,40 +164,24 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <h1>{copy.heading}</h1>
         <p>{copy.subheading}</p>
       </div>
-      <section className="blog-grid">
-        {posts.map((post) => {
-          const formattedDate = formatBlogDate(post.publishedAt, locale);
-          const metaParts = [formattedDate, post.author].filter(Boolean);
-
-          return (
-            <article key={`${post.id}-${post.lang}`} className="blog-card">
-              {post.coverImage ? (
-                <img
-                  className="blog-card__image"
-                  src={post.coverImage.src}
-                  width={post.coverImage.width}
-                  height={post.coverImage.height}
-                  alt={post.coverImage.alt}
-                />
-              ) : null}
-              <div className="blog-card__body">
-                {metaParts.length ? (
-                  <p className="blog-card__meta">{metaParts.join(" · ")}</p>
-                ) : null}
-                <h2 className="blog-card__title">
-                  <Link href={`/${post.lang}/blog/${post.slug}`}>
-                    {post.titles[post.lang]}
-                  </Link>
-                </h2>
-                <p className="blog-card__excerpt">{post.excerpt}</p>
-                <Link className="blog-card__link" href={`/${post.lang}/blog/${post.slug}`}>
-                  {copy.readMore}
-                </Link>
-              </div>
-            </article>
-          );
-        })}
-      </section>
+      <BlogFilters
+        posts={posts}
+        rubrics={rubrics}
+        categories={categories}
+        locale={locale}
+        copy={{
+          filtersHeading: copy.filtersHeading,
+          filtersLead: copy.filtersLead,
+          allLabel: copy.allLabel,
+          rubricsLabel: copy.rubricsLabel,
+          categoriesLabel: copy.categoriesLabel,
+          authorsLabel: copy.authorsLabel,
+          yearsLabel: copy.yearsLabel,
+          resultsLabel: copy.resultsLabel,
+          emptyState: copy.emptyState,
+          readMore: copy.readMore,
+        }}
+      />
     </main>
   );
 }

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getPostByLangAndSlug } from "../../../../lib/blog/blog.data";
-import { blogLocaleByLang, isLang } from "../../../../lib/blog/blog.i18n";
+import { getPostByLangAndSlug, getPostsIndexForLang } from "../../../../lib/blog/blog.data";
+import { blogLocaleByLang, isLang, supportedLangs } from "../../../../lib/blog/blog.i18n";
 import { getMetadataBase } from "../../../../lib/blog/blog.metadata";
 import { formatBlogDate } from "../../../../lib/blog/blog.utils";
+import { blogRubrics, getRubricDefinition } from "../../../../lib/blog/taxonomy";
+import type { Lang } from "../../../../lib/blog/types";
+import BlogPostCard from "../../../../components/sections/BlogPostCard";
 
 interface BlogPostPageProps {
   params: {
@@ -20,7 +23,43 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return {};
   }
 
-  const post = await getPostByLangAndSlug(params.lang, params.slug);
+  const lang = params.lang;
+  const rubric = getRubricDefinition(params.slug);
+
+  if (rubric) {
+    const titleSuffix: Record<string, string> = {
+      ru: "— все статьи по теме",
+      en: "— all articles on the topic",
+      de: "— alle Artikel zum Thema",
+      fi: "— kaikki aiheen artikkelit",
+      cn: "— 主题相关文章",
+    };
+    const descriptionSuffix: Record<string, string> = {
+      ru: "Материалы рубрики связаны с другими темами экосистемы DETai.",
+      en: "The rubric connects with other themes in the DETai ecosystem.",
+      de: "Die Rubrik ist mit anderen Themen des DETai-Ökosystems verbunden.",
+      fi: "Rubriikki liittyy DETai-ekosysteemin muihin teemoihin.",
+      cn: "该栏目与 DETai 生态系统的其他主题相连接。",
+    };
+    const canonicalPath = `/${lang}/blog/${rubric.slug}`;
+    const languages = supportedLangs.reduce<Record<string, string>>((acc, lang) => {
+      acc[lang] = `/${lang}/blog/${rubric.slug}`;
+      return acc;
+    }, {});
+
+    return {
+      title: `${rubric.labels[lang]} ${titleSuffix[lang]}`,
+      description: `${rubric.description[lang]} ${descriptionSuffix[lang]}`,
+      keywords: rubric.seoKeywords[lang],
+      metadataBase: getMetadataBase(),
+      alternates: {
+        canonical: canonicalPath,
+        languages,
+      },
+    };
+  }
+
+  const post = await getPostByLangAndSlug(lang, params.slug);
 
   if (!post) {
     return {};
@@ -59,7 +98,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 export async function generateStaticParams() {
   const { getPostRoutes } = await import("../../../../lib/blog/blog.data");
 
-  return getPostRoutes();
+  const postRoutes = await getPostRoutes();
+  const rubricRoutes = supportedLangs.flatMap((lang) =>
+    blogRubrics.map((rubric) => ({
+      lang,
+      slug: rubric.slug,
+    }))
+  );
+
+  return [...postRoutes, ...rubricRoutes];
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -68,6 +115,82 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const lang = params.lang;
+  const rubric = getRubricDefinition(params.slug);
+
+  if (rubric) {
+    const posts = await getPostsIndexForLang(lang);
+    const rubricPosts = posts.filter((post) => post.rubric?.slug === rubric.slug);
+    const locale = blogLocaleByLang[lang];
+    const copyByLang: Record<
+      Lang,
+      { label: string; heading: string; empty: string; readMore: string }
+    > = {
+      ru: {
+        label: "Рубрика",
+        heading: "Статьи рубрики",
+        empty: "Постов в этой рубрике пока нет.",
+        readMore: "Читать полностью →",
+      },
+      en: {
+        label: "Rubric",
+        heading: "Rubric articles",
+        empty: "There are no posts in this rubric yet.",
+        readMore: "Read more →",
+      },
+      de: {
+        label: "Rubrik",
+        heading: "Artikel der Rubrik",
+        empty: "In dieser Rubrik gibt es noch keine Beiträge.",
+        readMore: "Weiterlesen →",
+      },
+      fi: {
+        label: "Rubriikki",
+        heading: "Rubriikin artikkelit",
+        empty: "Tässä rubriikissa ei ole vielä postauksia.",
+        readMore: "Lue lisää →",
+      },
+      cn: {
+        label: "栏目",
+        heading: "栏目文章",
+        empty: "该栏目暂无文章。",
+        readMore: "阅读全文 →",
+      },
+    };
+    const copy = copyByLang[lang];
+
+    return (
+      <main className="page">
+        <section className="rubric-hero">
+          <p className="rubric-hero__eyebrow">{copy.label}</p>
+          <h1 className="rubric-hero__title">{rubric.labels[lang]}</h1>
+          <p className="rubric-hero__description">{rubric.description[lang]}</p>
+          <p className="rubric-hero__postulate">{rubric.definition.postulate[lang]}</p>
+        </section>
+        <section className="rubric-posts">
+          <h2 className="rubric-posts__title">{copy.heading}</h2>
+          {rubricPosts.length === 0 ? (
+            <p className="rubric-posts__empty">{copy.empty}</p>
+          ) : (
+            <div className="blog-grid">
+              {rubricPosts.map((post) => {
+                const formattedDate = formatBlogDate(post.publishedAt, locale);
+                const metaParts = [formattedDate, post.author].filter(Boolean);
+                return (
+                  <BlogPostCard
+                    key={`${post.id}-${post.lang}`}
+                    post={post}
+                    readMoreLabel={copy.readMore}
+                    meta={metaParts.join(" · ")}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </section>
+      </main>
+    );
+  }
+
   const post = await getPostByLangAndSlug(lang, params.slug);
 
   if (!post) {

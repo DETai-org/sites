@@ -15,6 +15,7 @@ export const blogRubrics: BlogRubricDefinition[] = taxonomy.rubrics.map((rubric)
   definition: {
     postulate: rubric.definition.postulate,
   },
+  seoKeywords: rubric.seoKeywords,
 }));
 
 export const blogCategories: BlogCategoryDefinition[] = taxonomy.categories.map((category) => ({
@@ -35,4 +36,8 @@ export function getTaxonomyLabel(
 ): string {
   const entry = definitions.find((item) => item.slug === slug);
   return entry?.labels[lang] ?? entry?.labels.ru ?? slug;
+}
+
+export function getRubricDefinition(slug: string): BlogRubricDefinition | undefined {
+  return blogRubrics.find((rubric) => rubric.slug === slug);
 }
