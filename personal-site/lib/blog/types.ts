@@ -20,6 +20,7 @@ export interface BlogRubricDefinition extends BlogTaxonomyDefinition {
   definition: {
     postulate: Record<Lang, string>;
   };
+  seoKeywords: Record<Lang, string[]>;
 }
 
 export interface BlogCategoryDefinition extends BlogTaxonomyDefinition {

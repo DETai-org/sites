@@ -17,6 +17,7 @@ export interface TaxonomyRubricDefinition {
   definition: {
     postulate: LocalizedText;
   };
+  seoKeywords: Record<TaxonomyLang, string[]>;
 }
 
 export interface TaxonomyCategoryDefinition {
@@ -84,6 +85,7 @@ interface RubricItem {
   definition?: {
     postulate?: LocalizedText;
   };
+  seo_keywords?: Record<TaxonomyLang, string[]>;
 }
 
 interface RubricsDocument {
@@ -169,6 +171,10 @@ function loadRubrics(siteChannel: TaxonomySiteChannel): TaxonomyRubricDefinition
       item.definition?.postulate,
       `rubric ${item.id} definition.postulate`
     );
+    const seoKeywords = ensureLocalizedList(
+      item.seo_keywords,
+      `rubric ${item.id} seo_keywords`
+    );
 
     return {
       slug: item.id,
@@ -177,6 +183,7 @@ function loadRubrics(siteChannel: TaxonomySiteChannel): TaxonomyRubricDefinition
       definition: {
         postulate,
       },
+      seoKeywords,
     };
   });
 }
@@ -267,4 +274,27 @@ function ensureLocalized(value: unknown, context: string): LocalizedText {
   }
 
   return record as LocalizedText;
+}
+
+function ensureLocalizedList(
+  value: unknown,
+  context: string
+): Record<TaxonomyLang, string[]> {
+  if (!value || typeof value !== "object") {
+    throw new Error(`Отсутствуют локализованные списки: ${context}`);
+  }
+
+  const record = value as Record<string, unknown>;
+  const missingLangs = taxonomyLangs.filter((lang) => {
+    const entry = record[lang];
+    return !Array.isArray(entry) || entry.length === 0;
+  });
+
+  if (missingLangs.length > 0) {
+    throw new Error(
+      `Не хватает списков (${missingLangs.join(", ")}) для ${context}`
+    );
+  }
+
+  return record as Record<TaxonomyLang, string[]>;
 }
