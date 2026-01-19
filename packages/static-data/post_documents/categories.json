@@ -356,25 +356,26 @@
       "lifecycle": "approved"
     },
     {
-      "id": "category:shadow-and-light",
+      "id": "category:dark-and-light-side-of-personality",
       "type": "category",
       "label": {
-        "ru": "Тень и Свет",
-        "en": "Shadow and Light",
-        "de": "Schatten und Licht",
-        "fi": "Varjo ja valo",
-        "cn": "阴影与光"
+        "ru": "Тёмная и светлая сторона личности",
+        "en": "Dark and Light Side of Personality",
+        "de": "Dunkle und helle Seite der Persönlichkeit",
+        "fi": "Persoonallisuuden pimeä ja valoisa puoli",
+        "cn": "人格的暗与亮面"
       },
       "description": {
-        "ru": "Эта категория исследует дуальности человеческого опыта — противоположности, такие как добро и зло, свет и тьма, сознание и бессознательное. Здесь рассматриваются способы интеграции этих противоположностей в личном развитии и психотерапевтической практике.",
-        "en": "This category explores the dualities of human experience—opposites such as good and evil, light and darkness, conscious and unconscious. It examines ways to integrate these opposites in personal development and psychotherapeutic practice.",
-        "de": "Diese Kategorie untersucht die Dualitäten menschlicher Erfahrung — Gegensätze wie Gut und Böse, Licht und Dunkelheit, Bewusstes und Unbewusstes. Hier werden Wege betrachtet, diese Gegensätze in der persönlichen Entwicklung und psychotherapeutischen Praxis zu integrieren.",
-        "fi": "Tämä kategoria tutkii inhimillisen kokemuksen dualiteetteja — vastakohtia kuten hyvä ja paha, valo ja pimeys, tietoinen ja tiedostamaton. Se tarkastelee tapoja integroida nämä vastakohdat henkilökohtaisessa kasvussa ja psykoterapeuttisessa käytännössä.",
-        "cn": "该类别探讨人类经验中的二元对立——如善与恶、光与暗、意识与无意识。这里讨论在个人成长与心理治疗实践中整合这些对立面的方式。"
+        "ru": "Эта категория исследует дуальности человеческого опыта и личности — противоположности, такие как добро и зло, свет и тьма, сознание и бессознательное. Здесь рассматриваются способы интеграции этих противоположностей в личном развитии и психотерапевтической практике.",
+        "en": "This category explores the dualities of human experience and personality—opposites such as good and evil, light and darkness, conscious and unconscious. It examines ways to integrate these opposites in personal development and psychotherapeutic practice.",
+        "de": "Diese Kategorie untersucht die Dualitäten menschlicher Erfahrung und Persönlichkeit — Gegensätze wie Gut und Böse, Licht und Dunkelheit, Bewusstes und Unbewusstes. Hier werden Wege betrachtet, diese Gegensätze in der persönlichen Entwicklung und psychotherapeutischen Praxis zu integrieren.",
+        "fi": "Tämä kategoria tutkii inhimillisen kokemuksen ja persoonallisuuden dualiteetteja — vastakohtia kuten hyvä ja paha, valo ja pimeys, tietoinen ja tiedostamaton. Se tarkastelee tapoja integroida nämä vastakohdat henkilökohtaisessa kasvussa ja psykoterapeuttisessa käytännössä.",
+        "cn": "该类别探讨人类经验与人格中的二元对立——如善与恶、光与暗、意识与无意识。这里讨论在个人成长与心理治疗实践中整合这些对立面的方式。"
       },
       "emoji": "🌓",
       "parent_id": null,
-      "lifecycle": "approved"
+      "lifecycle": "approved",
+      "landing_page": true
     },
     {
       "id": "category:patterns",

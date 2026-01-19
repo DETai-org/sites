@@ -150,10 +150,10 @@
       "lifecycle": "approved"
     },
     {
-      "id": "category:shadow-and-light",
+      "id": "category:dark-and-light-side-of-personality",
       "type": "category",
-      "label": "Тень и Свет",
-      "description": "Exploring the dualities and opposites in human experience, integrating both shadow and light.",
+      "label": "Тёмная и светлая сторона личности",
+      "description": "Exploring the dark and light sides of personality and the integration of opposites in human experience.",
       "emoji": "🌓",
       "parent_id": null,
       "lifecycle": "approved"

@@ -15,7 +15,7 @@ descriptive:
   seoLead: "Ein poetischer Text über das Ringen von Licht und Dunkel, inneren Konflikt und die Suche nach Freiheit durch Liebe und Angst."
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
-    category_ids: ["category:shadow-and-light"]
+    category_ids: ["category:dark-and-light-side-of-personality"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["innerer Konflikt", "Licht und Dunkel", "Angst und Freiheit"]
 structural:

@@ -15,7 +15,7 @@ descriptive:
   seoLead: "一篇诗性文本，讲述光与暗的对抗、内心冲突，以及在爱与恐惧中寻找自由。"
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
-    category_ids: ["category:shadow-and-light"]
+    category_ids: ["category:dark-and-light-side-of-personality"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["内心冲突", "光与暗", "恐惧与自由"]
 structural:
