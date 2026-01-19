@@ -11,13 +11,13 @@ administrative:
 descriptive:
   size: "L"
   title: "Voima ja valo, kaaos ja pimeys"
-  preview: "Voima ja valo, kaaos ja pimeys on teksti siitä, miten ihmisessä törmäävät pelko ja vapaus, päivä ja yö, sisäinen repeämä ja vetovoima elävään. 🌓 Mitä jää, kun tuttu rauha ei enää pidä?"
-  seoLead: "Runollinen teksti valon ja pimeyden vastakkainasettelusta, sisäisestä ristiriidasta ja vapauden etsimisestä rakkauden ja pelon kautta."
+  preview: "Voima ja valo, kaaos ja pimeys — runollinen teksti pelon ja vapauden, päivän ja yön, sisäisen repeämän ja elämään vetävän voiman törmäyksestä. 🌓 Mitä jää, kun tuttu rauha ei enää kanna?"
+  seoLead: "Runollinen teksti valon ja pimeyden vastakkainasettelusta, sisäisestä konfliktista ja vapauden etsimisestä rakkauden ja pelon kautta."
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
     category_ids: ["category:dark-and-light-side-of-personality"]
     keyword_ids: ["keyword:ambivalence"]
-    keywords_raw: ["sisäinen ristiriita", "valo ja pimeys", "pelko ja vapaus"]
+    keywords_raw: ["sisäinen konflikti", "valo ja pimeys", "pelko ja vapaus"]
 structural:
   external_links: []
   document_links: []
@@ -25,22 +25,22 @@ structural:
 
 ## Voima ja valo
 
-Tämä on ikuinen ristiriita, varjot tahtovat vajota epäilyihin, erilaisia demoneja, yliaatteita, joskus halu maata graniitin alla. Kaaos ja kipu, riita itsensä kanssa. Pelot→Vapaus→Thanatos→Rakkaus... Sellaisesta tavallinen ihminen sanoo: "Hysteerinen"! — Tietenkin, hänhän elää!!!
+Tämä on ikuinen konflikti: varjot lankeavat epäilykseen, demonit, yliajatukset, halu painua graniitin alle. Kaaos ja kipu, ongelmat itsen kanssa. Pelko → Vapaus → Thanatos → Rakkaus... Keskiverto sanoo: “Hysteerinen!” — tietenkin, koska hän on elossa.
 
 ## Kaaos ja pimeys
 
-Olet niin tyytyväinen itseesi, rauhallinen, iloinen, tavallinen... ja mitä: futis, diskot, pieni olut, auto, televisio ja seksi – klassinen keskijohdon manageri, se joka on porukan sielu, hän pyörittää aina toimistoromaania.
+Olet niin tyytyväinen itseesi, rauhallinen, iloinen, tavallinen... ja mitä sitten? Jalkapallo, diskot, olut, auto, TV ja seksi — klassinen keskijohdon johtaja, seurueen sielu, joka pyörittää aina toimistoromaania.
 
-"Mikä sisäinen ristiriita sinulla on?
+“Mikä sisäinen konflikti sinulla on?
 
-Miten valita tänään solmio takin värin mukaan?
+Miten valita tänään solmio, joka sopii takkiin?
 
-Miten valita lenkkarit snapbackin värin mukaan?"
+Miten valita lenkkarit, jotka sopivat lippikseen?”
 
-Mutta taputusta ei synny, kun kaksi kämmentä eivät siinä yhdisty.
+Mutta taputusta ei synny, jos kaksi kämmentä eivät kohtaa sen sisällä.
 
-Ja vaikka Päivä ja Yö näyttävät vihollisilta. Ne palvelevat yhtä päämäärää,
+Ja vaikka Päivä ja Yö näyttävät vihollisilta, ne palvelevat yhtä tarkoitusta,
 
-Keskinäisessä rakkaudessa ne moninkertaistavat yhteiset työnsä.
+Keskinäisessä rakkaudessa ne moninkertaistavat yhteisen työnsä.
 
-Jos ei olisi Yötä, miten ihmisessä voisi kertyä se Rikkaus, jota Päivä niin avokätisesti käyttää?
+Jos ei olisi Yötä, miten ihmisessä voisi kertyä se rikkaus, jonka Päivä niin avokätisesti käyttää?
