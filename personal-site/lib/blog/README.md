@@ -77,7 +77,7 @@ descriptive:
   seoLead: "SEO-лид."
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
-    category_ids: ["category:shadow-and-light"]
+    category_ids: ["category:dark-and-light-side-of-personality"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["внутренний конфликт"]
 structural:

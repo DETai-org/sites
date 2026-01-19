@@ -15,7 +15,7 @@ descriptive:
   seoLead: "A poetic text about the clash of light and darkness, inner conflict, and the search for freedom through love and fear."
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
-    category_ids: ["category:shadow-and-light"]
+    category_ids: ["category:dark-and-light-side-of-personality"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["inner conflict", "light and darkness", "fear and freedom"]
 structural:
