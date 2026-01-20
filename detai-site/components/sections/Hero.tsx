@@ -15,7 +15,7 @@ export default function Hero() {
     >
       <div className="relative z-20 w-full max-w-[48rem] md:max-w-[52rem]">
         <HeroHeadingTitle className="text-[color:rgb(var(--hero-text))]">
-          DET — Dialectical Existential Therapy.
+          Dialectical Existential Therapy × DETai.
         </HeroHeadingTitle>
         <p className="mt-4 text-lg leading-snug text-[color:var(--hero-subtitle)] md:text-xl lg:text-2xl">
           Новый формат психотерапии
