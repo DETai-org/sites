@@ -15,8 +15,8 @@ export default function Header() {
           <a className="hover:text-accentVar" href="/det">
             DET
           </a>
-          <a className="hover:text-accentVar" href="#mission">
-            Миссия
+          <a className="hover:text-accentVar" href="#blog">
+            Наш блог
           </a>
           <a className="hover:text-accentVar" href="/colors">
             Палитра

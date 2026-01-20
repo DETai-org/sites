@@ -6,6 +6,7 @@ import DetDetaiSplit from "../components/sections/DetDetaiSplit";
 import DetaiProjectsTeaser from "../components/sections/DetaiProjectsTeaser";
 import FundamentDetSection from "../components/sections/FundamentDetSection";
 import Hero from "../components/sections/Hero";
+import BlogTeaser from "../components/sections/BlogTeaser";
 import Mission from "../components/sections/Mission";
 
 export default function Page() {
@@ -19,6 +20,7 @@ export default function Page() {
         <DetDetaiSplit />
         <AudienceSection />
         <FundamentDetSection />
+        <BlogTeaser />
         <Mission />
       </main>
       <Footer />
