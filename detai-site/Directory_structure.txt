@@ -16,8 +16,6 @@
 │   │       │   ├── [slug]/
 │   │       │   │   └── page.tsx
 │   │       │   └── page.tsx
-│   │       ├── symbol/
-│   │       │   └── page.tsx
 │   │       └── page.tsx
 │   ├── (detai)/
 │   │   └── detai/
