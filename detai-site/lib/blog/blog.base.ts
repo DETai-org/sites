@@ -1,0 +1,24 @@
+import { BlogPostBase } from "./types";
+
+export const baseBlogPosts: BlogPostBase[] = [
+  {
+    postId: "eta-istoriya-pro-odnogo-cheloveka",
+    publishedAt: "2016-05-16T10:08:00+03:00",
+    author: "Anton",
+    status: "publish",
+    originalLink:
+      "https://antonkolhonen.com/trenirovki/eta-istoriya-pro-odnogo-cheloveka",
+    wordpressId: 3026,
+    rubric: { slug: "rubric:orientation-toward-overcoming" },
+    category: { slug: "category:overcoming" },
+    keywords: [{ slug: "keyword:inner-tension" }],
+    keywordsRaw: ["успех", "преодоление", "мотивация"],
+    contentFiles: {
+      ru: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/ru.md",
+      en: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/en.md",
+      de: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/de.md",
+      fi: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/fi.md",
+      cn: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/cn.md",
+    },
+  },
+];
