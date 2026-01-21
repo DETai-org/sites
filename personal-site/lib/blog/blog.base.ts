@@ -6,9 +6,6 @@ export const baseBlogPosts: BlogPostBase[] = [
     publishedAt: "2016-05-16T10:08:00+03:00",
     author: "Anton",
     status: "publish",
-    originalLink:
-      "https://antonkolhonen.com/trenirovki/eta-istoriya-pro-odnogo-cheloveka",
-    wordpressId: 3026,
     rubric: { slug: "rubric:orientation-toward-overcoming" },
     category: { slug: "category:overcoming" },
     keywords: [{ slug: "keyword:existential-choice" }],
@@ -32,8 +29,6 @@ export const baseBlogPosts: BlogPostBase[] = [
     publishedAt: "2016-06-23T12:10:00+03:00",
     author: "Anton",
     status: "publish",
-    originalLink: "https://antonkolhonen.com/psihologiya/sila-i-svet-haus-i-mrak",
-    wordpressId: 3043,
     rubric: { slug: "rubric:shadow-and-light" },
     category: { slug: "category:psychology" },
     keywords: [],

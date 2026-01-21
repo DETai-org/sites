@@ -3,7 +3,6 @@ import { getPostsIndexForLang } from "@/lib/blog/blog.data";
 import Section from "../ui/Section";
 import HeadingLevel2 from "../ui/HeadingLevel2";
 import BodyText from "../ui/BodyText";
-import Button from "../ui/Button";
 import DefaultCard from "../ui/DefaultCard";
 
 function formatBlogDate(isoDate: string) {
@@ -59,11 +58,6 @@ export default async function BlogTeaser() {
               </p>
             ) : null}
             <BodyText variant="projectCard">{excerpt}</BodyText>
-            {post.originalLink ? (
-              <Button as="a" href={post.originalLink} variant="secondary">
-                Читать статью
-              </Button>
-            ) : null}
           </div>
         </DefaultCard>
       </div>

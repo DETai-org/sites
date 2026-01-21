@@ -96,8 +96,6 @@ export interface BlogPostBase {
   keywords: BlogTaxonomyRef[];
   keywordsRaw: string[];
   coverImage?: BlogImage;
-  originalLink?: string;
-  wordpressId?: number;
   excerpt?: string;
   contentFiles: Record<Lang, string>;
   frontmatter?: BlogPostFrontmatter;
