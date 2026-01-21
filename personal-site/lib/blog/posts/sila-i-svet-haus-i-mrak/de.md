@@ -4,7 +4,7 @@ administrative:
   id: sila-i-svet-haus-i-mrak
   authors:
     - Anton Kolhonen
-  date_ymd: 2026-01-17
+  date_ymd: 2016-06-23
   status: publish
   channels:
     - personal_site_blog
