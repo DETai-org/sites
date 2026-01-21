@@ -132,6 +132,12 @@ structural:
    - `contentFiles` для всех языков
 6. Обложка:
    - если пост общий для обоих сайтов — допускается единая обложка в `personal-site/public/images/posts/` + абсолютная ссылка для `detai-site` (см. `post_images_policy.md`).
+   6.1. Запрет на бинарные файлы:
+     - Бинарные файлы (изображения) **не добавляем** в репозиторий. Если обложка уже есть в `personal-site/public/images/posts/`, то:
+       - для `personal-site` используйте локальный путь `"/images/posts/<file>"`;
+       - для `detai-site` укажите **абсолютный URL** на личный сайт в `coverImage.src`;
+       - обязательно заполните `coverImage` в `personal-site/lib/blog/blog.base.ts` и/или `detai-site/lib/blog/blog.base.ts` по каналам поста.
+     - Правило применяется только если обложка уже существует; иначе не упоминаем её в описании поста.
 
 ---
 
