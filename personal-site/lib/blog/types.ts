@@ -20,6 +20,8 @@ export interface BlogRubricDefinition extends BlogTaxonomyDefinition {
   description: Record<Lang, string>;
   definition: {
     postulate: Record<Lang, string>;
+    conceptual_keys: Record<Lang, string[]>;
+    practical_application: Record<Lang, string>;
   };
   seoKeywords: Record<Lang, string[]>;
 }

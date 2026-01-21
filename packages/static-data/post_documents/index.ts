@@ -17,6 +17,8 @@ export interface TaxonomyRubricDefinition {
   description: LocalizedText;
   definition: {
     postulate: LocalizedText;
+    conceptual_keys: Record<TaxonomyLang, string[]>;
+    practical_application: LocalizedText;
   };
   seoKeywords: Record<TaxonomyLang, string[]>;
 }
@@ -54,6 +56,8 @@ export const taxonomyFieldPolicy = {
     labels: "label",
     description: "description",
     postulate: "definition.postulate",
+    conceptual_keys: "definition.conceptual_keys",
+    practical_application: "definition.practical_application",
   },
   categories: {
     labels: "label",
@@ -86,6 +90,8 @@ interface RubricItem {
   description: LocalizedText;
   definition?: {
     postulate?: LocalizedText;
+    conceptual_keys?: Record<TaxonomyLang, string[]>;
+    practical_application?: LocalizedText;
   };
   seo_keywords?: Record<TaxonomyLang, string[]>;
 }
@@ -174,6 +180,14 @@ function loadRubrics(siteChannel: TaxonomySiteChannel): TaxonomyRubricDefinition
       item.definition?.postulate,
       `rubric ${item.id} definition.postulate`
     );
+    const conceptualKeys = ensureLocalizedList(
+      item.definition?.conceptual_keys,
+      `rubric ${item.id} definition.conceptual_keys`
+    );
+    const practicalApplication = ensureLocalized(
+      item.definition?.practical_application,
+      `rubric ${item.id} definition.practical_application`
+    );
     const seoKeywords = ensureLocalizedList(
       item.seo_keywords,
       `rubric ${item.id} seo_keywords`
@@ -186,6 +200,8 @@ function loadRubrics(siteChannel: TaxonomySiteChannel): TaxonomyRubricDefinition
       description,
       definition: {
         postulate,
+        conceptual_keys: conceptualKeys,
+        practical_application: practicalApplication,
       },
       seoKeywords,
     };

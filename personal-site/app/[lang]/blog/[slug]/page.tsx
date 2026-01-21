@@ -127,40 +127,59 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const locale = blogLocaleByLang[lang];
     const copyByLang: Record<
       Lang,
-      { label: string; heading: string; empty: string; readMore: string }
+      {
+        label: string;
+        heading: string;
+        empty: string;
+        readMore: string;
+        conceptualTitle: string;
+        practicalTitle: string;
+      }
     > = {
       ru: {
         label: "Рубрика",
         heading: "Статьи рубрики",
         empty: "Постов в этой рубрике пока нет.",
         readMore: "Читать полностью →",
+        conceptualTitle: "Ключевые идеи",
+        practicalTitle: "Практическое применение",
       },
       en: {
         label: "Rubric",
         heading: "Rubric articles",
         empty: "There are no posts in this rubric yet.",
         readMore: "Read more →",
+        conceptualTitle: "Key ideas",
+        practicalTitle: "Practical application",
       },
       de: {
         label: "Rubrik",
         heading: "Artikel der Rubrik",
         empty: "In dieser Rubrik gibt es noch keine Beiträge.",
         readMore: "Weiterlesen →",
+        conceptualTitle: "Schlüsselideen",
+        practicalTitle: "Praktische Anwendung",
       },
       fi: {
         label: "Rubriikki",
         heading: "Rubriikin artikkelit",
         empty: "Tässä rubriikissa ei ole vielä postauksia.",
         readMore: "Lue lisää →",
+        conceptualTitle: "Keskeiset ideat",
+        practicalTitle: "Käytännön soveltaminen",
       },
       cn: {
         label: "栏目",
         heading: "栏目文章",
         empty: "该栏目暂无文章。",
         readMore: "阅读全文 →",
+        conceptualTitle: "关键要点",
+        practicalTitle: "实践应用",
       },
     };
     const copy = copyByLang[lang];
+    const conceptualKeys = rubric.definition.conceptual_keys?.[lang] ?? [];
+    const practicalApplication = rubric.definition.practical_application?.[lang] ?? "";
 
     return (
       <main className="page">
@@ -169,6 +188,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <h1 className="rubric-hero__title">{rubric.labels[lang]}</h1>
           <p className="rubric-hero__description">{rubric.description[lang]}</p>
           <p className="rubric-hero__postulate">{rubric.definition.postulate[lang]}</p>
+          <div className="rubric-hero__details">
+            <div className="rubric-hero__detail">
+              <h2 className="rubric-hero__subtitle">{copy.conceptualTitle}</h2>
+              <ul className="rubric-hero__list">
+                {conceptualKeys.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rubric-hero__detail">
+              <h2 className="rubric-hero__subtitle">{copy.practicalTitle}</h2>
+              <p className="rubric-hero__text">{practicalApplication}</p>
+            </div>
+          </div>
         </section>
         <section className="rubric-posts">
           <h2 className="rubric-posts__title">{copy.heading}</h2>

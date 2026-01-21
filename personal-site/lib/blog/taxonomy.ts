@@ -15,6 +15,8 @@ export const blogRubrics: BlogRubricDefinition[] = taxonomy.rubrics.map((rubric)
   description: rubric.description,
   definition: {
     postulate: rubric.definition.postulate,
+    conceptual_keys: rubric.definition.conceptual_keys,
+    practical_application: rubric.definition.practical_application,
   },
   seoKeywords: rubric.seoKeywords,
 }));
