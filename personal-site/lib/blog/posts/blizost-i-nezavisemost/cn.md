@@ -15,7 +15,7 @@ descriptive:
   preview: "亲密与独立，是走向合一的渴望与保持独特性的需求之间的张力。文本将建设性的爱视为对他人成长的关怀与责任，也强调没有尊重，爱就会变成权力。我们在追求亲密时，如何守住尊重？💙"
   seoLead: "关系中的亲密与独立：爱是关怀、责任，以及对他人自由和成长的尊重。"
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology"]
     category_ids: ["category:relationships-ideas"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["亲密与独立", "建设性的爱", "关系中的尊重"]

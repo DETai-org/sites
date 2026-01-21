@@ -15,7 +15,7 @@ descriptive:
   preview: "Nähe und Unabhängigkeit sind die Spannung zwischen dem Drang nach Verbundenheit und dem Bedürfnis, die eigene Einzigartigkeit zu bewahren. Der Text beschreibt produktive Liebe als Fürsorge und Verantwortung für das Wachstum des anderen und erinnert daran, dass ohne Respekt Liebe zur Macht wird. Was hilft, Respekt zu bewahren, wenn wir Nähe suchen? 💙"
   seoLead: "Nähe und Unabhängigkeit in Beziehungen: Liebe als Fürsorge, Verantwortung und Respekt für die Freiheit und das Wachstum des anderen."
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology"]
     category_ids: ["category:relationships-ideas"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["Nähe und Unabhängigkeit", "produktive Liebe", "Respekt in Beziehungen"]

@@ -15,7 +15,7 @@ descriptive:
   preview: "Closeness and independence are the tension between the pull toward unity and the need to preserve uniqueness. The text frames productive love as care and responsibility for another’s growth, while stressing the respect without which love turns into power. What helps preserve respect when we seek closeness? 💙"
   seoLead: "Closeness and independence in relationships: love as care, responsibility, and respect for another person’s freedom and growth."
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology"]
     category_ids: ["category:relationships-ideas"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["closeness and independence", "productive love", "respect in relationships"]
