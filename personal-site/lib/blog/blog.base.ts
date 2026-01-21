@@ -74,4 +74,31 @@ export const baseBlogPosts: BlogPostBase[] = [
       cn: "lib/blog/posts/blizost-i-nezavisemost/cn.md",
     },
   },
+  {
+    postId: "sposoben-li-chelovek-izmenitsya",
+    publishedAt: "2017-05-01T09:00:00+03:00",
+    author: "Anton Kolhonen",
+    status: "publish",
+    rubric: { slug: "rubric:personal-lesgaft-study-notes" },
+    category: { slug: "category:patterns" },
+    keywords: [{ slug: "keyword:inner-tension" }],
+    keywordsRaw: [
+      "личностные изменения",
+      "внутренние конфликты",
+      "влияние среды",
+    ],
+    coverImage: {
+      src: "/images/posts/sposoben-li-chelovek-izmenitsya.webp",
+      width: 1600,
+      height: 1200,
+      alt: "Способность человека меняться через осознание и среду",
+    },
+    contentFiles: {
+      ru: "lib/blog/posts/sposoben-li-chelovek-izmenitsya/ru.md",
+      en: "lib/blog/posts/sposoben-li-chelovek-izmenitsya/en.md",
+      de: "lib/blog/posts/sposoben-li-chelovek-izmenitsya/de.md",
+      fi: "lib/blog/posts/sposoben-li-chelovek-izmenitsya/fi.md",
+      cn: "lib/blog/posts/sposoben-li-chelovek-izmenitsya/cn.md",
+    },
+  },
 ];
