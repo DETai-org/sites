@@ -3,7 +3,7 @@ type: post
 administrative:
   id: eta-istoriya-pro-odnogo-cheloveka
   authors:
-    - Anton
+    - Anton Kolhonen
   date_ymd: 2016-05-16
   status: publish
   channels:

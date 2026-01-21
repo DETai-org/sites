@@ -66,7 +66,7 @@ type: post
 administrative:
   id: some-post-id
   authors:
-    - Anton
+    - Anton Kolhonen
   date_ymd: 2026-01-17
   status: publish
   channels:

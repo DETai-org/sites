@@ -4,7 +4,7 @@ export const baseBlogPosts: BlogPostBase[] = [
   {
     postId: "eta-istoriya-pro-odnogo-cheloveka",
     publishedAt: "2016-05-16T10:08:00+03:00",
-    author: "Anton",
+    author: "Anton Kolhonen",
     status: "publish",
     originalLink:
       "https://antonkolhonen.com/trenirovki/eta-istoriya-pro-odnogo-cheloveka",
@@ -30,7 +30,7 @@ export const baseBlogPosts: BlogPostBase[] = [
   {
     postId: "sila-i-svet-haus-i-mrak",
     publishedAt: "2016-06-23T12:10:00+03:00",
-    author: "Anton",
+    author: "Anton Kolhonen",
     status: "publish",
     originalLink: "https://antonkolhonen.com/psihologiya/sila-i-svet-haus-i-mrak",
     wordpressId: 3043,
