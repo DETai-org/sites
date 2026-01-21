@@ -477,6 +477,172 @@
           "origin": "manual",
           "created_at": "2026-01-25",
           "parent_id": null
+        },
+        {
+          "id": "rubric:det-notes",
+          "routeSlugs": {
+            "ru": "zametki-det",
+            "en": "det-notes",
+            "de": "det-notizen",
+            "fi": "det-muistiinpanot",
+            "cn": "det-bi-ji"
+          },
+          "type": "rubric",
+          "label": {
+            "ru": "Заметки DET",
+            "en": "DET Notes",
+            "de": "DET-Notizen",
+            "fi": "DET-muistiinpanot",
+            "cn": "DET 笔记"
+          },
+          "title": {
+            "ru": "Заметки DET — тексты вне рубрик, но внутри контекста диалектической экзистенциальной терапии",
+            "en": "DET Notes — texts outside rubrics but within the context of dialectical existential therapy",
+            "de": "DET-Notizen — Texte außerhalb der Rubriken, aber innerhalb des Kontexts der dialektisch-existenziellen Therapie",
+            "fi": "DET-muistiinpanot — tekstit rubriikkien ulkopuolella, mutta dialektisen eksistentiaalisen terapian kontekstissa",
+            "cn": "DET 笔记——不在栏目内但处于辩证存在主义治疗语境中的文本"
+          },
+          "description": {
+            "ru": "Посты, которые не попадают в существующие рубрики DET: рабочие мысли, уточнения, наблюдения, связки и контекст, важные для понимания подхода, но не являющиеся отдельной теоретической осью.",
+            "en": "Posts that do not fit the existing DET rubrics: working thoughts, clarifications, observations, links, and context that are important for understanding the approach but are not a separate theoretical axis.",
+            "de": "Beiträge, die nicht in bestehende DET-Rubriken passen: Arbeitsgedanken, Klärungen, Beobachtungen, Verknüpfungen und Kontext, die für das Verständnis des Ansatzes wichtig sind, aber keine eigene theoretische Achse darstellen.",
+            "fi": "Julkaisut, jotka eivät sovi olemassa oleviin DET-rubriikkeihin: työajatuksia, täsmennyksiä, havaintoja, yhteyksiä ja kontekstia, jotka ovat tärkeitä lähestymistavan ymmärtämiseksi, mutta eivät muodosta erillistä teoreettista akselia.",
+            "cn": "不符合现有 DET 栏目的帖子：工作性想法、澄清、观察、关联与背景，这些内容对理解该方法很重要，但并非独立的理论轴。"
+          },
+          "definition": {
+            "postulate": {
+              "ru": "В DET остаётся место для текста, который не обязан укладываться в заранее заданные оси. «Заметки DET» фиксируют смысл, контекст и рабочие связки — без искусственного натягивания на рубрики.\n\nНе всякий значимый текст обязан быть рубрикой. «Заметки DET» сохраняют живые переходы, уточнения и рабочие куски смысла, из которых затем вырастают оси, методологии и формальные разделы.",
+              "en": "In DET there is room for text that does not have to fit into predefined axes. “DET Notes” capture meaning, context, and working links without forcing them into rubrics.\n\nNot every significant text must become a rubric. “DET Notes” preserve living transitions, clarifications, and working fragments of meaning from which axes, methodologies, and formal sections later grow.",
+              "de": "In der DET bleibt Raum für Texte, die nicht in vorgegebene Achsen passen müssen. „DET-Notizen“ halten Sinn, Kontext und Arbeitsverknüpfungen fest — ohne künstliche Anpassung an Rubriken.\n\nNicht jeder bedeutsame Text muss eine Rubrik sein. „DET-Notizen“ bewahren lebendige Übergänge, Präzisierungen und arbeitende Sinnfragmente, aus denen später Achsen, Methodologien und formale Abschnitte entstehen.",
+              "fi": "DET:ssä on tilaa tekstille, jonka ei tarvitse asettua ennalta määriteltyihin akseleihin. “DET-muistiinpanot” tallentavat merkityksen, kontekstin ja työskentely-yhteydet ilman keinotekoista sovittamista rubriikkeihin.\n\nJokaisen merkityksellisen tekstin ei tarvitse olla rubriikki. “DET-muistiinpanot” säilyttävät elävät siirtymät, täsmennykset ja työskentelyn merkityspalat, joista myöhemmin kasvaa akseleita, metodologioita ja muodollisia osioita.",
+              "cn": "在 DET 中仍有空间容纳不必落入既定轴线的文本。“DET 笔记”记录意义、语境与工作中的关联——不强行塞进栏目。\n\n并非每一段重要文本都必须成为栏目。“DET 笔记”保留活的过渡、澄清与工作性的意义片段，之后轴线、方法论与正式章节会从中生长出来。"
+            },
+            "conceptual_keys": {
+              "ru": [
+                "контекст DET",
+                "связки между рубриками",
+                "рабочие формулировки",
+                "наблюдения из практики",
+                "уточнения и примечания",
+                "гипотезы и черновые модели",
+                "мета-уровень понимания",
+                "границы применимости"
+              ],
+              "en": [
+                "DET context",
+                "links between rubrics",
+                "working formulations",
+                "observations from practice",
+                "clarifications and notes",
+                "hypotheses and draft models",
+                "meta-level understanding",
+                "limits of applicability"
+              ],
+              "de": [
+                "DET-Kontext",
+                "Verknüpfungen zwischen Rubriken",
+                "Arbeitsformulierungen",
+                "Beobachtungen aus der Praxis",
+                "Klärungen und Notizen",
+                "Hypothesen und Entwurfsmodelle",
+                "Meta-Ebene des Verstehens",
+                "Grenzen der Anwendbarkeit"
+              ],
+              "fi": [
+                "DET-konteksti",
+                "yhteydet rubriikkien välillä",
+                "työskentelymuotoilut",
+                "havainnot käytännöstä",
+                "täsmennykset ja huomautukset",
+                "hypoteesit ja luonnosmallit",
+                "meta-tason ymmärrys",
+                "soveltuvuuden rajat"
+              ],
+              "cn": [
+                "DET 语境",
+                "栏目之间的连接",
+                "工作性表述",
+                "来自实践的观察",
+                "澄清与备注",
+                "假设与草案模型",
+                "元层级理解",
+                "适用边界"
+              ]
+            },
+            "practical_application": {
+              "ru": "Используй эту рубрику, когда пост относится к DET, но не соответствует критериям ни одной рубрики: это может быть пояснение на полях, разбор примера, уточнение термина, связка между идеями, заметка о применимости, промежуточная гипотеза или фрагмент контекста, который помогает читать другие тексты. Если текст явно соответствует другой рубрике, приоритет у неё; «Заметки DET» применяются как fallback.",
+              "en": "Use this rubric when a post relates to DET but does not meet the criteria of any rubric: it may be a marginal note, a case breakdown, a term clarification, a link between ideas, a note on applicability, an intermediate hypothesis, or a context fragment that helps read other texts. If a text clearly matches another rubric, that rubric has priority; “DET Notes” serve as a fallback.",
+              "de": "Nutze diese Rubrik, wenn ein Beitrag zur DET gehört, aber die Kriterien keiner Rubrik erfüllt: Das kann eine Randbemerkung, eine Fallanalyse, eine Begriffspräzisierung, eine Verbindung zwischen Ideen, eine Anmerkung zur Anwendbarkeit, eine Zwischenhypothese oder ein Kontextfragment sein, das hilft, andere Texte zu lesen. Wenn ein Text klar einer anderen Rubrik entspricht, hat diese Vorrang; „DET-Notizen“ dienen als Fallback.",
+              "fi": "Käytä tätä rubriikkia, kun kirjoitus liittyy DET:hen, mutta ei täytä minkään rubriikin kriteerejä: se voi olla reunahuomautus, esimerkin purku, termin täsmennys, ideoiden välinen yhteys, huomio soveltuvuudesta, välivaiheen hypoteesi tai kontekstinpala, joka auttaa lukemaan muita tekstejä. Jos teksti selvästi kuuluu toiseen rubriikkiin, sillä on etusija; “DET-muistiinpanot” toimivat fallbackina.",
+              "cn": "当文章与 DET 相关但不符合任何栏目标准时使用该栏目：它可以是边注、案例拆解、术语澄清、观点之间的连接、适用性说明、中间假设或帮助阅读其他文本的语境片段。如果文本明确属于其他栏目，则以其为优先；“DET 笔记”作为兜底使用。"
+            }
+          },
+          "seo_keywords": {
+            "ru": [
+              "DET заметки",
+              "диалектическая экзистенциальная терапия заметки",
+              "заметки DET",
+              "контекст DET",
+              "практика DET",
+              "рабочие гипотезы DET",
+              "связки и уточнения DET",
+              "наблюдения DET",
+              "мета-заметки DET",
+              "пояснения к DET"
+            ],
+            "en": [
+              "DET notes",
+              "dialectical existential therapy notes",
+              "notes on DET",
+              "DET context",
+              "DET practice",
+              "DET working hypotheses",
+              "DET links and clarifications",
+              "DET observations",
+              "DET meta notes",
+              "clarifications to DET"
+            ],
+            "de": [
+              "DET-Notizen",
+              "Notizen zur dialektisch-existenziellen Therapie",
+              "Notizen zu DET",
+              "DET-Kontext",
+              "DET-Praxis",
+              "Arbeits­hypothesen der DET",
+              "Verknüpfungen und Klärungen in der DET",
+              "Beobachtungen zur DET",
+              "DET-Meta-Notizen",
+              "Erläuterungen zur DET"
+            ],
+            "fi": [
+              "DET-muistiinpanot",
+              "dialektisen eksistentiaalisen terapian muistiinpanot",
+              "muistiinpanot DET:stä",
+              "DET-konteksti",
+              "DET-käytäntö",
+              "DET-työhypoteesit",
+              "DET-yhteydet ja täsmennykset",
+              "DET-havainnot",
+              "DET-meta-muistiinpanot",
+              "selvennykset DET:stä"
+            ],
+            "cn": [
+              "DET 笔记",
+              "辩证存在主义治疗笔记",
+              "DET 相关笔记",
+              "DET 语境",
+              "DET 实践",
+              "DET 工作性假设",
+              "DET 关联与澄清",
+              "DET 观察",
+              "DET 元笔记",
+              "DET 说明"
+            ]
+          },
+          "lifecycle": "approved",
+          "origin": "manual",
+          "created_at": "2026-01-21",
+          "parent_id": null
         }
       ]
     },
@@ -1162,6 +1328,172 @@
           "lifecycle": "approved",
           "origin": "wordpress_import",
           "created_at": "2026-01-20",
+          "parent_id": null
+        },
+        {
+          "id": "rubric:det-notes",
+          "routeSlugs": {
+            "ru": "zametki-det",
+            "en": "det-notes",
+            "de": "det-notizen",
+            "fi": "det-muistiinpanot",
+            "cn": "det-bi-ji"
+          },
+          "type": "rubric",
+          "label": {
+            "ru": "Заметки DET",
+            "en": "DET Notes",
+            "de": "DET-Notizen",
+            "fi": "DET-muistiinpanot",
+            "cn": "DET 笔记"
+          },
+          "title": {
+            "ru": "Заметки DET — тексты вне рубрик, но внутри контекста диалектической экзистенциальной терапии",
+            "en": "DET Notes — texts outside rubrics but within the context of dialectical existential therapy",
+            "de": "DET-Notizen — Texte außerhalb der Rubriken, aber innerhalb des Kontexts der dialektisch-existenziellen Therapie",
+            "fi": "DET-muistiinpanot — tekstit rubriikkien ulkopuolella, mutta dialektisen eksistentiaalisen terapian kontekstissa",
+            "cn": "DET 笔记——不在栏目内但处于辩证存在主义治疗语境中的文本"
+          },
+          "description": {
+            "ru": "Посты, которые не попадают в существующие рубрики DET: рабочие мысли, уточнения, наблюдения, связки и контекст, важные для понимания подхода, но не являющиеся отдельной теоретической осью.",
+            "en": "Posts that do not fit the existing DET rubrics: working thoughts, clarifications, observations, links, and context that are important for understanding the approach but are not a separate theoretical axis.",
+            "de": "Beiträge, die nicht in bestehende DET-Rubriken passen: Arbeitsgedanken, Klärungen, Beobachtungen, Verknüpfungen und Kontext, die für das Verständnis des Ansatzes wichtig sind, aber keine eigene theoretische Achse darstellen.",
+            "fi": "Julkaisut, jotka eivät sovi olemassa oleviin DET-rubriikkeihin: työajatuksia, täsmennyksiä, havaintoja, yhteyksiä ja kontekstia, jotka ovat tärkeitä lähestymistavan ymmärtämiseksi, mutta eivät muodosta erillistä teoreettista akselia.",
+            "cn": "不符合现有 DET 栏目的帖子：工作性想法、澄清、观察、关联与背景，这些内容对理解该方法很重要，但并非独立的理论轴。"
+          },
+          "definition": {
+            "postulate": {
+              "ru": "В DET остаётся место для текста, который не обязан укладываться в заранее заданные оси. «Заметки DET» фиксируют смысл, контекст и рабочие связки — без искусственного натягивания на рубрики.\n\nНе всякий значимый текст обязан быть рубрикой. «Заметки DET» сохраняют живые переходы, уточнения и рабочие куски смысла, из которых затем вырастают оси, методологии и формальные разделы.",
+              "en": "In DET there is room for text that does not have to fit into predefined axes. “DET Notes” capture meaning, context, and working links without forcing them into rubrics.\n\nNot every significant text must become a rubric. “DET Notes” preserve living transitions, clarifications, and working fragments of meaning from which axes, methodologies, and formal sections later grow.",
+              "de": "In der DET bleibt Raum für Texte, die nicht in vorgegebene Achsen passen müssen. „DET-Notizen“ halten Sinn, Kontext und Arbeitsverknüpfungen fest — ohne künstliche Anpassung an Rubriken.\n\nNicht jeder bedeutsame Text muss eine Rubrik sein. „DET-Notizen“ bewahren lebendige Übergänge, Präzisierungen und arbeitende Sinnfragmente, aus denen später Achsen, Methodologien und formale Abschnitte entstehen.",
+              "fi": "DET:ssä on tilaa tekstille, jonka ei tarvitse asettua ennalta määriteltyihin akseleihin. “DET-muistiinpanot” tallentavat merkityksen, kontekstin ja työskentely-yhteydet ilman keinotekoista sovittamista rubriikkeihin.\n\nJokaisen merkityksellisen tekstin ei tarvitse olla rubriikki. “DET-muistiinpanot” säilyttävät elävät siirtymät, täsmennykset ja työskentelyn merkityspalat, joista myöhemmin kasvaa akseleita, metodologioita ja muodollisia osioita.",
+              "cn": "在 DET 中仍有空间容纳不必落入既定轴线的文本。“DET 笔记”记录意义、语境与工作中的关联——不强行塞进栏目。\n\n并非每一段重要文本都必须成为栏目。“DET 笔记”保留活的过渡、澄清与工作性的意义片段，之后轴线、方法论与正式章节会从中生长出来。"
+            },
+            "conceptual_keys": {
+              "ru": [
+                "контекст DET",
+                "связки между рубриками",
+                "рабочие формулировки",
+                "наблюдения из практики",
+                "уточнения и примечания",
+                "гипотезы и черновые модели",
+                "мета-уровень понимания",
+                "границы применимости"
+              ],
+              "en": [
+                "DET context",
+                "links between rubrics",
+                "working formulations",
+                "observations from practice",
+                "clarifications and notes",
+                "hypotheses and draft models",
+                "meta-level understanding",
+                "limits of applicability"
+              ],
+              "de": [
+                "DET-Kontext",
+                "Verknüpfungen zwischen Rubriken",
+                "Arbeitsformulierungen",
+                "Beobachtungen aus der Praxis",
+                "Klärungen und Notizen",
+                "Hypothesen und Entwurfsmodelle",
+                "Meta-Ebene des Verstehens",
+                "Grenzen der Anwendbarkeit"
+              ],
+              "fi": [
+                "DET-konteksti",
+                "yhteydet rubriikkien välillä",
+                "työskentelymuotoilut",
+                "havainnot käytännöstä",
+                "täsmennykset ja huomautukset",
+                "hypoteesit ja luonnosmallit",
+                "meta-tason ymmärrys",
+                "soveltuvuuden rajat"
+              ],
+              "cn": [
+                "DET 语境",
+                "栏目之间的连接",
+                "工作性表述",
+                "来自实践的观察",
+                "澄清与备注",
+                "假设与草案模型",
+                "元层级理解",
+                "适用边界"
+              ]
+            },
+            "practical_application": {
+              "ru": "Используй эту рубрику, когда пост относится к DET, но не соответствует критериям ни одной рубрики: это может быть пояснение на полях, разбор примера, уточнение термина, связка между идеями, заметка о применимости, промежуточная гипотеза или фрагмент контекста, который помогает читать другие тексты. Если текст явно соответствует другой рубрике, приоритет у неё; «Заметки DET» применяются как fallback.",
+              "en": "Use this rubric when a post relates to DET but does not meet the criteria of any rubric: it may be a marginal note, a case breakdown, a term clarification, a link between ideas, a note on applicability, an intermediate hypothesis, or a context fragment that helps read other texts. If a text clearly matches another rubric, that rubric has priority; “DET Notes” serve as a fallback.",
+              "de": "Nutze diese Rubrik, wenn ein Beitrag zur DET gehört, aber die Kriterien keiner Rubrik erfüllt: Das kann eine Randbemerkung, eine Fallanalyse, eine Begriffspräzisierung, eine Verbindung zwischen Ideen, eine Anmerkung zur Anwendbarkeit, eine Zwischenhypothese oder ein Kontextfragment sein, das hilft, andere Texte zu lesen. Wenn ein Text klar einer anderen Rubrik entspricht, hat diese Vorrang; „DET-Notizen“ dienen als Fallback.",
+              "fi": "Käytä tätä rubriikkia, kun kirjoitus liittyy DET:hen, mutta ei täytä minkään rubriikin kriteerejä: se voi olla reunahuomautus, esimerkin purku, termin täsmennys, ideoiden välinen yhteys, huomio soveltuvuudesta, välivaiheen hypoteesi tai kontekstinpala, joka auttaa lukemaan muita tekstejä. Jos teksti selvästi kuuluu toiseen rubriikkiin, sillä on etusija; “DET-muistiinpanot” toimivat fallbackina.",
+              "cn": "当文章与 DET 相关但不符合任何栏目标准时使用该栏目：它可以是边注、案例拆解、术语澄清、观点之间的连接、适用性说明、中间假设或帮助阅读其他文本的语境片段。如果文本明确属于其他栏目，则以其为优先；“DET 笔记”作为兜底使用。"
+            }
+          },
+          "seo_keywords": {
+            "ru": [
+              "DET заметки",
+              "диалектическая экзистенциальная терапия заметки",
+              "заметки DET",
+              "контекст DET",
+              "практика DET",
+              "рабочие гипотезы DET",
+              "связки и уточнения DET",
+              "наблюдения DET",
+              "мета-заметки DET",
+              "пояснения к DET"
+            ],
+            "en": [
+              "DET notes",
+              "dialectical existential therapy notes",
+              "notes on DET",
+              "DET context",
+              "DET practice",
+              "DET working hypotheses",
+              "DET links and clarifications",
+              "DET observations",
+              "DET meta notes",
+              "clarifications to DET"
+            ],
+            "de": [
+              "DET-Notizen",
+              "Notizen zur dialektisch-existenziellen Therapie",
+              "Notizen zu DET",
+              "DET-Kontext",
+              "DET-Praxis",
+              "Arbeits­hypothesen der DET",
+              "Verknüpfungen und Klärungen in der DET",
+              "Beobachtungen zur DET",
+              "DET-Meta-Notizen",
+              "Erläuterungen zur DET"
+            ],
+            "fi": [
+              "DET-muistiinpanot",
+              "dialektisen eksistentiaalisen terapian muistiinpanot",
+              "muistiinpanot DET:stä",
+              "DET-konteksti",
+              "DET-käytäntö",
+              "DET-työhypoteesit",
+              "DET-yhteydet ja täsmennykset",
+              "DET-havainnot",
+              "DET-meta-muistiinpanot",
+              "selvennykset DET:stä"
+            ],
+            "cn": [
+              "DET 笔记",
+              "辩证存在主义治疗笔记",
+              "DET 相关笔记",
+              "DET 语境",
+              "DET 实践",
+              "DET 工作性假设",
+              "DET 关联与澄清",
+              "DET 观察",
+              "DET 元笔记",
+              "DET 说明"
+            ]
+          },
+          "lifecycle": "approved",
+          "origin": "manual",
+          "created_at": "2026-01-21",
           "parent_id": null
         }
       ]

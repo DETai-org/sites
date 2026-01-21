@@ -131,40 +131,59 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const locale = blogLocaleByLang[lang];
     const copyByLang: Record<
       Lang,
-      { label: string; heading: string; empty: string; readMore: string }
+      {
+        label: string;
+        heading: string;
+        empty: string;
+        readMore: string;
+        conceptualTitle: string;
+        practicalTitle: string;
+      }
     > = {
       ru: {
         label: "Рубрика",
         heading: "Статьи рубрики",
         empty: "Постов в этой рубрике пока нет.",
         readMore: "Читать полностью",
+        conceptualTitle: "Ключевые идеи",
+        practicalTitle: "Практическое применение",
       },
       en: {
         label: "Rubric",
         heading: "Rubric articles",
         empty: "There are no posts in this rubric yet.",
         readMore: "Read more",
+        conceptualTitle: "Key ideas",
+        practicalTitle: "Practical application",
       },
       de: {
         label: "Rubrik",
         heading: "Artikel der Rubrik",
         empty: "In dieser Rubrik gibt es noch keine Beiträge.",
         readMore: "Weiterlesen",
+        conceptualTitle: "Schlüsselideen",
+        practicalTitle: "Praktische Anwendung",
       },
       fi: {
         label: "Rubriikki",
         heading: "Rubriikin artikkelit",
         empty: "Tässä rubriikissa ei ole vielä postauksia.",
         readMore: "Lue lisää",
+        conceptualTitle: "Keskeiset ideat",
+        practicalTitle: "Käytännön soveltaminen",
       },
       cn: {
         label: "栏目",
         heading: "栏目文章",
         empty: "该栏目暂无文章。",
         readMore: "阅读全文",
+        conceptualTitle: "关键要点",
+        practicalTitle: "实践应用",
       },
     };
     const copy = copyByLang[lang];
+    const conceptualKeys = rubric.definition.conceptual_keys?.[lang] ?? [];
+    const practicalApplication = rubric.definition.practical_application?.[lang] ?? "";
 
     return (
       <div className="flex min-h-screen flex-col">
@@ -182,6 +201,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-sm text-muted md:text-base">
                 {rubric.definition.postulate[lang]}
               </p>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex flex-col gap-3">
+                  <HeadingLevel2>{copy.conceptualTitle}</HeadingLevel2>
+                  <ul className="flex flex-col gap-2 text-sm text-muted md:text-base">
+                    {conceptualKeys.map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span className="text-accentVar">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <HeadingLevel2>{copy.practicalTitle}</HeadingLevel2>
+                  <p className="text-sm text-muted md:text-base">
+                    {practicalApplication}
+                  </p>
+                </div>
+              </div>
             </div>
           </Section>
           <Section variant="light">
