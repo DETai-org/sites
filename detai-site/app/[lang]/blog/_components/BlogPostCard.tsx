@@ -2,7 +2,9 @@ import Button from "@/components/ui/Button";
 import BodyText from "@/components/ui/BodyText";
 import DefaultCard from "@/components/ui/DefaultCard";
 import { formatBlogDate } from "@/lib/blog/blog.utils";
+import { getRubricRouteSlug } from "@/lib/blog/taxonomy";
 import type { BlogPostSummary } from "@/lib/blog/types";
+import Link from "next/link";
 
 interface BlogPostCardProps {
   post: BlogPostSummary;
@@ -17,7 +19,9 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
     post.excerpt?.trim() || post.frontmatter?.descriptive?.preview?.trim() || "";
   const formattedDate = formatBlogDate(post.publishedAt, locale);
   const metaParts = [formattedDate, post.author].filter(Boolean);
-  const tags = [post.rubric?.label, post.category?.label].filter(Boolean);
+  const rubricRoute = post.rubric?.slug
+    ? getRubricRouteSlug(post.rubric.slug, post.lang)
+    : null;
 
   return (
     <DefaultCard title={title} className="flex h-full flex-col">
@@ -27,17 +31,22 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
             {metaParts.join(" · ")}
           </p>
         ) : null}
-        {tags.length ? (
+        {post.rubric?.label || post.category?.label ? (
           <div className="flex flex-wrap gap-2">
             {/* TODO: временный блок, подогнать под брендовые стили */}
-            {tags.map((tag) => (
-              <span
-                key={`${post.id}-${tag}`}
-                className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar"
+            {post.rubric?.label && rubricRoute ? (
+              <Link
+                href={`/${post.lang}/blog/${rubricRoute}`}
+                className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-accentVar rounded-full border border-accentVar/30 transition-colors hover:border-accentVar/70 hover:text-accentVar"
               >
-                {tag}
+                {post.rubric.label}
+              </Link>
+            ) : null}
+            {post.category?.label ? (
+              <span className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-accentVar rounded-full border border-accentVar/30">
+                {post.category.label}
               </span>
-            ))}
+            ) : null}
           </div>
         ) : null}
         {post.coverImage ? (
