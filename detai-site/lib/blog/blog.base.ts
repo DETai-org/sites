@@ -14,7 +14,7 @@ export const baseBlogPosts: BlogPostBase[] = [
     keywords: [{ slug: "keyword:inner-tension" }],
     keywordsRaw: ["успех", "преодоление", "мотивация"],
     coverImage: {
-      src: "/images/posts/maxresdefault.jpg",
+      src: "personal-site/public/images/posts/maxresdefault.jpg",
       width: 1280,
       height: 720,
       alt: "Эта история про одного человека",
