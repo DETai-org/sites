@@ -109,6 +109,7 @@ structural:
 - `routeSlug` — локализованный для каждого языка (см. `post_slugs_policy.md`).
 - `keywords_raw` локализуется (переводы на каждом языке).
 - `rubric_ids`, `category_ids`, `keyword_ids` — стабильные id, не переводятся.
+- Имя автора берётся из frontmatter, а дополнительные данные можно сверить в `packages/static-data/authors.json`.
 
 ---
 
