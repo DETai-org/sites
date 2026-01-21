@@ -13,6 +13,12 @@ export const baseBlogPosts: BlogPostBase[] = [
     category: { slug: "category:overcoming" },
     keywords: [{ slug: "keyword:inner-tension" }],
     keywordsRaw: ["успех", "преодоление", "мотивация"],
+    coverImage: {
+      src: "/images/posts/maxresdefault.jpg",
+      width: 1280,
+      height: 720,
+      alt: "Эта история про одного человека",
+    },
     contentFiles: {
       ru: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/ru.md",
       en: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/en.md",
