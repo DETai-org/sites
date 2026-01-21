@@ -38,7 +38,7 @@ export const baseBlogPosts: BlogPostBase[] = [
       "уважение в отношениях",
     ],
     coverImage: {
-      src: "https://personal-site.vercel.app/images/posts/closeness-vs-independence.webp",
+      src: "/images/posts/closeness-vs-independence.webp",
       width: 604,
       height: 404,
       alt: "Близость и независимость в отношениях",
