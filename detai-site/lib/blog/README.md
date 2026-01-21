@@ -4,7 +4,7 @@
 
 1. создать папку поста в `lib/blog/posts/<postId>/` и добавить Markdown-файлы переводов (`ru.md`, `en.md` и т.д.);
 2. добавить запись в [`blog.base.ts`](./blog.base.ts) согласно типам из [`types.ts`](./types.ts), указать `postId` (связка с frontmatter) и заполнить `contentFiles`;
-3. подготовить обложку и положить её в `public/images/posts/` (WebP или временный SVG).
+3. подготовить обложку и положить её в `public/images/posts/` (WebP или временный SVG). Если пост публикуется на обоих сайтах, допустимо использовать общую обложку из `personal-site/public/images/posts/` — см. политику в `packages/static-data/policies/post_images_policy.md`.
 
 ## Структура файлов
 
