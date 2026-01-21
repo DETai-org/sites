@@ -52,7 +52,7 @@ export const baseBlogPosts: BlogPostBase[] = [
     publishedAt: "2016-12-15T09:00:00+03:00",
     author: "Anton Kolhonen",
     status: "publish",
-    rubric: { slug: "rubric:det-notes" },
+    rubric: { slug: "rubric:personal-psychology" },
     category: { slug: "category:relationships-ideas" },
     keywords: [{ slug: "keyword:ambivalence" }],
     keywordsRaw: [

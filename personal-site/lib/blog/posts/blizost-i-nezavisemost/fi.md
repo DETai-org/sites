@@ -15,7 +15,7 @@ descriptive:
   preview: "Läheisyys ja itsenäisyys on jännite yhteenkuuluvuuden kaipuun ja oman ainutlaatuisuuden säilyttämisen välillä. Tekstissä tuottava rakkaus kuvataan huolenpitona ja vastuuna toisen kasvusta sekä kunnioituksen tarpeena, ilman jota rakkaus muuttuu vallaksi. Mikä auttaa säilyttämään kunnioituksen, kun etsimme läheisyyttä? 💙"
   seoLead: "Läheisyys ja itsenäisyys ihmissuhteissa: rakkaus huolenpitona, vastuuna ja kunnioituksena toisen vapaudelle ja kasvulle."
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology"]
     category_ids: ["category:relationships-ideas"]
     keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["läheisyys ja itsenäisyys", "tuottava rakkaus", "kunnioitus ihmissuhteissa"]
