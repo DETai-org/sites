@@ -47,4 +47,31 @@ export const baseBlogPosts: BlogPostBase[] = [
       cn: "lib/blog/posts/sila-i-svet-haus-i-mrak/cn.md",
     },
   },
+  {
+    postId: "blizost-i-nezavisemost",
+    publishedAt: "2016-12-15T09:00:00+03:00",
+    author: "Anton Kolhonen",
+    status: "publish",
+    rubric: { slug: "rubric:det-notes" },
+    category: { slug: "category:relationships-ideas" },
+    keywords: [{ slug: "keyword:ambivalence" }],
+    keywordsRaw: [
+      "близость и независимость",
+      "продуктивная любовь",
+      "уважение в отношениях",
+    ],
+    coverImage: {
+      src: "/images/posts/closeness-vs-independence.webp",
+      width: 604,
+      height: 404,
+      alt: "Близость и независимость в отношениях",
+    },
+    contentFiles: {
+      ru: "lib/blog/posts/blizost-i-nezavisemost/ru.md",
+      en: "lib/blog/posts/blizost-i-nezavisemost/en.md",
+      de: "lib/blog/posts/blizost-i-nezavisemost/de.md",
+      fi: "lib/blog/posts/blizost-i-nezavisemost/fi.md",
+      cn: "lib/blog/posts/blizost-i-nezavisemost/cn.md",
+    },
+  },
 ];
