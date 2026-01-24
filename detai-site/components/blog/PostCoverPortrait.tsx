@@ -18,11 +18,11 @@ export default function PostCoverPortrait({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="p-3 rounded-3xl border border-accentVar/10 bg-white/60 shadow-sm">
+    <div className="rounded-3xl bg-accentVar/10 shadow-sm">
       <div className="relative">
         <div
           className={[
-            "overflow-hidden rounded-2xl bg-accentVar/10",
+            "overflow-hidden rounded-3xl",
             isExpanded ? "max-h-none" : "max-h-[420px]",
           ].join(" ")}
         >
@@ -36,7 +36,7 @@ export default function PostCoverPortrait({
         </div>
         {!isExpanded ? (
           <>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg to-transparent" />
             <div className="absolute inset-x-0 bottom-3 flex justify-center">
               <button
                 type="button"

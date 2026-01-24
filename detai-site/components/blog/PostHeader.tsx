@@ -42,9 +42,9 @@ export default function PostHeader({
     <Section variant="light" className="border-b border-accentVar/20">
       <div className="flex flex-col gap-8">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full max-w-4xl">
-            <div className="p-3 rounded-3xl border border-accentVar/10 bg-white/60 shadow-sm">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-accentVar/10 md:aspect-[16/9]">
+          <div className="w-full max-w-4xl mx-[-1rem] md:mx-0">
+            <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
+              <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
                   className="h-full w-full object-cover object-center"
                   src={post.coverImage.src}
@@ -59,52 +59,71 @@ export default function PostHeader({
         <div
           className={
             coverLayout === "square" || coverLayout === "portrait"
-              ? "grid gap-8 lg:grid-cols-[7fr_5fr]"
-              : "flex flex-col gap-6"
+              ? "grid gap-6 lg:grid-cols-[7fr_5fr]"
+              : "flex flex-col gap-4"
           }
         >
-          <div className="flex flex-col gap-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-              {formattedDate} · {readingTimeLabel}
+          <div className="flex flex-col gap-4">
+            <p className="text-[0.65rem] font-medium text-muted md:text-xs">
+              {formattedDate}
+              {!authorName ? ` · ${readingTimeLabel}` : null}
             </p>
-            <Heading level={1}>{post.titles[lang]}</Heading>
+            <Heading level={2}>{post.titles[lang]}</Heading>
             {previewText ? (
-              <BodyText variant="sectionDefaultOnLight" className="max-w-2xl">
+              <BodyText
+                variant="sectionDefaultOnLight"
+                className="max-w-2xl md:text-lg md:leading-relaxed"
+              >
                 {previewText}
               </BodyText>
             ) : null}
             {authorName ? (
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accentVar/10 text-sm font-semibold text-accentVar">
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
                   {authorInitials}
                 </div>
                 <p className="text-sm font-semibold text-fg">{authorName}</p>
+                <span className="h-4 w-px bg-accentVar/30" aria-hidden />
+                <p className="flex items-center gap-2 text-xs font-medium text-muted md:text-sm">
+                  <span aria-hidden>🕒</span>
+                  {readingTimeLabel}
+                </p>
               </div>
             ) : null}
             {(showRubric || showCategory) && (rubricRoute || category) ? (
-              <div className="flex flex-wrap items-center gap-2">
-                {showRubric && post.rubric?.label && rubricRoute ? (
-                  <Link
-                    href={`/${lang}/blog/${rubricRoute}`}
-                    className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
-                  >
-                    {copy.rubricLabel}: {post.rubric.label}
-                  </Link>
-                ) : null}
-                {showCategory && category && categoryHref ? (
-                  <Link
-                    href={categoryHref}
-                    className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
-                  >
-                    {copy.categoryLabel}: {category.label}
-                  </Link>
-                ) : null}
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
+                  {showRubric && post.rubric?.label && rubricRoute ? (
+                    <span>{copy.rubricLabel}</span>
+                  ) : null}
+                  {showCategory && category && categoryHref ? (
+                    <span className="md:text-right">{copy.categoryLabel}</span>
+                  ) : null}
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {showRubric && post.rubric?.label && rubricRoute ? (
+                    <Link
+                      href={`/${lang}/blog/${rubricRoute}`}
+                      className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                    >
+                      {post.rubric.label}
+                    </Link>
+                  ) : null}
+                  {showCategory && category && categoryHref ? (
+                    <Link
+                      href={categoryHref}
+                      className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                    >
+                      {category.label}
+                    </Link>
+                  ) : null}
+                </div>
               </div>
             ) : null}
           </div>
           {coverLayout === "square" && post.coverImage ? (
-            <div className="p-3 rounded-3xl border border-accentVar/10 bg-white/60 shadow-sm">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-accentVar/10 lg:aspect-square">
+            <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
+              <div className="aspect-[4/3] overflow-hidden lg:aspect-square">
                 <img
                   className="h-full w-full object-cover object-center"
                   src={post.coverImage.src}
