@@ -77,7 +77,7 @@ export default function PostHeader({
           <div className="flex flex-col gap-3 px-2 md:px-0">
             <div className="flex flex-col">
               <Heading level={2}>{post.titles[lang]}</Heading>
-              <p className="mt-1 text-[0.65rem] font-medium text-muted md:text-xs">
+              <p className="mt-1 text-xs font-medium text-muted">
                 {formattedDate}
                 {!authorName ? ` · ${readingTimeLabel}` : null}
               </p>
@@ -118,7 +118,7 @@ export default function PostHeader({
                       ) : null}
                     </div>
                     <span className="h-10 w-px bg-accentVar/30 md:h-12" aria-hidden />
-                    <p className="flex items-center gap-2 text-xs font-medium text-muted md:text-sm">
+                    <p className="flex items-center gap-2 text-xs font-medium text-muted">
                       <span aria-hidden>🕒</span>
                       {readingTimeLabel}
                     </p>
