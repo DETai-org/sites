@@ -55,7 +55,7 @@ export default function PostHeader({
         {coverLayout === "landscape" && post.coverImage ? (
           <div className="w-full md:max-w-4xl">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
-              <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
+              <div className="aspect-[16/9] overflow-hidden">
                 <img
                   className="h-full w-full object-cover object-center"
                   src={post.coverImage.src}
