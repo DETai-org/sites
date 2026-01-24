@@ -1,0 +1,9 @@
+{
+  "name": "@det/static-assets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared static assets for DET sites.",
+  "scripts": {
+    "sync": "node scripts/sync-assets.js"
+  }
+}
