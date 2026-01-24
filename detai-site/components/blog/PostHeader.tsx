@@ -3,11 +3,11 @@ import Link from "next/link";
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
-import blogAuthors from "@/lib/blog/authors.json";
 import { blogLocaleByLang } from "@/lib/blog/blog.i18n";
 import { formatBlogDate } from "@/lib/blog/blog.utils";
 import { getRubricRouteSlug } from "@/lib/blog/taxonomy";
 import type { BlogPost, BlogCoverLayout, Lang } from "@/lib/blog/types";
+import authorsData from "../../../packages/static-data/authors.json";
 
 import { blogPostCopyByLang } from "./blogPostCopy";
 import PostCoverPortrait from "./PostCoverPortrait";
@@ -36,7 +36,7 @@ export default function PostHeader({
   const authorName = post.author?.trim();
   const authorInitials = getInitials(authorName);
   const authorMeta = authorName
-    ? blogAuthors.find((author) => author.name === authorName)
+    ? authorsData.items.find((author) => author.display_name === authorName)
     : undefined;
   const authorRole = authorMeta?.role?.trim();
   const authorAvatar = authorMeta?.avatar?.trim();
