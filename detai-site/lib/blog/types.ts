@@ -86,6 +86,8 @@ export interface BlogImage {
   alt: string;
 }
 
+export type BlogCoverLayout = "square" | "landscape" | "portrait" | "none";
+
 export interface BlogPostBase {
   postId: string;
   publishedAt: string;
@@ -96,6 +98,7 @@ export interface BlogPostBase {
   keywords: BlogTaxonomyRef[];
   keywordsRaw: string[];
   coverImage?: BlogImage;
+  coverLayout?: BlogCoverLayout;
   excerpt?: string;
   contentFiles: Record<Lang, string>;
   frontmatter?: BlogPostFrontmatter;
