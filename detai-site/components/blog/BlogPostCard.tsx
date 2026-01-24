@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import BodyText from "@/components/ui/BodyText";
+import Chip from "@/components/ui/Chip";
 import DefaultCard from "@/components/ui/DefaultCard";
 import { formatBlogDate } from "@/lib/blog/blog.utils";
 import { getRubricRouteSlug } from "@/lib/blog/taxonomy";
@@ -34,17 +35,14 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
         {post.rubric?.label || post.category?.label ? (
           <div className="flex flex-wrap gap-2">
             {post.rubric?.label && rubricRoute ? (
-              <Link
-                href={`/${post.lang}/blog/${rubricRoute}`}
-                className="inline-flex items-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold tracking-normal text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
-              >
+              <Chip as={Link} href={`/${post.lang}/blog/${rubricRoute}`} variant="default">
                 {post.rubric.label}
-              </Link>
+              </Chip>
             ) : null}
             {post.category?.label ? (
-              <span className="inline-flex items-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold tracking-normal text-accentVar">
+              <Chip variant="default" interactive={false}>
                 {post.category.label}
-              </span>
+              </Chip>
             ) : null}
           </div>
         ) : null}
