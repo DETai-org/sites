@@ -42,11 +42,11 @@ export default function PostHeader({
     <Section
       variant="light"
       className="border-b border-accentVar/20"
-      containerClassName="px-2 md:px-10"
+      containerClassName="px-1 md:px-10"
     >
       <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full md:max-w-4xl mx-[-0.5rem] md:mx-0">
+          <div className="w-full md:max-w-4xl mx-[-0.25rem] md:mx-0">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
               <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
@@ -68,60 +68,68 @@ export default function PostHeader({
           }
         >
           <div className="flex flex-col gap-3">
-            <p className="text-[0.65rem] font-medium text-muted md:text-xs">
-              {formattedDate}
-              {!authorName ? ` · ${readingTimeLabel}` : null}
-            </p>
-            <Heading level={2}>{post.titles[lang]}</Heading>
-            {previewText ? (
-              <BodyText
-                variant="sectionDefaultOnLight"
-                className="max-w-2xl md:text-lg md:leading-relaxed"
+            <div className="flex flex-col gap-3">
+              <p className="text-[0.65rem] font-medium text-muted md:text-xs">
+                {formattedDate}
+                {!authorName ? ` · ${readingTimeLabel}` : null}
+              </p>
+              <Heading level={2}>{post.titles[lang]}</Heading>
+              {previewText ? (
+                <BodyText
+                  variant="sectionDefaultOnLight"
+                  className="max-w-2xl text-mobile-small md:text-lg md:leading-relaxed"
+                >
+                  {previewText}
+                </BodyText>
+              ) : null}
+            </div>
+            {(authorName || rubricRoute || category) ? (
+              <div
+                className={
+                  coverLayout === "square" ? "flex flex-col gap-2 lg:mt-auto" : "flex flex-col gap-2"
+                }
               >
-                {previewText}
-              </BodyText>
-            ) : null}
-            {authorName ? (
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
-                  {authorInitials}
-                </div>
-                <p className="text-sm font-semibold text-fg">{authorName}</p>
-                <span className="h-4 w-px bg-accentVar/30" aria-hidden />
-                <p className="flex items-center gap-2 text-xs font-medium text-muted md:text-sm">
-                  <span aria-hidden>🕒</span>
-                  {readingTimeLabel}
-                </p>
-              </div>
-            ) : null}
-            {(showRubric || showCategory) && (rubricRoute || category) ? (
-              <div className="flex flex-col gap-2">
-                <div className="grid gap-1 text-xs text-muted sm:grid-cols-2">
-                  {showRubric && post.rubric?.label && rubricRoute ? (
-                    <span>{copy.rubricLabel}</span>
-                  ) : null}
-                  {showCategory && category && categoryHref ? (
-                    <span className="sm:text-right">{copy.categoryLabel}</span>
-                  ) : null}
-                </div>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {showRubric && post.rubric?.label && rubricRoute ? (
-                    <Link
-                      href={`/${lang}/blog/${rubricRoute}`}
-                      className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
-                    >
-                      {post.rubric.label}
-                    </Link>
-                  ) : null}
-                  {showCategory && category && categoryHref ? (
-                    <Link
-                      href={categoryHref}
-                      className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar sm:justify-self-end"
-                    >
-                      {category.label}
-                    </Link>
-                  ) : null}
-                </div>
+                {authorName ? (
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
+                      {authorInitials}
+                    </div>
+                    <p className="text-sm font-semibold text-fg">{authorName}</p>
+                    <span className="h-4 w-px bg-accentVar/30" aria-hidden />
+                    <p className="flex items-center gap-2 text-xs font-medium text-muted md:text-sm">
+                      <span aria-hidden>🕒</span>
+                      {readingTimeLabel}
+                    </p>
+                  </div>
+                ) : null}
+                {(showRubric || showCategory) && (rubricRoute || category) ? (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {showRubric && post.rubric?.label && rubricRoute ? (
+                      <div className="flex flex-col gap-2">
+                        <span className="text-xs text-muted">{copy.rubricLabel}</span>
+                        <Link
+                          href={`/${lang}/blog/${rubricRoute}`}
+                          className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                        >
+                          {post.rubric.label}
+                        </Link>
+                      </div>
+                    ) : null}
+                    {showCategory && category && categoryHref ? (
+                      <div className="flex flex-col gap-2 sm:items-end">
+                        <span className="text-xs text-muted sm:text-right">
+                          {copy.categoryLabel}
+                        </span>
+                        <Link
+                          href={categoryHref}
+                          className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                        >
+                          {category.label}
+                        </Link>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             ) : null}
           </div>
