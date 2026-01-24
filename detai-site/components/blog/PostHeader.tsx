@@ -77,7 +77,7 @@ export default function PostHeader({
               {previewText ? (
                 <BodyText
                   variant="sectionDefaultOnLight"
-                  className="max-w-2xl text-mobile-small md:text-lg md:leading-relaxed"
+                  className="max-w-2xl text-mobile-small md:text-base md:leading-relaxed md:text-muted"
                 >
                   {previewText}
                 </BodyText>
