@@ -1,41 +1,41 @@
 import type { Lang } from "@/lib/blog/types";
 
 type BlogPostCopy = {
-  shareLabel: string;
   emptyContent: string;
   rubricLabel: string;
-  tagsLabel: string;
+  categoryLabel: string;
+  minReadLabel: string;
 };
 
 export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
   ru: {
-    shareLabel: "Поделиться",
     emptyContent: "Контент скоро появится.",
     rubricLabel: "Рубрика",
-    tagsLabel: "Теги",
+    categoryLabel: "Категория",
+    minReadLabel: "мин чтения",
   },
   en: {
-    shareLabel: "Share",
     emptyContent: "Content is coming soon.",
     rubricLabel: "Rubric",
-    tagsLabel: "Tags",
+    categoryLabel: "Category",
+    minReadLabel: "min read",
   },
   de: {
-    shareLabel: "Teilen",
     emptyContent: "Der Inhalt erscheint in Kürze.",
     rubricLabel: "Rubrik",
-    tagsLabel: "Tags",
+    categoryLabel: "Kategorie",
+    minReadLabel: "Min. Lesezeit",
   },
   fi: {
-    shareLabel: "Jaa",
     emptyContent: "Sisältö julkaistaan pian.",
     rubricLabel: "Rubriikki",
-    tagsLabel: "Tunnisteet",
+    categoryLabel: "Kategoria",
+    minReadLabel: "min lukuaika",
   },
   cn: {
-    shareLabel: "分享",
     emptyContent: "内容即将发布。",
     rubricLabel: "栏目",
-    tagsLabel: "标签",
+    categoryLabel: "分类",
+    minReadLabel: "分钟阅读",
   },
 };

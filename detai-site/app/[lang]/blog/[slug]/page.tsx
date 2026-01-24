@@ -259,9 +259,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <BlogPostRenderer
       post={post}
       lang={lang}
-      showRubric={false}
-      showTags={false}
-      showShare={false}
+      showRubric
+      showCategory
     />
   );
 }
