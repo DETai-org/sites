@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import BodyText from "@/components/ui/BodyText";
+import Chip from "@/components/ui/Chip";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import { blogLocaleByLang } from "@/lib/blog/blog.i18n";
@@ -129,12 +130,9 @@ export default function PostHeader({
                     {showRubric && post.rubric?.label && rubricRoute ? (
                       <div className="flex flex-col gap-2">
                         <span className="text-xs text-muted">{copy.rubricLabel}</span>
-                        <Link
-                          href={`/${lang}/blog/${rubricRoute}`}
-                          className="inline-flex items-center justify-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
-                        >
+                        <Chip as={Link} href={`/${lang}/blog/${rubricRoute}`}>
                           {post.rubric.label}
-                        </Link>
+                        </Chip>
                       </div>
                     ) : null}
                     {showCategory && category && categoryHref ? (
@@ -142,12 +140,9 @@ export default function PostHeader({
                         <span className="text-xs text-muted sm:text-right">
                           {copy.categoryLabel}
                         </span>
-                        <Link
-                          href={categoryHref}
-                          className="inline-flex items-center justify-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
-                        >
+                        <Chip as={Link} href={categoryHref}>
                           {category.label}
-                        </Link>
+                        </Chip>
                       </div>
                     ) : null}
                   </div>

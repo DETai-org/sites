@@ -72,3 +72,9 @@ shimmer — это фирменная фича primary.
 * Сохраняет вертикальный ритм: gap мобильный/desktop, отступы `p-mobile-4` → `md:p-6`, тень `shadow-sm` → `hover:shadow-lg` с лёгким сдвигом вверх.
   * `variant="light"` (значение по умолчанию) — фон `bg-surface`, граница `border-accentVar/30`, текст `text-fg`.
   * `variant="dark"` — фон `bg-surface2`, текст `text-accentSoftVar`, граница `border-accentVar/40`.
+
+## Chip.tsx
+
+* Базовый «чип» для светлой темы.
+* Вариант `variant="black"` использует мягкую обводку, тёмный фон `panel-bg` и тёплый текст `fg`.
+* Подходит для рубрик/категорий в карточках постов и в шапке поста.
