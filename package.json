@@ -10,7 +10,8 @@
     "dev:detai": "npm --prefix detai-site run dev",
     "build:detai": "npm --prefix detai-site run build",
     "start:detai": "npm --prefix detai-site run start",
-    "lint:detai": "npm --prefix detai-site run lint"
+    "lint:detai": "npm --prefix detai-site run lint",
+    "sync:static-assets": "node packages/static-assets/scripts/sync-assets.js"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",

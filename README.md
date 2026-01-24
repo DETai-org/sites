@@ -23,7 +23,9 @@
 
 Структура проекта см. в Directory_structure.txt.
 Папка `.github` не используется и отсутствует в репозитории.
-Папка `packages/` содержит общие пакеты и данные, сейчас используется только `packages/static-data`.
+Папка `packages/` содержит общие пакеты и данные:
+- `packages/static-data` — статические данные (например, авторы).
+- `packages/static-assets` — единый источник статических ассетов (аватары, изображения), синхронизируется в `public/` каждого сайта.
 
 ## Правила monorepo
 
@@ -34,6 +36,11 @@
 - Для `personal-site` TypeScript и типы продублированы в `dependencies`, чтобы сборка проходила при production install на Vercel.
 - Root Directory в Vercel — директория сайта (`detai-site` или `personal-site`).
 - `distDir` не переопределяется, у каждого сайта свой локальный `.next`.
+
+## Общие ассеты
+
+- Источник ассетов: `packages/static-assets/public`.
+- Синхронизация в `public/` каждого сайта: `npm run sync:static-assets`.
 
 ## Vercel
 
