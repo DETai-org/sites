@@ -47,11 +47,11 @@ export default function PostHeader({
     >
       <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full md:max-w-4xl mx-[-0.5rem] md:mx-0">
+          <div className="w-full md:max-w-5xl mx-[-0.5rem] md:mx-auto">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
               <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-contain object-center md:object-cover"
                   src={post.coverImage.src}
                   width={post.coverImage.width}
                   height={post.coverImage.height}
@@ -104,7 +104,7 @@ export default function PostHeader({
                   </div>
                 ) : null}
                 {(showRubric || showCategory) && (rubricRoute || category) ? (
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="flex flex-col gap-3">
                     {showRubric && post.rubric?.label && rubricRoute ? (
                       <div className="flex flex-col gap-2">
                         <span className="text-xs text-muted">{copy.rubricLabel}</span>
@@ -117,10 +117,8 @@ export default function PostHeader({
                       </div>
                     ) : null}
                     {showCategory && category && categoryHref ? (
-                      <div className="flex flex-col gap-2 sm:items-end">
-                        <span className="text-xs text-muted sm:text-right">
-                          {copy.categoryLabel}
-                        </span>
+                      <div className="flex flex-col gap-2">
+                        <span className="text-xs text-muted">{copy.categoryLabel}</span>
                         <Link
                           href={categoryHref}
                           className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
