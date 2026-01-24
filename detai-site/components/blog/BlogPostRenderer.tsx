@@ -34,7 +34,7 @@ export default function BlogPostRenderer({
           showRubric={showRubric}
           showCategory={showCategory}
         />
-        <Section variant="light">
+        <Section variant="light" containerClassName="px-2 md:px-10">
           <article className="flex flex-col gap-6 md:gap-8">
             {contentHtml ? (
               <div

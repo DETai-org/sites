@@ -39,10 +39,14 @@ export default function PostHeader({
   const coverLayout = resolveCoverLayout(post.coverLayout, post.coverImage);
 
   return (
-    <Section variant="light" className="border-b border-accentVar/20">
-      <div className="flex flex-col gap-8">
+    <Section
+      variant="light"
+      className="border-b border-accentVar/20"
+      containerClassName="px-2 md:px-10"
+    >
+      <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full max-w-4xl mx-[-1rem] md:mx-0">
+          <div className="w-full md:max-w-4xl mx-[-0.5rem] md:mx-0">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
               <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
@@ -60,10 +64,10 @@ export default function PostHeader({
           className={
             coverLayout === "square" || coverLayout === "portrait"
               ? "grid gap-6 lg:grid-cols-[7fr_5fr]"
-              : "flex flex-col gap-4"
+              : "flex flex-col gap-3"
           }
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
             <p className="text-[0.65rem] font-medium text-muted md:text-xs">
               {formattedDate}
               {!authorName ? ` · ${readingTimeLabel}` : null}
@@ -92,19 +96,19 @@ export default function PostHeader({
             ) : null}
             {(showRubric || showCategory) && (rubricRoute || category) ? (
               <div className="flex flex-col gap-2">
-                <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
+                <div className="grid gap-1 text-xs text-muted sm:grid-cols-2">
                   {showRubric && post.rubric?.label && rubricRoute ? (
                     <span>{copy.rubricLabel}</span>
                   ) : null}
                   {showCategory && category && categoryHref ? (
-                    <span className="md:text-right">{copy.categoryLabel}</span>
+                    <span className="sm:text-right">{copy.categoryLabel}</span>
                   ) : null}
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="grid gap-2 sm:grid-cols-2">
                   {showRubric && post.rubric?.label && rubricRoute ? (
                     <Link
                       href={`/${lang}/blog/${rubricRoute}`}
-                      className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                      className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
                     >
                       {post.rubric.label}
                     </Link>
@@ -112,7 +116,7 @@ export default function PostHeader({
                   {showCategory && category && categoryHref ? (
                     <Link
                       href={categoryHref}
-                      className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                      className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar sm:justify-self-end"
                     >
                       {category.label}
                     </Link>
