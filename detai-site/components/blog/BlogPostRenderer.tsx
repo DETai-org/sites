@@ -48,6 +48,7 @@ export default function BlogPostRenderer({
         <Section
           variant="light"
           fullWidth
+          className="paper--ambient"
           containerClassName="px-0 md:px-10 md:max-w-6xl xl:max-w-7xl"
         >
           <div className="flex flex-col gap-10 xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:items-start xl:gap-12">
@@ -57,21 +58,19 @@ export default function BlogPostRenderer({
               lang={contentLang}
             >
               <div className="mx-auto w-full max-w-3xl">
-                <div className="w-full p-mobile-4 md:p-10 paper--object rounded-3xl border border-[color:rgb(var(--soft-border)/0.08)] shadow-sm">
-                  {contentHtml ? (
-                    <div
-                      className={bodyTextClassName}
-                      dangerouslySetInnerHTML={{ __html: enhancedContentHtml }}
-                    />
-                  ) : (
-                    <BodyText
-                      variant="sectionDefaultOnLight"
-                      className="leading-[1.75rem] hyphens-auto md:leading-relaxed"
-                    >
-                      {fallbackText || copy.emptyContent}
-                    </BodyText>
-                  )}
-                </div>
+                {contentHtml ? (
+                  <div
+                    className={bodyTextClassName}
+                    dangerouslySetInnerHTML={{ __html: enhancedContentHtml }}
+                  />
+                ) : (
+                  <BodyText
+                    variant="sectionDefaultOnLight"
+                    className="leading-[1.75rem] hyphens-auto md:leading-relaxed"
+                  >
+                    {fallbackText || copy.emptyContent}
+                  </BodyText>
+                )}
               </div>
             </article>
             <aside className="hidden xl:block">
