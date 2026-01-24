@@ -42,7 +42,6 @@ export default function PostHeader({
   const authorRole = authorMeta?.role?.trim();
   const authorAvatar = authorMeta?.avatar?.trim();
   const category = post.category?.label?.trim() ? post.category : null;
-  const categoryHref = category ? `/${lang}/blog?category=${category.slug}` : null;
   const coverLayout = resolveCoverLayout(post.coverLayout, post.coverImage);
 
   return (
@@ -135,12 +134,12 @@ export default function PostHeader({
                         </Chip>
                       </div>
                     ) : null}
-                    {showCategory && category && categoryHref ? (
+                    {showCategory && category ? (
                       <div className="flex flex-col gap-2 sm:items-end">
                         <span className="text-xs text-muted sm:text-right">
                           {copy.categoryLabel}
                         </span>
-                        <Chip as={Link} href={categoryHref} variant="default">
+                        <Chip variant="default" interactive={false}>
                           {category.label}
                         </Chip>
                       </div>

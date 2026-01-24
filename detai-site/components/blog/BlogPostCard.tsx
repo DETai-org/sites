@@ -40,7 +40,9 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
               </Chip>
             ) : null}
             {post.category?.label ? (
-              <Chip variant="default">{post.category.label}</Chip>
+              <Chip variant="default" interactive={false}>
+                {post.category.label}
+              </Chip>
             ) : null}
           </div>
         ) : null}
