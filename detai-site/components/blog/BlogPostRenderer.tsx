@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BodyText from "@/components/ui/BodyText";
 import Section from "@/components/ui/Section";
+import { langToHtmlLang } from "@/lib/blog/lang";
 import type { BlogPost, Lang } from "@/lib/blog/types";
 
 import { blogPostCopyByLang } from "./blogPostCopy";
@@ -23,7 +24,7 @@ export default function BlogPostRenderer({
   const contentHtml = post.contentHtml.trim();
   const fallbackText = post.content.trim();
   const copy = blogPostCopyByLang[lang];
-  const contentLang = post.lang ?? lang;
+  const contentLang = langToHtmlLang(post.lang ?? lang);
   const bodyTextClassName =
     "space-y-4 text-mobile-body leading-[1.75rem] hyphens-auto text-fg md:text-lg md:leading-relaxed [&_a]:text-accentVar [&_a]:underline [&_a]:decoration-accentVar/40 [&_a]:underline-offset-4";
 
