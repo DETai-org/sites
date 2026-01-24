@@ -41,12 +41,13 @@ export default function PostHeader({
   return (
     <Section
       variant="light"
+      fullWidth
       className="border-b border-accentVar/20"
-      containerClassName="px-1 md:px-10"
+      containerClassName="max-w-6xl px-2 md:px-10"
     >
       <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full md:max-w-4xl mx-[-0.25rem] md:mx-0">
+          <div className="w-full md:max-w-4xl mx-[-0.5rem] md:mx-0">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
               <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
@@ -77,7 +78,7 @@ export default function PostHeader({
               {previewText ? (
                 <BodyText
                   variant="sectionDefaultOnLight"
-                  className="max-w-2xl text-mobile-small md:text-lg md:leading-relaxed"
+                  className="max-w-2xl text-mobile-small leading-mobile-loose text-muted md:text-lg md:leading-loose"
                 >
                   {previewText}
                 </BodyText>
