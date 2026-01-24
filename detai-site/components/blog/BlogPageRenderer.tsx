@@ -20,6 +20,9 @@ interface BlogPageCopy {
   filtersHeading: string;
   filtersLead: string;
   allLabel: string;
+  categoriesShowLabel: string;
+  categoriesHideLabel: string;
+  categoriesSelectedLabel: string;
   rubricsLabel: string;
   categoriesLabel: string;
   authorsLabel: string;
@@ -104,7 +107,12 @@ export default function BlogPageRenderer({
 
   return (
     <>
-      <Section variant="light" className="border-b border-accentVar/20">
+      <Section
+        variant="light"
+        fullWidth
+        className="border-b border-accentVar/20"
+        containerClassName="px-4 md:px-6"
+      >
         <BlogFiltersHeader
           copy={{
             heading: copy.heading,
@@ -112,6 +120,9 @@ export default function BlogPageRenderer({
             filtersHeading: copy.filtersHeading,
             filtersLead: copy.filtersLead,
             allLabel: copy.allLabel,
+            categoriesShowLabel: copy.categoriesShowLabel,
+            categoriesHideLabel: copy.categoriesHideLabel,
+            categoriesSelectedLabel: copy.categoriesSelectedLabel,
             rubricsLabel: copy.rubricsLabel,
             categoriesLabel: copy.categoriesLabel,
             authorsLabel: copy.authorsLabel,
@@ -142,7 +153,7 @@ export default function BlogPageRenderer({
         />
       </Section>
 
-      <Section variant="light">
+      <Section variant="light" fullWidth containerClassName="px-4 md:px-6">
         <div className="flex flex-col gap-8">
           <p className="text-sm font-semibold text-muted">
             {copy.resultsLabel} {filteredPosts.length}

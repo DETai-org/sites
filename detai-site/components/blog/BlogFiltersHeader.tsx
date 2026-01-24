@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import HeadingLevel2 from "@/components/ui/HeadingLevel2";
@@ -16,6 +18,9 @@ interface BlogFiltersHeaderCopy {
   filtersHeading: string;
   filtersLead: string;
   allLabel: string;
+  categoriesShowLabel: string;
+  categoriesHideLabel: string;
+  categoriesSelectedLabel: string;
   rubricsLabel: string;
   categoriesLabel: string;
   authorsLabel: string;
@@ -69,6 +74,12 @@ export default function BlogFiltersHeader({
   onToggleAuthor,
   onToggleYear,
 }: BlogFiltersHeaderProps) {
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const selectedCategoriesLabels = categories
+    .filter((category) => selectedCategories.includes(category.slug))
+    .map((category) => category.label);
+  const categoriesSummary = selectedCategoriesLabels.join(", ");
+
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -86,7 +97,7 @@ export default function BlogFiltersHeader({
           </BodyText>
         </div>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="mt-6 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div className="flex flex-col gap-3">
             <p className="text-xs font-semibold tracking-[0.16em] text-muted">
               {copy.rubricsLabel}
@@ -111,77 +122,102 @@ export default function BlogFiltersHeader({
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <p className="text-xs font-semibold tracking-[0.16em] text-muted">
+                {copy.authorsLabel}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  className={chipClasses(selectedAuthors.length === 0)}
+                  type="button"
+                  onClick={onResetAuthors}
+                >
+                  {copy.allLabel}
+                </button>
+                {authors.map((author) => (
+                  <button
+                    key={author}
+                    className={chipClasses(selectedAuthors.includes(author))}
+                    type="button"
+                    onClick={() => onToggleAuthor(author)}
+                  >
+                    {author}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-xs font-semibold tracking-[0.16em] text-muted">
+                {copy.yearsLabel}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  className={chipClasses(selectedYears.length === 0)}
+                  type="button"
+                  onClick={onResetYears}
+                >
+                  {copy.allLabel}
+                </button>
+                {years.map((year) => (
+                  <button
+                    key={year}
+                    className={chipClasses(selectedYears.includes(year))}
+                    type="button"
+                    onClick={() => onToggleYear(year)}
+                  >
+                    {year}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 flex flex-col gap-3">
+          <div className="flex items-center justify-between gap-4">
             <p className="text-xs font-semibold tracking-[0.16em] text-muted">
               {copy.categoriesLabel}
             </p>
-            <div className="flex flex-wrap gap-2">
-              <button
-                className={chipClasses(selectedCategories.length === 0)}
-                type="button"
-                onClick={onResetCategories}
-              >
-                {copy.allLabel}
-              </button>
-              {categories.map((category) => (
-                <button
-                  key={category.slug}
-                  className={chipClasses(selectedCategories.includes(category.slug))}
-                  type="button"
-                  onClick={() => onToggleCategory(category.slug)}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
+            <button
+              className="text-xs font-semibold text-accentVar transition-colors hover:text-accentVar/80 md:hidden"
+              type="button"
+              onClick={() => setIsCategoriesOpen((prev) => !prev)}
+              aria-expanded={isCategoriesOpen}
+            >
+              {isCategoriesOpen ? copy.categoriesHideLabel : copy.categoriesShowLabel} (
+              {categories.length})
+            </button>
           </div>
-          <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold tracking-[0.16em] text-muted">
-              {copy.authorsLabel}
+          {selectedCategories.length > 0 ? (
+            <p className="text-xs text-muted md:hidden">
+              {copy.categoriesSelectedLabel}{" "}
+              <span className="text-fg">{categoriesSummary}</span>
             </p>
-            <div className="flex flex-wrap gap-2">
+          ) : null}
+          <div
+            className={cn(
+              "flex flex-wrap gap-2",
+              isCategoriesOpen ? "flex" : "hidden md:flex",
+            )}
+          >
+            <button
+              className={chipClasses(selectedCategories.length === 0)}
+              type="button"
+              onClick={onResetCategories}
+            >
+              {copy.allLabel}
+            </button>
+            {categories.map((category) => (
               <button
-                className={chipClasses(selectedAuthors.length === 0)}
+                key={category.slug}
+                className={chipClasses(selectedCategories.includes(category.slug))}
                 type="button"
-                onClick={onResetAuthors}
+                onClick={() => onToggleCategory(category.slug)}
               >
-                {copy.allLabel}
+                {category.label}
               </button>
-              {authors.map((author) => (
-                <button
-                  key={author}
-                  className={chipClasses(selectedAuthors.includes(author))}
-                  type="button"
-                  onClick={() => onToggleAuthor(author)}
-                >
-                  {author}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold tracking-[0.16em] text-muted">
-              {copy.yearsLabel}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <button
-                className={chipClasses(selectedYears.length === 0)}
-                type="button"
-                onClick={onResetYears}
-              >
-                {copy.allLabel}
-              </button>
-              {years.map((year) => (
-                <button
-                  key={year}
-                  className={chipClasses(selectedYears.includes(year))}
-                  type="button"
-                  onClick={() => onToggleYear(year)}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>

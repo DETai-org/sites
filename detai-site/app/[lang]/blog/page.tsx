@@ -32,6 +32,9 @@ const blogCopyByLang: Record<
     filtersHeading: string;
     filtersLead: string;
     allLabel: string;
+    categoriesShowLabel: string;
+    categoriesHideLabel: string;
+    categoriesSelectedLabel: string;
     rubricsLabel: string;
     categoriesLabel: string;
     authorsLabel: string;
@@ -47,6 +50,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Фильтры",
     filtersLead: "Выберите рубрики, категории, авторов или годы, чтобы сузить список.",
     allLabel: "Все",
+    categoriesShowLabel: "Показать категории",
+    categoriesHideLabel: "Скрыть категории",
+    categoriesSelectedLabel: "Выбрано:",
     rubricsLabel: "Рубрики",
     categoriesLabel: "Категории",
     authorsLabel: "Авторы",
@@ -61,6 +67,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Filters",
     filtersLead: "Pick rubrics, categories, authors, or years to narrow the list.",
     allLabel: "All",
+    categoriesShowLabel: "Show categories",
+    categoriesHideLabel: "Hide categories",
+    categoriesSelectedLabel: "Selected:",
     rubricsLabel: "Rubrics",
     categoriesLabel: "Categories",
     authorsLabel: "Authors",
@@ -75,6 +84,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Filter",
     filtersLead: "Wähle Rubriken, Kategorien, Autor:innen oder Jahre, um die Liste zu verfeinern.",
     allLabel: "Alle",
+    categoriesShowLabel: "Kategorien anzeigen",
+    categoriesHideLabel: "Kategorien ausblenden",
+    categoriesSelectedLabel: "Ausgewählt:",
     rubricsLabel: "Rubriken",
     categoriesLabel: "Kategorien",
     authorsLabel: "Autor:innen",
@@ -89,6 +101,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Suodattimet",
     filtersLead: "Valitse rubriikit, kategoriat, kirjoittajat tai vuodet rajataksesi listaa.",
     allLabel: "Kaikki",
+    categoriesShowLabel: "Näytä kategoriat",
+    categoriesHideLabel: "Piilota kategoriat",
+    categoriesSelectedLabel: "Valittu:",
     rubricsLabel: "Rubriikit",
     categoriesLabel: "Kategoriat",
     authorsLabel: "Kirjoittajat",
@@ -103,6 +118,9 @@ const blogCopyByLang: Record<
     filtersHeading: "筛选",
     filtersLead: "选择栏目、类别、作者或年份来缩小列表。",
     allLabel: "全部",
+    categoriesShowLabel: "显示类别",
+    categoriesHideLabel: "隐藏类别",
+    categoriesSelectedLabel: "已选择：",
     rubricsLabel: "栏目",
     categoriesLabel: "类别",
     authorsLabel: "作者",
@@ -174,6 +192,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
             filtersHeading: copy.filtersHeading,
             filtersLead: copy.filtersLead,
             allLabel: copy.allLabel,
+            categoriesShowLabel: copy.categoriesShowLabel,
+            categoriesHideLabel: copy.categoriesHideLabel,
+            categoriesSelectedLabel: copy.categoriesSelectedLabel,
             rubricsLabel: copy.rubricsLabel,
             categoriesLabel: copy.categoriesLabel,
             authorsLabel: copy.authorsLabel,
