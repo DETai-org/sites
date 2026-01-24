@@ -7,6 +7,7 @@ import { blogLocaleByLang } from "@/lib/blog/blog.i18n";
 import { formatBlogDate } from "@/lib/blog/blog.utils";
 import { getRubricRouteSlug } from "@/lib/blog/taxonomy";
 import type { BlogPost, BlogCoverLayout, Lang } from "@/lib/blog/types";
+import authorsData from "../../../packages/static-data/authors.json";
 
 import { blogPostCopyByLang } from "./blogPostCopy";
 import PostCoverPortrait from "./PostCoverPortrait";
@@ -34,6 +35,11 @@ export default function PostHeader({
   const readingTimeLabel = `${readingTime} ${copy.minReadLabel}`;
   const authorName = post.author?.trim();
   const authorInitials = getInitials(authorName);
+  const authorMeta = authorName
+    ? authorsData.items.find((author) => author.display_name === authorName)
+    : undefined;
+  const authorRole = authorMeta?.role?.trim();
+  const authorAvatar = authorMeta?.avatar?.trim();
   const category = post.category?.label?.trim() ? post.category : null;
   const categoryHref = category ? `/${lang}/blog?category=${category.slug}` : null;
   const coverLayout = resolveCoverLayout(post.coverLayout, post.coverImage);
@@ -42,11 +48,12 @@ export default function PostHeader({
     <Section
       variant="light"
       className="border-b border-accentVar/20"
-      containerClassName="px-1 md:px-10"
+      fullWidth
+      containerClassName="px-0 md:px-10 md:max-w-6xl"
     >
       <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full md:max-w-4xl mx-[-0.25rem] md:mx-0">
+          <div className="w-full md:max-w-4xl">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
               <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
@@ -67,7 +74,7 @@ export default function PostHeader({
               : "flex flex-col gap-3"
           }
         >
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 px-2 md:px-0">
             <div className="flex flex-col gap-3">
               <p className="text-[0.65rem] font-medium text-muted md:text-xs">
                 {formattedDate}
@@ -77,7 +84,7 @@ export default function PostHeader({
               {previewText ? (
                 <BodyText
                   variant="sectionDefaultOnLight"
-                  className="max-w-2xl text-mobile-small md:text-lg md:leading-relaxed"
+                  className="max-w-2xl text-mobile-small md:text-base md:leading-relaxed md:text-muted"
                 >
                   {previewText}
                 </BodyText>
@@ -91,10 +98,25 @@ export default function PostHeader({
               >
                 {authorName ? (
                   <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
-                      {authorInitials}
+                    {authorAvatar ? (
+                      <img
+                        className="h-10 w-10 rounded-full object-cover"
+                        src={authorAvatar}
+                        alt={authorName}
+                        width={40}
+                        height={40}
+                      />
+                    ) : (
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
+                        {authorInitials}
+                      </div>
+                    )}
+                    <div className="flex flex-col">
+                      <p className="text-sm font-semibold text-fg">{authorName}</p>
+                      {authorRole ? (
+                        <p className="text-xs text-muted">{authorRole}</p>
+                      ) : null}
                     </div>
-                    <p className="text-sm font-semibold text-fg">{authorName}</p>
                     <span className="h-4 w-px bg-accentVar/30" aria-hidden />
                     <p className="flex items-center gap-2 text-xs font-medium text-muted md:text-sm">
                       <span aria-hidden>🕒</span>
