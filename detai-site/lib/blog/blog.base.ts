@@ -16,6 +16,7 @@ export const baseBlogPosts: BlogPostBase[] = [
       height: 720,
       alt: "Эта история про одного человека",
     },
+    coverLayout: "landscape",
     contentFiles: {
       ru: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/ru.md",
       en: "lib/blog/posts/eta-istoriya-pro-odnogo-cheloveka/en.md",
@@ -43,6 +44,7 @@ export const baseBlogPosts: BlogPostBase[] = [
       height: 404,
       alt: "Близость и независимость в отношениях",
     },
+    coverLayout: "square",
     contentFiles: {
       ru: "lib/blog/posts/blizost-i-nezavisemost/ru.md",
       en: "lib/blog/posts/blizost-i-nezavisemost/en.md",

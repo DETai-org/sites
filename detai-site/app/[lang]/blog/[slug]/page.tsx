@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import BlogPostRenderer from "@/components/blog/BlogPostRenderer";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import BodyText from "@/components/ui/BodyText";
@@ -9,7 +10,6 @@ import HeadingLevel2 from "@/components/ui/HeadingLevel2";
 import Section from "@/components/ui/Section";
 import { getPostByLangAndSlug, getPostsIndexForLang } from "@/lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "@/lib/blog/blog.i18n";
-import { formatBlogDate } from "@/lib/blog/blog.utils";
 import {
   blogRubrics,
   getRubricByRouteSlug,
@@ -255,59 +255,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const contentHtml = post.contentHtml.trim();
-  const fallbackText = post.content.trim();
-  const locale = blogLocaleByLang[post.lang];
-  const formattedDate = formatBlogDate(post.publishedAt, locale);
-  const metaParts = [formattedDate, post.author].filter(Boolean);
-  const emptyCopyByLang: Record<Lang, string> = {
-    ru: "Контент скоро появится.",
-    en: "Content is coming soon.",
-    de: "Der Inhalt erscheint in Kürze.",
-    fi: "Sisältö julkaistaan pian.",
-    cn: "内容即将发布。",
-  };
-
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex flex-1 flex-col">
-        <Section variant="light">
-          <article className="flex flex-col gap-6 md:gap-8">
-            <header className="flex flex-col gap-4">
-              {metaParts.length ? (
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                  {metaParts.join(" · ")}
-                </p>
-              ) : null}
-              <Heading level={1}>{post.titles[lang]}</Heading>
-              {post.coverImage ? (
-                <img
-                  className="h-72 w-full rounded-2xl object-cover"
-                  src={post.coverImage.src}
-                  width={post.coverImage.width}
-                  height={post.coverImage.height}
-                  alt={post.coverImage.alt}
-                />
-              ) : null}
-            </header>
-            <div className="flex flex-col gap-6">
-              {contentHtml ? (
-                <div
-                  className="space-y-4 text-mobile-body text-fg md:text-lg md:leading-relaxed [&_a]:text-accentVar [&_a]:underline [&_a]:decoration-accentVar/40 [&_a]:underline-offset-4"
-                  dangerouslySetInnerHTML={{ __html: contentHtml }}
-                />
-              ) : (
-                <BodyText variant="sectionDefaultOnLight">
-                  {fallbackText || emptyCopyByLang[lang]}
-                </BodyText>
-              )}
-            </div>
-          </article>
-        </Section>
-      </main>
-      <Footer />
-    </div>
+    <BlogPostRenderer
+      post={post}
+      lang={lang}
+      showRubric
+      showCategory
+    />
   );
 }
 
