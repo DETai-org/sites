@@ -89,7 +89,7 @@ export default function BlogFiltersHeader({
         </BodyText>
       </div>
 
-      <div className="rounded-3xl border border-accentVar/15 bg-white/50 p-6 md:p-8">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
           <HeadingLevel2>{copy.filtersHeading}</HeadingLevel2>
           <BodyText variant="sectionDefaultOnLight" className="max-w-2xl">
@@ -97,7 +97,7 @@ export default function BlogFiltersHeader({
           </BodyText>
         </div>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <div className="grid gap-6 md:grid-cols-3">
           <div className="flex flex-col gap-3">
             <p className="text-xs font-semibold tracking-[0.16em] text-muted">
               {copy.rubricsLabel}
@@ -122,59 +122,57 @@ export default function BlogFiltersHeader({
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-3">
-              <p className="text-xs font-semibold tracking-[0.16em] text-muted">
-                {copy.authorsLabel}
-              </p>
-              <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold tracking-[0.16em] text-muted">
+              {copy.authorsLabel}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                className={chipClasses(selectedAuthors.length === 0)}
+                type="button"
+                onClick={onResetAuthors}
+              >
+                {copy.allLabel}
+              </button>
+              {authors.map((author) => (
                 <button
-                  className={chipClasses(selectedAuthors.length === 0)}
+                  key={author}
+                  className={chipClasses(selectedAuthors.includes(author))}
                   type="button"
-                  onClick={onResetAuthors}
+                  onClick={() => onToggleAuthor(author)}
                 >
-                  {copy.allLabel}
+                  {author}
                 </button>
-                {authors.map((author) => (
-                  <button
-                    key={author}
-                    className={chipClasses(selectedAuthors.includes(author))}
-                    type="button"
-                    onClick={() => onToggleAuthor(author)}
-                  >
-                    {author}
-                  </button>
-                ))}
-              </div>
+              ))}
             </div>
-            <div className="flex flex-col gap-3">
-              <p className="text-xs font-semibold tracking-[0.16em] text-muted">
-                {copy.yearsLabel}
-              </p>
-              <div className="flex flex-wrap gap-2">
+          </div>
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold tracking-[0.16em] text-muted">
+              {copy.yearsLabel}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                className={chipClasses(selectedYears.length === 0)}
+                type="button"
+                onClick={onResetYears}
+              >
+                {copy.allLabel}
+              </button>
+              {years.map((year) => (
                 <button
-                  className={chipClasses(selectedYears.length === 0)}
+                  key={year}
+                  className={chipClasses(selectedYears.includes(year))}
                   type="button"
-                  onClick={onResetYears}
+                  onClick={() => onToggleYear(year)}
                 >
-                  {copy.allLabel}
+                  {year}
                 </button>
-                {years.map((year) => (
-                  <button
-                    key={year}
-                    className={chipClasses(selectedYears.includes(year))}
-                    type="button"
-                    onClick={() => onToggleYear(year)}
-                  >
-                    {year}
-                  </button>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-3">
+        <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between gap-4">
             <p className="text-xs font-semibold tracking-[0.16em] text-muted">
               {copy.categoriesLabel}
