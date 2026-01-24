@@ -100,14 +100,14 @@ export default function PostHeader({
                   <div className="flex flex-wrap items-center gap-3">
                     {authorAvatar ? (
                       <img
-                        className="h-10 w-10 rounded-full object-cover"
+                        className="h-10 w-10 rounded-full object-cover md:h-12 md:w-12"
                         src={authorAvatar}
                         alt={authorName}
                         width={40}
                         height={40}
                       />
                     ) : (
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar md:h-12 md:w-12 md:text-sm">
                         {authorInitials}
                       </div>
                     )}
@@ -131,7 +131,7 @@ export default function PostHeader({
                         <span className="text-xs text-muted">{copy.rubricLabel}</span>
                         <Link
                           href={`/${lang}/blog/${rubricRoute}`}
-                          className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                          className="inline-flex items-center justify-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
                         >
                           {post.rubric.label}
                         </Link>
@@ -144,7 +144,7 @@ export default function PostHeader({
                         </span>
                         <Link
                           href={categoryHref}
-                          className="inline-flex items-center justify-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] rounded-full border border-accentVar/30 text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                          className="inline-flex items-center justify-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
                         >
                           {category.label}
                         </Link>
