@@ -3,15 +3,11 @@ import { notFound } from "next/navigation";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import BodyText from "@/components/ui/BodyText";
-import Heading from "@/components/ui/Heading";
-import Section from "@/components/ui/Section";
+import BlogPageRenderer from "@/components/blog/BlogPageRenderer";
 import { getPostsIndexForLang } from "@/lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "@/lib/blog/blog.i18n";
 import { blogCategories, blogRubrics } from "@/lib/blog/taxonomy";
 import type { Lang } from "@/lib/blog/types";
-
-import BlogFilters from "./_components/BlogFilters";
 
 interface BlogPageProps {
   params: {
@@ -36,6 +32,9 @@ const blogCopyByLang: Record<
     filtersHeading: string;
     filtersLead: string;
     allLabel: string;
+    categoriesShowLabel: string;
+    categoriesHideLabel: string;
+    categoriesSelectedLabel: string;
     rubricsLabel: string;
     categoriesLabel: string;
     authorsLabel: string;
@@ -51,6 +50,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Фильтры",
     filtersLead: "Выберите рубрики, категории, авторов или годы, чтобы сузить список.",
     allLabel: "Все",
+    categoriesShowLabel: "Показать категории",
+    categoriesHideLabel: "Скрыть категории",
+    categoriesSelectedLabel: "Выбрано:",
     rubricsLabel: "Рубрики",
     categoriesLabel: "Категории",
     authorsLabel: "Авторы",
@@ -65,6 +67,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Filters",
     filtersLead: "Pick rubrics, categories, authors, or years to narrow the list.",
     allLabel: "All",
+    categoriesShowLabel: "Show categories",
+    categoriesHideLabel: "Hide categories",
+    categoriesSelectedLabel: "Selected:",
     rubricsLabel: "Rubrics",
     categoriesLabel: "Categories",
     authorsLabel: "Authors",
@@ -79,6 +84,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Filter",
     filtersLead: "Wähle Rubriken, Kategorien, Autor:innen oder Jahre, um die Liste zu verfeinern.",
     allLabel: "Alle",
+    categoriesShowLabel: "Kategorien anzeigen",
+    categoriesHideLabel: "Kategorien ausblenden",
+    categoriesSelectedLabel: "Ausgewählt:",
     rubricsLabel: "Rubriken",
     categoriesLabel: "Kategorien",
     authorsLabel: "Autor:innen",
@@ -93,6 +101,9 @@ const blogCopyByLang: Record<
     filtersHeading: "Suodattimet",
     filtersLead: "Valitse rubriikit, kategoriat, kirjoittajat tai vuodet rajataksesi listaa.",
     allLabel: "Kaikki",
+    categoriesShowLabel: "Näytä kategoriat",
+    categoriesHideLabel: "Piilota kategoriat",
+    categoriesSelectedLabel: "Valittu:",
     rubricsLabel: "Rubriikit",
     categoriesLabel: "Kategoriat",
     authorsLabel: "Kirjoittajat",
@@ -107,6 +118,9 @@ const blogCopyByLang: Record<
     filtersHeading: "筛选",
     filtersLead: "选择栏目、类别、作者或年份来缩小列表。",
     allLabel: "全部",
+    categoriesShowLabel: "显示类别",
+    categoriesHideLabel: "隐藏类别",
+    categoriesSelectedLabel: "已选择：",
     rubricsLabel: "栏目",
     categoriesLabel: "类别",
     authorsLabel: "作者",
@@ -166,34 +180,29 @@ export default async function BlogPage({ params }: BlogPageProps) {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex flex-1 flex-col">
-        <Section variant="light" className="border-b border-accentVar/20">
-          <div className="flex flex-col gap-4">
-            <Heading level={1}>{copy.heading}</Heading>
-            <BodyText variant="sectionDefaultOnLight" className="max-w-2xl">
-              {copy.subheading}
-            </BodyText>
-          </div>
-        </Section>
-        <Section variant="light">
-          <BlogFilters
-            posts={posts}
-            rubrics={rubrics}
-            categories={categories}
-            locale={locale}
-            copy={{
-              filtersHeading: copy.filtersHeading,
-              filtersLead: copy.filtersLead,
-              allLabel: copy.allLabel,
-              rubricsLabel: copy.rubricsLabel,
-              categoriesLabel: copy.categoriesLabel,
-              authorsLabel: copy.authorsLabel,
-              yearsLabel: copy.yearsLabel,
-              resultsLabel: copy.resultsLabel,
-              emptyState: copy.emptyState,
-              readMore: copy.readMore,
-            }}
-          />
-        </Section>
+        <BlogPageRenderer
+          posts={posts}
+          rubrics={rubrics}
+          categories={categories}
+          locale={locale}
+          copy={{
+            heading: copy.heading,
+            subheading: copy.subheading,
+            readMore: copy.readMore,
+            filtersHeading: copy.filtersHeading,
+            filtersLead: copy.filtersLead,
+            allLabel: copy.allLabel,
+            categoriesShowLabel: copy.categoriesShowLabel,
+            categoriesHideLabel: copy.categoriesHideLabel,
+            categoriesSelectedLabel: copy.categoriesSelectedLabel,
+            rubricsLabel: copy.rubricsLabel,
+            categoriesLabel: copy.categoriesLabel,
+            authorsLabel: copy.authorsLabel,
+            yearsLabel: copy.yearsLabel,
+            resultsLabel: copy.resultsLabel,
+            emptyState: copy.emptyState,
+          }}
+        />
       </main>
       <Footer />
     </div>

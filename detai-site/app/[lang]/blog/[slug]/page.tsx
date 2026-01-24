@@ -17,7 +17,7 @@ import {
 } from "@/lib/blog/taxonomy";
 import type { Lang } from "@/lib/blog/types";
 
-import BlogPostCard from "../_components/BlogPostCard";
+import BlogPostCard from "@/components/blog/BlogPostCard";
 
 interface BlogPostPageProps {
   params: {
