@@ -33,17 +33,16 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
         ) : null}
         {post.rubric?.label || post.category?.label ? (
           <div className="flex flex-wrap gap-2">
-            {/* TODO: временный блок, подогнать под брендовые стили */}
             {post.rubric?.label && rubricRoute ? (
               <Link
                 href={`/${post.lang}/blog/${rubricRoute}`}
-                className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-accentVar rounded-full border border-accentVar/30 transition-colors hover:border-accentVar/70 hover:text-accentVar"
+                className="inline-flex items-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold tracking-normal text-accentVar transition-colors hover:border-accentVar/70 hover:text-accentVar"
               >
                 {post.rubric.label}
               </Link>
             ) : null}
             {post.category?.label ? (
-              <span className="inline-flex items-center px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-accentVar rounded-full border border-accentVar/30">
+              <span className="inline-flex items-center rounded-full border border-accentVar/30 px-3 py-1 text-[0.6rem] font-semibold tracking-normal text-accentVar">
                 {post.category.label}
               </span>
             ) : null}

@@ -3,15 +3,11 @@ import { notFound } from "next/navigation";
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import BodyText from "@/components/ui/BodyText";
-import Heading from "@/components/ui/Heading";
-import Section from "@/components/ui/Section";
+import BlogPageRenderer from "@/components/blog/BlogPageRenderer";
 import { getPostsIndexForLang } from "@/lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "@/lib/blog/blog.i18n";
 import { blogCategories, blogRubrics } from "@/lib/blog/taxonomy";
 import type { Lang } from "@/lib/blog/types";
-
-import BlogFilters from "./_components/BlogFilters";
 
 interface BlogPageProps {
   params: {
@@ -166,34 +162,26 @@ export default async function BlogPage({ params }: BlogPageProps) {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex flex-1 flex-col">
-        <Section variant="light" className="border-b border-accentVar/20">
-          <div className="flex flex-col gap-4">
-            <Heading level={1}>{copy.heading}</Heading>
-            <BodyText variant="sectionDefaultOnLight" className="max-w-2xl">
-              {copy.subheading}
-            </BodyText>
-          </div>
-        </Section>
-        <Section variant="light">
-          <BlogFilters
-            posts={posts}
-            rubrics={rubrics}
-            categories={categories}
-            locale={locale}
-            copy={{
-              filtersHeading: copy.filtersHeading,
-              filtersLead: copy.filtersLead,
-              allLabel: copy.allLabel,
-              rubricsLabel: copy.rubricsLabel,
-              categoriesLabel: copy.categoriesLabel,
-              authorsLabel: copy.authorsLabel,
-              yearsLabel: copy.yearsLabel,
-              resultsLabel: copy.resultsLabel,
-              emptyState: copy.emptyState,
-              readMore: copy.readMore,
-            }}
-          />
-        </Section>
+        <BlogPageRenderer
+          posts={posts}
+          rubrics={rubrics}
+          categories={categories}
+          locale={locale}
+          copy={{
+            heading: copy.heading,
+            subheading: copy.subheading,
+            readMore: copy.readMore,
+            filtersHeading: copy.filtersHeading,
+            filtersLead: copy.filtersLead,
+            allLabel: copy.allLabel,
+            rubricsLabel: copy.rubricsLabel,
+            categoriesLabel: copy.categoriesLabel,
+            authorsLabel: copy.authorsLabel,
+            yearsLabel: copy.yearsLabel,
+            resultsLabel: copy.resultsLabel,
+            emptyState: copy.emptyState,
+          }}
+        />
       </main>
       <Footer />
     </div>
