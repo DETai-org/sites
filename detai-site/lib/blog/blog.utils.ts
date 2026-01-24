@@ -12,3 +12,21 @@ export function formatBlogDate(publishedAt: string, locale: string): string {
     year: "numeric",
   });
 }
+
+export function getReadingTime(content: string) {
+  const plainText = stripMarkdown(content);
+  const words = plainText.match(/\p{L}[\p{L}\p{N}'’-]*/gu) ?? [];
+  return Math.max(1, Math.ceil(words.length / 200));
+}
+
+function stripMarkdown(content: string) {
+  return content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_~|-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}

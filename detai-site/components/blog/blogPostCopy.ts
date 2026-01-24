@@ -7,6 +7,7 @@ type BlogPostCopy = {
   minReadLabel: string;
   expandCoverLabel: string;
   collapseCoverLabel: string;
+  tocTitle: string;
 };
 
 export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
@@ -17,6 +18,7 @@ export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
     minReadLabel: "мин чтения",
     expandCoverLabel: "Показать полностью",
     collapseCoverLabel: "Свернуть",
+    tocTitle: "На этой странице",
   },
   en: {
     emptyContent: "Content is coming soon.",
@@ -25,6 +27,7 @@ export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
     minReadLabel: "min read",
     expandCoverLabel: "Show full image",
     collapseCoverLabel: "Collapse",
+    tocTitle: "On this page",
   },
   de: {
     emptyContent: "Der Inhalt erscheint in Kürze.",
@@ -33,6 +36,7 @@ export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
     minReadLabel: "Min. Lesezeit",
     expandCoverLabel: "Bild anzeigen",
     collapseCoverLabel: "Ausblenden",
+    tocTitle: "Auf dieser Seite",
   },
   fi: {
     emptyContent: "Sisältö julkaistaan pian.",
@@ -41,6 +45,7 @@ export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
     minReadLabel: "min lukuaika",
     expandCoverLabel: "Näytä kuva",
     collapseCoverLabel: "Piilota",
+    tocTitle: "Tällä sivulla",
   },
   cn: {
     emptyContent: "内容即将发布。",
@@ -49,5 +54,6 @@ export const blogPostCopyByLang: Record<Lang, BlogPostCopy> = {
     minReadLabel: "分钟阅读",
     expandCoverLabel: "查看图片",
     collapseCoverLabel: "收起",
+    tocTitle: "本页目录",
   },
 };

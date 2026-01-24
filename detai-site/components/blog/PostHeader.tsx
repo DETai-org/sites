@@ -5,6 +5,7 @@ import Chip from "@/components/ui/Chip";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import { blogLocaleByLang } from "@/lib/blog/blog.i18n";
+import { getReadingTime } from "@/lib/blog/blog.utils";
 import { formatBlogDate } from "@/lib/blog/blog.utils";
 import { getRubricRouteSlug } from "@/lib/blog/taxonomy";
 import type { BlogPost, BlogCoverLayout, Lang } from "@/lib/blog/types";
@@ -181,24 +182,6 @@ function resolveCoverLayout(
 ) {
   if (!coverImage) return "none";
   return coverLayout ?? "square";
-}
-
-function getReadingTime(content: string) {
-  const plainText = stripMarkdown(content);
-  const words = plainText.match(/\p{L}[\p{L}\p{N}'’-]*/gu) ?? [];
-  return Math.max(1, Math.ceil(words.length / 200));
-}
-
-function stripMarkdown(content: string) {
-  return content
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/`[^`]*`/g, " ")
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
-    .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/[#>*_~|-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
 }
 
 function getInitials(authorName?: string) {
