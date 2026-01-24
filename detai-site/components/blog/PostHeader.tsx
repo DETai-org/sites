@@ -130,7 +130,7 @@ export default function PostHeader({
                     {showRubric && post.rubric?.label && rubricRoute ? (
                       <div className="flex flex-col gap-2">
                         <span className="text-xs text-muted">{copy.rubricLabel}</span>
-                        <Chip as={Link} href={`/${lang}/blog/${rubricRoute}`}>
+                        <Chip as={Link} href={`/${lang}/blog/${rubricRoute}`} variant="default">
                           {post.rubric.label}
                         </Chip>
                       </div>
@@ -140,7 +140,7 @@ export default function PostHeader({
                         <span className="text-xs text-muted sm:text-right">
                           {copy.categoryLabel}
                         </span>
-                        <Chip as={Link} href={categoryHref}>
+                        <Chip as={Link} href={categoryHref} variant="default">
                           {category.label}
                         </Chip>
                       </div>

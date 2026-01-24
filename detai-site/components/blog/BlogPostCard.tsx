@@ -35,12 +35,12 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
         {post.rubric?.label || post.category?.label ? (
           <div className="flex flex-wrap gap-2">
             {post.rubric?.label && rubricRoute ? (
-              <Chip as={Link} href={`/${post.lang}/blog/${rubricRoute}`}>
+              <Chip as={Link} href={`/${post.lang}/blog/${rubricRoute}`} variant="default">
                 {post.rubric.label}
               </Chip>
             ) : null}
             {post.category?.label ? (
-              <Chip>{post.category.label}</Chip>
+              <Chip variant="default">{post.category.label}</Chip>
             ) : null}
           </div>
         ) : null}
