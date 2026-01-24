@@ -37,7 +37,7 @@ export default function BlogPostRenderer({
         <Section
           variant="light"
           fullWidth
-          containerClassName="max-w-3xl px-mobile-2 md:px-10"
+          containerClassName="max-w-3xl px-1 md:px-10"
         >
           <article className="flex flex-col gap-6 md:gap-8">
             {contentHtml ? (

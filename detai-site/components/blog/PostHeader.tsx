@@ -68,7 +68,7 @@ export default function PostHeader({
               : "flex flex-col gap-3"
           }
         >
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col w-full max-w-3xl mx-auto gap-3">
             <div className="flex flex-col gap-3">
               <p className="text-[0.65rem] font-medium text-muted md:text-xs">
                 {formattedDate}
@@ -78,7 +78,7 @@ export default function PostHeader({
               {previewText ? (
                 <BodyText
                   variant="sectionDefaultOnLight"
-                  className="max-w-2xl text-mobile-small leading-mobile-loose text-muted md:text-lg md:leading-loose"
+                  className="max-w-2xl text-mobile-small leading-mobile-loose text-muted md:text-base md:leading-relaxed"
                 >
                   {previewText}
                 </BodyText>
