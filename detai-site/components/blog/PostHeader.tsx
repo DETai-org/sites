@@ -3,6 +3,7 @@ import Link from "next/link";
 import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import blogAuthors from "@/lib/blog/authors.json";
 import { blogLocaleByLang } from "@/lib/blog/blog.i18n";
 import { formatBlogDate } from "@/lib/blog/blog.utils";
 import { getRubricRouteSlug } from "@/lib/blog/taxonomy";
@@ -34,6 +35,11 @@ export default function PostHeader({
   const readingTimeLabel = `${readingTime} ${copy.minReadLabel}`;
   const authorName = post.author?.trim();
   const authorInitials = getInitials(authorName);
+  const authorMeta = authorName
+    ? blogAuthors.find((author) => author.name === authorName)
+    : undefined;
+  const authorRole = authorMeta?.role?.trim();
+  const authorAvatar = authorMeta?.avatar?.trim();
   const category = post.category?.label?.trim() ? post.category : null;
   const categoryHref = category ? `/${lang}/blog?category=${category.slug}` : null;
   const coverLayout = resolveCoverLayout(post.coverLayout, post.coverImage);
@@ -43,7 +49,7 @@ export default function PostHeader({
       variant="light"
       className="border-b border-accentVar/20"
       fullWidth
-      containerClassName="px-0 md:px-10"
+      containerClassName="px-0 md:px-10 md:max-w-6xl"
     >
       <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
@@ -92,10 +98,25 @@ export default function PostHeader({
               >
                 {authorName ? (
                   <div className="flex flex-wrap items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
-                      {authorInitials}
+                    {authorAvatar ? (
+                      <img
+                        className="h-10 w-10 rounded-full object-cover"
+                        src={authorAvatar}
+                        alt={authorName}
+                        width={40}
+                        height={40}
+                      />
+                    ) : (
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accentVar/10 text-xs font-semibold text-accentVar">
+                        {authorInitials}
+                      </div>
+                    )}
+                    <div className="flex flex-col">
+                      <p className="text-sm font-semibold text-fg">{authorName}</p>
+                      {authorRole ? (
+                        <p className="text-xs text-muted">{authorRole}</p>
+                      ) : null}
                     </div>
-                    <p className="text-sm font-semibold text-fg">{authorName}</p>
                     <span className="h-4 w-px bg-accentVar/30" aria-hidden />
                     <p className="flex items-center gap-2 text-xs font-medium text-muted md:text-sm">
                       <span aria-hidden>🕒</span>
