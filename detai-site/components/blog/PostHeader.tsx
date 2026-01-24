@@ -42,11 +42,12 @@ export default function PostHeader({
     <Section
       variant="light"
       className="border-b border-accentVar/20"
-      containerClassName="px-2 md:px-10 max-w-full"
+      fullWidth
+      containerClassName="px-0 md:px-10"
     >
       <div className="flex flex-col gap-4">
         {coverLayout === "landscape" && post.coverImage ? (
-          <div className="w-full md:max-w-4xl mx-[-0.5rem] md:mx-0">
+          <div className="w-full md:max-w-4xl">
             <div className="overflow-hidden rounded-3xl bg-accentVar/10 shadow-sm">
               <div className="aspect-[4/3] overflow-hidden md:aspect-[16/9]">
                 <img
@@ -67,7 +68,7 @@ export default function PostHeader({
               : "flex flex-col gap-3"
           }
         >
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 px-2 md:px-0">
             <div className="flex flex-col gap-3">
               <p className="text-[0.65rem] font-medium text-muted md:text-xs">
                 {formattedDate}

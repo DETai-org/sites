@@ -34,8 +34,8 @@ export default function BlogPostRenderer({
           showRubric={showRubric}
           showCategory={showCategory}
         />
-        <Section variant="light" containerClassName="px-2 md:px-10 max-w-full">
-          <article className="flex flex-col gap-6 md:gap-8">
+        <Section variant="light" fullWidth containerClassName="px-0 md:px-10">
+          <article className="flex flex-col gap-6 px-2 md:gap-8 md:px-0">
             {contentHtml ? (
               <div
                 className="space-y-4 text-mobile-body text-fg md:text-lg md:leading-relaxed [&_a]:text-accentVar [&_a]:underline [&_a]:decoration-accentVar/40 [&_a]:underline-offset-4"
