@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@det/seo": "1.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

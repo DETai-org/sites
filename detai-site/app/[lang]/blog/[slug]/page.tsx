@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -8,6 +11,7 @@ import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import HeadingLevel2 from "@/components/ui/HeadingLevel2";
 import Section from "@/components/ui/Section";
+import { buildOpenGraphMetadata } from "@det/seo";
 import { getPostByLangAndSlug, getPostsIndexForLang } from "@/lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "@/lib/blog/blog.i18n";
 import {
@@ -27,6 +31,38 @@ interface BlogPostPageProps {
 }
 
 export const runtime = "nodejs";
+
+const DEFAULT_POST_OG_IMAGE = "/images/og/default-post.jpg";
+
+const resolveOgImageSrc = (coverImageSrc?: string): string => {
+  if (!coverImageSrc) {
+    return DEFAULT_POST_OG_IMAGE;
+  }
+
+  if (!coverImageSrc.toLowerCase().endsWith(".webp")) {
+    return coverImageSrc;
+  }
+
+  const normalizedSrc = coverImageSrc.startsWith("/")
+    ? coverImageSrc
+    : `/${coverImageSrc}`;
+  const withoutExtension = normalizedSrc.replace(/\.webp$/i, "");
+  const candidates = [
+    `${withoutExtension}.jpg`,
+    `${withoutExtension}.jpeg`,
+    `${withoutExtension}.png`,
+  ];
+  const publicRoot = path.resolve(process.cwd(), "public");
+
+  for (const candidate of candidates) {
+    const absolutePath = path.join(publicRoot, candidate.replace(/^\//, ""));
+    if (existsSync(absolutePath)) {
+      return candidate;
+    }
+  }
+
+  return DEFAULT_POST_OG_IMAGE;
+};
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   if (!isLang(params.lang)) {
@@ -92,10 +128,24 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
     return acc;
   }, {});
+  const publishedTime =
+    post.publishedAt && (post.publishedAt.includes("T") || /^\d{4}-\d{2}-\d{2}/.test(post.publishedAt))
+      ? post.publishedAt
+      : undefined;
 
   return {
-    title: post.titles[params.lang],
-    description: post.excerpt,
+    ...buildOpenGraphMetadata({
+      title: post.titles[params.lang],
+      description:
+        post.frontmatter?.descriptive?.seoLead?.trim() ||
+        post.frontmatter?.descriptive?.preview?.trim() ||
+        post.excerpt ||
+        "",
+      urlPath: `/${params.lang}/blog/${canonicalSlug ?? params.slug}`,
+      coverImageSrc: resolveOgImageSrc(post.coverImage?.src),
+      type: "article",
+      publishedTime,
+    }),
     alternates: {
       canonical: canonicalSlug ? `/${params.lang}/blog/${canonicalSlug}` : undefined,
       languages,
