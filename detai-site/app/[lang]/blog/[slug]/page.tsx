@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -28,6 +31,38 @@ interface BlogPostPageProps {
 }
 
 export const runtime = "nodejs";
+
+const DEFAULT_POST_OG_IMAGE = "/images/og/default-post.jpg";
+
+const resolveOgImageSrc = (coverImageSrc?: string): string => {
+  if (!coverImageSrc) {
+    return DEFAULT_POST_OG_IMAGE;
+  }
+
+  if (!coverImageSrc.toLowerCase().endsWith(".webp")) {
+    return coverImageSrc;
+  }
+
+  const normalizedSrc = coverImageSrc.startsWith("/")
+    ? coverImageSrc
+    : `/${coverImageSrc}`;
+  const withoutExtension = normalizedSrc.replace(/\.webp$/i, "");
+  const candidates = [
+    `${withoutExtension}.jpg`,
+    `${withoutExtension}.jpeg`,
+    `${withoutExtension}.png`,
+  ];
+  const publicRoot = path.resolve(process.cwd(), "public");
+
+  for (const candidate of candidates) {
+    const absolutePath = path.join(publicRoot, candidate.replace(/^\//, ""));
+    if (existsSync(absolutePath)) {
+      return candidate;
+    }
+  }
+
+  return DEFAULT_POST_OG_IMAGE;
+};
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   if (!isLang(params.lang)) {
@@ -107,7 +142,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         post.excerpt ||
         "",
       urlPath: `/${params.lang}/blog/${canonicalSlug ?? params.slug}`,
-      coverImageSrc: post.coverImage?.src ?? "/images/og/default-post.webp",
+      coverImageSrc: resolveOgImageSrc(post.coverImage?.src),
       type: "article",
       publishedTime,
     }),
