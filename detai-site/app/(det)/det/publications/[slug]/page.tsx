@@ -9,6 +9,7 @@ import PublicationShare from "@/components/sections/publications/PublicationShar
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import { buildOpenGraphMetadata } from "@det/seo";
 import {
   buildPublicationDescription,
   getAllPublications,
@@ -41,9 +42,16 @@ export function generateMetadata({ params }: PublicationPageProps): Metadata {
     };
   }
 
+  const description = buildPublicationDescription(publication);
+
   return {
-    title: buildTitle(publication.title, publication.authors[0], publication.year),
-    description: buildPublicationDescription(publication),
+    ...buildOpenGraphMetadata({
+      title: buildTitle(publication.title, publication.authors[0], publication.year),
+      description,
+      urlPath: `/det/publications/${params.slug}`,
+      type: "article",
+      authors: publication.authors.map((name) => ({ name })),
+    }),
   };
 }
 

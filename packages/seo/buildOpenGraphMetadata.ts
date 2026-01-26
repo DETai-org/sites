@@ -23,6 +23,10 @@ export const buildOpenGraphMetadata = (input: OgInput): Metadata => {
   const hasValidBaseUrl = Boolean(baseUrl && isValidBaseUrl(baseUrl));
   const description = normalizeDescription(input.description);
   const type = input.type ?? DEFAULT_OG_TYPE;
+  const authorUrls =
+    input.authors
+      ?.map((author) => author.url)
+      .filter((authorUrl): authorUrl is string => Boolean(authorUrl)) ?? [];
 
   const openGraphBase = {
     title: input.title,
@@ -31,7 +35,7 @@ export const buildOpenGraphMetadata = (input: OgInput): Metadata => {
     siteName: DEFAULT_SITE_NAME,
     locale: input.locale,
     publishedTime: input.publishedTime,
-    authors: input.authors?.map((author) => author.url ?? author.name),
+    authors: authorUrls.length > 0 ? authorUrls : undefined,
   };
 
   if (!hasValidBaseUrl) {

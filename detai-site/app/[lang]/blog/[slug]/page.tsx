@@ -8,6 +8,7 @@ import BodyText from "@/components/ui/BodyText";
 import Heading from "@/components/ui/Heading";
 import HeadingLevel2 from "@/components/ui/HeadingLevel2";
 import Section from "@/components/ui/Section";
+import { buildOpenGraphMetadata } from "@det/seo";
 import { getPostByLangAndSlug, getPostsIndexForLang } from "@/lib/blog/blog.data";
 import { blogLocaleByLang, isLang, supportedLangs } from "@/lib/blog/blog.i18n";
 import {
@@ -94,8 +95,18 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }, {});
 
   return {
-    title: post.titles[params.lang],
-    description: post.excerpt,
+    ...buildOpenGraphMetadata({
+      title: post.titles[params.lang],
+      description:
+        post.frontmatter?.descriptive?.seoLead?.trim() ||
+        post.frontmatter?.descriptive?.preview?.trim() ||
+        post.excerpt ||
+        "",
+      urlPath: `/${params.lang}/blog/${canonicalSlug ?? params.slug}`,
+      coverImageSrc: post.coverImage?.src,
+      type: "article",
+      publishedTime: post.publishedAt,
+    }),
     alternates: {
       canonical: canonicalSlug ? `/${params.lang}/blog/${canonicalSlug}` : undefined,
       languages,

@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import ShareSection from "@/components/share/ShareSection";
 import BodyText from "@/components/ui/BodyText";
 import Section from "@/components/ui/Section";
 import { langToHtmlLang } from "@/lib/blog/lang";
@@ -55,6 +56,9 @@ export default function BlogPostRenderer({
               </BodyText>
             )}
           </article>
+          <div className="mt-6 md:mt-8">
+            <ShareSection title="Поделиться постом" />
+          </div>
         </Section>
       </main>
       <Footer />
