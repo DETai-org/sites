@@ -93,6 +93,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
     return acc;
   }, {});
+  const publishedTime =
+    post.publishedAt && (post.publishedAt.includes("T") || /^\d{4}-\d{2}-\d{2}/.test(post.publishedAt))
+      ? post.publishedAt
+      : undefined;
 
   return {
     ...buildOpenGraphMetadata({
@@ -103,9 +107,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         post.excerpt ||
         "",
       urlPath: `/${params.lang}/blog/${canonicalSlug ?? params.slug}`,
-      coverImageSrc: post.coverImage?.src,
+      coverImageSrc: post.coverImage?.src ?? "/images/og/default-post.webp",
       type: "article",
-      publishedTime: post.publishedAt,
+      publishedTime,
     }),
     alternates: {
       canonical: canonicalSlug ? `/${params.lang}/blog/${canonicalSlug}` : undefined,

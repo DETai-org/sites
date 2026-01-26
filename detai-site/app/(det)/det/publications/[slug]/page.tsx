@@ -49,6 +49,7 @@ export function generateMetadata({ params }: PublicationPageProps): Metadata {
       title: buildTitle(publication.title, publication.authors[0], publication.year),
       description,
       urlPath: `/det/publications/${params.slug}`,
+      coverImageSrc: "/images/og/default-publication.webp",
       type: "article",
       authors: publication.authors.map((name) => ({ name })),
     }),
