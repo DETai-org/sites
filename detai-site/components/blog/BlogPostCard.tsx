@@ -29,6 +29,15 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
     : null;
   const router = useRouter();
   const postHref = `/${post.lang}/blog/${post.slug}`;
+  const coverLayout = post.coverLayout ?? "square";
+  const imageLayoutKey =
+    coverLayout === "none" ? "square" : (coverLayout as "square" | "landscape" | "portrait");
+
+  const imageClassNameByLayout: Record<"square" | "landscape" | "portrait", string> = {
+    square: "object-cover object-center",
+    landscape: "object-cover object-center md:object-[center_35%]",
+    portrait: "object-cover object-top",
+  };
 
   const handleCardClick = () => {
     router.push(postHref);
@@ -43,7 +52,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
 
   return (
     <article
-      className="flex flex-col overflow-hidden h-full text-fg rounded-xl border border-accentVar/30 bg-surface shadow-sm cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:border-accentVar/60 hover:shadow-lg"
+      className="flex flex-col overflow-hidden h-full w-full text-fg rounded-xl border border-accentVar/30 bg-surface shadow-sm cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:border-accentVar/60 hover:shadow-lg sm:max-w-[360px] sm:mx-auto"
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
       role="link"
@@ -52,7 +61,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
     >
       {post.coverImage ? (
         <img
-          className="h-52 w-full object-cover"
+          className={`h-64 w-full ${imageClassNameByLayout[imageLayoutKey]}`}
           src={post.coverImage.src}
           width={post.coverImage.width}
           height={post.coverImage.height}
@@ -70,7 +79,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
         ) : null}
         <div className="flex flex-col mt-auto gap-3">
           {metaParts.length ? (
-            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-muted">
+            <p className="text-xs font-medium text-muted">
               {metaParts.join(" · ")}
             </p>
           ) : null}
