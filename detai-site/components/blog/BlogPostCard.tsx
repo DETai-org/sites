@@ -68,7 +68,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
           alt={post.coverImage.alt}
         />
       ) : null}
-      <div className="flex flex-col h-full gap-2 px-mobile-4 pb-mobile-3 pt-mobile-2 md:px-6 md:pb-5 md:pt-3">
+      <div className="flex flex-col h-full gap-2 px-mobile-4 pb-mobile-1 pt-mobile-2 md:px-6 md:pb-3 md:pt-3">
         <h3 className="text-lg font-semibold text-fg md:text-xl">
           {title}
         </h3>
@@ -77,7 +77,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
             {excerpt}
           </BodyText>
         ) : null}
-        <div className="flex flex-col mt-auto gap-2">
+        <div className="flex flex-col mt-auto gap-1">
           {metaParts.length ? (
             <p className="text-xs font-medium text-muted">
               {metaParts.join(" · ")}
