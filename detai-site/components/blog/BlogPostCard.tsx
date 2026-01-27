@@ -52,7 +52,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
 
   return (
     <article
-      className="flex flex-col overflow-hidden h-full w-full text-fg rounded-xl border border-accentVar/30 bg-surface shadow-sm cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:border-accentVar/60 hover:shadow-lg sm:max-w-[360px] sm:mx-auto"
+      className="flex flex-col w-full h-full overflow-hidden rounded-xl border border-accentVar/30 bg-surface text-fg shadow-sm cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:border-accentVar/60 hover:shadow-lg"
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
       role="link"
@@ -68,7 +68,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
           alt={post.coverImage.alt}
         />
       ) : null}
-      <div className="flex flex-col h-full gap-3 px-mobile-4 pb-mobile-4 pt-mobile-3 md:px-6 md:pb-6 md:pt-4">
+      <div className="flex flex-col h-full gap-2 px-mobile-4 pb-mobile-3 pt-mobile-2 md:px-6 md:pb-5 md:pt-3">
         <h3 className="text-lg font-semibold text-fg md:text-xl">
           {title}
         </h3>
@@ -77,7 +77,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
             {excerpt}
           </BodyText>
         ) : null}
-        <div className="flex flex-col mt-auto gap-3">
+        <div className="flex flex-col mt-auto gap-2">
           {metaParts.length ? (
             <p className="text-xs font-medium text-muted">
               {metaParts.join(" · ")}
