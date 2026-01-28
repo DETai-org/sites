@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
     category_ids: ["category:dark-and-light-side-of-personality"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["内心冲突", "光与暗", "恐惧与自由"]
 structural:
   external_links: []

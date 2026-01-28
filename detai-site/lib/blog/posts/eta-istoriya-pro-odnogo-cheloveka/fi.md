@@ -17,7 +17,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:orientation-toward-overcoming"]
     category_ids: ["category:overcoming"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["menestys", "ylittäminen", "motivaatio"]
 structural:
   external_links: []

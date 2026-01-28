@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:personal-psychology"]
     category_ids: ["category:relationships-ideas"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["Nähe und Unabhängigkeit", "produktive Liebe", "Respekt in Beziehungen"]
 structural:
   external_links: []

@@ -17,7 +17,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:orientation-toward-overcoming"]
     category_ids: ["category:overcoming"]
-    keyword_ids: ["keyword:existential-choice"]
     keywords_raw: ["成功", "克服", "动力"]
 structural:
   external_links: []

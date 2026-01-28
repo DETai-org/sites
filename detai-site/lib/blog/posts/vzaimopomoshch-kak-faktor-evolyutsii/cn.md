@@ -17,7 +17,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:det-notes"]
     category_ids: ["category:humanistic-principles"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["互助", "人的社会性", "人本视角"]
 structural:
   external_links: []

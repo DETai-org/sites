@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:personal-psychology"]
     category_ids: ["category:relationships-ideas"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["亲密与独立", "建设性的爱", "关系中的尊重"]
 structural:
   external_links: []

@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:personal-lesgaft-study-notes"]
     category_ids: ["category:patterns"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["personal change", "inner conflicts", "influence of environment"]
 structural:
   external_links:
