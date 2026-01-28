@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "gegenseitige-hilfe-als-evolutionsfaktor"
   title: "Gegenseitige Hilfe als Evolutionsfaktor"
+  coverAlt: "Gegenseitige Hilfe als Evolutionsfaktor"
   preview: "Gegenseitige Hilfe als Evolutionsfaktor ist ein Blick auf den Menschen als ein Wesen, das erst in Bezug zu anderen zu sich selbst wird. Hier klingen Marx, Goethe und Fromm an, wenn es um Produktivität, Menschlichkeit und die innere Welt geht, die sich durch Beziehungen und das persönliche Leben erschließt. Warum macht die humanistische Perspektive die Verbundenheit der Menschen zur Schlüsselbedingung für Entwicklung und Reife? ⚜️"
   seoLead: "Gegenseitige Hilfe als Evolutionsfaktor: warum der Mensch durch andere zu sich selbst findet und wie die humanistische Denkrichtung dies begründet."
   taxonomy:

@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "mutual-aid-as-a-factor-of-evolution"
   title: "Mutual Aid as a Factor of Evolution"
+  coverAlt: "Mutual Aid as a Factor of Evolution"
   preview: "Mutual aid as a factor of evolution is a view of the human being as someone who becomes themselves only in relation to others. The text echoes Marx, Goethe, and Fromm on productivity, humanity, and an inner world that unfolds through relationships and personal life. Why does a humanistic perspective make human interconnection a key condition of development and maturity? ⚜️"
   seoLead: "Mutual aid as a factor of evolution: why a person becomes themselves through others and how humanistic thought grounds this idea."
   taxonomy:

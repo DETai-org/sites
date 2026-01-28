@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "yi-ge-ren-gushi"
   title: "这是关于一个人的故事"
+  coverAlt: "这是关于一个人的故事"
   preview: "关于成功欲望被考验的一则寓言。"
   seoLead: "一个提醒：真正的成功来自于你对它的渴望像对生命一样强烈。"
   taxonomy:

@@ -12,6 +12,7 @@ administrative:
 descriptive:
   routeSlug: "laheisyys-ja-itsenaisyys"
   title: "Läheisyys ja itsenäisyys"
+  coverAlt: "Läheisyys ja itsenäisyys"
   preview: "Läheisyys ja itsenäisyys on jännite yhteenkuuluvuuden kaipuun ja oman ainutlaatuisuuden säilyttämisen välillä. Tekstissä tuottava rakkaus kuvataan huolenpitona ja vastuuna toisen kasvusta sekä kunnioituksen tarpeena, ilman jota rakkaus muuttuu vallaksi. Mikä auttaa säilyttämään kunnioituksen, kun etsimme läheisyyttä? 💙"
   seoLead: "Läheisyys ja itsenäisyys ihmissuhteissa: rakkaus huolenpitona, vastuuna ja kunnioituksena toisen vapaudelle ja kasvulle."
   taxonomy:

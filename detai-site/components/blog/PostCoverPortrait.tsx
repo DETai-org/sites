@@ -6,12 +6,14 @@ import type { BlogImage } from "@/lib/blog/types";
 
 interface PostCoverPortraitProps {
   image: BlogImage;
+  alt: string;
   expandLabel: string;
   collapseLabel: string;
 }
 
 export default function PostCoverPortrait({
   image,
+  alt,
   expandLabel,
   collapseLabel,
 }: PostCoverPortraitProps) {
@@ -31,7 +33,7 @@ export default function PostCoverPortrait({
             src={image.src}
             width={image.width}
             height={image.height}
-            alt={image.alt}
+            alt={alt}
           />
         </div>
         {!isExpanded ? (
