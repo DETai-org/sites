@@ -53,4 +53,32 @@ export const baseBlogPosts: BlogPostBase[] = [
       cn: "lib/blog/posts/blizost-i-nezavisemost/cn.md",
     },
   },
+  {
+    postId: "vzaimopomoshch-kak-faktor-evolyutsii",
+    publishedAt: "2017-11-04T09:00:00+03:00",
+    author: "Anton Kolhonen",
+    status: "publish",
+    rubric: { slug: "rubric:det-notes" },
+    category: { slug: "category:humanistic-principles" },
+    keywords: [{ slug: "keyword:inner-tension" }],
+    keywordsRaw: [
+      "взаимопомощь",
+      "социальная природа человека",
+      "гуманистическая перспектива",
+    ],
+    coverImage: {
+      src: "/images/posts/vzaimopomoshch-kak-faktor-evolyutsii.webp",
+      width: 686,
+      height: 457,
+      alt: "Взаимопомощь как фактор эволюции",
+    },
+    coverLayout: "landscape",
+    contentFiles: {
+      ru: "lib/blog/posts/vzaimopomoshch-kak-faktor-evolyutsii/ru.md",
+      en: "lib/blog/posts/vzaimopomoshch-kak-faktor-evolyutsii/en.md",
+      de: "lib/blog/posts/vzaimopomoshch-kak-faktor-evolyutsii/de.md",
+      fi: "lib/blog/posts/vzaimopomoshch-kak-faktor-evolyutsii/fi.md",
+      cn: "lib/blog/posts/vzaimopomoshch-kak-faktor-evolyutsii/cn.md",
+    },
+  },
 ];
