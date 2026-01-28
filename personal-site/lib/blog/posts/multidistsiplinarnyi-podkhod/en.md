@@ -16,7 +16,7 @@ descriptive:
   preview: "The multidisciplinary approach is an attempt to preserve the wholeness of the person by combining training, health practices, and psychology. The text cites Erich Fromm on why one-sided explanations lead to imbalance and why change must happen in several spheres at once. What changes when we see the interconnection of the spiritual, psychological, and physical? ⚜️"
   seoLead: "A multidisciplinary approach to development: training, health, and psychology as interconnected spheres of forming wholeness."
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology", "rubric:personal-health-practices", "rubric:personal-training"]
     category_ids: ["category:humanistic-principles"]
     keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["multidisciplinary approach", "holistic development", "interconnection of health domains"]

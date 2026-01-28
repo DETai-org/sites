@@ -93,6 +93,7 @@ export interface BlogPostBase {
   author: string;
   status: BlogPostStatus;
   rubric: BlogTaxonomyRef;
+  rubrics?: BlogTaxonomyRef[];
   category: BlogTaxonomyRef;
   keywords: BlogTaxonomyRef[];
   keywordsRaw: string[];

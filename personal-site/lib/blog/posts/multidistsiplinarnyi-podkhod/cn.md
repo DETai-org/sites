@@ -16,7 +16,7 @@ descriptive:
   preview: "多学科方法是一种通过将训练、健康实践与心理学结合来保持人的整体性的尝试。文中引用了艾里希·弗洛姆的观点，说明为何单一解释会导致失衡，以及为何改变必须在多个领域同时发生。当我们看到精神、心理与身体的联系时，会发生什么变化？⚜️"
   seoLead: "多学科的发展方法：训练、健康与心理学作为形成整体性的相互关联领域。"
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology", "rubric:personal-health-practices", "rubric:personal-training"]
     category_ids: ["category:humanistic-principles"]
     keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["多学科方法", "整体发展", "健康领域的相互关联"]
