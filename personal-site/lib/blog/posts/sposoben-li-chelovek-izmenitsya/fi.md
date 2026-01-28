@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:personal-lesgaft-study-notes"]
     category_ids: ["category:patterns"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["henkilökohtainen muutos", "sisäiset ristiriidat", "ympäristön vaikutus"]
 structural:
   external_links:

@@ -17,7 +17,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:orientation-toward-overcoming"]
     category_ids: ["category:overcoming"]
-    keyword_ids: ["keyword:existential-choice"]
     keywords_raw: ["success", "overcoming", "motivation"]
 structural:
   external_links: []

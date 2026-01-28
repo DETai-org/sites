@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:det-notes"]
     category_ids: ["category:humanistic-principles"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["多学科方法", "整体发展", "健康领域的相互关联"]
 structural:
   external_links: []

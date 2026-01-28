@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
     category_ids: ["category:dark-and-light-side-of-personality"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["inner conflict", "light and darkness", "fear and freedom"]
 structural:
   external_links: []

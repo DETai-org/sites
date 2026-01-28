@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:det-notes"]
     category_ids: ["category:humanistic-principles"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["monitieteinen lähestymistapa", "kokonaisvaltainen kehitys", "terveysalueiden yhteenkietoutuminen"]
 structural:
   external_links: []

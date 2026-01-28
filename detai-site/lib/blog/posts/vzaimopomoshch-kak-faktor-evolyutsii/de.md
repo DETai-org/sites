@@ -17,7 +17,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:det-notes"]
     category_ids: ["category:humanistic-principles"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["gegenseitige Hilfe", "soziale Natur des Menschen", "humanistische Perspektive"]
 structural:
   external_links: []

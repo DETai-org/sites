@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:det-notes"]
     category_ids: ["category:relationships-ideas"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["läheisyys ja itsenäisyys", "tuottava rakkaus", "kunnioitus ihmissuhteissa"]
 structural:
   external_links: []

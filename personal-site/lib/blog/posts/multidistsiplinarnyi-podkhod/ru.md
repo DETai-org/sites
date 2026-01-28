@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:personal-psychology", "rubric:personal-health-practices", "rubric:personal-training"]
     category_ids: ["category:humanistic-principles"]
-    keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["мультидисциплинарный подход", "целостное развитие", "взаимосвязь сфер здоровья"]
 structural:
   external_links: []

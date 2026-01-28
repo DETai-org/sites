@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:det-notes"]
     category_ids: ["category:relationships-ideas"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["closeness and independence", "productive love", "respect in relationships"]
 structural:
   external_links: []

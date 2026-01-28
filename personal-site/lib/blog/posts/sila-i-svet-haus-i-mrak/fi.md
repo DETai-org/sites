@@ -18,7 +18,6 @@ descriptive:
   taxonomy:
     rubric_ids: ["rubric:shadow-and-light"]
     category_ids: ["category:dark-and-light-side-of-personality"]
-    keyword_ids: ["keyword:ambivalence"]
     keywords_raw: ["sisäinen konflikti", "valo ja pimeys", "pelko ja vapaus"]
 structural:
   external_links: []
