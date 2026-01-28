@@ -16,7 +16,7 @@ descriptive:
   preview: "Der multidisziplinäre Ansatz ist der Versuch, die Ganzheit des Menschen zu bewahren, indem Training, gesundheitsfördernde Praktiken und Psychologie verbunden werden. Im Text klingen Zitate von Erich Fromm darüber an, warum einseitige Erklärungen zu Ungleichgewicht führen und warum Veränderungen in mehreren Bereichen zugleich stattfinden müssen. Was verändert sich, wenn wir die Verbindung des Geistigen, Psychologischen und Physischen sehen? ⚜️"
   seoLead: "Ein multidisziplinärer Ansatz der Entwicklung: Training, Gesundheit und Psychologie als miteinander verbundene Bereiche der Ganzheit."
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology", "rubric:personal-health-practices", "rubric:personal-training"]
     category_ids: ["category:humanistic-principles"]
     keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["multidisziplinärer Ansatz", "ganzheitliche Entwicklung", "Zusammenhang der Gesundheitsbereiche"]

@@ -106,7 +106,12 @@ export const baseBlogPosts: BlogPostBase[] = [
     publishedAt: "2017-11-15T09:00:00+03:00",
     author: "Anton Kolhonen",
     status: "publish",
-    rubric: { slug: "rubric:det-notes" },
+    rubric: { slug: "rubric:personal-psychology" },
+    rubrics: [
+      { slug: "rubric:personal-psychology" },
+      { slug: "rubric:personal-health-practices" },
+      { slug: "rubric:personal-training" },
+    ],
     category: { slug: "category:humanistic-principles" },
     keywords: [{ slug: "keyword:inner-tension" }],
     keywordsRaw: [

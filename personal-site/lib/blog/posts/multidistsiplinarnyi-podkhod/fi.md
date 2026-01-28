@@ -16,7 +16,7 @@ descriptive:
   preview: "Monitieteinen lähestymistapa on yritys säilyttää ihmisen kokonaisuus yhdistämällä harjoittelu, terveyttä tukevat käytännöt ja psykologia. Tekstissä siteerataan Erich Frommia siitä, miksi yksipuoliset selitykset johtavat epätasapainoon ja miksi muutosten tulee tapahtua useilla alueilla yhtä aikaa. Mitä muuttuu, kun näemme henkisen, psykologisen ja fyysisen yhteyden? ⚜️"
   seoLead: "Monitieteinen lähestymistapa kehitykseen: harjoittelu, terveys ja psykologia toisiinsa kietoutuneina kokonaisuuden alueina."
   taxonomy:
-    rubric_ids: ["rubric:det-notes"]
+    rubric_ids: ["rubric:personal-psychology", "rubric:personal-health-practices", "rubric:personal-training"]
     category_ids: ["category:humanistic-principles"]
     keyword_ids: ["keyword:inner-tension"]
     keywords_raw: ["monitieteinen lähestymistapa", "kokonaisvaltainen kehitys", "terveysalueiden yhteenkietoutuminen"]
