@@ -12,6 +12,7 @@ administrative:
 descriptive:
   routeSlug: "closeness-and-independence"
   title: "Closeness and Independence"
+  coverAlt: "Closeness and Independence"
   preview: "Closeness and independence are the tension between the pull toward unity and the need to preserve uniqueness. The text frames productive love as care and responsibility for another’s growth, while stressing the respect without which love turns into power. What helps preserve respect when we seek closeness? 💙"
   seoLead: "Closeness and independence in relationships: love as care, responsibility, and respect for another person’s freedom and growth."
   taxonomy:

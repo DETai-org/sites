@@ -246,9 +246,17 @@ function resolvePostMeta(
     localizedFrontmatter?.descriptive?.taxonomy?.keywords_raw?.length
       ? localizedFrontmatter.descriptive.taxonomy.keywords_raw
       : post.keywordsRaw;
+  const coverAlt = localizedFrontmatter?.descriptive?.coverAlt?.trim();
+  const coverImage = post.coverImage
+    ? {
+        ...post.coverImage,
+        alt: coverAlt || post.coverImage.alt,
+      }
+    : post.coverImage;
 
   return {
     ...post,
+    coverImage,
     ...fields,
     status: resolvedStatus,
     publishedAt: resolvedPublishedAt,

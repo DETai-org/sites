@@ -239,6 +239,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const locale = blogLocaleByLang[post.lang];
   const formattedDate = formatBlogDate(post.publishedAt, locale);
   const metaParts = [formattedDate, post.author].filter(Boolean);
+  const coverAlt =
+    post.frontmatter?.descriptive?.coverAlt?.trim() ||
+    post.titles[post.lang] ||
+    post.coverImage?.alt ||
+    "";
 
   return (
     <main className="page">
@@ -254,7 +259,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               src={post.coverImage.src}
               width={post.coverImage.width}
               height={post.coverImage.height}
-              alt={post.coverImage.alt}
+              alt={coverAlt}
             />
           ) : null}
         </header>

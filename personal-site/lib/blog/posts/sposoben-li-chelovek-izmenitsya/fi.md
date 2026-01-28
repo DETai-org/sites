@@ -12,6 +12,7 @@ descriptive:
   size: "L"
   routeSlug: "voiko-ihminen-muuttua"
   title: "Voiko ihminen muuttua?"
+  coverAlt: "Voiko ihminen muuttua?"
   preview: "Voiko ihminen muuttua? Tässä tekstissä kokoan havaintoja siitä, miten fyysiset ja psykologiset muutokset käynnistyvät jännitteen, pohdinnan ja konfliktien kautta. Vertaan Bernen, Litvakin, Horneyn ja Frommin ajatuksia osoittaakseni, miksi ympäristö ja tietoiset teot muodostuvat käännekohdiksi. 🔂 Mikä oikeasti auttaa muuttamaan tapoja ja suhtautumista itseensä?"
   seoLead: "Pohdinta siitä, miten ihminen muuttaa tapojaan ja maailmankuvaansa jännitteen, konfliktien ja ympäristön vaikutuksen kautta."
   taxonomy:

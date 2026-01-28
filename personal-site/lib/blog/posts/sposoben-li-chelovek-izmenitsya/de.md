@@ -12,6 +12,7 @@ descriptive:
   size: "L"
   routeSlug: "kann-sich-ein-mensch-veraendern"
   title: "Kann sich ein Mensch verändern?"
+  coverAlt: "Kann sich ein Mensch verändern?"
   preview: "Kann sich ein Mensch verändern? In diesem Text sammle ich Beobachtungen dazu, wie körperliche und psychologische Umbrüche durch Spannung, Nachdenken und Konflikte ausgelöst werden. Ich vergleiche die Ideen von Berne, Litvak, Horney und Fromm, um zu zeigen, warum Umfeld und bewusste Handlungen zu Wendepunkten werden. 🔂 Was hilft wirklich, Gewohnheiten und die Haltung zu sich selbst zu verändern?"
   seoLead: "Eine Reflexion darüber, wie ein Mensch Gewohnheiten und Weltbild durch Spannung, Konflikte und den Einfluss des Umfelds verändert."
   taxonomy:

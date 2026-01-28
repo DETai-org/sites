@@ -12,6 +12,7 @@ descriptive:
   size: "L"
   routeSlug: "can-a-person-change"
   title: "Can a Person Change?"
+  coverAlt: "Can a Person Change?"
   preview: "Can a person change? In this text I gather observations on how physical and psychological shifts are triggered by tension, reflection, and conflict. I compare the ideas of Berne, Litvak, Horney, and Fromm to show why environment and conscious action become turning points. 🔂 What really helps a person change habits and their attitude toward themselves?"
   seoLead: "A reflection on how a person changes habits and worldview through tension, conflict, and environmental influence."
   taxonomy:

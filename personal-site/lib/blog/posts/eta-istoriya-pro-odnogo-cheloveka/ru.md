@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "eta-istoriya-pro-odnogo-cheloveka"
   title: "Эта история про одного человека"
+  coverAlt: "Эта история про одного человека"
   preview: "История о том, как желание добиться успеха проверяется на прочность."
   seoLead: "Притча о том, что настоящий успех приходит, когда ты хочешь его так же, как хочешь жить."
   taxonomy:
