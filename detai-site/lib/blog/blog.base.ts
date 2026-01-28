@@ -78,4 +78,31 @@ export const baseBlogPosts: BlogPostBase[] = [
       cn: "lib/blog/posts/vzaimopomoshch-kak-faktor-evolyutsii/cn.md",
     },
   },
+  {
+    postId: "multidistsiplinarnyi-podkhod",
+    publishedAt: "2017-11-15T09:00:00+03:00",
+    author: "Anton Kolhonen",
+    status: "publish",
+    rubric: { slug: "rubric:det-notes" },
+    category: { slug: "category:humanistic-principles" },
+    keywords: [{ slug: "keyword:inner-tension" }],
+    keywordsRaw: [
+      "мультидисциплинарный подход",
+      "целостное развитие",
+      "взаимосвязь сфер здоровья",
+    ],
+    coverImage: {
+      src: "/images/posts/multidisciplinarnyj-podhod.webp",
+      width: 1280,
+      height: 720,
+    },
+    coverLayout: "landscape",
+    contentFiles: {
+      ru: "lib/blog/posts/multidistsiplinarnyi-podkhod/ru.md",
+      en: "lib/blog/posts/multidistsiplinarnyi-podkhod/en.md",
+      de: "lib/blog/posts/multidistsiplinarnyi-podkhod/de.md",
+      fi: "lib/blog/posts/multidistsiplinarnyi-podkhod/fi.md",
+      cn: "lib/blog/posts/multidistsiplinarnyi-podkhod/cn.md",
+    },
+  },
 ];
