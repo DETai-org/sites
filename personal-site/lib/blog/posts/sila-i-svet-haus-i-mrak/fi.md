@@ -12,6 +12,7 @@ descriptive:
   size: "L"
   routeSlug: "voima-ja-valo-kaaos-ja-pimeys"
   title: "Voima ja valo, kaaos ja pimeys"
+  coverAlt: "Voima ja valo, kaaos ja pimeys"
   preview: "Voima ja valo, kaaos ja pimeys — runollinen teksti pelon ja vapauden, päivän ja yön, sisäisen repeämän ja elämään vetävän voiman törmäyksestä. 🌓 Mitä jää, kun tuttu rauha ei enää kanna?"
   seoLead: "Runollinen teksti valon ja pimeyden vastakkainasettelusta, sisäisestä konfliktista ja vapauden etsimisestä rakkauden ja pelon kautta."
   taxonomy:

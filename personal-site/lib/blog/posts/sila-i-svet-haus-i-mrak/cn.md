@@ -12,6 +12,7 @@ descriptive:
   size: "L"
   routeSlug: "li-liang-yu-guang-hun-dun-yu-hei-an"
   title: "力量与光，混沌与黑暗"
+  coverAlt: "力量与光，混沌与黑暗"
   preview: "力量与光，混沌与黑暗——一篇关于恐惧与自由、昼与夜、内在撕裂与生命牵引力碰撞的诗性文本。🌓 当熟悉的宁静不再支撑时，还留下些什么？"
   seoLead: "一篇关于光与暗对立、内心冲突，以及通过爱与恐惧寻找自由的诗性文本。"
   taxonomy:

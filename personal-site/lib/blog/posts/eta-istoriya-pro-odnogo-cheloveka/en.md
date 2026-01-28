@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "one-person-story"
   title: "This story is about one person"
+  coverAlt: "This story is about one person"
   preview: "A parable about how the desire for success is tested."
   seoLead: "A story reminding that real success comes when you want it as much as you want to live."
   taxonomy:

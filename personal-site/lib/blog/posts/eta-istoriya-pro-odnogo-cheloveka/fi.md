@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "tarina-yhdesta-ihmisesta"
   title: "Tämä tarina kertoo yhdestä ihmisestä"
+  coverAlt: "Tämä tarina kertoo yhdestä ihmisestä"
   preview: "Vertaus siitä, miten menestyksen halu joutuu koetukselle."
   seoLead: "Tarina siitä, että todellinen menestys syntyy, kun sitä haluaa yhtä paljon kuin elää."
   taxonomy:

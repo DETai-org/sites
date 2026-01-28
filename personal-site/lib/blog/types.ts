@@ -50,6 +50,7 @@ export interface BlogPostFrontmatterAdministrative {
 export interface BlogPostFrontmatterDescriptive {
   routeSlug?: string;
   title?: string;
+  coverAlt?: string;
   preview?: string;
   seoLead?: string;
   taxonomy?: BlogTaxonomyIds;
@@ -83,7 +84,7 @@ export interface BlogImage {
   src: string;
   width: number;
   height: number;
-  alt: string;
+  alt?: string;
 }
 
 export interface BlogPostBase {

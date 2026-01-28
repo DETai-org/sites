@@ -12,6 +12,7 @@ descriptive:
   size: "L"
   routeSlug: "power-and-light-chaos-and-darkness"
   title: "Power and Light, Chaos and Darkness"
+  coverAlt: "Power and Light, Chaos and Darkness"
   preview: "Power and light, chaos and darkness — a poetic text about the clash of fear and freedom, day and night, inner split and the pull toward life. 🌓 What remains when familiar calm no longer holds?"
   seoLead: "A poetic text about the opposition of light and darkness, inner conflict, and the search for freedom through love and fear."
   taxonomy:

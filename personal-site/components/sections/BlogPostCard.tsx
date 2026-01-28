@@ -12,6 +12,12 @@ interface BlogPostCardProps {
 }
 
 export default function BlogPostCard({ post, readMoreLabel, meta }: BlogPostCardProps) {
+  const coverAlt =
+    post.frontmatter?.descriptive?.coverAlt?.trim() ||
+    post.titles[post.lang] ||
+    post.coverImage?.alt ||
+    "";
+
   return (
     <article className="blog-card">
       {post.coverImage ? (
@@ -20,7 +26,7 @@ export default function BlogPostCard({ post, readMoreLabel, meta }: BlogPostCard
           src={post.coverImage.src}
           width={post.coverImage.width}
           height={post.coverImage.height}
-          alt={post.coverImage.alt}
+          alt={coverAlt}
         />
       ) : null}
       <div className="blog-card__body">

@@ -12,6 +12,7 @@ administrative:
 descriptive:
   routeSlug: "naehe-und-unabhaengigkeit"
   title: "Nähe und Unabhängigkeit"
+  coverAlt: "Nähe und Unabhängigkeit"
   preview: "Nähe und Unabhängigkeit sind die Spannung zwischen dem Drang nach Verbundenheit und dem Bedürfnis, die eigene Einzigartigkeit zu bewahren. Der Text beschreibt produktive Liebe als Fürsorge und Verantwortung für das Wachstum des anderen und erinnert daran, dass ohne Respekt Liebe zur Macht wird. Was hilft, Respekt zu bewahren, wenn wir Nähe suchen? 💙"
   seoLead: "Nähe und Unabhängigkeit in Beziehungen: Liebe als Fürsorge, Verantwortung und Respekt für die Freiheit und das Wachstum des anderen."
   taxonomy:
