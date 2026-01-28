@@ -14,7 +14,6 @@ export const baseBlogPosts: BlogPostBase[] = [
       src: "/images/posts/maxresdefault.jpg",
       width: 1280,
       height: 720,
-      alt: "Эта история про одного человека",
     },
     coverLayout: "landscape",
     contentFiles: {
@@ -42,7 +41,6 @@ export const baseBlogPosts: BlogPostBase[] = [
       src: "/images/posts/closeness-vs-independence.webp",
       width: 604,
       height: 404,
-      alt: "Близость и независимость в отношениях",
     },
     coverLayout: "square",
     contentFiles: {
@@ -70,7 +68,6 @@ export const baseBlogPosts: BlogPostBase[] = [
       src: "/images/posts/vzaimopomoshch-kak-faktor-evolyutsii.webp",
       width: 686,
       height: 457,
-      alt: "Взаимопомощь как фактор эволюции",
     },
     coverLayout: "landscape",
     contentFiles: {

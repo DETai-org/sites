@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "geschichte-einer-person"
   title: "Diese Geschichte handelt von einer Person"
+  coverAlt: "Diese Geschichte handelt von einer Person"
   preview: "Eine Parabel darüber, wie der Wunsch nach Erfolg auf die Probe gestellt wird."
   seoLead: "Eine Geschichte, die daran erinnert, dass echter Erfolg kommt, wenn man ihn so sehr will wie das Leben."
   taxonomy:

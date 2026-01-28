@@ -19,6 +19,7 @@ interface BlogPostCardProps {
 export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCardProps) {
   const title =
     post.frontmatter?.descriptive?.title?.trim() || post.titles[post.lang]?.trim() || post.slug;
+  const coverAlt = post.frontmatter?.descriptive?.coverAlt?.trim() || title;
   const seoLead = post.frontmatter?.descriptive?.seoLead?.trim();
   const excerpt =
     seoLead || post.excerpt?.trim() || post.frontmatter?.descriptive?.preview?.trim() || "";
@@ -65,7 +66,7 @@ export default function BlogPostCard({ post, locale, readMoreLabel }: BlogPostCa
           src={post.coverImage.src}
           width={post.coverImage.width}
           height={post.coverImage.height}
-          alt={post.coverImage.alt}
+          alt={coverAlt}
         />
       ) : null}
       <div className="flex flex-col h-full gap-2 px-mobile-4 pb-mobile-1 pt-mobile-2 md:px-6 md:pb-3 md:pt-3">

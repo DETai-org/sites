@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "keskinainen-apu-evoluution-tekijana"
   title: "Keskinäinen apu evoluution tekijänä"
+  coverAlt: "Keskinäinen apu evoluution tekijänä"
   preview: "Keskinäinen apu evoluution tekijänä on näkemys ihmisestä olentona, joka tulee omaksi itsekseen vain suhteessa toisiin. Tekstissä kuuluvat Marx, Goethe ja Fromm, kun puhutaan tuottavuudesta, inhimillisyydestä ja sisäisestä maailmasta, joka avautuu suhteiden ja henkilökohtaisen elämän kautta. Miksi humanistinen näkökulma tekee ihmisten välisestä yhteydestä kehityksen ja kypsymisen avainehdon? ⚜️"
   seoLead: "Keskinäinen apu evoluution tekijänä: miksi ihminen tulee omaksi itsekseen toisten kautta ja miten humanistinen ajattelu perustelee tämän."
   taxonomy:

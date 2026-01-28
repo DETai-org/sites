@@ -11,6 +11,7 @@ administrative:
 descriptive:
   routeSlug: "hu-zhu-zuo-wei-jin-hua-yin-su"
   title: "互助作为进化因素"
+  coverAlt: "互助作为进化因素"
   preview: "互助作为进化因素，是把人理解为只有在与他人的关联中才能成其为人的存在。这里回响着马克思、歌德与弗洛姆的观点——关于生产性、人性，以及在关系与个人生活中展开的内在世界。为什么人本主义视角把人之间的联结视为发展与成熟的关键条件？⚜️"
   seoLead: "互助作为进化因素：为何人通过他人成其为人，以及人本主义思想如何论证这一点。"
   taxonomy:

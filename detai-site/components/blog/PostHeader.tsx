@@ -32,6 +32,11 @@ export default function PostHeader({
   const rubricRoute = post.rubric?.slug ? getRubricRouteSlug(post.rubric.slug, lang) : null;
   const previewText =
     post.frontmatter?.descriptive?.preview?.trim() || post.excerpt?.trim() || "";
+  const coverAlt =
+    post.frontmatter?.descriptive?.coverAlt?.trim() ||
+    post.frontmatter?.descriptive?.title?.trim() ||
+    post.titles[lang]?.trim() ||
+    "";
   const readingTime = getReadingTime(post.content || post.contentHtml);
   const readingTimeLabel = `${readingTime} ${copy.minReadLabel}`;
   const authorName = post.author?.trim();
@@ -61,7 +66,7 @@ export default function PostHeader({
                   src={post.coverImage.src}
                   width={post.coverImage.width}
                   height={post.coverImage.height}
-                  alt={post.coverImage.alt}
+                  alt={coverAlt}
                 />
               </div>
             </div>
@@ -157,7 +162,7 @@ export default function PostHeader({
                   src={post.coverImage.src}
                   width={post.coverImage.width}
                   height={post.coverImage.height}
-                  alt={post.coverImage.alt}
+                  alt={coverAlt}
                 />
               </div>
             </div>
@@ -165,6 +170,7 @@ export default function PostHeader({
           {coverLayout === "portrait" && post.coverImage ? (
             <PostCoverPortrait
               image={post.coverImage}
+              alt={coverAlt}
               expandLabel={copy.expandCoverLabel}
               collapseLabel={copy.collapseCoverLabel}
             />
